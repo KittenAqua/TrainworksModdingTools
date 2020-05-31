@@ -7,11 +7,14 @@ using HarmonyLib;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
+using MonsterTrainModdingAPI.Managers;
 
 namespace MonsterTrainModdingAPI.Builder
 {
     public class CardDataBuilder
     {
+        public string CardID { get; set; }
+
         public int Cost { get; set; }
         public string Name { get; set; }
         public string OverrideDescriptionKey { get; set; }
@@ -51,9 +54,11 @@ namespace MonsterTrainModdingAPI.Builder
             this.CardLoreTooltipKeys = new List<string>();
         }
 
-        public CardData BuildAndRegister(AllGameData allGameData)
+        public CardData BuildAndRegister()
         {
-            return this.Build();
+            var cardData = this.Build();
+            CustomCardManager.RegisterCustomCardData(CardID, cardData);
+            return cardData;
         }
 
         public CardData Build()

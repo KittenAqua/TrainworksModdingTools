@@ -6,7 +6,6 @@ using ShinyShoe;
 
 namespace MonsterTrainModdingAPI.Patches
 {
-
     // Credit to Rawsome, Stable Infery for this one, too: a quick and dirty patch to disable the multiplayer button.
     [HarmonyPatch(typeof(MainMenuScreen), "CollectMenuButtons")]
     class DisableMultiplayerButtonPatch
