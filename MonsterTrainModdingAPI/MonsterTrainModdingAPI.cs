@@ -11,7 +11,7 @@ using ShinyShoe;
 namespace MonsterTrainModdingAPI
 {
     // Credit to Rawsome, Stable Infery for the base of this method.
-    [BepInPlugin("api.modding.train.monster", "Monster Train Modding API", "0.0.2")]
+    [BepInPlugin("api.modding.train.monster", "Monster Train Modding API", "0.0.3")]
     [BepInProcess("MonsterTrain.exe")]
     [BepInProcess("MtLinkHandler.exe")]
     public class TestPlugin : BaseUnityPlugin

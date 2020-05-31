@@ -14,6 +14,7 @@ namespace MonsterTrainModdingAPI.Builder
     public class CardDataBuilder
     {
         public string CardID { get; set; }
+        public List<int> CardPoolIDs { get; set; }
 
         public int Cost { get; set; }
         public string Name { get; set; }
@@ -45,6 +46,7 @@ namespace MonsterTrainModdingAPI.Builder
 
         public CardDataBuilder()
         {
+            this.CardPoolIDs = new List<int>();
             this.Effects = new List<CardEffectData>();
             this.Traits = new List<CardTraitData>();
             this.EffectTriggers = new List<CharacterTriggerData>();
@@ -57,7 +59,7 @@ namespace MonsterTrainModdingAPI.Builder
         public CardData BuildAndRegister()
         {
             var cardData = this.Build();
-            CustomCardManager.RegisterCustomCardData(CardID, cardData);
+            CustomCardManager.RegisterCustomCardData(this.CardID, this.CardPoolIDs, cardData);
             return cardData;
         }
 
@@ -107,6 +109,12 @@ namespace MonsterTrainModdingAPI.Builder
         {
             string factionID = Enum.ClanIDs.GetClanID(clan);
             this.LinkedClass = allGameData.FindClassData(factionID);
+        }
+
+        public void AddToCardPool(Enum.MTCardPool cardPool)
+        {
+            int cardPoolID = Enum.CardPoolIDs.GetCardPoolID(cardPool);
+            this.CardPoolIDs.Add(cardPoolID);
         }
     }
 }

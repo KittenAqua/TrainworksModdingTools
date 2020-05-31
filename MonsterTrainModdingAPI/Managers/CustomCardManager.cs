@@ -8,11 +8,13 @@ namespace MonsterTrainModdingAPI.Managers
     public class CustomCardManager
     {
         public static IDictionary<string, CardData> CustomCardData { get; } = new Dictionary<string, CardData>();
+        public static IDictionary<string, List<int>> CustomCardPoolData { get; } = new Dictionary<string, List<int>>();
         public static SaveManager SaveManager { get; set; }
 
-        public static void RegisterCustomCardData(string cardID, CardData cardData)
+        public static void RegisterCustomCardData(string cardID, List<int> cardPoolData, CardData cardData)
         {
             CustomCardData.Add(cardID, cardData);
+            CustomCardPoolData.Add(cardID, cardPoolData);
             SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
         }
 
@@ -23,6 +25,37 @@ namespace MonsterTrainModdingAPI.Managers
                 return CustomCardData[cardID];
             }
             return null;
+        }
+
+        public static List<CardData> GetCardsForPool(int cardPoolID)
+        {
+            var validCards = new List<CardData>();
+            foreach (KeyValuePair<string, CardData> entry in CustomCardData)
+            {
+                foreach (int customPoolID in CustomCardPoolData[entry.Key])
+                {
+                    if (customPoolID == cardPoolID)
+                    {
+                        validCards.Add(entry.Value);
+                        break;
+                    }
+                }
+            }
+            return validCards;
+        }
+
+        public static List<CardData> GetCardsForPoolSatisfyingConstraints(int cardPoolID, ClassData classData, CollectableRarity paramRarity, CardPoolHelper.RarityCondition rarityCondition, bool testRarityCondition)
+        {
+            var allValidCards = GetCardsForPool(cardPoolID);
+            var validCards = new List<CardData>();
+            foreach (CardData cardData in allValidCards)
+            {
+                if (cardData.GetLinkedClass() == classData && (!testRarityCondition || rarityCondition(paramRarity, cardData.GetRarity())))
+                {
+                    validCards.Add(cardData);
+                }
+            }
+            return validCards;
         }
 
         public static ClassData CurrentPrimaryClan()
