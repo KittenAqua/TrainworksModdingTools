@@ -8,7 +8,7 @@ namespace MonsterTrainModdingAPI.Managers
 {
     public static class PluginManager
     {
-        private static Dictionary<string, BaseUnityPlugin> plugins;
+        private static readonly Dictionary<string, BaseUnityPlugin> plugins = new Dictionary<string, BaseUnityPlugin>();
 
         public static List<string> GetAllPluginGUIDs()
         {
