@@ -106,10 +106,10 @@ namespace MonsterTrainModdingAPI.Builder
             this.CardArtPrefabVariantRef = assetReferenceGameObject;
         }
 
-        public void SetCardClan(Enum.MTClan clan, AllGameData allGameData)
+        public void SetCardClan(Enum.MTClan clan)
         {
             string factionID = Enum.ClanIDs.GetClanID(clan);
-            this.LinkedClass = allGameData.FindClassData(factionID);
+            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(factionID);
         }
 
         public void AddToCardPool(Enum.MTCardPool cardPool)
