@@ -11,11 +11,7 @@ namespace MonsterTrainModdingAPI.Patches
     {
         static void Postfix(ref string __result, SaveManager __instance)
         {
-            string newFileName = "";
-            foreach(string s in PluginManager.GetAllPluginNames())
-            {
-                
-            }
+            string newFileName = "Modded";
             __result += "..\\" + newFileName + ".json";
         }
     }
