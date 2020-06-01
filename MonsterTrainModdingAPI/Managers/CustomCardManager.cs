@@ -11,10 +11,10 @@ namespace MonsterTrainModdingAPI.Managers
         public static IDictionary<string, List<int>> CustomCardPoolData { get; } = new Dictionary<string, List<int>>();
         public static SaveManager SaveManager { get; set; }
 
-        public static void RegisterCustomCardData(string cardID, List<int> cardPoolData, CardData cardData)
+        public static void RegisterCustomCardData(CardData cardData, List<int> cardPoolData)
         {
-            CustomCardData.Add(cardID, cardData);
-            CustomCardPoolData.Add(cardID, cardPoolData);
+            CustomCardData.Add(cardData.GetID(), cardData);
+            CustomCardPoolData.Add(cardData.GetID(), cardPoolData);
             SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
         }
 
