@@ -33,6 +33,10 @@
       <HintPath>..\..\MonsterTrain_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\MonsterTrain_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\MonsterTrain_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
