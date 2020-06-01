@@ -59,13 +59,14 @@ namespace MonsterTrainModdingAPI.Builder
         public CardData BuildAndRegister()
         {
             var cardData = this.Build();
-            CustomCardManager.RegisterCustomCardData(this.CardID, this.CardPoolIDs, cardData);
+            CustomCardManager.RegisterCustomCardData(cardData, this.CardPoolIDs);
             return cardData;
         }
 
         public CardData Build()
         {
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
+            AccessTools.Field(typeof(CardData), "id").SetValue(cardData, this.CardID);
             AccessTools.Field(typeof(CardData), "cost").SetValue(cardData, this.Cost);
             AccessTools.Field(typeof(CardData), "nameKey").SetValue(cardData, this.Name);
             AccessTools.Field(typeof(CardData), "overrideDescriptionKey").SetValue(cardData, this.OverrideDescriptionKey);
