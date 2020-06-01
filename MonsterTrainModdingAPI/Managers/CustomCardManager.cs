@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BepInEx.Logging;
 using HarmonyLib;
+using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Models;
 
 namespace MonsterTrainModdingAPI.Managers
 {
@@ -11,6 +14,20 @@ namespace MonsterTrainModdingAPI.Managers
         public static IDictionary<string, CharacterData> CustomCharacterData { get; } = new Dictionary<string, CharacterData>();
         public static IDictionary<string, List<int>> CustomCardPoolData { get; } = new Dictionary<string, List<int>>();
         public static SaveManager SaveManager { get; set; }
+
+        public static void RegisterAllCustomCards()
+        {
+            foreach (TrainModule mod in API.plugins)
+            {
+                var modCards = mod.RegisterCustomCards();
+                foreach (CardDataBuilder card in modCards)
+                {
+                    var cardData = card.Build();
+                    API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName() + " from " + mod.RegisterPlugin().name);
+                    RegisterCustomCardData(cardData, card.CardPoolIDs);
+                }
+            }
+        }
 
         public static void RegisterCustomCardData(CardData cardData, List<int> cardPoolData)
         {
