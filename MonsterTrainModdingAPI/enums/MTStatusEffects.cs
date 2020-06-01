@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MonsterTrainModdingAPI.enums
+namespace MonsterTrainModdingAPI.Enum
 {
     public enum MTStatusEffect
     {
