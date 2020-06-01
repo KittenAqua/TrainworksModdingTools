@@ -3,7 +3,7 @@
 namespace MonsterTrainModdingAPI.Patches
 {
     [HarmonyPatch(typeof(IntroFmvScreen), "Initialize")]
-    class IntroFmvScreen_Initialize_Patch
+    class SkipIntroFMVPatch
     {
         static bool Prefix(ref IntroFmvScreen __instance)
         {
