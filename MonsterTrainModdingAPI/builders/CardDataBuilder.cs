@@ -72,6 +72,10 @@ namespace MonsterTrainModdingAPI.Builder
             AccessTools.Field(typeof(CardData), "overrideDescriptionKey").SetValue(cardData, this.OverrideDescriptionKey);
             AccessTools.Field(typeof(CardData), "cardArtPrefabVariantRef").SetValue(cardData, this.CardArtPrefabVariantRef);
             AccessTools.Field(typeof(CardData), "effects").SetValue(cardData, this.Effects);
+            foreach (CardTraitData cardTraitData in this.Traits)
+            {
+                AccessTools.Field(typeof(CardTraitData), "paramCardData").SetValue(cardTraitData, cardData);
+            }
             AccessTools.Field(typeof(CardData), "traits").SetValue(cardData, this.Traits);
             AccessTools.Field(typeof(CardData), "effectTriggers").SetValue(cardData, this.EffectTriggers);
             AccessTools.Field(typeof(CardData), "triggers").SetValue(cardData, this.Triggers);
@@ -106,10 +110,10 @@ namespace MonsterTrainModdingAPI.Builder
             this.CardArtPrefabVariantRef = assetReferenceGameObject;
         }
 
-        public void SetCardClan(Enum.MTClan clan, AllGameData allGameData)
+        public void SetCardClan(Enum.MTClan clan)
         {
             string factionID = Enum.ClanIDs.GetClanID(clan);
-            this.LinkedClass = allGameData.FindClassData(factionID);
+            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(factionID);
         }
 
         public void AddToCardPool(Enum.MTCardPool cardPool)
