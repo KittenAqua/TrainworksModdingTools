@@ -45,6 +45,9 @@
       <HintPath>..\..\MonsterTrain_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\MonsterTrain_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\..\MonsterTrain_Data\Managed\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
