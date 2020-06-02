@@ -13,34 +13,24 @@ namespace MonsterTrainModdingAPI.Managers
         public static SaveManager SaveManager { get; set; }
         private static List<CardDataBuilder> PreRegisteredCards = new List<CardDataBuilder>();
 
-        public static bool RegisterCustomCard(CardDataBuilder newCard)
+        public static bool RegisterCustomCard(CardDataBuilder builder)
         {
             if (SaveManager == null)
             {
-                PreRegisteredCards.Add(newCard);
+                PreRegisteredCards.Add(builder);
                 return false;
             }
-            else
-            {
-               RegisterCardBuilder(newCard);
-               return true;
-            }
+            builder.BuildAndRegister();
+            return true;
         }
 
         public static void FinishCustomCardRegistration()
         {
-            foreach (CardDataBuilder builder in PreRegisteredCards)
+            foreach (var builder in PreRegisteredCards)
             {
-               RegisterCardBuilder(builder);
+                builder.BuildAndRegister();
             }
             PreRegisteredCards.Clear();
-        }
-
-        private static void RegisterCardBuilder(CardDataBuilder builder)
-        {
-            var cardData = builder.Build();
-            API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
-            RegisterCustomCardData(cardData, builder.CardPoolIDs);  
         }
         
         public static void RegisterCustomCardData(CardData cardData, List<int> cardPoolData)
