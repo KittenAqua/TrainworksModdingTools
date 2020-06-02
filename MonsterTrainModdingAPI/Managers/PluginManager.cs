@@ -26,7 +26,8 @@ namespace MonsterTrainModdingAPI.Managers
 
         public static void RegisterPlugin(BaseUnityPlugin plugin)
         {
-            plugins.Add(plugin.name, plugin);
+            
+            plugins.Add(plugin.Info.Metadata.Name, plugin);
         }
     }
 }
