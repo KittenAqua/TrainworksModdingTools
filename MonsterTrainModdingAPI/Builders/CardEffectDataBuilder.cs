@@ -120,20 +120,7 @@ namespace MonsterTrainModdingAPI.Builder
 
         public void AddStatusEffect(MTStatusEffect statusEffect, int stackCount)
         {
-            string statusEffectID = StatusEffectIds.GetStatusEffectId(statusEffect);
-            var statusEffectData = new StatusEffectStackData
-            {
-                statusId = statusEffectID,
-                count = stackCount
-            };
-            var newStatusEffectStackData = new StatusEffectStackData[this.ParamStatusEffects.Length + 1];
-            int i;
-            for (i = 0; i < this.ParamStatusEffects.Length; i++)
-            {
-                newStatusEffectStackData[i] = this.ParamStatusEffects[i];
-            }
-            newStatusEffectStackData[i] = statusEffectData;
-            this.ParamStatusEffects = newStatusEffectStackData;
+            this.ParamStatusEffects = BuilderUtils.AddStatusEffect(statusEffect, stackCount, this.ParamStatusEffects);
         }
     }
 }
