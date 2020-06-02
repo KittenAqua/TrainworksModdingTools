@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using BepInEx.Logging;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builder;
-using MonsterTrainModdingAPI.Models;
 
 namespace MonsterTrainModdingAPI.Managers
 {
@@ -14,22 +11,39 @@ namespace MonsterTrainModdingAPI.Managers
         public static IDictionary<string, CharacterData> CustomCharacterData { get; } = new Dictionary<string, CharacterData>();
         public static IDictionary<string, List<int>> CustomCardPoolData { get; } = new Dictionary<string, List<int>>();
         public static SaveManager SaveManager { get; set; }
+        private static List<CardDataBuilder> PreRegisteredCards = new List<CardDataBuilder>();
 
-        public static void RegisterAllCustomCards()
+        public static bool RegisterCustomCard(CardDataBuilder newCard)
         {
-            foreach (TrainModule mod in API.plugins)
+            if (SaveManager == null)
             {
-                var modCards = mod.RegisterCustomCards();
-                foreach (CardDataBuilder card in modCards)
-                {
-                    var cardData = card.Build();
-                    API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName() + " from " + mod.RegisterPlugin().name);
-                    RegisterCustomCardData(cardData, card.CardPoolIDs);
-                }
+                PreRegisteredCards.Add(newCard);
+                return false;
+            }
+            else
+            {
+               RegisterCardBuilder(newCard);
+               return true;
             }
         }
 
-        public static void RegisterCustomCardData(CardData cardData, List<int> cardPoolData)
+        public static void FinishCustomCardRegistration()
+        {
+            foreach (CardDataBuilder builder in PreRegisteredCards)
+            {
+               RegisterCardBuilder(builder);
+            }
+            PreRegisteredCards.Clear();
+        }
+
+        private static void RegisterCardBuilder(CardDataBuilder builder)
+        {
+            var cardData = builder.Build();
+            API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
+            RegisterCustomCardData(cardData, builder.CardPoolIDs);  
+        }
+        
+        private static void RegisterCustomCardData(CardData cardData, List<int> cardPoolData)
         {
             CustomCardData.Add(cardData.GetID(), cardData);
             CustomCardPoolData.Add(cardData.GetID(), cardPoolData);
