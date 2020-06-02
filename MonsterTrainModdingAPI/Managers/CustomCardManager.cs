@@ -43,7 +43,7 @@ namespace MonsterTrainModdingAPI.Managers
             RegisterCustomCardData(cardData, builder.CardPoolIDs);  
         }
         
-        private static void RegisterCustomCardData(CardData cardData, List<int> cardPoolData)
+        public static void RegisterCustomCardData(CardData cardData, List<int> cardPoolData)
         {
             CustomCardData.Add(cardData.GetID(), cardData);
             CustomCardPoolData.Add(cardData.GetID(), cardPoolData);
