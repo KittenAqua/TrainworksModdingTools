@@ -46,7 +46,7 @@ namespace MonsterTrainModdingAPI.Builder
         public CardData.CostType CostType { get; set; }
         public FallbackData FallbackData { get; set; }
 
-        public MTClan Clan;
+        public MTClan Clan { get; set; }
 
         public CardDataBuilder()
         {
