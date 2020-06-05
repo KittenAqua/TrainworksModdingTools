@@ -10,6 +10,7 @@ namespace MonsterTrainModdingAPI.Utilities
 {
     public class AssetBundleUtils
     {
+        private static Dictionary<string, AssetBundle> LoadedAssetBundles = new Dictionary<string, AssetBundle>();
         private static string _pluginFolderPath;
         public static string PluginFolderPath
         {
@@ -42,8 +43,16 @@ namespace MonsterTrainModdingAPI.Utilities
             {
                 AccessPath = PluginFolderPath + @"\" + path + @"\" + bundleName;
             }
+
+            if (LoadedAssetBundles.ContainsKey(AccessPath))
+            {
+                return LoadedAssetBundles[AccessPath];
+            }
+
             Console.WriteLine(AccessPath);
-            return AssetBundle.LoadFromFile(AccessPath);
+            AssetBundle bundle = AssetBundle.LoadFromFile(AccessPath);
+            LoadedAssetBundles.Add(AccessPath, bundle);
+            return bundle;
         }
 
     }
