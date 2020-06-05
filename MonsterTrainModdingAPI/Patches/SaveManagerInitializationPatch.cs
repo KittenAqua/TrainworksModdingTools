@@ -12,6 +12,7 @@ namespace MonsterTrainModdingAPI.Patches
         static void Postfix(SaveManager __instance)
         {
             CustomCardManager.SaveManager = __instance;
+            CustomCardManager.FinishCustomCardRegistration();
         }
     }
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using BepInEx;
 using BepInEx.Harmony;
 using System.Reflection;
+using BepInEx.Logging;
 using HarmonyLib;
+using MonsterTrainModdingAPI.Enum;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
@@ -44,6 +46,8 @@ namespace MonsterTrainModdingAPI.Builder
         public CardData.CostType CostType { get; set; }
         public FallbackData FallbackData { get; set; }
 
+        public MTClan Clan { get; set; }
+
         public CardDataBuilder()
         {
             this.CardPoolIDs = new List<int>();
@@ -59,12 +63,15 @@ namespace MonsterTrainModdingAPI.Builder
         public CardData BuildAndRegister()
         {
             var cardData = this.Build();
+            API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
             CustomCardManager.RegisterCustomCardData(cardData, this.CardPoolIDs);
             return cardData;
         }
 
         public CardData Build()
         {
+            string factionID = Enum.ClanIDs.GetClanID(Clan);
+            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(factionID);
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
             AccessTools.Field(typeof(CardData), "id").SetValue(cardData, this.CardID);
             AccessTools.Field(typeof(CardData), "cost").SetValue(cardData, this.Cost);
@@ -109,13 +116,7 @@ namespace MonsterTrainModdingAPI.Builder
                 .SetValue(assetReferenceGameObject, m_AssetGUID);
             this.CardArtPrefabVariantRef = assetReferenceGameObject;
         }
-
-        public void SetCardClan(Enum.MTClan clan)
-        {
-            string factionID = Enum.ClanIDs.GetClanID(clan);
-            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(factionID);
-        }
-
+        
         public void AddToCardPool(Enum.MTCardPool cardPool)
         {
             int cardPoolID = Enum.CardPoolIDs.GetCardPoolID(cardPool);

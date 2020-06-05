@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using BepInEx;
-using BepInEx.Harmony;
-using System.Reflection;
+﻿using BepInEx;
+using BepInEx.Logging;
 using HarmonyLib;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using ShinyShoe;
 
 namespace MonsterTrainModdingAPI
 {
@@ -14,9 +8,16 @@ namespace MonsterTrainModdingAPI
     [BepInPlugin("api.modding.train.monster", "Monster Train Modding API", "0.0.4")]
     [BepInProcess("MonsterTrain.exe")]
     [BepInProcess("MtLinkHandler.exe")]
-    public class TestPlugin : BaseUnityPlugin
+    public class API : BaseUnityPlugin
     {
-        void Awake()
+        private static ManualLogSource logger = BepInEx.Logging.Logger.CreateLogSource("API");
+        
+        public static void Log(LogLevel lvl, string msg)
+        {
+            logger.Log(lvl, msg);
+        }
+        
+        private void Awake()
         {
             var harmony = new Harmony("api.modding.train.monster");
             harmony.PatchAll();
