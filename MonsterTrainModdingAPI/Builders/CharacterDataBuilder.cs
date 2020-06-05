@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using BepInEx;
 using BepInEx.Harmony;
 using System.Reflection;
@@ -77,6 +78,7 @@ namespace MonsterTrainModdingAPI.Builder
             this.CharacterLoreTooltipKeys = new List<string>();
             this.StartingStatusEffects = new StatusEffectStackData[0];
             this.StatusEffectImmunities = new string[0];
+            this.ImpactVFX = (VfxAtLoc)FormatterServices.GetUninitializedObject(typeof(VfxAtLoc));
         }
 
         public CharacterData BuildAndRegister()
