@@ -15,6 +15,8 @@ namespace MonsterTrainModdingAPI.Builder
 {
     public class CardUpgradeDataBuilder
     {    
+        // Note: add status effect adder, it's different than the one in BuilderUtils
+        
         private string upgradeTitleKey { get; set; }
         private string upgradeDescriptionKey { get; set; }
         private string upgradeNotificationKey { get; set; }
