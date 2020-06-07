@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.IO;
 using BepInEx;
 using BepInEx.Harmony;
 using System.Reflection;
@@ -28,6 +29,7 @@ namespace MonsterTrainModdingAPI.Builder
         public StatusEffectStackData[] StartingStatusEffects { get; set; }
         public string[] StatusEffectImmunities { get; set; }
 
+        public string AssetPath { get; set; }
         public AssetReferenceGameObject CharacterPrefabVariantRef { get; set; }
 
         public bool CanAttack { get; set; }
@@ -84,7 +86,7 @@ namespace MonsterTrainModdingAPI.Builder
         public CharacterData BuildAndRegister()
         {
             var characterData = this.Build();
-            CustomCardManager.RegisterCustomCharacterData(characterData);
+            CustomCharacterManager.RegisterCustomCharacter(characterData, this.AssetPath);
             return characterData;
         }
 
@@ -134,6 +136,8 @@ namespace MonsterTrainModdingAPI.Builder
             AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID")
                 .SetValue(assetReferenceGameObject, m_AssetGUID);
             this.CharacterPrefabVariantRef = assetReferenceGameObject;
+
+            this.AssetPath = m_AssetGUID;
         }
 
         public void AddStartingStatusEffect(MTStatusEffect statusEffect, int stackCount)

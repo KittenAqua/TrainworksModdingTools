@@ -104,6 +104,8 @@ namespace MonsterTrainModdingAPI.Builder
             AccessTools.Field(typeof(CardData), "costType").SetValue(cardData, this.CostType);
             AccessTools.Field(typeof(CardData), "fallbackData").SetValue(cardData, this.FallbackData);
 
+
+
             return cardData;
         }
 

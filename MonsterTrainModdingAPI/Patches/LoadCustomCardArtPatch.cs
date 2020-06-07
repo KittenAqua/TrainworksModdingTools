@@ -40,59 +40,59 @@ namespace MonsterTrainModdingAPI.Patches
         }
     }
 
-    [HarmonyPatch(typeof(CharacterData), "HasCharacterPrefabVariant")]
-    class YesIHaveArtPatch
-    {
-        static void Postfix(ref CharacterData __instance, ref bool __result)
-        {
-            if (CustomCardManager.CustomCharacterData.ContainsKey(__instance.GetID()))
-            {
-                __result = true;
-                //Debug.Log("I HAVE IT DUDE");
-            }
-        }
-    }
+    //[HarmonyPatch(typeof(CharacterData), "HasCharacterPrefabVariant")]
+    //class YesIHaveArtPatch
+    //{
+    //    static void Postfix(ref CharacterData __instance, ref bool __result)
+    //    {
+    //        if (CustomCharacterManager.CustomCharacterData.ContainsKey(__instance.GetID()))
+    //        {
+    //            __result = true;
+    //            //Debug.Log("I HAVE IT DUDE");
+    //        }
+    //    }
+    //}
 
-    [HarmonyPatch(typeof(CharacterUIMesh), "Setup")]
-    class LoadCustomCharacterArtPatch1
-    {
-        static void Prefix(ref Sprite charSprite, ref CharacterUIMesh __instance)
-        {
-            Debug.Log("CHARACTER UI MESH SETUP");
-            Debug.Log(__instance.gameObject.name);
-            Debug.Log(charSprite);
-            Debug.Log(__instance.GetComponent<MeshFilter>());
-            Debug.Log(__instance.GetComponent<MeshRenderer>());
-            Debug.Log(__instance.meshRenderer);
-            Debug.Log(__instance.meshRenderer.material);
-            Debug.Log(__instance.meshRenderer.material.mainTexture);
-            Debug.Log(charSprite.bounds.size.x);
-            Debug.Log(charSprite.bounds.size.y);
-            //Debug.Log(__instance.GetComponent<MeshFilter>().mesh);
-            //Debug.Log(__instance.GetComponent<MeshFilter>().mesh.bounds);
-            Debug.Log(charSprite.texture);
-            //Debug.Log(System.Enum.GetNames(typeof(CharacterUI.Anim)).Length);
-            //Debug.Log(__instance.GetComponentsInChildren<SkeletonAnimation>().Length);
-            //Debug.Log(__instance.GetComponentsInChildren<BoneFollower>().Length);
-            //Traverse filename = Traverse.Create(__instance).Field("_animInfos");
-            //AccessTools.
-            //Debug.Log(charSprite.texture);
-            //Debug.Log(charSprite.bounds);
-            //Debug.Log(charSprite.bounds.size);
-            //Debug.Log(AccessTools.Field(typeof(CharacterUIMeshSpine), "_animInfos").GetValue(__instance));
-        }
-        static void Postfix(ref Sprite charSprite, ref CharacterUIMesh __instance)
-        {
-            Debug.Log(".......POST");
-            Debug.Log(__instance.gameObject.name);
-            Debug.Log(charSprite);
-            Debug.Log(__instance.meshRenderer.material.mainTexture);
-            //Debug.Log(charSprite.texture);
-            //Debug.Log(charSprite.bounds);
-            //Debug.Log(charSprite.bounds.size);
-            //Debug.Log(AccessTools.Field(typeof(CharacterUIMesh), "_animInfos").GetValue(__instance));
-        }
-    }
+    //[HarmonyPatch(typeof(CharacterUIMesh), "Setup")]
+    //class LoadCustomCharacterArtPatch1
+    //{
+    //    static void Prefix(ref Sprite charSprite, ref CharacterUIMesh __instance)
+    //    {
+    //        Debug.Log("CHARACTER UI MESH SETUP");
+    //        Debug.Log(__instance.gameObject.name);
+    //        Debug.Log(charSprite);
+    //        Debug.Log(__instance.GetComponent<MeshFilter>());
+    //        Debug.Log(__instance.GetComponent<MeshRenderer>());
+    //        Debug.Log(__instance.meshRenderer);
+    //        Debug.Log(__instance.meshRenderer.material);
+    //        Debug.Log(__instance.meshRenderer.material.mainTexture);
+    //        Debug.Log(charSprite.bounds.size.x);
+    //        Debug.Log(charSprite.bounds.size.y);
+    //        //Debug.Log(__instance.GetComponent<MeshFilter>().mesh);
+    //        //Debug.Log(__instance.GetComponent<MeshFilter>().mesh.bounds);
+    //        Debug.Log(charSprite.texture);
+    //        //Debug.Log(System.Enum.GetNames(typeof(CharacterUI.Anim)).Length);
+    //        //Debug.Log(__instance.GetComponentsInChildren<SkeletonAnimation>().Length);
+    //        //Debug.Log(__instance.GetComponentsInChildren<BoneFollower>().Length);
+    //        //Traverse filename = Traverse.Create(__instance).Field("_animInfos");
+    //        //AccessTools.
+    //        //Debug.Log(charSprite.texture);
+    //        //Debug.Log(charSprite.bounds);
+    //        //Debug.Log(charSprite.bounds.size);
+    //        //Debug.Log(AccessTools.Field(typeof(CharacterUIMeshSpine), "_animInfos").GetValue(__instance));
+    //    }
+    //    static void Postfix(ref Sprite charSprite, ref CharacterUIMesh __instance)
+    //    {
+    //        Debug.Log(".......POST");
+    //        Debug.Log(__instance.gameObject.name);
+    //        Debug.Log(charSprite);
+    //        Debug.Log(__instance.meshRenderer.material.mainTexture);
+    //        //Debug.Log(charSprite.texture);
+    //        //Debug.Log(charSprite.bounds);
+    //        //Debug.Log(charSprite.bounds.size);
+    //        //Debug.Log(AccessTools.Field(typeof(CharacterUIMesh), "_animInfos").GetValue(__instance));
+    //    }
+    //}
 
     ////[HarmonyPatch(typeof(CharacterUIMeshSpine), "Setup")]
     ////class LoadCustomCharacterArtPatch1
@@ -262,26 +262,26 @@ namespace MonsterTrainModdingAPI.Patches
     //    }
     //}
 
-    [HarmonyPatch(typeof(CharacterData), "GetSpriteFromCharacterPrefab")]
-    class LoadCustomCharacterArtPatch2
-    {
-        static void Prefix(ref GameObject characterPrefab, ref Sprite __result)
-        {
-            Debug.Log("GetSpriteFromCharacterPrefab");
-            //__result = var assetRef = (AssetReferenceGameObject)AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef").GetValue(characterData);
-            //string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(assetRef);
-            string cardPath = "BepInEx/plugins/" + "netstandard2.0/blueeyes_character.png";
-            //Debug.Log(cardPath);
-            byte[] fileData = File.ReadAllBytes(cardPath);
-            //Debug.Log(fileData.Length);
+    //[HarmonyPatch(typeof(CharacterData), "GetSpriteFromCharacterPrefab")]
+    //class LoadCustomCharacterArtPatch2
+    //{
+    //    static void Postfix(ref GameObject characterPrefab, ref Sprite __result)
+    //    {
+    //        Debug.Log("GetSpriteFromCharacterPrefab");
+    //        //__result = var assetRef = (AssetReferenceGameObject)AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef").GetValue(characterData);
+    //        //string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(assetRef);
+    //        string cardPath = "BepInEx/plugins/" + "netstandard2.0/blueeyes_character.png";
+    //        //Debug.Log(cardPath);
+    //        byte[] fileData = File.ReadAllBytes(cardPath);
+    //        //Debug.Log(fileData.Length);
 
-            Texture2D tex = new Texture2D(1, 1);
-            UnityEngine.ImageConversion.LoadImage(tex, fileData);
+    //        Texture2D tex = new Texture2D(1, 1);
+    //        UnityEngine.ImageConversion.LoadImage(tex, fileData);
 
-            Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-            __result = sprite;
-        }
-    }
+    //        Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
+    //        __result = sprite;
+    //    }
+    //}
 
     //[HarmonyPatch(typeof(CharacterData), "GetCharacterPrefabVariant")]
     //class LoadCustomCharacterArtPatch
