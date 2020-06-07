@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using MonsterTrainModdingAPI.Managers;
 
 namespace MonsterTrainModdingAPI
 {
@@ -21,6 +22,8 @@ namespace MonsterTrainModdingAPI
         {
             var harmony = new Harmony("api.modding.train.monster");
             harmony.PatchAll();
+
+            DepInjector.AddClient(ProviderManager.Instance);
         }
     }
 }
