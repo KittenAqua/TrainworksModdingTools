@@ -42,13 +42,13 @@ namespace MonsterTrainModdingAPI.Builder
 
         public CardTriggerEffectData Build()
         {
-            CardTriggerEffectData cardTriggerEffectDataData = new CardTriggerEffectData();
-            AccessTools.Field(typeof(CardTriggerEffectData), "trigger").SetValue(cardTriggerEffectDataData, this.cardEffects);
-            AccessTools.Field(typeof(CardTriggerEffectData), "descriptionKey").SetValue(cardTriggerEffectDataData, this.descriptionKey);
-            AccessTools.Field(typeof(CardTriggerEffectData), "cardTriggerEffects").SetValue(cardTriggerEffectDataData, this.cardTriggerEffects);
-            AccessTools.Field(typeof(CardTriggerEffectData), "cardEffects").SetValue(cardTriggerEffectDataData, this.cardEffects);
+            CardTriggerEffectData cardTriggerEffectData = new CardTriggerEffectData();
+            AccessTools.Field(typeof(CardTriggerEffectData), "trigger").SetValue(cardTriggerEffectData, this.cardEffects);
+            AccessTools.Field(typeof(CardTriggerEffectData), "descriptionKey").SetValue(cardTriggerEffectData, this.descriptionKey);
+            AccessTools.Field(typeof(CardTriggerEffectData), "cardTriggerEffects").SetValue(cardTriggerEffectData, this.cardTriggerEffects);
+            AccessTools.Field(typeof(CardTriggerEffectData), "cardEffects").SetValue(cardTriggerEffectData, this.cardEffects);
 
-            return cardTriggerEffectDataData;
+            return cardTriggerEffectData;
         }
     }
 }
