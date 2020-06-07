@@ -13,7 +13,7 @@ using MonsterTrainModdingAPI.Managers;
 
 namespace MonsterTrainModdingAPI.Builder
 {
-    public class CardTriggerEffectData
+    public class CardTriggerEffectDataBuilder
     {
         // Card Trigger Types:
         //     OnCast
@@ -34,7 +34,7 @@ namespace MonsterTrainModdingAPI.Builder
         public List<CardTriggerData> cardTriggerEffects { get; set; }
         public List<CardEffectData> cardEffects { get; set; }
 
-        public CardTriggerEffectData()
+        public CardTriggerEffectDataBuilder()
         {
             this.cardTriggerEffects = new List<CardTriggerData>();
             this.cardEffects = new List<CardEffectData>();
