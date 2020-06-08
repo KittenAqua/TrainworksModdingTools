@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using BepInEx.Logging;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using HarmonyLib;
 using UnityEngine;
 using ShinyShoe;
@@ -22,12 +22,6 @@ namespace MonsterTrainModdingAPI.Managers
         {
             CustomCharacterData.Add(data.GetID(), data);
             return true;
-        }
-
-        public static void FinishCustomCharacterRegistration()
-        {
-            FallbackData = (FallbackData)AccessTools.Field(typeof(CharacterData), "fallbackData")
-                .GetValue(SaveManager.GetAllGameData().GetAllCharacterData()[0]);
         }
 
         public static CharacterData GetCharacterDataByID(string characterID)

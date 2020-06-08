@@ -8,26 +8,26 @@ namespace MonsterTrainModdingAPI.Managers
 {
     public static class PluginManager
     {
-        private static readonly Dictionary<string, BaseUnityPlugin> plugins = new Dictionary<string, BaseUnityPlugin>();
+        public static Dictionary<string, BaseUnityPlugin> Plugins { get; } = new Dictionary<string, BaseUnityPlugin>();
 
         public static List<string> GetAllPluginGUIDs()
         {
-            return plugins.Values.ToList().Select((x) => x.Info.Metadata.GUID).ToList();
+            return Plugins.Values.ToList().Select((x) => x.Info.Metadata.GUID).ToList();
         }
 
         public static List<string> GetAllPluginNames()
         {
-            return plugins.Keys.ToList();
+            return Plugins.Keys.ToList();
         }
+
         public static BaseUnityPlugin GetPluginFromName(string name)
         {
-            return plugins[name];
+            return Plugins[name];
         }
 
         public static void RegisterPlugin(BaseUnityPlugin plugin)
         {
-            
-            plugins.Add(plugin.Info.Metadata.Name, plugin);
+            Plugins.Add(plugin.Info.Metadata.Name, plugin);
         }
     }
 }
