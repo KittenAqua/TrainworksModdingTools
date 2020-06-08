@@ -15,6 +15,8 @@ namespace MonsterTrainModdingAPI.Builders
     public class CharacterTriggerDataBuilder
     {
         public CharacterTriggerData.Trigger Trigger { get; set; }
+
+        public List<CardEffectDataBuilder> EffectBuilders { get; set; }
         public List<CardEffectData> Effects { get; set; }
 
         public string DescriptionKey { get; set; }
@@ -25,11 +27,16 @@ namespace MonsterTrainModdingAPI.Builders
 
         public CharacterTriggerDataBuilder()
         {
+            this.EffectBuilders = new List<CardEffectDataBuilder>();
             this.Effects = new List<CardEffectData>();
         }
 
         public CharacterTriggerData Build()
         {
+            foreach (var builder in this.EffectBuilders)
+            {
+                this.Effects.Add(builder.Build());
+            }
             CharacterTriggerData characterTriggerData = new CharacterTriggerData(this.Trigger, null);
             AccessTools.Field(typeof(CharacterTriggerData), "additionalTextOnTriggerKey").SetValue(characterTriggerData, this.AdditionalTextOnTriggerKey);
             AccessTools.Field(typeof(CharacterTriggerData), "descriptionKey").SetValue(characterTriggerData, this.DescriptionKey);

@@ -26,6 +26,8 @@ namespace MonsterTrainModdingAPI.Builders
         public string ParamSubtype { get; set; }
         public string StatusEffectStackMultiplier { get; set; }
 
+        public CharacterDataBuilder ParamCharacterDataBuilder { get; set; }
+
         public RoomData ParamRoomData { get; set; }
         public CharacterData ParamAdditionalCharacterData { get; set; }
         public CardUpgradeMaskData ParamCardFilter { get; set; }
@@ -74,6 +76,10 @@ namespace MonsterTrainModdingAPI.Builders
 
         public CardEffectData Build()
         {
+            if (this.ParamCharacterDataBuilder != null)
+            {
+                this.ParamCharacterData = this.ParamCharacterDataBuilder.BuildAndRegister();
+            }
             CardEffectData cardEffectData = new CardEffectData();
             AccessTools.Field(typeof(CardEffectData), "additionalParamInt").SetValue(cardEffectData, this.AdditionalParamInt);
             AccessTools.Field(typeof(CardEffectData), "additionalTooltips").SetValue(cardEffectData, this.AdditionalTooltips);
