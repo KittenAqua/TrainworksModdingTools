@@ -17,20 +17,20 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-[Ww][Ii][Nn]32/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-[Ll]ogs/
+MonsterTrainModdingAPI/[Dd]ebug/
+MonsterTrainModdingAPI/[Dd]ebugPublic/
+MonsterTrainModdingAPI/[Rr]elease/
+MonsterTrainModdingAPI/[Rr]eleases/
+MonsterTrainModdingAPI/x64/
+MonsterTrainModdingAPI/x86/
+MonsterTrainModdingAPI/[Ww][Ii][Nn]32/
+MonsterTrainModdingAPI/[Aa][Rr][Mm]/
+MonsterTrainModdingAPI/[Aa][Rr][Mm]64/
+MonsterTrainModdingAPI/bld/
+MonsterTrainModdingAPI/[Bb]in/
+MonsterTrainModdingAPI/[Oo]bj/
+MonsterTrainModdingAPI/[Ll]og/
+MonsterTrainModdingAPI/[Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -41,8 +41,8 @@ bld/
 Generated\ Files/
 
 # MSTest test Results
-[Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
+MonsterTrainModdingAPI/[Tt]est[Rr]esult*/
+MonsterTrainModdingAPI/[Bb]uild[Ll]og.*
 
 # NUnit
 *.VisualState.xml
