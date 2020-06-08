@@ -9,17 +9,19 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums;
+using MonsterTrainModdingAPI.Enums.MTCardPools;
+using MonsterTrainModdingAPI.Enums.MTClans;
 
 namespace MonsterTrainModdingAPI.Builders
 {
     public class CardDataBuilder
     {
         public string CardID { get; set; }
-        public List<int> CardPoolIDs { get; set; }
+        public List<string> CardPoolIDs { get; set; }
 
         public int Cost { get; set; }
         public string Name { get; set; }
+        public string ClanID { get; set; }
         public string Description { get; set; }
         public string OverrideDescriptionKey { get; set; }
 
@@ -53,15 +55,13 @@ namespace MonsterTrainModdingAPI.Builders
         public CardData.CostType CostType { get; set; }
         public FallbackData FallbackData { get; set; }
 
-        public MTClan Clan { get; set; }
-
         public CardDataBuilder()
         {
             this.Name = "";
             this.Description = "";
             this.OverrideDescriptionKey = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
 
-            this.CardPoolIDs = new List<int>();
+            this.CardPoolIDs = new List<string>();
             this.EffectBuilders = new List<CardEffectDataBuilder>();
             this.TraitBuilders = new List<CardTraitDataBuilder>();
             this.EffectTriggerBuilders = new List<CharacterTriggerDataBuilder>();
@@ -105,8 +105,7 @@ namespace MonsterTrainModdingAPI.Builders
                 this.EffectTriggers.Add(builder.Build());
             }
 
-            string clanID = ClanIDs.GetClanID(Clan);
-            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(clanID);
+            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
             AccessTools.Field(typeof(CardData), "id").SetValue(cardData, this.CardID);
             if (this.CardArtPrefabVariantRef == null)
@@ -157,10 +156,25 @@ namespace MonsterTrainModdingAPI.Builders
 
             this.AssetPath = m_AssetGUID;
         }
-        
-        public void AddToCardPool(MTCardPool cardPool)
+
+        public void SetClan(Type clanType)
         {
-            int cardPoolID = Enums.CardPoolIDs.GetCardPoolID(cardPool);
+            string clanID = MTClanIDs.GetIDForType(clanType);
+            this.SetClan(clanID);
+        }
+
+        public void SetClan(string clanID)
+        {
+            this.ClanID = clanID;
+        }
+        
+        public void AddToCardPool(Type cardPoolType)
+        {
+            this.CardPoolIDs.Add(MTCardPoolIDs.GetIDForType(cardPoolType));
+        }
+
+        public void AddToCardPool(string cardPoolID)
+        {
             this.CardPoolIDs.Add(cardPoolID);
         }
     }

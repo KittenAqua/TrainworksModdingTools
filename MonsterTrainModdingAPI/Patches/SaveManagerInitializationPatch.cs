@@ -15,7 +15,16 @@ namespace MonsterTrainModdingAPI.Patches
         {
             CustomCardManager.SaveManager = __instance;
             CustomCharacterManager.SaveManager = __instance;
-            CustomCharacterManager.FinishCustomCharacterRegistration();
+            CustomCharacterManager.FallbackData = (FallbackData)AccessTools.Field(typeof(CharacterData), "fallbackData")
+                .GetValue(__instance.GetAllGameData().GetAllCharacterData()[0]);
+        }
+    }
+
+    [HarmonyPatch(typeof(AssetLoadingManager), "Start")]
+    class AssetLoadingManagerInitializationPatch
+    {
+        static void Postfix()
+        {
             List<IInitializable> initializables =
                 PluginManager.Plugins.Values.ToList()
                     .Where((plugin) => (plugin is IInitializable))

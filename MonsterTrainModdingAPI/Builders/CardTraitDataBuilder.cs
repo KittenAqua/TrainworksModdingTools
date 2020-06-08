@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums;
+using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -54,9 +54,15 @@ namespace MonsterTrainModdingAPI.Builders
             return cardTraitData;
         }
 
-        public void AddStatusEffect(MTStatusEffect statusEffect, int stackCount)
+        public void AddStatusEffect(Type statusEffectType, int stackCount)
         {
-            this.ParamStatusEffects = BuilderUtils.AddStatusEffect(statusEffect, stackCount, this.ParamStatusEffects);
+            string statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
+            this.AddStatusEffect(statusEffectID, stackCount);
+        }
+
+        public void AddStatusEffect(string statusEffectID, int stackCount)
+        {
+            this.ParamStatusEffects = BuilderUtils.AddStatusEffect(statusEffectID, stackCount, this.ParamStatusEffects);
         }
     }
 }

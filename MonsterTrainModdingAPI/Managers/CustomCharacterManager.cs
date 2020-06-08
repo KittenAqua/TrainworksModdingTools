@@ -24,12 +24,6 @@ namespace MonsterTrainModdingAPI.Managers
             return true;
         }
 
-        public static void FinishCustomCharacterRegistration()
-        {
-            FallbackData = (FallbackData)AccessTools.Field(typeof(CharacterData), "fallbackData")
-                .GetValue(SaveManager.GetAllGameData().GetAllCharacterData()[0]);
-        }
-
         public static CharacterData GetCharacterDataByID(string characterID)
         {
             if (CustomCharacterData.ContainsKey(characterID))

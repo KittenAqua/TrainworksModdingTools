@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums;
+using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -143,10 +143,17 @@ namespace MonsterTrainModdingAPI.Builders
 
             this.AssetPath = m_AssetGUID;
         }
+        
 
-        public void AddStartingStatusEffect(MTStatusEffect statusEffect, int stackCount)
+        public void AddStartingStatusEffect(Type statusEffectType, int stackCount)
         {
-            this.StartingStatusEffects = BuilderUtils.AddStatusEffect(statusEffect, stackCount, this.StartingStatusEffects);
+            string statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
+            this.AddStartingStatusEffect(statusEffectID, stackCount);
+        }
+
+        public void AddStartingStatusEffect(string statusEffectID, int stackCount)
+        {
+            this.StartingStatusEffects = BuilderUtils.AddStatusEffect(statusEffectID, stackCount, this.StartingStatusEffects);
         }
     }
 }
