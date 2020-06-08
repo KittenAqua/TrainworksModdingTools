@@ -5,13 +5,13 @@ using BepInEx.Harmony;
 using System.Reflection;
 using BepInEx.Logging;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Enum;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
+using MonsterTrainModdingAPI.Enums;
 
-namespace MonsterTrainModdingAPI.Builder
+namespace MonsterTrainModdingAPI.Builders
 {
     public class CardDataBuilder
     {
@@ -72,7 +72,7 @@ namespace MonsterTrainModdingAPI.Builder
 
         public CardData Build()
         {
-            string factionID = Enum.ClanIDs.GetClanID(Clan);
+            string factionID = ClanIDs.GetClanID(Clan);
             this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(factionID);
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
             AccessTools.Field(typeof(CardData), "id").SetValue(cardData, this.CardID);
@@ -127,9 +127,9 @@ namespace MonsterTrainModdingAPI.Builder
             this.AssetPath = m_AssetGUID;
         }
         
-        public void AddToCardPool(Enum.MTCardPool cardPool)
+        public void AddToCardPool(MTCardPool cardPool)
         {
-            int cardPoolID = Enum.CardPoolIDs.GetCardPoolID(cardPool);
+            int cardPoolID = Enums.CardPoolIDs.GetCardPoolID(cardPool);
             this.CardPoolIDs.Add(cardPoolID);
         }
     }

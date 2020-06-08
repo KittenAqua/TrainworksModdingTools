@@ -8,9 +8,9 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums;
 
-namespace MonsterTrainModdingAPI.Builder
+namespace MonsterTrainModdingAPI.Builders
 {
     public class CardEffectDataBuilder
     {

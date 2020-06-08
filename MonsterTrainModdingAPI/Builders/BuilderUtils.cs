@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums;
 
-namespace MonsterTrainModdingAPI.Builder
+namespace MonsterTrainModdingAPI.Builders
 {
     public class BuilderUtils
     {

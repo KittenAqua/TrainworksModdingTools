@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MonsterTrainModdingAPI.Enum
+namespace MonsterTrainModdingAPI.Enums
 {
     public enum MTClan
     {
