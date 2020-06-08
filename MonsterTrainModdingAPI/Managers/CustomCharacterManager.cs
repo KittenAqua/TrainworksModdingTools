@@ -8,6 +8,7 @@ using HarmonyLib;
 using UnityEngine;
 using ShinyShoe;
 using UnityEngine.AddressableAssets;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Managers
 {
@@ -15,8 +16,7 @@ namespace MonsterTrainModdingAPI.Managers
     class CustomCharacterManager
     {
         public static IDictionary<string, CharacterData> CustomCharacterData { get; } = new Dictionary<string, CharacterData>();
-
-        public static IDictionary<string, Sprite> SpriteLibrary { get; } = new Dictionary<string, Sprite>();
+        public static IDictionary<string, AssetBundleLoadingInfo> AssetLoadData { get; } = new Dictionary<string, AssetBundleLoadingInfo>();
         public static FallbackData FallbackData { get; set; }
         public static SaveManager SaveManager { get; set; }
 
@@ -26,9 +26,9 @@ namespace MonsterTrainModdingAPI.Managers
             return true;
         }
 
-        public static bool RegisterCustomCharacter(CharacterData data, Sprite sprite)
+        public static bool RegisterCustomCharacter(CharacterData data, AssetBundleLoadingInfo spriteInfo)
         {
-            SpriteLibrary.Add(data.GetID(), sprite);
+            AssetLoadData.Add(data.GetID(), spriteInfo);
             return RegisterCustomCharacter(data);
         }
 
@@ -73,7 +73,7 @@ namespace MonsterTrainModdingAPI.Managers
         public static GameObject CreateCharacterGameObject(CharacterData characterData)
         {
             //If Sprite is not already registered, try getting appropriate data
-            if (!SpriteLibrary.ContainsKey(characterData.GetID()))
+            if (!AssetLoadData.ContainsKey(characterData.GetID()))
             {
                 // Get the path to the asset from the character's asset reference data
                 string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(characterData.characterPrefabVariantRef);
@@ -85,13 +85,12 @@ namespace MonsterTrainModdingAPI.Managers
                     Texture2D tex = new Texture2D(1, 1);
                     UnityEngine.ImageConversion.LoadImage(tex, fileData);
                     Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-                    SpriteLibrary.Add(characterData.GetID(), sprite);
                     return CreateCharacterGameObject(characterData, sprite);
                 }
             }
             else
             {
-                return CreateCharacterGameObject(characterData, SpriteLibrary[characterData.GetID()]);
+                return CreateCharacterGameObject(characterData, AssetBundleUtils.LoadAssetFromPath<Sprite>(AssetLoadData[characterData.GetID()]));
             }
             return null;
         }

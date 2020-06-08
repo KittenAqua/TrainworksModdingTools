@@ -8,6 +8,19 @@ using System.Reflection;
 
 namespace MonsterTrainModdingAPI.Utilities
 {
+    public struct AssetBundleLoadingInfo
+    {
+        public string bundleName;
+        public string assetName;
+        public string pathExtension;
+        public AssetBundleLoadingInfo(string bundleName, string assetName, string pathExtension = "")
+        {
+            this.assetName = assetName;
+            this.bundleName = bundleName;
+            this.pathExtension = pathExtension;
+        }
+    }
+
     public class AssetBundleUtils
     {
         private static Dictionary<string, AssetBundle> LoadedAssetBundles = new Dictionary<string, AssetBundle>();
@@ -19,6 +32,11 @@ namespace MonsterTrainModdingAPI.Utilities
                 if(_pluginFolderPath == null) _pluginFolderPath = Directory.GetCurrentDirectory() + @"\BepInEx\plugins";
                 return _pluginFolderPath;
             }
+        }
+
+        public static T LoadAssetFromPath<T>(AssetBundleLoadingInfo info) where T : UnityEngine.Object
+        {
+            return LoadAssetFromPath<T>(info.bundleName, info.assetName, info.pathExtension);
         }
 
         public static T LoadAssetFromPath<T>(string bundleName, string assetName, string pathExtension = "") where T : UnityEngine.Object

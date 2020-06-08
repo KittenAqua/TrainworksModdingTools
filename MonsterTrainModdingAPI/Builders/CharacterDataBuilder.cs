@@ -11,6 +11,7 @@ using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Builder
 {
@@ -87,6 +88,13 @@ namespace MonsterTrainModdingAPI.Builder
         {
             var characterData = this.Build();
             CustomCharacterManager.RegisterCustomCharacter(characterData);
+            return characterData;
+        }
+
+        public CharacterData BuildAndRegister(AssetBundleLoadingInfo spriteLoadingInfo)
+        {
+            var characterData = this.Build();
+            CustomCharacterManager.RegisterCustomCharacter(characterData, spriteLoadingInfo);
             return characterData;
         }
 
