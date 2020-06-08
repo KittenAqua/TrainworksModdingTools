@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using BepInEx.Logging;
 using MonsterTrainModdingAPI.Builder;
 using HarmonyLib;
 using UnityEngine;
@@ -14,14 +15,12 @@ namespace MonsterTrainModdingAPI.Managers
     class CustomCharacterManager
     {
         public static IDictionary<string, CharacterData> CustomCharacterData { get; } = new Dictionary<string, CharacterData>();
-        private static IDictionary<string, string> CustomCharacterAssetPath { get; } = new Dictionary<string, string>();
         public static FallbackData FallbackData { get; set; }
         public static SaveManager SaveManager { get; set; }
 
-        public static bool RegisterCustomCharacter(CharacterData data, string assetPath)
+        public static bool RegisterCustomCharacter(CharacterData data)
         {
             CustomCharacterData.Add(data.GetID(), data);
-            CustomCharacterAssetPath.Add(data.GetID(), assetPath);
             return true;
         }
 
@@ -31,40 +30,51 @@ namespace MonsterTrainModdingAPI.Managers
                 .GetValue(SaveManager.GetAllGameData().GetAllCharacterData()[0]);
         }
 
+        public static CharacterData GetCharacterDataByID(string characterID)
+        {
+            if (CustomCharacterData.ContainsKey(characterID))
+            {
+                return CustomCharacterData[characterID];
+            }
+            return null;
+        }
+
         public static GameObject CreateCharacterGameObject(string characterID)
         {
             CharacterData characterData = CustomCharacterData[characterID];
 
-            var realCharacter = GameObject.Instantiate(CustomCharacterManager.FallbackData.GetDefaultCharacterPrefab());
-            //var uiMeshSpine = realCharacter.GetComponentInChildren<CharacterUIMeshSpine>();
-            var characterState = realCharacter.GetComponentInChildren<CharacterState>();
-            //uiMeshSpine.gameObject.transform.parent = null;
-            //GameObject.Destroy(uiMeshSpine.gameObject);
-            var realCharacterUI = realCharacter.GetComponentInChildren<CharacterUI>();
+            // Get the path to the asset from the character's asset reference data
+            string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(characterData.characterPrefabVariantRef);
+            string characterPath = "BepInEx/plugins/" + assetPath;
+            if (File.Exists(characterPath))
+            {
+                // Create the character sprite
+                byte[] fileData = File.ReadAllBytes(characterPath);
+                Texture2D tex = new Texture2D(1, 1);
+                UnityEngine.ImageConversion.LoadImage(tex, fileData);
+                Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
 
-            Debug.Log(realCharacter.GetComponentInChildren<MeshRenderer>(true));
-            Debug.Log(realCharacter.GetComponentInChildren<MeshRenderer>(true).gameObject);
-            realCharacter.GetComponentInChildren<MeshRenderer>(true).gameObject.SetActive(true);
+                // Create a new character GameObject by cloning the default one in FallbackData
+                var characterGameObject = GameObject.Instantiate(CustomCharacterManager.FallbackData.GetDefaultCharacterPrefab());
 
-            string assetPath = CustomCharacterAssetPath[characterID];
-            string cardPath = "BepInEx/plugins/" + assetPath;
-            byte[] fileData = File.ReadAllBytes(cardPath);
-            Texture2D tex = new Texture2D(1, 1);
-            UnityEngine.ImageConversion.LoadImage(tex, fileData);
-            Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
+                // Set aside its CharacterState and CharacterUI components for later use
+                var characterState = characterGameObject.GetComponentInChildren<CharacterState>();
+                var characterUI = characterGameObject.GetComponentInChildren<CharacterUI>();
 
-            realCharacterUI.GetComponentInChildren<SpriteRenderer>().sprite = sprite;
-            AccessTools.Field(typeof(CharacterState), "sprite").SetValue(characterState, sprite);
-            realCharacterUI.GetSpriteRenderer().sprite = sprite;
+                // Make its MeshRenderer active; this is what enables the sprite we're about to attach to show up
+                characterGameObject.GetComponentInChildren<MeshRenderer>(true).gameObject.SetActive(true);
 
-            AccessTools.Field(typeof(AssetReference), "m_LoadedAsset").SetValue(characterData.characterPrefabVariantRef, realCharacter);
+                // Set states in the CharacterState and CharacterUI to the sprite to show it ingame
+                AccessTools.Field(typeof(CharacterState), "sprite").SetValue(characterState, sprite);
+                characterUI.GetSpriteRenderer().sprite = sprite;
 
-            Debug.Log(characterData.characterPrefabVariantRef.Asset);
+                // Tell the asset reference that the GameObject has already been loaded
+                // This circumvents an issue where the game attempts to load the asset but fails
+                AccessTools.Field(typeof(AssetReference), "m_LoadedAsset").SetValue(characterData.characterPrefabVariantRef, characterGameObject);
 
-            Debug.Log(characterData.HasCharacterPrefabVariant());
-            Debug.Log(realCharacter.GetComponentInChildren<CharacterUI>());
-
-            return realCharacter;
+                return characterGameObject;
+            }
+            return null;
         }
     }
 }

@@ -86,7 +86,7 @@ namespace MonsterTrainModdingAPI.Builder
         public CharacterData BuildAndRegister()
         {
             var characterData = this.Build();
-            CustomCharacterManager.RegisterCustomCharacter(characterData, this.AssetPath);
+            CustomCharacterManager.RegisterCustomCharacter(characterData);
             return characterData;
         }
 
@@ -105,6 +105,10 @@ namespace MonsterTrainModdingAPI.Builder
             AccessTools.Field(typeof(CharacterData), "canBeHealed").SetValue(characterData, this.CanBeHealed);
             AccessTools.Field(typeof(CharacterData), "characterChatterData").SetValue(characterData, this.CharacterChatterData);
             AccessTools.Field(typeof(CharacterData), "characterLoreTooltipKeys").SetValue(characterData, this.CharacterLoreTooltipKeys);
+            if (this.CharacterPrefabVariantRef == null)
+            {
+                this.CreateAndSetCharacterArtPrefabVariantRef(this.AssetPath, this.AssetPath);
+            }
             AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef").SetValue(characterData, this.CharacterPrefabVariantRef);
             AccessTools.Field(typeof(CharacterData), "characterSoundData").SetValue(characterData, this.CharacterSoundData);
             AccessTools.Field(typeof(CharacterData), "characterSpriteCache").SetValue(characterData, this.CharacterSpriteCache);
