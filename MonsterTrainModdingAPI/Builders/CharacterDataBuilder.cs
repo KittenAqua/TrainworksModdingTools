@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.IO;
 using BepInEx;
 using BepInEx.Harmony;
 using System.Reflection;
@@ -27,6 +29,7 @@ namespace MonsterTrainModdingAPI.Builder
         public StatusEffectStackData[] StartingStatusEffects { get; set; }
         public string[] StatusEffectImmunities { get; set; }
 
+        public string AssetPath { get; set; }
         public AssetReferenceGameObject CharacterPrefabVariantRef { get; set; }
 
         public bool CanAttack { get; set; }
@@ -77,12 +80,13 @@ namespace MonsterTrainModdingAPI.Builder
             this.CharacterLoreTooltipKeys = new List<string>();
             this.StartingStatusEffects = new StatusEffectStackData[0];
             this.StatusEffectImmunities = new string[0];
+            this.ImpactVFX = (VfxAtLoc)FormatterServices.GetUninitializedObject(typeof(VfxAtLoc));
         }
 
         public CharacterData BuildAndRegister()
         {
             var characterData = this.Build();
-            CustomCardManager.RegisterCustomCharacterData(characterData);
+            CustomCharacterManager.RegisterCustomCharacter(characterData);
             return characterData;
         }
 
@@ -101,6 +105,10 @@ namespace MonsterTrainModdingAPI.Builder
             AccessTools.Field(typeof(CharacterData), "canBeHealed").SetValue(characterData, this.CanBeHealed);
             AccessTools.Field(typeof(CharacterData), "characterChatterData").SetValue(characterData, this.CharacterChatterData);
             AccessTools.Field(typeof(CharacterData), "characterLoreTooltipKeys").SetValue(characterData, this.CharacterLoreTooltipKeys);
+            if (this.CharacterPrefabVariantRef == null)
+            {
+                this.CreateAndSetCharacterArtPrefabVariantRef(this.AssetPath, this.AssetPath);
+            }
             AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef").SetValue(characterData, this.CharacterPrefabVariantRef);
             AccessTools.Field(typeof(CharacterData), "characterSoundData").SetValue(characterData, this.CharacterSoundData);
             AccessTools.Field(typeof(CharacterData), "characterSpriteCache").SetValue(characterData, this.CharacterSpriteCache);
@@ -132,6 +140,8 @@ namespace MonsterTrainModdingAPI.Builder
             AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID")
                 .SetValue(assetReferenceGameObject, m_AssetGUID);
             this.CharacterPrefabVariantRef = assetReferenceGameObject;
+
+            this.AssetPath = m_AssetGUID;
         }
 
         public void AddStartingStatusEffect(MTStatusEffect statusEffect, int stackCount)

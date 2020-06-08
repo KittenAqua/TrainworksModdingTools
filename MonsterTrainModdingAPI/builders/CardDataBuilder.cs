@@ -21,6 +21,8 @@ namespace MonsterTrainModdingAPI.Builder
         public int Cost { get; set; }
         public string Name { get; set; }
         public string OverrideDescriptionKey { get; set; }
+
+        string AssetPath { get; set; }
         public AssetReferenceGameObject CardArtPrefabVariantRef { get; set; }
 
         public List<CardEffectData> Effects { get; set; }
@@ -64,7 +66,7 @@ namespace MonsterTrainModdingAPI.Builder
         {
             var cardData = this.Build();
             API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
-            CustomCardManager.RegisterCustomCardData(cardData, this.CardPoolIDs);
+            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs);
             return cardData;
         }
 
@@ -77,6 +79,10 @@ namespace MonsterTrainModdingAPI.Builder
             AccessTools.Field(typeof(CardData), "cost").SetValue(cardData, this.Cost);
             AccessTools.Field(typeof(CardData), "nameKey").SetValue(cardData, this.Name);
             AccessTools.Field(typeof(CardData), "overrideDescriptionKey").SetValue(cardData, this.OverrideDescriptionKey);
+            if (this.CardArtPrefabVariantRef == null)
+            {
+                this.CreateAndSetCardArtPrefabVariantRef(this.AssetPath, this.AssetPath);
+            }
             AccessTools.Field(typeof(CardData), "cardArtPrefabVariantRef").SetValue(cardData, this.CardArtPrefabVariantRef);
             AccessTools.Field(typeof(CardData), "effects").SetValue(cardData, this.Effects);
             foreach (CardTraitData cardTraitData in this.Traits)
@@ -104,6 +110,8 @@ namespace MonsterTrainModdingAPI.Builder
             AccessTools.Field(typeof(CardData), "costType").SetValue(cardData, this.CostType);
             AccessTools.Field(typeof(CardData), "fallbackData").SetValue(cardData, this.FallbackData);
 
+
+
             return cardData;
         }
 
@@ -115,6 +123,8 @@ namespace MonsterTrainModdingAPI.Builder
             AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID")
                 .SetValue(assetReferenceGameObject, m_AssetGUID);
             this.CardArtPrefabVariantRef = assetReferenceGameObject;
+
+            this.AssetPath = m_AssetGUID;
         }
         
         public void AddToCardPool(Enum.MTCardPool cardPool)

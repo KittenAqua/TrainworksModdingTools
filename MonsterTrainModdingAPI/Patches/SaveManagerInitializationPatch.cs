@@ -13,6 +13,8 @@ namespace MonsterTrainModdingAPI.Patches
         {
             CustomCardManager.SaveManager = __instance;
             CustomCardManager.FinishCustomCardRegistration();
+            CustomCharacterManager.SaveManager = __instance;
+            CustomCharacterManager.FinishCustomCharacterRegistration();
         }
     }
 }
