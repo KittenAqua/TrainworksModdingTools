@@ -10,7 +10,7 @@ namespace MonsterTrainModdingAPI.Utilities
 {
     public class AssetBundleUtils
     {
-        private static Dictionary<string, AssetBundle> LoadedAssetBundles = new Dictionary<string, AssetBundle>();
+        private static Dictionary<string, AssetBundle> LoadedAssetBundles { get; } = new Dictionary<string, AssetBundle>();
         private static string _pluginFolderPath;
         public static string PluginFolderPath
         {

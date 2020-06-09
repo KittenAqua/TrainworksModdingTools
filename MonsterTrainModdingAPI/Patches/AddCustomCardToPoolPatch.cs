@@ -7,6 +7,9 @@ using MonsterTrainModdingAPI.Managers;
 
 namespace MonsterTrainModdingAPI.Patches
 {
+    /// <summary>
+    /// Adds custom cards to their appropriate pools.
+    /// </summary>
     [HarmonyPatch(typeof(CardPoolHelper), "GetCardsForClass")]
     [HarmonyPatch(new Type[] { typeof(CardPool), typeof(ClassData), typeof(CollectableRarity), typeof(CardPoolHelper.RarityCondition), typeof(bool) })]
     class AddCustomCardToPoolPatch
