@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace MonsterTrainModdingAPI.Patches
 {
+    /// <summary>
+    /// Provides managers with the references they need to function.
+    /// </summary>
     [HarmonyPatch(typeof(SaveManager), "Initialize")]
     class SaveManagerInitializationPatch
     {
@@ -20,6 +23,10 @@ namespace MonsterTrainModdingAPI.Patches
         }
     }
 
+    /// <summary>
+    /// At this point, the API is fully set up.
+    /// Initialize all API mods by calling their methods.
+    /// </summary>
     [HarmonyPatch(typeof(AssetLoadingManager), "Start")]
     class AssetLoadingManagerInitializationPatch
     {

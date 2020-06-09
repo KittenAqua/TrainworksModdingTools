@@ -13,6 +13,9 @@ using TMPro;
 
 namespace MonsterTrainModdingAPI.Patches
 {
+    /// <summary>
+    /// Loads custom card art.
+    /// </summary>
     [HarmonyPatch(typeof(CardData), "GetCardArtPrefabVariant")]
     class LoadCustomCardArtPatch
     {
@@ -25,10 +28,13 @@ namespace MonsterTrainModdingAPI.Patches
         }
     }
 
+    /// <summary>
+    /// Loads custom character art.
+    /// </summary>
     [HarmonyPatch(typeof(CharacterData), "GetCharacterPrefabVariant")]
     class LoadCustomCharacterArtPatch
     {
-        static void Prefix(ref CharacterData __instance, ref GameObject __result)
+        static void Prefix(ref CharacterData __instance)
         {
             if (!__instance.HasCharacterPrefabVariant() && CustomCharacterManager.CustomCharacterData.ContainsKey(__instance.GetID()))
             {

@@ -4,6 +4,10 @@ using System.Text;
 
 namespace MonsterTrainModdingAPI.Enums.MTStatusEffects
 {
+    /// <summary>
+    /// Interface representing a status effect.
+    /// Effectively an extensible enum.
+    /// </summary>
     public interface IMTStatusEffect
     {
         string ID { get; }
@@ -40,8 +44,16 @@ namespace MonsterTrainModdingAPI.Enums.MTStatusEffects
     public class MTStatusEffect_Stealth : IMTStatusEffect { public string ID => "stealth"; }
     public class MTStatusEffect_Trample : IMTStatusEffect { public string ID => "trample"; }
 
+    /// <summary>
+    /// Helper class which gets the ID for a status effect when given its type.
+    /// </summary>
     public static class MTStatusEffectIDs
     {
+        /// <summary>
+        /// Gets the ID for the status effect with given type.
+        /// </summary>
+        /// <param name="statusEffectType">Must implement IMTStatusEffect</param>
+        /// <returns></returns>
         public static string GetIDForType(Type statusEffectType)
         {
             if (typeof(IMTStatusEffect).IsAssignableFrom(statusEffectType))

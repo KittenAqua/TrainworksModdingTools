@@ -11,19 +11,40 @@ using UnityEngine.AddressableAssets;
 
 namespace MonsterTrainModdingAPI.Managers
 {
-
+    /// <summary>
+    /// Handles registration and storage of custom character data.
+    /// </summary>
     class CustomCharacterManager
     {
+        /// <summary>
+        /// Maps custom character IDs to their respective CharacterData.
+        /// </summary>
         public static IDictionary<string, CharacterData> CustomCharacterData { get; } = new Dictionary<string, CharacterData>();
+        /// <summary>
+        /// FallbackData contains a default character prefab which is cloned to create custom characters.
+        /// Essential for custom character art. Set during game startup.
+        /// </summary>
         public static FallbackData FallbackData { get; set; }
+        /// <summary>
+        /// Static reference to the game's SaveManager, which is necessary to register new characters.
+        /// </summary>
         public static SaveManager SaveManager { get; set; }
 
+        /// <summary>
+        /// Register a custom card with the manager, allowing it to show up in game.
+        /// </summary>
+        /// <param name="data">The custom character data to register</param>
         public static bool RegisterCustomCharacter(CharacterData data)
         {
             CustomCharacterData.Add(data.GetID(), data);
             return true;
         }
 
+        /// <summary>
+        /// Get the custom card data corresponding to the given ID
+        /// </summary>
+        /// <param name="characterID">ID of the custom character to get</param>
+        /// <returns>The custom character data for the given ID</returns>
         public static CharacterData GetCharacterDataByID(string characterID)
         {
             if (CustomCharacterData.ContainsKey(characterID))
@@ -33,6 +54,12 @@ namespace MonsterTrainModdingAPI.Managers
             return null;
         }
 
+        /// <summary>
+        /// Create a GameObject for the custom character with the given ID.
+        /// Used for loading custom character art.
+        /// </summary>
+        /// <param name="characterID">ID of the custom character to create the GameObject for</param>
+        /// <returns>The GameObject for the custom character with given ID</returns>
         public static GameObject CreateCharacterGameObject(string characterID)
         {
             CharacterData characterData = CustomCharacterData[characterID];

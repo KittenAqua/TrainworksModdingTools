@@ -14,31 +14,90 @@ namespace MonsterTrainModdingAPI.Builders
 {
     public class CardEffectDataBuilder
     {
+        /// <summary>
+        /// Name of the effect class to instantiate.
+        /// </summary>
         public string EffectStateName { get; set; }
 
+        /// <summary>
+        /// Int parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public int ParamInt { get; set; }
+        /// <summary>
+        /// Int parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public int AdditionalParamInt { get; set; }
+        /// <summary>
+        /// Int parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public int ParamMaxInt { get; set; }
+        /// <summary>
+        /// Int parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public int ParamMinInt { get; set; }
+        /// <summary>
+        /// Float parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public float ParamMultiplier { get; set; }
+        /// <summary>
+        /// Boolean parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public bool ParamBool { get; set; }
+        /// <summary>
+        /// String parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public string ParamStr { get; set; }
+        /// <summary>
+        /// Subtype parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public string ParamSubtype { get; set; }
-        public string StatusEffectStackMultiplier { get; set; }
-
+        /// <summary>
+        /// Builder for CharacterData parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// Calling Build() will also build this parameter recursively.
+        /// </summary>
         public CharacterDataBuilder ParamCharacterDataBuilder { get; set; }
-
+        /// <summary>
+        /// RoomData parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public RoomData ParamRoomData { get; set; }
+        /// <summary>
+        /// CharacterData parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public CharacterData ParamAdditionalCharacterData { get; set; }
+        /// <summary>
+        /// CardUpgradeMaskData parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public CardUpgradeMaskData ParamCardFilter { get; set; }
+        /// <summary>
+        /// CardPool parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public CardPool ParamCardPool { get; set; }
+        /// <summary>
+        /// CardUpgradeData parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public CardUpgradeData ParamCardUpgradeData { get; set; }
+        /// <summary>
+        /// CharacterData parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public CharacterData ParamCharacterData { get; set; }
+        /// <summary>
+        /// Vector3 parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public Vector3 ParamTimingDelays { get; set; }
+        /// <summary>
+        /// Trigger parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public CharacterTriggerData.Trigger ParamTrigger { get; set; }
-
+        /// <summary>
+        /// Status effect array parameter; exact purpose depends on the effect type specified in EffectStateName.
+        /// </summary>
         public StatusEffectStackData[] ParamStatusEffects { get; set; }
 
+        public string StatusEffectStackMultiplier { get; set; }
+
+        /// <summary>
+        /// Tooltips displayed when hovering over any game entity this effect is applied to.
+        /// </summary>
         public AdditionalTooltipData[] AdditionalTooltips { get; set; }
 
         public CharacterUI.Anim AnimToPlay { get; set; }
@@ -74,6 +133,11 @@ namespace MonsterTrainModdingAPI.Builders
             this.TargetModeStatusEffectsFilter = new string[0];
         }
 
+        /// <summary>
+        /// Builds the CardEffectData represented by this builder's parameters recursively;
+        /// all Builders represented in this class's various fields will also be built.
+        /// </summary>
+        /// <returns>The newly created CardEffectData</returns>
         public CardEffectData Build()
         {
             if (this.ParamCharacterDataBuilder != null)
@@ -124,12 +188,22 @@ namespace MonsterTrainModdingAPI.Builders
             return cardEffectData;
         }
 
+        /// <summary>
+        /// Add a status effect to this effect's status effect array.
+        /// </summary>
+        /// <param name="statusEffectType">Must implement IMTStatusEffect</param>
+        /// <param name="stackCount">Number of stacks to apply</param>
         public void AddStatusEffect(Type statusEffectType, int stackCount)
         {
             string statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
             this.AddStatusEffect(statusEffectID, stackCount);
         }
 
+        /// <summary>
+        /// Add a status effect to this effect's status effect array.
+        /// </summary>
+        /// <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
+        /// <param name="stackCount">Number of stacks to apply</param>
         public void AddStatusEffect(string statusEffectID, int stackCount)
         {
             this.ParamStatusEffects = BuilderUtils.AddStatusEffect(statusEffectID, stackCount, this.ParamStatusEffects);
