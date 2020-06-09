@@ -10,10 +10,9 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
-using MonsterTrainModdingAPI.Utilities;
+using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
-namespace MonsterTrainModdingAPI.Builder
+namespace MonsterTrainModdingAPI.Builders
 {
     public class CharacterDataBuilder
     {
@@ -91,13 +90,6 @@ namespace MonsterTrainModdingAPI.Builder
             return characterData;
         }
 
-        public CharacterData BuildAndRegister(AssetBundleLoadingInfo spriteLoadingInfo)
-        {
-            var characterData = this.Build();
-            CustomCharacterManager.RegisterCustomCharacter(characterData, spriteLoadingInfo);
-            return characterData;
-        }
-
         public CharacterData Build()
         {
             CharacterData characterData = ScriptableObject.CreateInstance<CharacterData>();
@@ -151,10 +143,17 @@ namespace MonsterTrainModdingAPI.Builder
 
             this.AssetPath = m_AssetGUID;
         }
+        
 
-        public void AddStartingStatusEffect(MTStatusEffect statusEffect, int stackCount)
+        public void AddStartingStatusEffect(Type statusEffectType, int stackCount)
         {
-            this.StartingStatusEffects = BuilderUtils.AddStatusEffect(statusEffect, stackCount, this.StartingStatusEffects);
+            string statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
+            this.AddStartingStatusEffect(statusEffectID, stackCount);
+        }
+
+        public void AddStartingStatusEffect(string statusEffectID, int stackCount)
+        {
+            this.StartingStatusEffects = BuilderUtils.AddStatusEffect(statusEffectID, stackCount, this.StartingStatusEffects);
         }
     }
 }

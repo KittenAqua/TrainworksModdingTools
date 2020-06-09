@@ -2,7 +2,7 @@
 using System.IO;
 using BepInEx.Logging;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Builder;
+using MonsterTrainModdingAPI.Builders;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
@@ -12,31 +12,13 @@ namespace MonsterTrainModdingAPI.Managers
     public class CustomCardManager
     {
         public static IDictionary<string, CardData> CustomCardData { get; } = new Dictionary<string, CardData>();
-        public static IDictionary<string, List<int>> CustomCardPoolData { get; } = new Dictionary<string, List<int>>();
-        private static List<string> PreregisteredCardIDs { get; set; } = new List<string>();
         public static SaveManager SaveManager { get; set; }
         
-        public static void RegisterCustomCard(CardData cardData, List<int> cardPoolData)
+        public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData)
         {
             CustomCardData.Add(cardData.GetID(), cardData);
-            CustomCardPoolData.Add(cardData.GetID(), cardPoolData);
-            if (SaveManager == null)
-            {
-                PreregisteredCardIDs.Add(cardData.GetID());
-            }
-            else
-            {
-                SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
-            }
-        }
-
-        public static void FinishCustomCardRegistration()
-        {
-            foreach (string cardID in PreregisteredCardIDs)
-            {
-                SaveManager.GetAllGameData().GetAllCardData().Add(CustomCardData[cardID]);
-            }
-            PreregisteredCardIDs.Clear();
+            CustomCardPoolManager.AddCardToPools(cardData, cardPoolData);
+            SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
         }
 
         public static CardData GetCardDataByID(string cardID)
@@ -46,37 +28,6 @@ namespace MonsterTrainModdingAPI.Managers
                 return CustomCardData[cardID];
             }
             return null;
-        }
-
-        public static List<CardData> GetCardsForPool(int cardPoolID)
-        {
-            var validCards = new List<CardData>();
-            foreach (KeyValuePair<string, CardData> entry in CustomCardData)
-            {
-                foreach (int customPoolID in CustomCardPoolData[entry.Key])
-                {
-                    if (customPoolID == cardPoolID)
-                    {
-                        validCards.Add(entry.Value);
-                        break;
-                    }
-                }
-            }
-            return validCards;
-        }
-
-        public static List<CardData> GetCardsForPoolSatisfyingConstraints(int cardPoolID, ClassData classData, CollectableRarity paramRarity, CardPoolHelper.RarityCondition rarityCondition, bool testRarityCondition)
-        {
-            var allValidCards = GetCardsForPool(cardPoolID);
-            var validCards = new List<CardData>();
-            foreach (CardData cardData in allValidCards)
-            {
-                if (cardData.GetLinkedClass() == classData && (!testRarityCondition || rarityCondition(paramRarity, cardData.GetRarity())))
-                {
-                    validCards.Add(cardData);
-                }
-            }
-            return validCards;
         }
 
         public static ClassData CurrentPrimaryClan()

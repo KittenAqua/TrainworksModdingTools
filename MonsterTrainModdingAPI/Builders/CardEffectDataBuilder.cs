@@ -8,9 +8,9 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
-namespace MonsterTrainModdingAPI.Builder
+namespace MonsterTrainModdingAPI.Builders
 {
     public class CardEffectDataBuilder
     {
@@ -25,6 +25,8 @@ namespace MonsterTrainModdingAPI.Builder
         public string ParamStr { get; set; }
         public string ParamSubtype { get; set; }
         public string StatusEffectStackMultiplier { get; set; }
+
+        public CharacterDataBuilder ParamCharacterDataBuilder { get; set; }
 
         public RoomData ParamRoomData { get; set; }
         public CharacterData ParamAdditionalCharacterData { get; set; }
@@ -74,6 +76,10 @@ namespace MonsterTrainModdingAPI.Builder
 
         public CardEffectData Build()
         {
+            if (this.ParamCharacterDataBuilder != null)
+            {
+                this.ParamCharacterData = this.ParamCharacterDataBuilder.BuildAndRegister();
+            }
             CardEffectData cardEffectData = new CardEffectData();
             AccessTools.Field(typeof(CardEffectData), "additionalParamInt").SetValue(cardEffectData, this.AdditionalParamInt);
             AccessTools.Field(typeof(CardEffectData), "additionalTooltips").SetValue(cardEffectData, this.AdditionalTooltips);
@@ -118,9 +124,15 @@ namespace MonsterTrainModdingAPI.Builder
             return cardEffectData;
         }
 
-        public void AddStatusEffect(MTStatusEffect statusEffect, int stackCount)
+        public void AddStatusEffect(Type statusEffectType, int stackCount)
         {
-            this.ParamStatusEffects = BuilderUtils.AddStatusEffect(statusEffect, stackCount, this.ParamStatusEffects);
+            string statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
+            this.AddStatusEffect(statusEffectID, stackCount);
+        }
+
+        public void AddStatusEffect(string statusEffectID, int stackCount)
+        {
+            this.ParamStatusEffects = BuilderUtils.AddStatusEffect(statusEffectID, stackCount, this.ParamStatusEffects);
         }
     }
 }
