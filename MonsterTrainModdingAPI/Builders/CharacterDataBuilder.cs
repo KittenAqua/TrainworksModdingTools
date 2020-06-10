@@ -30,6 +30,7 @@ namespace MonsterTrainModdingAPI.Builders
         public string[] StatusEffectImmunities { get; set; }
 
         public string AssetPath { get; set; }
+        public AssetBundleLoadingInfo BundleLoadingInfo { get; set; }
         public AssetReferenceGameObject CharacterPrefabVariantRef { get; set; }
 
         public bool CanAttack { get; set; }
@@ -86,7 +87,7 @@ namespace MonsterTrainModdingAPI.Builders
         public CharacterData BuildAndRegister()
         {
             var characterData = this.Build();
-            CustomCharacterManager.RegisterCustomCharacter(characterData);
+            CustomCharacterManager.RegisterCustomCharacter(characterData, BundleLoadingInfo);
             return characterData;
         }
 
@@ -143,7 +144,7 @@ namespace MonsterTrainModdingAPI.Builders
 
             this.AssetPath = m_AssetGUID;
         }
-        
+
 
         public void AddStartingStatusEffect(Type statusEffectType, int stackCount)
         {

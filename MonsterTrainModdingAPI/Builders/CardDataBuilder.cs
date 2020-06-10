@@ -11,6 +11,7 @@ using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTClans;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -26,6 +27,7 @@ namespace MonsterTrainModdingAPI.Builders
         public string OverrideDescriptionKey { get; set; }
 
         public string AssetPath { get; set; }
+        public AssetBundleLoadingInfo BundleLoadingInfo { get; set; }
         public AssetReferenceGameObject CardArtPrefabVariantRef { get; set; }
 
         public List<CardEffectDataBuilder> EffectBuilders { get; set; }
@@ -78,7 +80,7 @@ namespace MonsterTrainModdingAPI.Builders
         {
             var cardData = this.Build();
             API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
-            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs);
+            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs, BundleLoadingInfo);
             return cardData;
         }
 
@@ -167,7 +169,7 @@ namespace MonsterTrainModdingAPI.Builders
         {
             this.ClanID = clanID;
         }
-        
+
         public void AddToCardPool(Type cardPoolType)
         {
             this.CardPoolIDs.Add(MTCardPoolIDs.GetIDForType(cardPoolType));
