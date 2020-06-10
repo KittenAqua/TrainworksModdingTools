@@ -24,14 +24,15 @@ namespace MonsterTrainModdingAPI.Managers
         /// Static reference to the game's SaveManager, which is necessary to register new cards.
         /// </summary>
         public static SaveManager SaveManager { get; set; }
-        
+
         /// <summary>
         /// Register a custom card with the manager, allowing it to show up in game
         /// both in the logbook and whenever cards are chosen from the specified pools.
         /// </summary>
         /// <param name="cardData">The custom card data to register</param>
         /// <param name="cardPoolData">The card pools the custom card should be a part of</param>
-        public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData)
+        /// <param name="info">The info used to load Art from AssetBundles</param>
+        public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData, AssetBundleLoadingInfo info = null)
         {
             if (info != null) CardBundleData.Add(cardData.GetID(), info);
             CustomCardData.Add(cardData.GetID(), cardData);

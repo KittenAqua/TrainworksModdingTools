@@ -36,12 +36,13 @@ namespace MonsterTrainModdingAPI.Managers
         /// Register a custom character with the manager, allowing it to show up in game.
         /// </summary>
         /// <param name="data">The custom character data to register</param>
-        public static void RegisterCustomCharacter(CharacterData data)
+        /// <param name="info">The Information Used to Load an AssetBundle</param>
         public static bool RegisterCustomCharacter(CharacterData data, AssetBundleLoadingInfo info = null)
         {
             if (info != null) CharacterBundleData.Add(data.GetID(), info);
             CustomCharacterData.Add(data.GetID(), data);
             SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
+            return true;
         }
 
         /// <summary>
@@ -57,6 +58,7 @@ namespace MonsterTrainModdingAPI.Managers
             }
             return null;
         }
+
 
         private static GameObject CreateCharacterGameObject(CharacterData characterData, Sprite sprite)
         {
@@ -81,6 +83,12 @@ namespace MonsterTrainModdingAPI.Managers
             return characterGameObject;
         }
 
+        /// <summary>
+        /// Create a GameObject for the custom character with the given ID.
+        /// Used for loading custom character art.
+        /// </summary>
+        /// <param name="characterID">ID of the custom character to create the GameObject for</param>
+        /// <returns>The GameObject for the custom character with given ID</returns>
         public static GameObject CreateCharacterGameObject(string characterID)
         {
             CharacterData characterData = CustomCharacterData[characterID];
