@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using MonsterTrainModdingAPI.Enum;
+using MonsterTrainModdingAPI.Enums;
 
-namespace MonsterTrainModdingAPI.Builder
+namespace MonsterTrainModdingAPI.Builders
 {
     public class BuilderUtils
     {
-        public static StatusEffectStackData[] AddStatusEffect(MTStatusEffect statusEffect, int stackCount, StatusEffectStackData[] oldStatuses)
+        /// <summary>
+        /// Create a new status effect array and add the status effect with the specified information onto the end of it.
+        /// </summary>
+        /// <param name="statusEffectID">ID of the status effect</param>
+        /// <param name="stackCount">Number of stacks to apply</param>
+        /// <param name="oldStatuses">Status effect array to append to</param>
+        /// <returns>A new status effect array one element longer than the previous one, with the status effect in the last slot</returns>
+        public static StatusEffectStackData[] AddStatusEffect(string statusEffectID, int stackCount, StatusEffectStackData[] oldStatuses)
         {
-            string statusEffectID = StatusEffectIds.GetStatusEffectId(statusEffect);
             var statusEffectData = new StatusEffectStackData
             {
                 statusId = statusEffectID,

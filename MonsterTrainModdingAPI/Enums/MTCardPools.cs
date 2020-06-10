@@ -1,40 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
 
-namespace MonsterTrainModdingAPI.Enum
+namespace MonsterTrainModdingAPI.Enums.MTCardPools
 {
-    public enum MTCardPool
+    /// <summary>
+    /// Interface representing a card pool.
+    /// Effectively an extensible enum.
+    /// </summary>
+    public interface IMTCardPool
     {
-        StandardPool, // Used for clan packs, allied clan packs, rare packs, and cov 1 cards
-        TrainStewardPool,
-        StarterCardPool, // Contains the starting card for each clan, e.g. "Torch"
-        HellhornedBannerPool,
-        AwokenBannerPool,
-        StygianBannerPool,
-        UmbraBannerPool,
-        MeltingRemnantBannerPool,
-        UnitDraftPool // From major bosses/trials
+        string ID { get; }
     }
 
-    public static class CardPoolIDs
-    {
-        private static readonly Dictionary<MTCardPool, int> cardPoolIDDictionary = new Dictionary<MTCardPool, int>
-        {
-            { MTCardPool.StandardPool, 9366 },
-            { MTCardPool.TrainStewardPool, 10856 },
-            { MTCardPool.StarterCardPool, 12548 },
-            { MTCardPool.HellhornedBannerPool, 9354 },
-            { MTCardPool.AwokenBannerPool, 9352 },
-            { MTCardPool.StygianBannerPool, 9362 },
-            { MTCardPool.UmbraBannerPool, 9364 },
-            { MTCardPool.MeltingRemnantBannerPool, 9360 },
-            { MTCardPool.UnitDraftPool, 9358 }
-        };
+    /// <summary>
+    /// Contains the following cards: list the cards in the pool here
+    /// </summary>
+    public class MTCardPool_MegaPool : IMTCardPool { public string ID => "MegaPool"; }
+    /// <summary>
+    /// Contains the following cards: list the cards in the pool here
+    /// </summary>
+    public class MTCardPool_UnitsAllBanner : IMTCardPool { public string ID => "UnitsAllBanner"; }
 
-        public static int GetCardPoolID(MTCardPool cardPool)
+    /// <summary>
+    /// Helper class which gets the ID for a cardpool when given its type.
+    /// </summary>
+    public static class MTCardPoolIDs
+    {
+        /// <summary>
+        /// Gets the ID for the cardpool with given type.
+        /// </summary>
+        /// <param name="cardPoolType">Must implement IMTCardPool</param>
+        /// <returns></returns>
+        public static string GetIDForType(Type cardPoolType)
         {
-            return cardPoolIDDictionary[cardPool];
+            if (typeof(IMTCardPool).IsAssignableFrom(cardPoolType))
+            {
+                var cardPool = (IMTCardPool)Activator.CreateInstance(cardPoolType);
+                return cardPool.ID;
+            }
+            return "";
         }
     }
 }

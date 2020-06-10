@@ -7,7 +7,9 @@ using MonsterTrainModdingAPI.Managers;
 
 namespace MonsterTrainModdingAPI.Patches
 {
-    //If this Patch doesnt work, try solution at: https://ludeon.com/forums/index.php?topic=38328.0
+    /// <summary>
+    /// Registers plugins with the PluginManager on startup.
+    /// </summary>
     [HarmonyPatch(typeof(BaseUnityPlugin), MethodType.Constructor)]
     class BaseUnityPluginConstructorPatch
     {
