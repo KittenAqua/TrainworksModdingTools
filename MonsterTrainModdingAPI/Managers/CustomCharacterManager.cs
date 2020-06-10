@@ -31,17 +31,17 @@ namespace MonsterTrainModdingAPI.Managers
         public static SaveManager SaveManager { get; set; }
 
         /// <summary>
-        /// Register a custom card with the manager, allowing it to show up in game.
+        /// Register a custom character with the manager, allowing it to show up in game.
         /// </summary>
         /// <param name="data">The custom character data to register</param>
-        public static bool RegisterCustomCharacter(CharacterData data)
+        public static void RegisterCustomCharacter(CharacterData data)
         {
             CustomCharacterData.Add(data.GetID(), data);
-            return true;
+            SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
         }
 
         /// <summary>
-        /// Get the custom card data corresponding to the given ID
+        /// Get the custom character data corresponding to the given ID
         /// </summary>
         /// <param name="characterID">ID of the custom character to get</param>
         /// <returns>The custom character data for the given ID</returns>
