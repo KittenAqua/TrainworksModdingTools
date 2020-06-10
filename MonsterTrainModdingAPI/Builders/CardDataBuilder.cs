@@ -294,7 +294,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// <summary>
         /// Adds this card to the cardpool whose ID is passed in
         /// </summary>
-        /// <param name="cardPoolID">ID of the clan, most easily retrieved using the helper class "MTCardPoolIDs"</param>
+        /// <param name="cardPoolID">ID of the card pool, most easily retrieved using the helper class "MTCardPoolIDs"</param>
         public void AddToCardPool(string cardPoolID)
         {
             this.CardPoolIDs.Add(cardPoolID);
