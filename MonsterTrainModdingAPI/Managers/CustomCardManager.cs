@@ -62,28 +62,6 @@ namespace MonsterTrainModdingAPI.Managers
         }
 
         /// <summary>
-        /// Get the player's current primary clan.
-        /// </summary>
-        /// <returns>ClassData of the player's primary clan</returns>
-        public static ClassData CurrentPrimaryClan()
-        {
-            var saveData = (SaveData)AccessTools.Property(typeof(SaveManager), "ActiveSaveData").GetValue(SaveManager);
-            ClassData mainClass = SaveManager.GetAllGameData().FindClassData(saveData.GetStartingConditions().Class);
-            return mainClass;
-        }
-
-        /// <summary>
-        /// Get the player's current allied clan.
-        /// </summary>
-        /// <returns>ClassData of the player's allied clan</returns>
-        public static ClassData CurrentAlliedClan()
-        {
-            var saveData = (SaveData)AccessTools.Property(typeof(SaveManager), "ActiveSaveData").GetValue(SaveManager);
-            ClassData mainClass = SaveManager.GetAllGameData().FindClassData(saveData.GetStartingConditions().Class);
-            return mainClass;
-        }
-
-        /// <summary>
         /// Create a GameObject for the custom card with the AssetReference and Sprite
         /// </summary>
         /// <param name="assetRef">Reference to inform of loading</param>
