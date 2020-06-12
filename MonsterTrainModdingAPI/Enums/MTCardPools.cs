@@ -22,6 +22,14 @@ namespace MonsterTrainModdingAPI.Enums.MTCardPools
     /// Contains the following cards: list the cards in the pool here
     /// </summary>
     public class MTCardPool_UnitsAllBanner : IMTCardPool { public string ID => "UnitsAllBanner"; }
+    /// <summary>
+    /// Contains the following cards: list the cards in the pool here
+    /// </summary>
+    public class MTCardPool_StarterCardsOnly : IMTCardPool { public string ID => "StarterCardsOnly"; }
+    /// <summary>
+    /// Contains the following cards: list the cards in the pool here
+    /// </summary>
+    public class MTCardPool_TrainStewardOnly : IMTCardPool { public string ID => "TrainStewardOnly"; }
 
     /// <summary>
     /// Helper class which gets the ID for a cardpool when given its type.

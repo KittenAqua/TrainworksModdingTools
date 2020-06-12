@@ -67,4 +67,34 @@ namespace MonsterTrainModdingAPI.Patches
             }
         }
     }
+
+    /// <summary>
+    /// Allows for the display of custom class names.
+    /// </summary>
+    [HarmonyPatch(typeof(ClassData), "GetTitleKey")]
+    class CustomClassDataTitlePatch
+    {
+        static void Postfix(ref string __result, ref string ___titleLoc)
+        {
+            if (!___titleLoc.HasTranslation() && __result == string.Empty)
+            {
+                __result = ___titleLoc;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Allows for the display of custom class descriptions.
+    /// </summary>
+    [HarmonyPatch(typeof(ClassData), "GetDescriptionKey")]
+    class CustomClassDataDescriptionPatch
+    {
+        static void Postfix(ref string __result, ref string ___descriptionLoc)
+        {
+            if (!___descriptionLoc.HasTranslation() && __result == string.Empty)
+            {
+                __result = ___descriptionLoc;
+            }
+        }
+    }
 }
