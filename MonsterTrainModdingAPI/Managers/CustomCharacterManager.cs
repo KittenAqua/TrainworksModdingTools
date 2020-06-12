@@ -21,6 +21,9 @@ namespace MonsterTrainModdingAPI.Managers
         /// Maps custom character IDs to their respective CharacterData.
         /// </summary>
         public static IDictionary<string, CharacterData> CustomCharacterData { get; } = new Dictionary<string, CharacterData>();
+        /// <summary>
+        /// Maps custom character IDs to their respective Loading Information.
+        /// </summary>
         public static IDictionary<string, AssetBundleLoadingInfo> CharacterBundleData { get; } = new Dictionary<string, AssetBundleLoadingInfo>();
         /// <summary>
         /// FallbackData contains a default character prefab which is cloned to create custom characters.
@@ -59,7 +62,12 @@ namespace MonsterTrainModdingAPI.Managers
             return null;
         }
 
-
+        /// <summary>
+        /// Create a GameObject for the custom character from characterData and a sprite
+        /// </summary>
+        /// <param name="characterData">Data to create the Character GameObject</param>
+        /// <param name="sprite">Sprite to use to create the Character GameObject</param>
+        /// <returns></returns>
         private static GameObject CreateCharacterGameObject(CharacterData characterData, Sprite sprite)
         {
             // Create a new character GameObject by cloning the default one in FallbackData

@@ -11,6 +11,7 @@ using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Builders
 {

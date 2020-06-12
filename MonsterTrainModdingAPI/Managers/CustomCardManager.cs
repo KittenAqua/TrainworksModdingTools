@@ -19,6 +19,9 @@ namespace MonsterTrainModdingAPI.Managers
         /// Maps custom card IDs to their respective CardData.
         /// </summary>
         public static IDictionary<string, CardData> CustomCardData { get; } = new Dictionary<string, CardData>();
+        /// <summary>
+        /// Maps custom card IDs to the information required to load their Assets.
+        /// </summary>
         public static IDictionary<string, AssetBundleLoadingInfo> CardBundleData { get; } = new Dictionary<string, AssetBundleLoadingInfo>();
         /// <summary>
         /// Static reference to the game's SaveManager, which is necessary to register new cards.
@@ -34,7 +37,10 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="info">The info used to load Art from AssetBundles</param>
         public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData, AssetBundleLoadingInfo info = null)
         {
-            if (info != null) CardBundleData.Add(cardData.GetID(), info);
+            if (info != null)
+            {
+                CardBundleData.Add(cardData.GetID(), info);
+            }
             CustomCardData.Add(cardData.GetID(), cardData);
             CustomCardPoolManager.AddCardToPools(cardData, cardPoolData);
             SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
@@ -76,6 +82,12 @@ namespace MonsterTrainModdingAPI.Managers
             return mainClass;
         }
 
+        /// <summary>
+        /// Create a GameObject for the custom card with the AssetReference and Sprite
+        /// </summary>
+        /// <param name="assetRef">Reference to inform of loading</param>
+        /// <param name="sprite">Sprite to create card with</param>
+        /// <returns></returns>
         private static GameObject CreateCardGameObject(AssetReferenceGameObject assetRef, Sprite sprite)
         {
             // Create a new card GameObject from scratch
