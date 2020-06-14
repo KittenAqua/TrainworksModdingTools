@@ -17,10 +17,7 @@ namespace MonsterTrainModdingAPI.Patches
             List<CollectableRelicData> newResult = new List<CollectableRelicData>();
             foreach (CollectableRelicData relicData in __result)
             {
-                if (relicData.name == "AttackDecreaseEnemies" || relicData.name == "AddImpToHand")
-                {
-                    newResult.Add(relicData);
-                }
+                newResult.Add(relicData);
             }
             newResult.AddRange(MonsterTrainModdingAPI.Managers.CustomCollectableRelicManager.CustomRelicData.Values);
             __result = newResult;

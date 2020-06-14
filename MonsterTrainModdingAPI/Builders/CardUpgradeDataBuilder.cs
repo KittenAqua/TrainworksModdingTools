@@ -12,7 +12,7 @@ using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
 
-namespace MonsterTrainModdingAPI.Builder
+namespace MonsterTrainModdingAPI.Builders
 {
     public class CardUpgradeDataBuilder
     {    

@@ -2,7 +2,7 @@ using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
 
-namespace MonsterTrainModdingAPI.Builder
+namespace MonsterTrainModdingAPI.Builders
 {
     public class CardTriggerEffectDataBuilder
     {
