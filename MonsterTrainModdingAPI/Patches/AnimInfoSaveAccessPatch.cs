@@ -11,7 +11,7 @@ namespace MonsterTrainModdingAPI.Patches
     /// Prevents an error from uninstantiated animInfos
     /// </summary>
     [HarmonyPatch(typeof(CharacterUIMeshSpine), "GetAnimInfo")]
-    class MeshRendererSafeAccessPatch
+    class AnimInfoSaveAccessPatch
     {
         public static bool Prefix(ref object __result,ref CharacterUIMeshSpine __instance)
         {

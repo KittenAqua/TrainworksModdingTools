@@ -52,6 +52,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// Custom asset path to load character art from.
         /// </summary>
         public string AssetPath { get; set; }
+        public AssetBundleLoadingInfo BundleLoadingInfo { get; set; }
         /// <summary>
         /// Loading Info for loading a character's sprite
         /// </summary>
