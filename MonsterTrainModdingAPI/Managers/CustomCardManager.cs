@@ -3,6 +3,7 @@ using System.IO;
 using BepInEx.Logging;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Utilities;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
@@ -19,18 +20,27 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         public static IDictionary<string, CardData> CustomCardData { get; } = new Dictionary<string, CardData>();
         /// <summary>
+        /// Maps custom card IDs to the information required to load their Assets.
+        /// </summary>
+        public static IDictionary<string, AssetBundleLoadingInfo> CardBundleData { get; } = new Dictionary<string, AssetBundleLoadingInfo>();
+        /// <summary>
         /// Static reference to the game's SaveManager, which is necessary to register new cards.
         /// </summary>
         public static SaveManager SaveManager { get; set; }
-        
+
         /// <summary>
         /// Register a custom card with the manager, allowing it to show up in game
         /// both in the logbook and whenever cards are chosen from the specified pools.
         /// </summary>
         /// <param name="cardData">The custom card data to register</param>
         /// <param name="cardPoolData">The card pools the custom card should be a part of</param>
-        public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData)
+        /// <param name="info">The info used to load Art from AssetBundles</param>
+        public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData, AssetBundleLoadingInfo info = null)
         {
+            if (info != null)
+            {
+                CardBundleData.Add(cardData.GetID(), info);
+            }
             CustomCardData.Add(cardData.GetID(), cardData);
             CustomCardPoolManager.AddCardToPools(cardData, cardPoolData);
             SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
@@ -73,6 +83,26 @@ namespace MonsterTrainModdingAPI.Managers
         }
 
         /// <summary>
+        /// Create a GameObject for the custom card with the AssetReference and Sprite
+        /// </summary>
+        /// <param name="assetRef">Reference to inform of loading</param>
+        /// <param name="sprite">Sprite to create card with</param>
+        /// <returns></returns>
+        private static GameObject CreateCardGameObject(AssetReferenceGameObject assetRef, Sprite sprite)
+        {
+            // Create a new card GameObject from scratch
+            // Cards are simple enough that we can get away with doing this
+            GameObject cardGameObject = new GameObject();
+            Image newImage = cardGameObject.AddComponent<Image>();
+            newImage.sprite = sprite;
+
+            // Tell the asset reference that the GameObject has already been loaded
+            // This circumvents an issue where the game attempts to load the asset but fails
+            AccessTools.Field(typeof(AssetReference), "m_LoadedAsset").SetValue(assetRef, cardGameObject);
+            return cardGameObject;
+        }
+
+        /// <summary>
         /// Create a GameObject for the custom card with the given ID.
         /// Used for loading custom card art.
         /// </summary>
@@ -82,8 +112,17 @@ namespace MonsterTrainModdingAPI.Managers
         {
             CardData cardData = CustomCardData[cardID];
 
+
             // Get the path to the asset from the card's asset reference data
             var assetRef = (AssetReferenceGameObject)AccessTools.Field(typeof(CardData), "cardArtPrefabVariantRef").GetValue(cardData);
+
+            if (CardBundleData.ContainsKey(cardID))
+            {
+                Texture2D tex = AssetBundleUtils.LoadAssetFromPath<Texture2D>(CardBundleData[cardID]);
+                Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
+                return CreateCardGameObject(assetRef, sprite);
+            }
+
             string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(assetRef);
             string cardPath = "BepInEx/plugins/" + assetPath;
             if (File.Exists(cardPath))
@@ -94,16 +133,7 @@ namespace MonsterTrainModdingAPI.Managers
                 UnityEngine.ImageConversion.LoadImage(tex, fileData);
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
 
-                // Create a new card GameObject from scratch
-                // Cards are simple enough that we can get away with doing this
-                GameObject cardGameObject = new GameObject();
-                Image newImage = cardGameObject.AddComponent<Image>();
-                newImage.sprite = sprite;
-
-                // Tell the asset reference that the GameObject has already been loaded
-                // This circumvents an issue where the game attempts to load the asset but fails
-                AccessTools.Field(typeof(AssetReference), "m_LoadedAsset").SetValue(assetRef, cardGameObject);
-                return cardGameObject;
+                return CreateCardGameObject(assetRef, sprite);
             }
             return null;
         }
