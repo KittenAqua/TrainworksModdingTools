@@ -85,7 +85,9 @@ namespace MonsterTrainModdingAPI.Managers
         {
             GameObject @object = CreateCharacterGameObject(characterData, SkeletonData);
             var characterState = @object.GetComponentInChildren<CharacterState>();
+            var characterUI = @object.GetComponentInChildren<CharacterUI>();
             AccessTools.Field(typeof(CharacterState), "sprite").SetValue(characterState, sprite);
+            characterUI.GetSpriteRenderer().sprite = sprite;
             return @object;
         }
 
