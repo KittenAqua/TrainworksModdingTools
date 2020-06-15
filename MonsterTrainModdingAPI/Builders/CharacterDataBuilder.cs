@@ -11,6 +11,7 @@ using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -51,6 +52,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// Custom asset path to load character art from.
         /// </summary>
         public string AssetPath { get; set; }
+        public AssetBundleLoadingInfo BundleLoadingInfo { get; set; }
         /// <summary>
         /// Use an existing base game character's art by filling this in with the appropriate character's asset reference information.
         /// </summary>
@@ -147,7 +149,7 @@ namespace MonsterTrainModdingAPI.Builders
         public CharacterData BuildAndRegister()
         {
             var characterData = this.Build();
-            CustomCharacterManager.RegisterCustomCharacter(characterData);
+            CustomCharacterManager.RegisterCustomCharacter(characterData, BundleLoadingInfo);
             return characterData;
         }
 
