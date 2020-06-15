@@ -75,6 +75,10 @@ namespace MonsterTrainModdingAPI.Builders
         /// Append to this list to add new character triggers. The Build() method recursively builds all nested builders.
         /// </summary>
         public List<CharacterTriggerDataBuilder> EffectTriggerBuilders { get; set; }
+        /// <summary>
+        /// Append to this list to add new card triggers. The Build() method recursively builds all nested builders.
+        /// </summary>
+        public List<CardTriggerEffectDataBuilder> TriggerBuilders { get; set; }
 
 
         /// <summary>
@@ -156,6 +160,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.EffectBuilders = new List<CardEffectDataBuilder>();
             this.TraitBuilders = new List<CardTraitDataBuilder>();
             this.EffectTriggerBuilders = new List<CharacterTriggerDataBuilder>();
+            this.TriggerBuilders = new List<CardTriggerEffectDataBuilder>();
             this.Effects = new List<CardEffectData>();
             this.Traits = new List<CardTraitData>();
             this.EffectTriggers = new List<CharacterTriggerData>();
@@ -204,6 +209,10 @@ namespace MonsterTrainModdingAPI.Builders
             foreach (var builder in this.EffectTriggerBuilders)
             {
                 this.EffectTriggers.Add(builder.Build());
+            }
+            foreach (var builder in this.TriggerBuilders)
+            {
+                this.Triggers.Add(builder.Build());
             }
 
             this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
