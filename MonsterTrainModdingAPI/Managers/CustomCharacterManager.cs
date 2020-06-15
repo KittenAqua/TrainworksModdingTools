@@ -75,6 +75,21 @@ namespace MonsterTrainModdingAPI.Managers
         }
 
         /// <summary>
+        /// Creates a GameObject for the custom character from characterData, a Sprite, and a GameObject containing SkeletonAnimation
+        /// </summary>
+        /// <param name="characterData"></param>
+        /// <param name="SkeletonData"></param>
+        /// <param name="sprite"></param>
+        /// <returns></returns>
+        private static GameObject CreateCharacterGameObject(CharacterData characterData, GameObject SkeletonData, Sprite sprite)
+        {
+            GameObject @object = CreateCharacterGameObject(characterData, SkeletonData);
+            var characterState = @object.GetComponentInChildren<CharacterState>();
+            AccessTools.Field(typeof(CharacterState), "sprite").SetValue(characterState, sprite);
+            return @object;
+        }
+
+        /// <summary>
         /// Creates a GameObject for the custom character from characterData and a GameObject containing SkeletonAnimation
         /// </summary>
         /// <param name="characterData">CharacterData of the Character</param>
@@ -120,9 +135,6 @@ namespace MonsterTrainModdingAPI.Managers
             var characterState = characterGameObject.GetComponentInChildren<CharacterState>();
             var characterUI = characterGameObject.GetComponentInChildren<CharacterUI>();
 
-                        
-
-
             // Make its MeshRenderer active; this is what enables the sprite we're about to attach to show up
             characterGameObject.GetComponentInChildren<MeshRenderer>(true).gameObject.SetActive(true);
 
@@ -150,6 +162,12 @@ namespace MonsterTrainModdingAPI.Managers
             if (CharacterSkeletonAnimationBundleData.ContainsKey(characterID))
             {
                 GameObject skeletonData = AssetBundleUtils.LoadAssetFromPath<GameObject>(CharacterSkeletonAnimationBundleData[characterID]);
+                if (CharacterSpriteBundleData.ContainsKey(characterID))
+                {
+                    Texture2D tex = AssetBundleUtils.LoadAssetFromPath<Texture2D>(CharacterSpriteBundleData[characterID]);
+                    Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
+                    return CreateCharacterGameObject(characterData, skeletonData, sprite);
+                }
                 return CreateCharacterGameObject(characterData, skeletonData);
             }
 
