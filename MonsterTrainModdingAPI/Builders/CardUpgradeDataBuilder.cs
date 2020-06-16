@@ -60,7 +60,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.triggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>();
             this.cardTriggerUpgradeBuilders = new List<CardTriggerEffectDataBuilder>();
             this.roomModifierUpgradeBuilders = new List<RoomModifierDataBuilder>();
-            this.filtersBuilders = new List<CardUpgradeMaskDataBuilder>():
+            this.filtersBuilders = new List<CardUpgradeMaskDataBuilder>();
             this.upgradesToRemoveBuilders = new List<CardUpgradeDataBuilder>();
 
             this.statusEffectUpgrades = new List<StatusEffectStackData>();

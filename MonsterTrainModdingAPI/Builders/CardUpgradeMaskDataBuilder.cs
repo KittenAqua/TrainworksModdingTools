@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MonsterTrainModdingAPI.Builders
 {
-    class CardUpgradeMaskDataBuilder
+    public class CardUpgradeMaskDataBuilder
     {
 
         public CardType cardType = CardType.Invalid;
