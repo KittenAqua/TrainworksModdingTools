@@ -18,31 +18,54 @@ namespace MonsterTrainModdingAPI.Builders
     {    
         // Note: add status effect adder, it's different than the one in BuilderUtils
         
-        private string upgradeTitleKey { get; set; }
-        private string upgradeDescriptionKey { get; set; }
-        private string upgradeNotificationKey { get; set; }
-        private Sprite upgradeIcon { get; set; }
-        private bool hideUpgradeIconOnCard { get; set; }
-        private bool useUpgradeHighlightTextTags { get; set; }
-        private int bonusDamage { get; set; }
-        private int bonusHP { get; set; }
-        private int costReduction { get; set; }
-        private int xCostReduction { get; set; }
-        private int bonusHeal { get; set; }
-        private int bonusSize { get; set; }
-        private List<StatusEffectStackData> statusEffectUpgrades { get; set; }
-        private List<CardTraitData> traitDataUpgrades { get; set; }
-        private List<string> removeTraitUpgrades { get; set; }
-        private List<CharacterTriggerData> triggerUpgrades { get; set; }
-        private List<CardTriggerEffectData> cardTriggerUpgrades { get; set; }
-        private List<RoomModifierData> roomModifierUpgrades { get; set; }
-        private List<CardUpgradeMaskData> filters { get; set; }
-        private List<CardUpgradeData> upgradesToRemove { get; set; }
+        public string upgradeTitleKey { get; set; }
+        public string upgradeDescriptionKey { get; set; }
+        public string upgradeNotificationKey { get; set; }
+        public Sprite upgradeIcon { get; set; }
+        public bool hideUpgradeIconOnCard { get; set; }
+        public bool useUpgradeHighlightTextTags { get; set; }
+        public int bonusDamage { get; set; }
+        public int bonusHP { get; set; }
+        public int costReduction { get; set; }
+        public int xCostReduction { get; set; }
+        public int bonusHeal { get; set; }
+        public int bonusSize { get; set; }
+
+
+        public List<CardTraitDataBuilder> traitDataUpgradeBuilders { get; set; }
+        public List<CharacterTriggerDataBuilder> triggerUpgradeBuilders { get; set; }
+        public List<CardTriggerEffectDataBuilder> cardTriggerUpgradeBuilders { get; set; }
+        public List<RoomModifierDataBuilder> roomModifierUpgradeBuilders { get; set; }
+        public List<CardUpgradeMaskDataBuilder> filtersBuilders { get; set; }
+        public List<CardUpgradeDataBuilder> upgradesToRemoveBuilders { get; set; }
+
+        /// <summary>
+        /// To add a status effect, no need for a builder. new StatusEffectStackData with properties statusId (string) and count (int) are sufficient.
+        /// Get the string with -> statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
+        /// </summary>
+        public List<StatusEffectStackData> statusEffectUpgrades { get; set; }
+        public List<CardTraitData> traitDataUpgrades { get; set; }
+        public List<string> removeTraitUpgrades { get; set; }
+        public List<CharacterTriggerData> triggerUpgrades { get; set; }
+        public List<CardTriggerEffectData> cardTriggerUpgrades { get; set; }
+        public List<RoomModifierData> roomModifierUpgrades { get; set; }
+        public List<CardUpgradeMaskData> filters { get; set; }
+        public List<CardUpgradeData> upgradesToRemove { get; set; }
 
         public CardUpgradeDataBuilder()
         {
             this.useUpgradeHighlightTextTags = true;
 
+            this.traitDataUpgradeBuilders = new List<CardTraitDataBuilder>();
+            this.triggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>();
+            this.cardTriggerUpgradeBuilders = new List<CardTriggerEffectDataBuilder>();
+            this.roomModifierUpgradeBuilders = new List<RoomModifierDataBuilder>();
+            this.filtersBuilders = new List<CardUpgradeMaskDataBuilder>():
+            this.upgradesToRemoveBuilders = new List<CardUpgradeDataBuilder>();
+
+            this.statusEffectUpgrades = new List<StatusEffectStackData>();
+            this.traitDataUpgrades = new List<CardTraitData>();
+            this.removeTraitUpgrades = new List<string>();
             this.triggerUpgrades = new List<CharacterTriggerData>();
             this.cardTriggerUpgrades = new List<CardTriggerEffectData>();
             this.roomModifierUpgrades = new List<RoomModifierData>();
@@ -53,6 +76,31 @@ namespace MonsterTrainModdingAPI.Builders
         public CardUpgradeData Build()
         {
             CardUpgradeData cardUpgradeData = new CardUpgradeData();
+
+            foreach (var builder in this.traitDataUpgradeBuilders)
+            {
+                this.traitDataUpgrades.Add(builder.Build());
+            }
+            foreach (var builder in this.triggerUpgradeBuilders)
+            {
+                this.triggerUpgrades.Add(builder.Build());
+            }
+            foreach (var builder in this.cardTriggerUpgradeBuilders)
+            {
+                this.cardTriggerUpgrades.Add(builder.Build());
+            }
+            foreach (var builder in this.roomModifierUpgradeBuilders)
+            {
+                this.roomModifierUpgrades.Add(builder.Build());
+            }
+            foreach (var builder in this.filtersBuilders)
+            {
+                this.filters.Add(builder.Build());
+            }
+            foreach (var builder in this.upgradesToRemoveBuilders)
+            {
+                this.upgradesToRemove.Add(builder.Build());
+            }
 
             AccessTools.Field(typeof(CardUpgradeData), "upgradeTitleKey").SetValue(cardUpgradeData, this.upgradeTitleKey);
             AccessTools.Field(typeof(CardUpgradeData), "upgradeDescriptionKey").SetValue(cardUpgradeData, this.upgradeDescriptionKey);
