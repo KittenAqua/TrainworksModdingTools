@@ -52,7 +52,14 @@ namespace MonsterTrainModdingAPI.Builders
         /// Custom asset path to load character art from.
         /// </summary>
         public string AssetPath { get; set; }
-        public AssetBundleLoadingInfo BundleLoadingInfo { get; set; }
+        /// <summary>
+        /// Loading Info for loading a character's sprite
+        /// </summary>
+        public AssetBundleLoadingInfo SpriteBundleLoadingInfo { get; set; }
+        /// <summary>
+        /// Loading Info for loading a character's Skeleton Animation
+        /// </summary>
+        public AssetBundleLoadingInfo SkeletonAnimationBundleLoadingInfo { get; set; }
         /// <summary>
         /// Use an existing base game character's art by filling this in with the appropriate character's asset reference information.
         /// </summary>
@@ -149,7 +156,7 @@ namespace MonsterTrainModdingAPI.Builders
         public CharacterData BuildAndRegister()
         {
             var characterData = this.Build();
-            CustomCharacterManager.RegisterCustomCharacter(characterData, BundleLoadingInfo);
+            CustomCharacterManager.RegisterCustomCharacter(characterData, SpriteBundleLoadingInfo, SkeletonAnimationBundleLoadingInfo);
             return characterData;
         }
 

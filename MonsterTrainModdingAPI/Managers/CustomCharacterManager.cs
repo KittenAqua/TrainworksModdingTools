@@ -22,9 +22,13 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         public static IDictionary<string, CharacterData> CustomCharacterData { get; } = new Dictionary<string, CharacterData>();
         /// <summary>
-        /// Maps custom character IDs to their respective Loading Information.
+        /// Maps custom character IDs to their respective Sprite Loading Information.
         /// </summary>
-        public static IDictionary<string, AssetBundleLoadingInfo> CharacterBundleData { get; } = new Dictionary<string, AssetBundleLoadingInfo>();
+        public static IDictionary<string, AssetBundleLoadingInfo> CharacterSpriteBundleData { get; } = new Dictionary<string, AssetBundleLoadingInfo>();
+        /// <summary>
+        /// Maps custom character IDs to their respective Skeleton Animation Loading Information
+        /// </summary>
+        public static IDictionary<string, AssetBundleLoadingInfo> CharacterSkeletonAnimationBundleData { get; } = new Dictionary<string, AssetBundleLoadingInfo>();
         /// <summary>
         /// FallbackData contains a default character prefab which is cloned to create custom characters.
         /// Essential for custom character art. Set during game startup.
@@ -39,10 +43,18 @@ namespace MonsterTrainModdingAPI.Managers
         /// Register a custom character with the manager, allowing it to show up in game.
         /// </summary>
         /// <param name="data">The custom character data to register</param>
-        /// <param name="info">The Information Used to Load an AssetBundle</param>
-        public static bool RegisterCustomCharacter(CharacterData data, AssetBundleLoadingInfo info = null)
+        /// <param name="SpriteInfo">The Information Used to Load an AssetBundle</param>
+        /// <param name="SkeletonAnimationInfo"></param>
+        public static bool RegisterCustomCharacter(CharacterData data, AssetBundleLoadingInfo SpriteInfo = null, AssetBundleLoadingInfo SkeletonAnimationInfo = null)
         {
-            if (info != null) CharacterBundleData.Add(data.GetID(), info);
+            if (SpriteInfo != null)
+            {
+                CharacterSpriteBundleData.Add(data.GetID(), SpriteInfo);
+            }
+            if(SkeletonAnimationInfo != null)
+            {
+                CharacterSkeletonAnimationBundleData.Add(data.GetID(), SkeletonAnimationInfo);
+            }
             CustomCharacterData.Add(data.GetID(), data);
             SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
             return true;
@@ -60,6 +72,54 @@ namespace MonsterTrainModdingAPI.Managers
                 return CustomCharacterData[characterID];
             }
             return null;
+        }
+
+        /// <summary>
+        /// Creates a GameObject for the custom character from characterData, a Sprite, and a GameObject containing SkeletonAnimation
+        /// </summary>
+        /// <param name="characterData"></param>
+        /// <param name="SkeletonData"></param>
+        /// <param name="sprite"></param>
+        /// <returns></returns>
+        private static GameObject CreateCharacterGameObject(CharacterData characterData, GameObject SkeletonData, Sprite sprite)
+        {
+            GameObject @object = CreateCharacterGameObject(characterData, SkeletonData);
+            var characterState = @object.GetComponentInChildren<CharacterState>();
+            var characterUI = @object.GetComponentInChildren<CharacterUI>();
+            AccessTools.Field(typeof(CharacterState), "sprite").SetValue(characterState, sprite);
+            characterUI.GetSpriteRenderer().sprite = sprite;
+            return @object;
+        }
+
+        /// <summary>
+        /// Creates a GameObject for the custom character from characterData and a GameObject containing SkeletonAnimation
+        /// </summary>
+        /// <param name="characterData">CharacterData of the Character</param>
+        /// <param name="SkeletonData">GameObject that is loaded by AssetLoadingInfo and should contain a SkeletonAnimation</param>
+        /// <returns></returns>
+        private static GameObject CreateCharacterGameObject(CharacterData characterData, GameObject SkeletonData)
+        {
+            var characterGameObject = GameObject.Instantiate(CustomCharacterManager.FallbackData.GetDefaultCharacterPrefab());
+
+            characterGameObject.name = "Character_" + characterData.GetName();
+
+            //Set up CharacterUIMeshBase of the FallbackData to be a CharacterUIMeshSpine instead of a CharacterUIMesh
+            var characterUI = characterGameObject.GetComponentInChildren<CharacterUI>();
+
+            var Quad_Default = characterUI.transform.Find("Quad_Default");
+            Quad_Default.gameObject.SetActive(false);
+
+            var SpineMeshes = characterUI.transform.Find("SpineMeshes");
+            SpineMeshes.gameObject.SetActive(true);
+
+            var characterSkeletonAnimation = GameObject.Instantiate(SkeletonData);
+            characterSkeletonAnimation.transform.SetParent(SpineMeshes.transform);
+
+            // Tell the asset reference that the GameObject has already been loaded
+            // This circumvents an issue where the game attempts to load the asset but fails
+            AccessTools.Field(typeof(AssetReference), "m_LoadedAsset").SetValue(characterData.characterPrefabVariantRef, characterGameObject);
+
+            return characterGameObject;
         }
 
         /// <summary>
@@ -101,9 +161,21 @@ namespace MonsterTrainModdingAPI.Managers
         {
             CharacterData characterData = CustomCharacterData[characterID];
 
-            if (CharacterBundleData.ContainsKey(characterID))
+            if (CharacterSkeletonAnimationBundleData.ContainsKey(characterID))
             {
-                Texture2D tex = AssetBundleUtils.LoadAssetFromPath<Texture2D>(CharacterBundleData[characterID]);
+                GameObject skeletonData = AssetBundleUtils.LoadAssetFromPath<GameObject>(CharacterSkeletonAnimationBundleData[characterID]);
+                if (CharacterSpriteBundleData.ContainsKey(characterID))
+                {
+                    Texture2D tex = AssetBundleUtils.LoadAssetFromPath<Texture2D>(CharacterSpriteBundleData[characterID]);
+                    Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
+                    return CreateCharacterGameObject(characterData, skeletonData, sprite);
+                }
+                return CreateCharacterGameObject(characterData, skeletonData);
+            }
+
+            if (CharacterSpriteBundleData.ContainsKey(characterID))
+            {
+                Texture2D tex = AssetBundleUtils.LoadAssetFromPath<Texture2D>(CharacterSpriteBundleData[characterID]);
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
                 return CreateCharacterGameObject(characterData, sprite);
             }
@@ -123,5 +195,6 @@ namespace MonsterTrainModdingAPI.Managers
             }
             return null;
         }
+
     }
 }
