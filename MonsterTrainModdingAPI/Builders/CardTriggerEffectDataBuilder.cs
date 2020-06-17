@@ -21,6 +21,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// <item><description>OnTreasure</description></item>
         /// <item><description>OnUnplayed</description></item>
         /// <item><description>OnFeed</description></item>
+        /// </list>
         /// </summary>
         public CardTriggerType trigger { get; set; }
 
