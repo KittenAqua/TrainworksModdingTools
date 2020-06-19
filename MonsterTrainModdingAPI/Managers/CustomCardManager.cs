@@ -90,11 +90,12 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="assetRef">Reference to inform of loading</param>
         /// <param name="sprite">Sprite to create card with</param>
         /// <returns></returns>
-        private static GameObject CreateCardGameObject(AssetReferenceGameObject assetRef, Sprite sprite)
+        private static GameObject CreateCardGameObject(AssetReferenceGameObject assetRef, Sprite sprite, string cardID)
         {
             // Create a new card GameObject from scratch
             // Cards are simple enough that we can get away with doing this
             GameObject cardGameObject = new GameObject();
+            cardGameObject.name = cardID;
             Image newImage = cardGameObject.AddComponent<Image>();
             newImage.sprite = sprite;
 
@@ -122,7 +123,7 @@ namespace MonsterTrainModdingAPI.Managers
             {
                 Texture2D tex = AssetBundleUtils.LoadAssetFromPath<Texture2D>(CardBundleData[cardID]);
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-                return CreateCardGameObject(assetRef, sprite);
+                return CreateCardGameObject(assetRef, sprite, cardID);
             }
 
             string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(assetRef);
@@ -135,7 +136,7 @@ namespace MonsterTrainModdingAPI.Managers
                 UnityEngine.ImageConversion.LoadImage(tex, fileData);
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
 
-                return CreateCardGameObject(assetRef, sprite);
+                return CreateCardGameObject(assetRef, sprite, cardID);
             }
             return null;
         }
