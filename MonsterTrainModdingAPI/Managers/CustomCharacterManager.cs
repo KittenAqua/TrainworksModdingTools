@@ -4,7 +4,6 @@ using System.Text;
 using System.IO;
 using BepInEx.Logging;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Utilities;
 using HarmonyLib;
 using UnityEngine;
 using ShinyShoe;
@@ -24,11 +23,11 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Maps custom character IDs to their respective Sprite Loading Information.
         /// </summary>
-        public static IDictionary<string, AssetBundleLoadingInfo> CharacterSpriteBundleData { get; } = new Dictionary<string, AssetBundleLoadingInfo>();
+        public static IDictionary<string, CustomAssetManager.AssetBundleLoadingInfo> CharacterSpriteBundleData { get; } = new Dictionary<string, CustomAssetManager.AssetBundleLoadingInfo>();
         /// <summary>
         /// Maps custom character IDs to their respective Skeleton Animation Loading Information
         /// </summary>
-        public static IDictionary<string, AssetBundleLoadingInfo> CharacterSkeletonAnimationBundleData { get; } = new Dictionary<string, AssetBundleLoadingInfo>();
+        public static IDictionary<string, CustomAssetManager.AssetBundleLoadingInfo> CharacterSkeletonAnimationBundleData { get; } = new Dictionary<string, CustomAssetManager.AssetBundleLoadingInfo>();
         /// <summary>
         /// FallbackData contains a default character prefab which is cloned to create custom characters.
         /// Essential for custom character art. Set during game startup.
@@ -45,7 +44,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="data">The custom character data to register</param>
         /// <param name="SpriteInfo">The Information Used to Load an AssetBundle</param>
         /// <param name="SkeletonAnimationInfo"></param>
-        public static bool RegisterCustomCharacter(CharacterData data, AssetBundleLoadingInfo SpriteInfo = null, AssetBundleLoadingInfo SkeletonAnimationInfo = null)
+        public static bool RegisterCustomCharacter(CharacterData data, CustomAssetManager.AssetBundleLoadingInfo SpriteInfo = null, CustomAssetManager.AssetBundleLoadingInfo SkeletonAnimationInfo = null)
         {
             if (SpriteInfo != null)
             {
@@ -133,6 +132,8 @@ namespace MonsterTrainModdingAPI.Managers
             // Create a new character GameObject by cloning the default one in FallbackData
             var characterGameObject = GameObject.Instantiate(CustomCharacterManager.FallbackData.GetDefaultCharacterPrefab());
 
+            characterGameObject.name = "Character_" + characterData.GetName();
+
             // Set aside its CharacterState and CharacterUI components for later use
             var characterState = characterGameObject.GetComponentInChildren<CharacterState>();
             var characterUI = characterGameObject.GetComponentInChildren<CharacterUI>();
@@ -160,14 +161,14 @@ namespace MonsterTrainModdingAPI.Managers
         public static GameObject CreateCharacterGameObject(string characterID)
         {
             CharacterData characterData = CustomCharacterData[characterID];
-
+            Sprite sprite;
             if (CharacterSkeletonAnimationBundleData.ContainsKey(characterID))
             {
-                GameObject skeletonData = AssetBundleUtils.LoadAssetFromPath<GameObject>(CharacterSkeletonAnimationBundleData[characterID]);
+                GameObject skeletonData = CustomAssetManager.LoadAssetFromBundle<GameObject>(CharacterSkeletonAnimationBundleData[characterID]);
                 if (CharacterSpriteBundleData.ContainsKey(characterID))
                 {
-                    Texture2D tex = AssetBundleUtils.LoadAssetFromPath<Texture2D>(CharacterSpriteBundleData[characterID]);
-                    Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
+                    Texture2D tex = CustomAssetManager.LoadAssetFromBundle<Texture2D>(CharacterSpriteBundleData[characterID]);
+                    sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
                     return CreateCharacterGameObject(characterData, skeletonData, sprite);
                 }
                 return CreateCharacterGameObject(characterData, skeletonData);
@@ -175,22 +176,17 @@ namespace MonsterTrainModdingAPI.Managers
 
             if (CharacterSpriteBundleData.ContainsKey(characterID))
             {
-                Texture2D tex = AssetBundleUtils.LoadAssetFromPath<Texture2D>(CharacterSpriteBundleData[characterID]);
-                Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-                return CreateCharacterGameObject(characterData, sprite);
+                Texture2D tex = CustomAssetManager.LoadAssetFromBundle<Texture2D>(CharacterSpriteBundleData[characterID]);
+                sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
             }
-
-            // Get the path to the asset from the character's asset reference data
-            string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(characterData.characterPrefabVariantRef);
-            string characterPath = "BepInEx/plugins/" + assetPath;
-            if (File.Exists(characterPath))
+            else
             {
-                // Create the character sprite
-                byte[] fileData = File.ReadAllBytes(characterPath);
-                Texture2D tex = new Texture2D(1, 1);
-                UnityEngine.ImageConversion.LoadImage(tex, fileData);
-                Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-
+                // Get the path to the asset from the character's asset reference data
+                string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(characterData.characterPrefabVariantRef);
+                sprite = CustomAssetManager.LoadSpriteFromPath(assetPath);
+            }
+            if (sprite != null)
+            {
                 return CreateCharacterGameObject(characterData, sprite);
             }
             return null;

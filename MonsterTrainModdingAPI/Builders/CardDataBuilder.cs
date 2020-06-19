@@ -11,7 +11,6 @@ using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTCardPools;
 using MonsterTrainModdingAPI.Enums.MTClans;
-using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -57,7 +56,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// Custom asset path to load card art from.
         /// </summary>
         public string AssetPath { get; set; }
-        public AssetBundleLoadingInfo BundleLoadingInfo { get; set; }
+        public CustomAssetManager.AssetBundleLoadingInfo BundleLoadingInfo { get; set; }
         /// <summary>
         /// Use an existing base game card's art by filling this in with the appropriate card's asset reference information.
         /// </summary>
