@@ -1,0 +1,76 @@
+﻿using System;
+using System.Collections.Generic;
+using BepInEx;
+using BepInEx.Harmony;
+using System.Reflection;
+using HarmonyLib;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using ShinyShoe;
+using MonsterTrainModdingAPI.Managers;
+using MonsterTrainModdingAPI.Enums.MTStatusEffects;
+
+namespace MonsterTrainModdingAPI.Builders
+{
+    public class DraftRewardDataBuilder
+    {
+        public ClassData ClassDataOverride { get; set; }
+        public RunState.ClassType ClassType { get; set; }
+        public bool ClassTypeOverride { get; set; }
+        public uint DraftOptionsCount { get; set; }
+        public CardPool DraftPool { get; set; }
+        public bool GrantSingleCard { get; set; }
+        public CollectableRarity RarityFloorOverride { get; set; }
+        public bool UseRunRarityFloors { get; set; }
+
+        public bool CanBeSkippedOverride { get; set; }
+        public bool ForceContentUnlocked { get; set; }
+        public SaveManager SaveManager { get; set; }
+
+        public int[] Costs { get; set; }
+        public bool ShowRewardAnimationInEvent { get; set; }
+        public string _CollectSFXCueName { get; set; }
+        public bool _IsServiceMerchantReward { get; set; }
+        public string _RewardDescriptionKey { get; set; }
+        public Sprite _RewardSprite { get; set; }
+        public string _RewardTitleKey { get; set; }
+        public bool _ShowCancelOverride { get; set; }
+        public bool _ShowRewardFlowInEvent { get; set; }
+
+        public DraftRewardDataBuilder()
+        {
+            this.Costs = new int[0];
+        }
+
+        /// <summary>
+        /// Builds the RewardData represented by this builder's parameters recursively;
+        /// all Builders represented in this class's various fields will also be built.
+        /// </summary>
+        /// <returns>The newly created RewardData</returns>
+        public RewardData Build()
+        {
+            RewardData rewardData = ScriptableObject.CreateInstance<DraftRewardData>();
+            AccessTools.Field(typeof(DraftRewardData), "classDataOverride").SetValue(rewardData, this.ClassDataOverride);
+            AccessTools.Field(typeof(DraftRewardData), "classType").SetValue(rewardData, this.ClassType);
+            AccessTools.Field(typeof(DraftRewardData), "classTypeOverride").SetValue(rewardData, this.ClassTypeOverride);
+            AccessTools.Field(typeof(DraftRewardData), "draftOptionsCount").SetValue(rewardData, this.DraftOptionsCount);
+            AccessTools.Field(typeof(DraftRewardData), "draftPool").SetValue(rewardData, this.DraftPool);
+            AccessTools.Field(typeof(DraftRewardData), "grantSingleCard").SetValue(rewardData, this.GrantSingleCard);
+            AccessTools.Field(typeof(DraftRewardData), "rarityFloorOverride").SetValue(rewardData, this.RarityFloorOverride);
+            AccessTools.Field(typeof(DraftRewardData), "useRunRarityFloors").SetValue(rewardData, this.UseRunRarityFloors);
+            AccessTools.Field(typeof(GrantableRewardData), "CanBeSkippedOverride").SetValue(rewardData, this.CanBeSkippedOverride);
+            AccessTools.Field(typeof(GrantableRewardData), "ForceContentUnlocked").SetValue(rewardData, this.ForceContentUnlocked);
+            AccessTools.Field(typeof(GrantableRewardData), "saveManager").SetValue(rewardData, this.SaveManager);
+            AccessTools.Field(typeof(RewardData), "costs").SetValue(rewardData, this.Costs);
+            AccessTools.Field(typeof(RewardData), "ShowRewardAnimationInEvent").SetValue(rewardData, this.ShowRewardAnimationInEvent);
+            AccessTools.Field(typeof(RewardData), "_collectSFXCueName").SetValue(rewardData, this._CollectSFXCueName);
+            AccessTools.Field(typeof(RewardData), "_isServiceMerchantReward").SetValue(rewardData, this._IsServiceMerchantReward);
+            AccessTools.Field(typeof(RewardData), "_rewardDescriptionKey").SetValue(rewardData, this._RewardDescriptionKey);
+            AccessTools.Field(typeof(RewardData), "_rewardSprite").SetValue(rewardData, this._RewardSprite);
+            AccessTools.Field(typeof(RewardData), "_rewardTitleKey").SetValue(rewardData, this._RewardTitleKey);
+            AccessTools.Field(typeof(RewardData), "_showCancelOverride").SetValue(rewardData, this._ShowCancelOverride);
+            AccessTools.Field(typeof(RewardData), "_showRewardFlowInEvent").SetValue(rewardData, this._ShowRewardFlowInEvent);
+            return rewardData;
+        }
+    }
+}

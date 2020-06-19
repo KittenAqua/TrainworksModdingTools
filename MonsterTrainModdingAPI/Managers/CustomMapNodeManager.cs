@@ -1,0 +1,58 @@
+﻿using System.Collections.Generic;
+using System.IO;
+using BepInEx.Logging;
+using HarmonyLib;
+using MonsterTrainModdingAPI.Builders;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
+
+namespace MonsterTrainModdingAPI.Managers
+{
+    class CustomMapNodeManager
+    {
+        /// <summary>
+        /// Maps map node pool IDs to the RewardNodeData of reward nodes which can appear in them.
+        /// Reward nodes which naturally appear in the pool in the base game will not appear in these lists.
+        /// </summary>
+        public static IDictionary<string, List<RewardNodeData>> CustomCardPoolData { get; } = new Dictionary<string, List<RewardNodeData>>();
+        /// <summary>
+        /// Static reference to the game's SaveManager, which is necessary to register new map node data.
+        /// </summary>
+        public static SaveManager SaveManager { get; set; }
+
+        /// <summary>
+        /// Add the card to the card pools with given IDs.
+        /// </summary>
+        /// <param name="rewardNodeData">RewardNodeData to be added to the pools</param>
+        /// <param name="mapNodePoolIDs">List of map node pool IDs to add the reward node to</param>
+        public static void RegisterCustomRewardNode(RewardNodeData rewardNodeData, List<string> mapNodePoolIDs)
+        {
+            var mapNodeDatas = (List<MapNodeData>)AccessTools.Field(typeof(AllGameData), "mapNodeDatas").GetValue(SaveManager.GetAllGameData());
+            mapNodeDatas.Add(rewardNodeData);
+            foreach (string mapNodePoolID in mapNodePoolIDs)
+            {
+                if (!CustomCardPoolData.ContainsKey(mapNodePoolID))
+                {
+                    CustomCardPoolData[mapNodePoolID] = new List<RewardNodeData>();
+                }
+                CustomCardPoolData[mapNodePoolID].Add(rewardNodeData);
+            }
+        }
+
+        /// <summary>
+        /// Gets a list of all reward nodes added to the given map node pool by mods.
+        /// Reward nodes which naturally appear in the pool will not be returned.
+        /// </summary>
+        /// <param name="mapNodePoolID">ID of the map node pool to get nodes for</param>
+        /// <returns>A list of reward nodes added to the map node pool with given ID by mods</returns>
+        public static List<RewardNodeData> GetRewardNodesForPool(string mapNodePoolID)
+        {
+            if (CustomCardPoolData.ContainsKey(mapNodePoolID))
+            {
+                return CustomCardPoolData[mapNodePoolID];
+            }
+            return new List<RewardNodeData>();
+        }
+    }
+}
