@@ -11,7 +11,6 @@ using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
-using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -55,11 +54,11 @@ namespace MonsterTrainModdingAPI.Builders
         /// <summary>
         /// Loading Info for loading a character's sprite
         /// </summary>
-        public AssetBundleLoadingInfo SpriteBundleLoadingInfo { get; set; }
+        public CustomAssetManager.AssetBundleLoadingInfo SpriteBundleLoadingInfo { get; set; }
         /// <summary>
         /// Loading Info for loading a character's Skeleton Animation
         /// </summary>
-        public AssetBundleLoadingInfo SkeletonAnimationBundleLoadingInfo { get; set; }
+        public CustomAssetManager.AssetBundleLoadingInfo SkeletonAnimationBundleLoadingInfo { get; set; }
         /// <summary>
         /// Use an existing base game character's art by filling this in with the appropriate character's asset reference information.
         /// </summary>

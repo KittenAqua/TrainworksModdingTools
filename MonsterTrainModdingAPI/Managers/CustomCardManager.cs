@@ -3,7 +3,6 @@ using System.IO;
 using BepInEx.Logging;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
-using MonsterTrainModdingAPI.Utilities;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
@@ -22,7 +21,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Maps custom card IDs to the information required to load their Assets.
         /// </summary>
-        public static IDictionary<string, AssetBundleLoadingInfo> CardBundleData { get; } = new Dictionary<string, AssetBundleLoadingInfo>();
+        public static IDictionary<string, CustomAssetManager.AssetBundleLoadingInfo> CardBundleData { get; } = new Dictionary<string, CustomAssetManager.AssetBundleLoadingInfo>();
         /// <summary>
         /// Static reference to the game's SaveManager, which is necessary to register new cards.
         /// </summary>
@@ -35,7 +34,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="cardData">The custom card data to register</param>
         /// <param name="cardPoolData">The card pools the custom card should be a part of</param>
         /// <param name="info">The info used to load Art from AssetBundles</param>
-        public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData, AssetBundleLoadingInfo info = null)
+        public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData, CustomAssetManager.AssetBundleLoadingInfo info = null)
         {
             if (info != null)
             {
@@ -89,6 +88,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         /// <param name="assetRef">Reference to inform of loading</param>
         /// <param name="sprite">Sprite to create card with</param>
+        /// <param name="cardID">ID of the card to create the sprite for</param>
         /// <returns></returns>
         private static GameObject CreateCardGameObject(AssetReferenceGameObject assetRef, Sprite sprite, string cardID)
         {
@@ -118,27 +118,27 @@ namespace MonsterTrainModdingAPI.Managers
 
             // Get the path to the asset from the card's asset reference data
             var assetRef = (AssetReferenceGameObject)AccessTools.Field(typeof(CardData), "cardArtPrefabVariantRef").GetValue(cardData);
-
+            Sprite sprite = null;
             if (CardBundleData.ContainsKey(cardID))
             {
-                Texture2D tex = AssetBundleUtils.LoadAssetFromPath<Texture2D>(CardBundleData[cardID]);
-                Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-                return CreateCardGameObject(assetRef, sprite, cardID);
+                Texture2D tex = CustomAssetManager.LoadAssetFromBundle<Texture2D>(CardBundleData[cardID]);
+                sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
+                
             }
-
-            string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(assetRef);
-            string cardPath = "BepInEx/plugins/" + assetPath;
-            if (File.Exists(cardPath))
+            else
             {
-                // Create the card sprite
-                byte[] fileData = File.ReadAllBytes(cardPath);
-                Texture2D tex = new Texture2D(1, 1);
-                UnityEngine.ImageConversion.LoadImage(tex, fileData);
-                Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-
+                // Get the path to the asset from the card's asset reference data
+                string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(assetRef);
+                sprite = CustomAssetManager.LoadSpriteFromPath(assetPath);
+            }
+            if (sprite != null)
+            {
                 return CreateCardGameObject(assetRef, sprite, cardID);
             }
-            return null;
+            else
+            {
+                return null;
+            }
         }
     }
 }
