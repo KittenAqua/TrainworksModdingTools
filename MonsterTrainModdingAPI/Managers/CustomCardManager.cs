@@ -57,6 +57,8 @@ namespace MonsterTrainModdingAPI.Managers
             {
                 return CustomCardData[cardID];
             }
+            API.Log(LogLevel.All, "Couldn't find custom card: " + cardID + " - This will cause crashes.");
+            
             return null;
         }
 
