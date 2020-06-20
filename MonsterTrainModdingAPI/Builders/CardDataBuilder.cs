@@ -56,6 +56,9 @@ namespace MonsterTrainModdingAPI.Builders
         /// Custom asset path to load card art from.
         /// </summary>
         public string AssetPath { get; set; }
+        /// <summary>
+        /// Loading Info for loading a card's sprite from an asset bundle.
+        /// </summary>
         public CustomAssetManager.AssetBundleLoadingInfo BundleLoadingInfo { get; set; }
         /// <summary>
         /// Use an existing base game card's art by filling this in with the appropriate card's asset reference information.

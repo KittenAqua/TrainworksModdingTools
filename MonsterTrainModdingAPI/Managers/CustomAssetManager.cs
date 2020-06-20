@@ -58,7 +58,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="assetName">Name of the asset to load</param>
         /// <param name="bundlePath">Path to the bundle containing the asset to load</param>
         /// <returns></returns>
-        public static T LoadAssetFromBundle<T>(string assetName, string bundlePath = "") where T : UnityEngine.Object
+        public static T LoadAssetFromBundle<T>(string assetName, string bundlePath) where T : UnityEngine.Object
         {
             return (T)LoadAssetBundleFromPath(bundlePath).LoadAsset(assetName);
         }
