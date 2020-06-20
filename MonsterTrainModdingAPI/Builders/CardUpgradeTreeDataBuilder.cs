@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MonsterTrainModdingAPI.Builders
 {
-    class CardUpgradeTreeDataBuilder
+    public class CardUpgradeTreeDataBuilder
     {
         /// <summary>
         /// Please make a custom ChampionData class to add here.

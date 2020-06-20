@@ -37,7 +37,7 @@ namespace MonsterTrainModdingAPI.Builders
         public string SubclassDescription { get; set; }
 
         public ChampionData StartingChampion { get; set; }
-        public CardUpgradeTreeData UpgradeTree { get; set; }
+        public CardUpgradeTreeDataBuilder UpgradeTree { get; set; }
 
         /// <summary>
         /// Must contain 4 sprites; in order:
@@ -132,7 +132,7 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(ClassData), "uiColor").SetValue(classData, this.UiColor);
             AccessTools.Field(typeof(ClassData), "uiColorDark").SetValue(classData, this.UiColorDark);
             //AccessTools.Field(typeof(ClassData), "UNLOCK_KEYS").SetValue(classData, this.);
-            AccessTools.Field(typeof(ClassData), "upgradeTree").SetValue(classData, this.UpgradeTree);
+            AccessTools.Field(typeof(ClassData), "upgradeTree").SetValue(classData, this.UpgradeTree.Build());
 
             return classData;
         }
