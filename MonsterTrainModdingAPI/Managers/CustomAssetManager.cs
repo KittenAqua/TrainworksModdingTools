@@ -96,6 +96,33 @@ namespace MonsterTrainModdingAPI.Managers
             }
         }
 
+
+        /// <summary>
+        /// Helper class optionally used to aid in loading asset bundles.
+        /// </summary>
+        public class AssetBundleLoadingInfo
+        {
+            public IDictionary<Type, ISettings> LoadingDictionary { get; private set; } = new Dictionary<Type, ISettings>();
+            public string AssetName { get; set; }
+            public string BundlePath { get; set; }
+            public AssetBundleLoadingInfo(string assetName, string bundlePath)
+            {
+                this.AssetName = assetName;
+                this.BundlePath = bundlePath;
+            }
+
+            public AssetBundleLoadingInfo AddImportSettings<T>(T ImportSettings) where T : ISettings
+            {
+                if (!ImportSettings.GetType().ContainsGenericParameters)
+                {
+                    throw new ArgumentException("");
+                }
+                Type type = ImportSettings.GetType().GetGenericArguments()[0];
+                LoadingDictionary.Add(type, ImportSettings);
+                return this;
+            }
+        }
+
         /// <summary>
         /// An Interface used to Represent Settings
         /// </summary>
@@ -105,11 +132,52 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         public interface ISettings<T> : ISettings
         {
-            T ApplySettings(T @object);
+            void ApplySettings(ref T @object);
         }
 
+        public class GameObjectImportSettings : ISettings<GameObject>
+        {
+            /// <summary>
+            /// A Function that is called after Settings are applied, use this to add your own Sprite Logic
+            /// </summary>
+            public Func<GameObject, GameObject> func { get; set; }
+            public GameObjectImportSettings()
+            {
+
+            }
+            public void ApplySettings(ref GameObject @object)
+            {
+                @object = func(@object);
+            }
+        }
+
+        public class Texture2DImportSettings : ISettings<Texture2D>
+        {
+            /// <summary>
+            /// A Function that is called after Settings are applied, use this to add your own Sprite Logic
+            /// </summary>
+            public Func<Texture2D, Texture2D> func { get; set; }
+            public Texture2DImportSettings()
+            {
+
+            }
+            public void ApplySettings(ref Texture2D @object)
+            {
+                //To Add: Logic
+                
+                //
+                @object = func(@object);
+            }
+        }
+        /// <summary>
+        /// Import Settings for Sprites
+        /// </summary>
         public class SpriteImportSettings : ISettings<Sprite>
         {
+            /// <summary>
+            /// A Function that is called after Settings are applied, use this to add your own Sprite Logic
+            /// </summary>
+            public Func<Sprite, Sprite> func { get; set; }
             /// <summary>
             /// Rectangular section of the texture to use for the sprite relative to the textures width and height
             /// </summary>
@@ -148,15 +216,15 @@ namespace MonsterTrainModdingAPI.Managers
                 border = Vector4.zero;
                 generateFallbackPhysicsShape = true;
             }
-            public Sprite ApplySettings(Sprite @object)
+            public void ApplySettings(ref Sprite @object)
             {
                 //Runtime Editing of the Sprite using AccessTools May not be wise, So I elected for the creation of a new one.
-                return Sprite.Create(
+                Sprite spr = Sprite.Create(
                     @object.texture,
                     new Rect(
-                        @object.texture.width * rect.x, 
-                        @object.texture.height * rect.y, 
-                        @object.texture.width * rect.width, 
+                        @object.texture.width * rect.x,
+                        @object.texture.height * rect.y,
+                        @object.texture.width * rect.width,
                         @object.texture.height * rect.height),
                     pivot,
                     pixelPerUnit,
@@ -164,33 +232,9 @@ namespace MonsterTrainModdingAPI.Managers
                     meshType,
                     border,
                     generateFallbackPhysicsShape);
-            }
-   
-        }
-        /// <summary>
-        /// Helper class optionally used to aid in loading asset bundles.
-        /// </summary>
-        public class AssetBundleLoadingInfo
-        {
-            public IDictionary<Type, ISettings> LoadingDictionary { get; private set; } = new Dictionary<Type, ISettings>();
-            public string AssetName { get; set; }
-            public string BundlePath { get; set; }
-            public AssetBundleLoadingInfo(string assetName, string bundlePath)
-            {
-                this.AssetName = assetName;
-                this.BundlePath = bundlePath;
+                @object = func(spr);
             }
 
-            public AssetBundleLoadingInfo AddImportSettings<T>(T ImportSettings) where T : ISettings
-            {
-                if (!ImportSettings.GetType().ContainsGenericParameters)
-                {
-                    throw new ArgumentException("");
-                }
-                Type type = ImportSettings.GetType().GetGenericArguments()[0];
-                LoadingDictionary.Add(type, ImportSettings);
-                return this;
-            }
         }
     }
 }
