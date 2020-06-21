@@ -14,17 +14,44 @@ namespace MonsterTrainModdingAPI.Builders
 {
     public class CardTraitDataBuilder
     {
+        /// <summary>
+        /// Name of the trait class to instantiate.
+        /// </summary>
         public string TraitStateName { get; set; }
 
+        /// <summary>
+        /// CardData parameter; exact purpose depends on the trait type specified in TraitStateName.
+        /// </summary>
         public CardData ParamCardData { get; set; }
+        /// <summary>
+        /// Type of card to target; exact purpose depends on the trait type specified in TraitStateName.
+        /// </summary>
         public CardStatistics.CardTypeTarget ParamCardType { get; set; }
+        /// <summary>
+        /// Team to target; exact purpose depends on the trait type specified in TraitStateName.
+        /// </summary>
         public Team.Type ParamTeamType { get; set; }
 
+        /// <summary>
+        /// Float parameter; exact purpose depends on the trait type specified in TraitStateName.
+        /// </summary>
         public float ParamFloat { get; set; }
+        /// <summary>
+        /// Int parameter; exact purpose depends on the trait type specified in TraitStateName.
+        /// </summary>
         public int ParamInt { get; set; }
+        /// <summary>
+        /// String parameter; exact purpose depends on the trait type specified in TraitStateName.
+        /// </summary>
         public string ParamStr { get; set; }
+        /// <summary>
+        /// Subtype parameter; exact purpose depends on the trait type specified in TraitStateName.
+        /// </summary>
         public string ParamSubtype { get; set; }
 
+        /// <summary>
+        /// Status effect array parameter; exact purpose depends on the trait type specified in TraitStateName.
+        /// </summary>
         public StatusEffectStackData[] ParamStatusEffects { get; set; }
 
         public CardStatistics.EntryDuration ParamEntryDuration { get; set; }
@@ -36,6 +63,11 @@ namespace MonsterTrainModdingAPI.Builders
             this.ParamStatusEffects = new StatusEffectStackData[0];
         }
 
+        /// <summary>
+        /// Builds the CardTraitData represented by this builder's parameters recursively;
+        /// all Builders represented in this class's various fields will also be built.
+        /// </summary>
+        /// <returns>The newly created CardTraitData</returns>
         public CardTraitData Build()
         {
             CardTraitData cardTraitData = new CardTraitData();
@@ -54,12 +86,22 @@ namespace MonsterTrainModdingAPI.Builders
             return cardTraitData;
         }
 
+        /// <summary>
+        /// Add a status effect to this effect's status effect array.
+        /// </summary>
+        /// <param name="statusEffectType">Must implement IMTStatusEffect</param>
+        /// <param name="stackCount">Number of stacks to apply</param>
         public void AddStatusEffect(Type statusEffectType, int stackCount)
         {
             string statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
             this.AddStatusEffect(statusEffectID, stackCount);
         }
 
+        /// <summary>
+        /// Add a status effect to this effect's status effect array.
+        /// </summary>
+        /// <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
+        /// <param name="stackCount">Number of stacks to apply</param>
         public void AddStatusEffect(string statusEffectID, int stackCount)
         {
             this.ParamStatusEffects = BuilderUtils.AddStatusEffect(statusEffectID, stackCount, this.ParamStatusEffects);

@@ -16,37 +16,89 @@ namespace MonsterTrainModdingAPI.Builders
 {
     public class CharacterDataBuilder
     {
+        /// <summary>
+        /// Unique string used to store and retrieve the character data.
+        /// </summary>
         public string CharacterID { get; set; }
 
+        /// <summary>
+        /// Name displayed on the character.
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// The character's attack stat.
+        /// </summary>
         public int AttackDamage { get; set; }
+        /// <summary>
+        /// The character's health stat.
+        /// </summary>
         public int Health { get; set; }
+        /// <summary>
+        /// The amount of capacity the character uses up on the floor.
+        /// </summary>
         public int Size { get; set; }
 
         public List<CharacterTriggerData> Triggers { get; set; }
 
+        /// <summary>
+        /// Status effects the character starts with when spawned in.
+        /// </summary>
         public StatusEffectStackData[] StartingStatusEffects { get; set; }
         public string[] StatusEffectImmunities { get; set; }
 
+        /// <summary>
+        /// Custom asset path to load character art from.
+        /// </summary>
         public string AssetPath { get; set; }
+        /// <summary>
+        /// Loading Info for loading a character's sprite
+        /// </summary>
+        public CustomAssetManager.AssetBundleLoadingInfo SpriteBundleLoadingInfo { get; set; }
+        /// <summary>
+        /// Loading Info for loading a character's Skeleton Animation
+        /// </summary>
+        public CustomAssetManager.AssetBundleLoadingInfo SkeletonAnimationBundleLoadingInfo { get; set; }
+        /// <summary>
+        /// Use an existing base game character's art by filling this in with the appropriate character's asset reference information.
+        /// </summary>
         public AssetReferenceGameObject CharacterPrefabVariantRef { get; set; }
 
+        /// <summary>
+        /// Whether or not the character is able to attack.
+        /// </summary>
         public bool CanAttack { get; set; }
+        /// <summary>
+        /// Whether or not the character is able to be healed.
+        /// </summary>
         public bool CanBeHealed { get; set; }
 
+        /// <summary>
+        /// Whether or not the character is a miniboss (a non-flying boss).
+        /// </summary>
         public bool IsMiniboss { get; set; }
+        /// <summary>
+        /// Whether or not the character is a flying boss.
+        /// </summary>
         public bool IsOuterTrainBoss { get; set; }
 
         public bool DeathSlidesBackwards { get; set; }
 
         public List<ActionGroupData> BossActionGroups { get; set; }
 
+        /// <summary>
+        /// Use an existing base game character's lore tooltip by adding its key to this list.
+        /// </summary>
         public List<string> CharacterLoreTooltipKeys { get; set; }
+
         public List<RoomModifierData> RoomModifiers { get; set; }
 
         public bool AscendsTrainAutomatically { get; set; }
-        public bool AttackTeleportsToDefender { get; set; } // When attacking, this character moves next to its target before hitting it.
+
+        /// <summary>
+        /// "When attacking, this character moves next to its target before hitting it." - base game comment
+        /// </summary>
+        public bool AttackTeleportsToDefender { get; set; }
 
         public List<string> SubtypeKeys { get; set; }
 
@@ -57,13 +109,25 @@ namespace MonsterTrainModdingAPI.Builders
         public RuntimeAnimatorController AnimationController { get; set; }
         public CharacterDeathVFX.Type DeathType { get; set; }
         public VfxAtLoc DeathVFX { get; set; }
-        public VfxAtLoc ImpactVFX { get; set; } // The VFX to put on the target when attacking to override CombatManager CombatReactVFXPrefab
-        public VfxAtLoc ProjectilePrefab { get; set; } // The projectile to fire when attacking
+        /// <summary>
+        /// "The VFX to put on the target when attacking to override CombatManager CombatReactVFXPrefab" - base game comment
+        /// </summary>
+        public VfxAtLoc ImpactVFX { get; set; }
+        /// <summary>
+        /// The projectile to fire when attacking - base game comment
+        /// </summary>
+        public VfxAtLoc ProjectilePrefab { get; set; }
         public VfxAtLoc BossRoomSpellCastVFX { get; set; }
         public VfxAtLoc BossSpellCastVFX { get; set; }
-        public Sprite CharacterSpriteCache { get; set; }
 
-        public FallbackData FallBackData { get; set; } // The default character prefab to use if one isn't found.  (Which should never happen in the shpped game)
+        /// <summary>
+        /// A cache for the character's sprite so it doesn't have to be reloaded repeatedly.
+        /// </summary>
+        public Sprite CharacterSpriteCache { get; set; }
+        /// <summary>
+        /// "The default character prefab to use if one isn't found.  (Which should never happen in the shpped game)" - base game comment
+        /// </summary>
+        public FallbackData FallBackData { get; set; }
 
         public CharacterDataBuilder()
         {
@@ -83,13 +147,23 @@ namespace MonsterTrainModdingAPI.Builders
             this.ImpactVFX = (VfxAtLoc)FormatterServices.GetUninitializedObject(typeof(VfxAtLoc));
         }
 
+        /// <summary>
+        /// Builds the CharacterData represented by this builder's parameters recursively
+        /// and registers it and its components with the appropriate managers.
+        /// </summary>
+        /// <returns>The newly registered CharacterData</returns>
         public CharacterData BuildAndRegister()
         {
             var characterData = this.Build();
-            CustomCharacterManager.RegisterCustomCharacter(characterData);
+            CustomCharacterManager.RegisterCustomCharacter(characterData, SpriteBundleLoadingInfo, SkeletonAnimationBundleLoadingInfo);
             return characterData;
         }
 
+        /// <summary>
+        /// Builds the CharacterData represented by this builder's parameters recursively;
+        /// all Builders represented in this class's various fields will also be built.
+        /// </summary>
+        /// <returns>The newly created CharacterData</returns>
         public CharacterData Build()
         {
             CharacterData characterData = ScriptableObject.CreateInstance<CharacterData>();
@@ -132,6 +206,13 @@ namespace MonsterTrainModdingAPI.Builders
             return characterData;
         }
 
+        /// <summary>
+        /// Creates an asset reference to an existing game file.
+        /// Primarily useful for reusing base game art.
+        /// Cards with custom art should not use this method.
+        /// </summary>
+        /// <param name="m_debugName">The asset's debug name (usually the path to it)</param>
+        /// <param name="m_AssetGUID">The asset's GUID</param>
         public void CreateAndSetCharacterArtPrefabVariantRef(string m_debugName, string m_AssetGUID)
         {
             var assetReferenceGameObject = new AssetReferenceGameObject();
@@ -143,14 +224,23 @@ namespace MonsterTrainModdingAPI.Builders
 
             this.AssetPath = m_AssetGUID;
         }
-        
 
+        /// <summary>
+        /// Add a status effect to this character's starting status effect array.
+        /// </summary>
+        /// <param name="statusEffectType">Must implement IMTStatusEffect</param>
+        /// <param name="stackCount">Number of stacks to apply</param>
         public void AddStartingStatusEffect(Type statusEffectType, int stackCount)
         {
             string statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
             this.AddStartingStatusEffect(statusEffectID, stackCount);
         }
 
+        /// <summary>
+        /// Add a status effect to this character's starting status effect array.
+        /// </summary>
+        /// <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
+        /// <param name="stackCount">Number of stacks to apply</param>
         public void AddStartingStatusEffect(string statusEffectID, int stackCount)
         {
             this.StartingStatusEffects = BuilderUtils.AddStatusEffect(statusEffectID, stackCount, this.StartingStatusEffects);

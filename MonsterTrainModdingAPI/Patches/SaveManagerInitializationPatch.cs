@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace MonsterTrainModdingAPI.Patches
 {
+    /// <summary>
+    /// Provides managers with the references they need to function.
+    /// </summary>
     [HarmonyPatch(typeof(SaveManager), "Initialize")]
     class SaveManagerInitializationPatch
     {
@@ -15,11 +18,16 @@ namespace MonsterTrainModdingAPI.Patches
         {
             CustomCardManager.SaveManager = __instance;
             CustomCharacterManager.SaveManager = __instance;
+            CustomCollectableRelicManager.SaveManager = __instance;
             CustomCharacterManager.FallbackData = (FallbackData)AccessTools.Field(typeof(CharacterData), "fallbackData")
                 .GetValue(__instance.GetAllGameData().GetAllCharacterData()[0]);
         }
     }
 
+    /// <summary>
+    /// At this point, the API is fully set up.
+    /// Initialize all API mods by calling their methods.
+    /// </summary>
     [HarmonyPatch(typeof(AssetLoadingManager), "Start")]
     class AssetLoadingManagerInitializationPatch
     {
