@@ -8,12 +8,15 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
+using MonsterTrainModdingAPI.Builders;
 using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
 namespace MonsterTrainModdingAPI.Builders
 {
-    public class DraftRewardDataBuilder
+    public class DraftRewardDataBuilder : IRewardDataBuilder
     {
+        public string DraftRewardID { get; set; }
+
         public ClassData ClassDataOverride { get; set; }
         public RunState.ClassType ClassType { get; set; }
         public bool ClassTypeOverride { get; set; }
@@ -50,6 +53,7 @@ namespace MonsterTrainModdingAPI.Builders
         public RewardData Build()
         {
             RewardData rewardData = ScriptableObject.CreateInstance<DraftRewardData>();
+            AccessTools.Field(typeof(GameData), "id").SetValue(rewardData, this.DraftRewardID);
             AccessTools.Field(typeof(DraftRewardData), "classDataOverride").SetValue(rewardData, this.ClassDataOverride);
             AccessTools.Field(typeof(DraftRewardData), "classType").SetValue(rewardData, this.ClassType);
             AccessTools.Field(typeof(DraftRewardData), "classTypeOverride").SetValue(rewardData, this.ClassTypeOverride);

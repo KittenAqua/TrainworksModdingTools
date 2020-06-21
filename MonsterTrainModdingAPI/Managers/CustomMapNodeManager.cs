@@ -9,13 +9,13 @@ using UnityEngine.UI;
 
 namespace MonsterTrainModdingAPI.Managers
 {
-    class CustomMapNodeManager
+    public class CustomMapNodeManager
     {
         /// <summary>
         /// Maps map node pool IDs to the RewardNodeData of reward nodes which can appear in them.
         /// Reward nodes which naturally appear in the pool in the base game will not appear in these lists.
         /// </summary>
-        public static IDictionary<string, List<RewardNodeData>> CustomCardPoolData { get; } = new Dictionary<string, List<RewardNodeData>>();
+        public static IDictionary<string, List<RewardNodeData>> CustomRewardNodeData { get; } = new Dictionary<string, List<RewardNodeData>>();
         /// <summary>
         /// Static reference to the game's SaveManager, which is necessary to register new map node data.
         /// </summary>
@@ -32,11 +32,11 @@ namespace MonsterTrainModdingAPI.Managers
             mapNodeDatas.Add(rewardNodeData);
             foreach (string mapNodePoolID in mapNodePoolIDs)
             {
-                if (!CustomCardPoolData.ContainsKey(mapNodePoolID))
+                if (!CustomRewardNodeData.ContainsKey(mapNodePoolID))
                 {
-                    CustomCardPoolData[mapNodePoolID] = new List<RewardNodeData>();
+                    CustomRewardNodeData[mapNodePoolID] = new List<RewardNodeData>();
                 }
-                CustomCardPoolData[mapNodePoolID].Add(rewardNodeData);
+                CustomRewardNodeData[mapNodePoolID].Add(rewardNodeData);
             }
         }
 
@@ -48,9 +48,9 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns>A list of reward nodes added to the map node pool with given ID by mods</returns>
         public static List<RewardNodeData> GetRewardNodesForPool(string mapNodePoolID)
         {
-            if (CustomCardPoolData.ContainsKey(mapNodePoolID))
+            if (CustomRewardNodeData.ContainsKey(mapNodePoolID))
             {
-                return CustomCardPoolData[mapNodePoolID];
+                return CustomRewardNodeData[mapNodePoolID];
             }
             return new List<RewardNodeData>();
         }
