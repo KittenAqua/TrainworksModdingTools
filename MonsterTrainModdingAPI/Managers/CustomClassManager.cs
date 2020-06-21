@@ -19,6 +19,10 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         public static IDictionary<string, ClassData> CustomClassData { get; } = new Dictionary<string, ClassData>();
         /// <summary>
+        /// Maps custom class IDs to their respective Class Frame Sprites. The list should be in the format Unit, Spell.
+        /// </summary>
+        public static IDictionary<string, List<Sprite>> CustomClassFrame { get; } = new Dictionary<string, List<Sprite>> ();
+        /// <summary>
         /// Static reference to the game's SaveManager, which is necessary to register new classes.
         /// </summary>
         public static SaveManager SaveManager { get; set; }
@@ -68,6 +72,56 @@ namespace MonsterTrainModdingAPI.Managers
             var saveData = (SaveData)AccessTools.Property(typeof(SaveManager), "ActiveSaveData").GetValue(SaveManager);
             ClassData mainClass = SaveManager.GetAllGameData().FindClassData(saveData.GetStartingConditions().Class);
             return mainClass;
+        }
+
+        /// <summary>
+        /// Sets the Champion of your built Clan Data. Champion should be already Built and Registered!
+        /// </summary>
+        /// <param name="classData"></param>
+        /// <param name="championCard"></param>
+        public static void SetChampion(ClassData classData, CardData championCard)
+        {
+            var champ = classData.GetStartingChampionData();
+            champ.cardData = championCard;
+        }
+
+        /// <summary>
+        /// Sets the Starter Card of your built Clan Data. Starter should be already Built and Registered!
+        /// Custom starter sets and configurations can be created manually.
+        /// </summary>
+        /// <param name="classData"></param>
+        /// <param name="starterCard"></param>
+        public static void SetStarter(ClassData classData, CardData starterCard)
+        {
+            ClassData c = classData;
+
+            List<ClassData.StartingCardOptions> cardList = new List<ClassData.StartingCardOptions>
+                {
+                    new ClassData.StartingCardOptions
+                    {
+                        cards = new List<CardData>
+                        {
+                            starterCard,
+                        }
+                    },
+                    new ClassData.StartingCardOptions
+                    {
+                        cards = new List<CardData>
+                        {
+                            starterCard,
+                        }
+                    },
+                    new ClassData.StartingCardOptions
+                    {
+                        cards = new List<CardData>
+                        {
+                            starterCard,
+                        }
+                    },
+                };
+
+            AccessTools.Field(typeof(ClassData), "mainClassStartingCards").SetValue(c, cardList);
+            AccessTools.Field(typeof(ClassData), "subclassStartingCards").SetValue(c, cardList);
         }
     }
 }

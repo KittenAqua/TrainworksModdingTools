@@ -182,6 +182,15 @@ namespace MonsterTrainModdingAPI.Builders
             var cardData = this.Build();
             API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
             CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs, BundleLoadingInfo);
+
+            // Set this card as Champion if it is Champion and also has a Clan
+            if (cardData.GetRarity() == CollectableRarity.Champion)
+                CustomClassManager.SetChampion(this.LinkedClass, cardData);
+
+            // Set this card as a Starter if it is Starter Rarity and also has a Clan
+            if (cardData.GetRarity() == CollectableRarity.Starter)
+                CustomClassManager.SetStarter(this.LinkedClass, cardData);
+
             return cardData;
         }
 

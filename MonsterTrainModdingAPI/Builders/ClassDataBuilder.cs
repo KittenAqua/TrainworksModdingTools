@@ -36,6 +36,9 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public string SubclassDescription { get; set; }
 
+        /// <summary>
+        /// Please set storyChampionData and championCharacterArt
+        /// </summary>
         public ChampionData StartingChampion { get; set; }
         public CardUpgradeTreeDataBuilder UpgradeTreeBuilder { get; set; }
         public CardUpgradeTreeData UpgradeTree { get; set; }
@@ -49,7 +52,18 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public List<Sprite> Icons { get; set; }
         public Sprite ChampionIcon { get; set; }
+        /// <summary>
+        /// Use CardStyle only for accessing the base game card frames. Otherwise use CardFrame for custom frames
+        /// </summary>
         public ClassCardStyle CardStyle { get; set; }
+        /// <summary>
+        /// Add a custom CardFrame as a sprite for unit cards.
+        /// </summary>
+        public Sprite CardFrameUnit { get; set; }
+        /// <summary>
+        /// Add a custom CardFrame as a sprite for spell cards.
+        /// </summary>
+        public Sprite CardFrameSpell { get; set; }
         public string ClanSelectSfxCue { get; set; }
 
         public List<ClassData.StartingCardOptions> MainClassStartingCards { get; set; }
@@ -76,6 +90,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.SubclassStartingCards = new List<ClassData.StartingCardOptions>();
             this.UnlockKeys = new Dictionary<MetagameSaveData.TrackedValue, string>();
             this.ClassUnlockPreviewTexts = new List<string>();
+            this.StartingChampion = (ChampionData)UnityEngine.ScriptableObject.CreateInstance("ChampionData");
         }
 
         /// <summary>
@@ -135,6 +150,8 @@ namespace MonsterTrainModdingAPI.Builders
             //AccessTools.Field(typeof(ClassData), "UNLOCK_KEYS").SetValue(classData, this.);
             if (UpgradeTreeBuilder != null) { UpgradeTree = UpgradeTreeBuilder.Build(); }
             AccessTools.Field(typeof(ClassData), "upgradeTree").SetValue(classData, this.UpgradeTree);
+
+            CustomClassManager.CustomClassFrame.Add(this.ClassID, new List<Sprite>() { this.CardFrameUnit, this.CardFrameSpell });
 
             return classData;
         }
