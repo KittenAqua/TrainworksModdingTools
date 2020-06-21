@@ -97,16 +97,99 @@ namespace MonsterTrainModdingAPI.Managers
         }
 
         /// <summary>
+        /// An Interface used to Represent Settings
+        /// </summary>
+        public interface ISettings { }
+        /// <summary>
+        /// A Generic Interface used to Represent Settings to Apply
+        /// </summary>
+        public interface ISettings<T> : ISettings
+        {
+            T ApplySettings(T @object);
+        }
+
+        public class SpriteImportSettings : ISettings<Sprite>
+        {
+            /// <summary>
+            /// Rectangular section of the texture to use for the sprite relative to the textures width and height
+            /// </summary>
+            public Rect rect { get; set; }
+            /// <summary>
+            /// Sprite's pivot point relative to its graphic rectangle
+            /// </summary>
+            public Vector2 pivot { get; set; }
+            /// <summary>
+            /// The number of pixels in the sprite that correspond to one unit in world space.
+            /// </summary>
+            public float pixelPerUnit { get; set; }
+            /// <summary>
+            /// Amount by which the sprite mesh should be expanded outwards.
+            /// </summary>
+            public uint extrude { get; set; }
+            /// <summary>
+            /// Controls the type of mesh generated for the sprite.
+            /// </summary>
+            public SpriteMeshType meshType { get; set; }
+            /// <summary>
+            /// The border sizes of the sprite (X=left, Y=bottom, Z=right, W=top).
+            /// </summary>
+            public Vector4 border { get; set; }
+            /// <summary>
+            /// Generates a default physics shape for the sprite.
+            /// </summary>
+            public bool generateFallbackPhysicsShape { get; set; }
+            public SpriteImportSettings()
+            {
+                rect = new Rect(0, 0, 1, 1);
+                pivot = new Vector2(0.5f, 0.5f);
+                pixelPerUnit = 100f;
+                extrude = 0;
+                meshType = SpriteMeshType.Tight;
+                border = Vector4.zero;
+                generateFallbackPhysicsShape = true;
+            }
+            public Sprite ApplySettings(Sprite @object)
+            {
+                //Runtime Editing of the Sprite using AccessTools May not be wise, So I elected for the creation of a new one.
+                return Sprite.Create(
+                    @object.texture,
+                    new Rect(
+                        @object.texture.width * rect.x, 
+                        @object.texture.height * rect.y, 
+                        @object.texture.width * rect.width, 
+                        @object.texture.height * rect.height),
+                    pivot,
+                    pixelPerUnit,
+                    extrude,
+                    meshType,
+                    border,
+                    generateFallbackPhysicsShape);
+            }
+   
+        }
+        /// <summary>
         /// Helper class optionally used to aid in loading asset bundles.
         /// </summary>
         public class AssetBundleLoadingInfo
         {
+            public IDictionary<Type, ISettings> LoadingDictionary { get; private set; } = new Dictionary<Type, ISettings>();
             public string AssetName { get; set; }
             public string BundlePath { get; set; }
-            public AssetBundleLoadingInfo(string assetName, string bundlePath = "")
+            public AssetBundleLoadingInfo(string assetName, string bundlePath)
             {
                 this.AssetName = assetName;
                 this.BundlePath = bundlePath;
+            }
+
+            public AssetBundleLoadingInfo AddImportSettings<T>(T ImportSettings) where T : ISettings
+            {
+                if (!ImportSettings.GetType().ContainsGenericParameters)
+                {
+                    throw new ArgumentException("");
+                }
+                Type type = ImportSettings.GetType().GetGenericArguments()[0];
+                LoadingDictionary.Add(type, ImportSettings);
+                return this;
             }
         }
     }
