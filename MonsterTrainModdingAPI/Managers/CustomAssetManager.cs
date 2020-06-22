@@ -123,13 +123,16 @@ namespace MonsterTrainModdingAPI.Managers
 
             public AssetBundleLoadingInfo AddImportSettings<T>(T ImportSettings) where T : ISettings
             {
-                if (!ImportSettings.GetType().ContainsGenericParameters)
+                foreach(Type inter in ImportSettings.GetType().GetInterfaces())
                 {
-                    throw new ArgumentException("");
+                    if (inter.IsGenericType && (typeof(ISettings).IsAssignableFrom(inter)))
+                    {
+                        Type type = inter.GetGenericArguments()[0];
+                        LoadingDictionary.Add(type, ImportSettings);
+                        return this;
+                    }
                 }
-                Type type = ImportSettings.GetType().GetGenericArguments()[0];
-                LoadingDictionary.Add(type, ImportSettings);
-                return this;
+                throw new ArgumentException("ISettings<Type> was not found to be implimented in " + ImportSettings.GetType());
             }
         }
 
@@ -182,6 +185,10 @@ namespace MonsterTrainModdingAPI.Managers
             /// The WrapMode of the Texture on the Vertical axis
             /// </summary>
             public TextureWrapMode WrapModeV { get; set; }
+            /// <summary>
+            /// The Scale of the Object
+            /// </summary>
+            public Vector2 Scale { get; set; }
             public Texture2DImportSettings()
             {
                 Filter = FilterMode.Bilinear;
@@ -193,6 +200,10 @@ namespace MonsterTrainModdingAPI.Managers
                 @object.filterMode = Filter;
                 @object.wrapModeU = WrapModeU;
                 @object.wrapModeV = WrapModeV;
+                if (@object.isReadable)
+                {
+                    @object.Resize((int)(@object.width * Scale.x), (int)(@object.height * Scale.y));
+                }
                 if (Func != null)
                 {
                     @object = Func(@object);
@@ -209,7 +220,7 @@ namespace MonsterTrainModdingAPI.Managers
             /// </summary>
             public Func<Sprite, Sprite> Func { get; set; }
             /// <summary>
-            /// Rectangular section of the texture to use for the sprite relative to the textures width and height
+            /// Rectangular section of the texture to use for the sprite relative to the textures width and height, keep values between 0 and 1
             /// </summary>
             public Rect Rectangle { get; set; }
             /// <summary>
@@ -249,7 +260,7 @@ namespace MonsterTrainModdingAPI.Managers
             public void ApplySettings(ref Sprite @object)
             {
                 //Runtime Editing of the Sprite using AccessTools May not be wise, So I elected for the creation of a new one.
-                Sprite spr = Sprite.Create(
+                @object = Sprite.Create(
                     @object.texture,
                     new Rect(
                         @object.texture.width * Rectangle.x,
@@ -265,7 +276,7 @@ namespace MonsterTrainModdingAPI.Managers
 
                 if (Func != null)
                 {
-                    @object = Func(spr);
+                    @object = Func(@object);
                 }
             }
         }
