@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor;
 using System.Text;
 using UnityEngine;
 using BepInEx.Configuration;
@@ -40,6 +41,13 @@ namespace MonsterTrainModdingAPI.Managers
             return null;
         }
 
+        public static void ApplyImportSettings<T>(AssetBundleLoadingInfo info, ref T @asset) where T : UnityEngine.Object
+        {
+            if (info.LoadingDictionary.ContainsKey(typeof(T)))
+            {
+                ((ISettings<T>)info.LoadingDictionary[typeof(T)]).ApplySettings(ref @asset);
+            }
+        }
         /// <summary>
         /// Load an asset from an asset bundle
         /// </summary>
@@ -48,7 +56,9 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns>The asset specified by the given info</returns>
         public static T LoadAssetFromBundle<T>(AssetBundleLoadingInfo info) where T : UnityEngine.Object
         {
-            return LoadAssetFromBundle<T>(info.AssetName, info.BundlePath);
+            T asset = LoadAssetFromBundle<T>(info.AssetName, info.BundlePath);
+            ApplyImportSettings(info, ref asset);
+            return asset;
         }
 
         /// <summary>
@@ -140,14 +150,17 @@ namespace MonsterTrainModdingAPI.Managers
             /// <summary>
             /// A Function that is called after Settings are applied, use this to add your own Sprite Logic
             /// </summary>
-            public Func<GameObject, GameObject> func { get; set; }
+            public Func<GameObject, GameObject> Func { get; set; }
             public GameObjectImportSettings()
             {
 
             }
             public void ApplySettings(ref GameObject @object)
             {
-                @object = func(@object);
+                if (Func != null)
+                {
+                    @object = Func(@object);
+                }
             }
         }
 
@@ -156,17 +169,34 @@ namespace MonsterTrainModdingAPI.Managers
             /// <summary>
             /// A Function that is called after Settings are applied, use this to add your own Sprite Logic
             /// </summary>
-            public Func<Texture2D, Texture2D> func { get; set; }
+            public Func<Texture2D, Texture2D> Func { get; set; }
+            /// <summary>
+            /// The Filter that should be when scaling the texture
+            /// </summary>
+            public FilterMode Filter { get; set; }
+            /// <summary>
+            /// The WrapMode of the Texture on the horizontal axis
+            /// </summary>
+            public TextureWrapMode WrapModeU { get; set; }
+            /// <summary>
+            /// The WrapMode of the Texture on the Vertical axis
+            /// </summary>
+            public TextureWrapMode WrapModeV { get; set; }
             public Texture2DImportSettings()
             {
-
+                Filter = FilterMode.Bilinear;
+                WrapModeU = TextureWrapMode.Clamp;
+                WrapModeV = TextureWrapMode.Clamp;
             }
             public void ApplySettings(ref Texture2D @object)
             {
-                //To Add: Logic
-                
-                //
-                @object = func(@object);
+                @object.filterMode = Filter;
+                @object.wrapModeU = WrapModeU;
+                @object.wrapModeV = WrapModeV;
+                if (Func != null)
+                {
+                    @object = Func(@object);
+                }
             }
         }
         /// <summary>
@@ -177,44 +207,44 @@ namespace MonsterTrainModdingAPI.Managers
             /// <summary>
             /// A Function that is called after Settings are applied, use this to add your own Sprite Logic
             /// </summary>
-            public Func<Sprite, Sprite> func { get; set; }
+            public Func<Sprite, Sprite> Func { get; set; }
             /// <summary>
             /// Rectangular section of the texture to use for the sprite relative to the textures width and height
             /// </summary>
-            public Rect rect { get; set; }
+            public Rect Rectangle { get; set; }
             /// <summary>
             /// Sprite's pivot point relative to its graphic rectangle
             /// </summary>
-            public Vector2 pivot { get; set; }
+            public Vector2 Pivot { get; set; }
             /// <summary>
             /// The number of pixels in the sprite that correspond to one unit in world space.
             /// </summary>
-            public float pixelPerUnit { get; set; }
+            public float PixelPerUnit { get; set; }
             /// <summary>
             /// Amount by which the sprite mesh should be expanded outwards.
             /// </summary>
-            public uint extrude { get; set; }
+            public uint Extrude { get; set; }
             /// <summary>
             /// Controls the type of mesh generated for the sprite.
             /// </summary>
-            public SpriteMeshType meshType { get; set; }
+            public SpriteMeshType MeshType { get; set; }
             /// <summary>
             /// The border sizes of the sprite (X=left, Y=bottom, Z=right, W=top).
             /// </summary>
-            public Vector4 border { get; set; }
+            public Vector4 Border { get; set; }
             /// <summary>
             /// Generates a default physics shape for the sprite.
             /// </summary>
-            public bool generateFallbackPhysicsShape { get; set; }
+            public bool GenerateFallbackPhysicsShape { get; set; }
             public SpriteImportSettings()
             {
-                rect = new Rect(0, 0, 1, 1);
-                pivot = new Vector2(0.5f, 0.5f);
-                pixelPerUnit = 100f;
-                extrude = 0;
-                meshType = SpriteMeshType.Tight;
-                border = Vector4.zero;
-                generateFallbackPhysicsShape = true;
+                Rectangle = new Rect(0, 0, 1, 1);
+                Pivot = new Vector2(0.5f, 0.5f);
+                PixelPerUnit = 100f;
+                Extrude = 0;
+                MeshType = SpriteMeshType.Tight;
+                Border = Vector4.zero;
+                GenerateFallbackPhysicsShape = true;
             }
             public void ApplySettings(ref Sprite @object)
             {
@@ -222,19 +252,22 @@ namespace MonsterTrainModdingAPI.Managers
                 Sprite spr = Sprite.Create(
                     @object.texture,
                     new Rect(
-                        @object.texture.width * rect.x,
-                        @object.texture.height * rect.y,
-                        @object.texture.width * rect.width,
-                        @object.texture.height * rect.height),
-                    pivot,
-                    pixelPerUnit,
-                    extrude,
-                    meshType,
-                    border,
-                    generateFallbackPhysicsShape);
-                @object = func(spr);
-            }
+                        @object.texture.width * Rectangle.x,
+                        @object.texture.height * Rectangle.y,
+                        @object.texture.width * Rectangle.width,
+                        @object.texture.height * Rectangle.height),
+                    Pivot,
+                    PixelPerUnit,
+                    Extrude,
+                    MeshType,
+                    Border,
+                    GenerateFallbackPhysicsShape);
 
+                if (Func != null)
+                {
+                    @object = Func(spr);
+                }
+            }
         }
     }
 }
