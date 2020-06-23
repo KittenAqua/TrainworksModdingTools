@@ -20,11 +20,48 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public string RewardNodeID { get; set; }
 
+        /// <summary>
+        /// Name for the node.
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// Description for the node.
+        /// </summary>
+        public string Description { get; set; }
+        /// <summary>
+        /// Localization key for the node's name.
+        /// If both this and Name are set, Name will override this.
+        /// </summary>
+        public string TooltipTitleKey { get; set; }
+        /// <summary>
+        /// Localization key for the node's description.
+        /// If both this and Description are set, Description will override this.
+        /// </summary>
+        public string TooltipBodyKey { get; set; }
+
+        /// <summary>
+        /// Sprite used when the node is on the same path but has not been visited.
+        /// </summary>
         public string EnabledSpritePath { get; set; }
+        /// <summary>
+        /// Sprite used when the node is on the same path and has been visited.
+        /// </summary>
         public string EnabledVisitedSpritePath { get; set; }
+        /// <summary>
+        /// Sprite used when the node is on a different path.
+        /// </summary>
         public string DisabledSpritePath { get; set; }
+        /// <summary>
+        /// Sprite used when the node cannot be visited because it already has been.
+        /// </summary>
         public string DisabledVisitedSpritePath { get; set; }
+        /// <summary>
+        /// Sprite used when the node is on a path in a future zone, which is still frozen.
+        /// </summary>
         public string FrozenSpritePath { get; set; }
+        /// <summary>
+        /// Sprite used for the mouseover glow effect. Currently unused.
+        /// </summary>
         public string GlowSpritePath { get; set; }
 
         /// <summary>
@@ -34,6 +71,10 @@ namespace MonsterTrainModdingAPI.Builders
 
         public bool GrantImmediately { get; set; }
         public bool OverrideTooltipTitleBody { get; set; }
+
+        /// <summary>
+        /// This node will not be selected for your run's map unless your clan matches the one specified here
+        /// </summary>
         public ClassData RequiredClass { get; set; }
 
         public List<IRewardDataBuilder> RewardBuilders { get; set; }
@@ -41,13 +82,14 @@ namespace MonsterTrainModdingAPI.Builders
 
         public List<MapNodeData> IgnoreIfNodesPresent { get; set; }
         public Sprite MapIcon { get; set; }
-        public MapNodeIcon MapIconPrefab { get; set; }
         public Sprite MinimapIcon { get; set; }
+        /// <summary>
+        /// Clickable game object representing the node
+        /// </summary>
+        public MapNodeIcon MapIconPrefab { get; set; }
         public string NodeSelectedSfxCue { get; set; }
         public bool SkipCheckIfFullHealth { get; set; }
         public bool SkipCheckInBattleMode { get; set; }
-        public string TooltipBodyKey { get; set; }
-        public string TooltipTitleKey { get; set; }
 
         public RewardNodeDataBuilder()
         {
@@ -114,7 +156,21 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(MapNodeData), "nodeSelectedSfxCue").SetValue(rewardNodeData, this.NodeSelectedSfxCue);
             AccessTools.Field(typeof(MapNodeData), "skipCheckIfFullHealth").SetValue(rewardNodeData, this.SkipCheckIfFullHealth);
             AccessTools.Field(typeof(MapNodeData), "skipCheckInBattleMode").SetValue(rewardNodeData, this.SkipCheckInBattleMode);
+            if (this.Description != null)
+            {
+                this.TooltipBodyKey = "RewardNodeData_" + this.RewardNodeID + "_TooltipBodyKey";
+                // Use Description field for all languages
+                // This should be changed in the future to add proper localization support to custom content
+                CustomLocalizationManager.ImportSingleLocalization(this.TooltipBodyKey, "Text", "", "", "", "", this.Description, this.Description, this.Description, this.Description, this.Description, this.Description);
+            }
             AccessTools.Field(typeof(MapNodeData), "tooltipBodyKey").SetValue(rewardNodeData, this.TooltipBodyKey);
+            if (this.Name != null)
+            {
+                this.TooltipTitleKey = "RewardNodeData_" + this.RewardNodeID + "_TooltipTitleKey";
+                // Use Name field for all languages
+                // This should be changed in the future to add proper localization support to custom content
+                CustomLocalizationManager.ImportSingleLocalization(this.TooltipTitleKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
+            }
             AccessTools.Field(typeof(MapNodeData), "tooltipTitleKey").SetValue(rewardNodeData, this.TooltipTitleKey);
             AccessTools.Field(typeof(RewardNodeData), "grantImmediately").SetValue(rewardNodeData, this.GrantImmediately);
             AccessTools.Field(typeof(RewardNodeData), "OverrideTooltipTitleBody").SetValue(rewardNodeData, this.OverrideTooltipTitleBody);

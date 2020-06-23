@@ -17,10 +17,33 @@ namespace MonsterTrainModdingAPI.Builders
     {
         public string DraftRewardID { get; set; }
 
+        /// <summary>
+        /// Name of the reward data
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// Description of the reward data
+        /// </summary>
+        public string Description { get; set; }
+        /// <summary>
+        /// Name title key, overridden by Name
+        /// </summary>
+        public string _RewardTitleKey { get; set; }
+        /// <summary>
+        /// Description title key, overridden by Description
+        /// </summary>
+        public string _RewardDescriptionKey { get; set; }
+
         public ClassData ClassDataOverride { get; set; }
         public RunState.ClassType ClassType { get; set; }
         public bool ClassTypeOverride { get; set; }
+        /// <summary>
+        /// Number of cards the banner offers
+        /// </summary>
         public uint DraftOptionsCount { get; set; }
+        /// <summary>
+        /// Card pool the banner pulls from
+        /// </summary>
         public CardPool DraftPool { get; set; }
         public bool GrantSingleCard { get; set; }
         public CollectableRarity RarityFloorOverride { get; set; }
@@ -34,9 +57,7 @@ namespace MonsterTrainModdingAPI.Builders
         public bool ShowRewardAnimationInEvent { get; set; }
         public string _CollectSFXCueName { get; set; }
         public bool _IsServiceMerchantReward { get; set; }
-        public string _RewardDescriptionKey { get; set; }
         public Sprite _RewardSprite { get; set; }
-        public string _RewardTitleKey { get; set; }
         public bool _ShowCancelOverride { get; set; }
         public bool _ShowRewardFlowInEvent { get; set; }
 
@@ -69,8 +90,22 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(RewardData), "ShowRewardAnimationInEvent").SetValue(rewardData, this.ShowRewardAnimationInEvent);
             AccessTools.Field(typeof(RewardData), "_collectSFXCueName").SetValue(rewardData, this._CollectSFXCueName);
             AccessTools.Field(typeof(RewardData), "_isServiceMerchantReward").SetValue(rewardData, this._IsServiceMerchantReward);
+            if (this.Description != null)
+            {
+                this._RewardDescriptionKey = "DraftRewardData_" + this.DraftRewardID + "_RewardDescriptionKey";
+                // Use Description field for all languages
+                // This should be changed in the future to add proper localization support to custom content
+                CustomLocalizationManager.ImportSingleLocalization(this._RewardDescriptionKey, "Text", "", "", "", "", this.Description, this.Description, this.Description, this.Description, this.Description, this.Description);
+            }
             AccessTools.Field(typeof(RewardData), "_rewardDescriptionKey").SetValue(rewardData, this._RewardDescriptionKey);
             AccessTools.Field(typeof(RewardData), "_rewardSprite").SetValue(rewardData, this._RewardSprite);
+            if (this.Name != null)
+            {
+                this._RewardTitleKey = "DraftRewardData_" + this.DraftRewardID + "_RewardTitleKey";
+                // Use Name field for all languages
+                // This should be changed in the future to add proper localization support to custom content
+                CustomLocalizationManager.ImportSingleLocalization(this._RewardTitleKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
+            }
             AccessTools.Field(typeof(RewardData), "_rewardTitleKey").SetValue(rewardData, this._RewardTitleKey);
             AccessTools.Field(typeof(RewardData), "_showCancelOverride").SetValue(rewardData, this._ShowCancelOverride);
             AccessTools.Field(typeof(RewardData), "_showRewardFlowInEvent").SetValue(rewardData, this._ShowRewardFlowInEvent);

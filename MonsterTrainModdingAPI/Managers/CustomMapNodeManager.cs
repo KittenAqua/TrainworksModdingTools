@@ -41,18 +41,19 @@ namespace MonsterTrainModdingAPI.Managers
         }
 
         /// <summary>
-        /// Gets a list of all reward nodes added to the given map node pool by mods.
+        /// Gets a list of all reward nodes added to the given map node pool by mods,
+        /// then adds them to the list passed in.
         /// Reward nodes which naturally appear in the pool will not be returned.
         /// </summary>
         /// <param name="mapNodePoolID">ID of the map node pool to get nodes for</param>
+        /// <param name="mapNodes">List of map nodes to add the nodes to</param>
         /// <returns>A list of reward nodes added to the map node pool with given ID by mods</returns>
-        public static List<RewardNodeData> GetRewardNodesForPool(string mapNodePoolID)
+        public static void AddRewardNodesForPool(string mapNodePoolID, List<MapNodeData> mapNodes)
         {
             if (CustomRewardNodeData.ContainsKey(mapNodePoolID))
             {
-                return CustomRewardNodeData[mapNodePoolID];
+                mapNodes.AddRange(CustomRewardNodeData[mapNodePoolID]);
             }
-            return new List<RewardNodeData>();
         }
     }
 }
