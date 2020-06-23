@@ -39,6 +39,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public int Size { get; set; }
 
+        public List<CharacterTriggerDataBuilder> TriggerBuilders { get; set; }
         public List<CharacterTriggerData> Triggers { get; set; }
 
         /// <summary>
@@ -91,6 +92,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public List<string> CharacterLoreTooltipKeys { get; set; }
 
+        public List<RoomModifierDataBuilder> RoomModifierBuilders { get; set; }
         public List<RoomModifierData> RoomModifiers { get; set; }
 
         public bool AscendsTrainAutomatically { get; set; }
@@ -167,6 +169,16 @@ namespace MonsterTrainModdingAPI.Builders
         public CharacterData Build()
         {
             CharacterData characterData = ScriptableObject.CreateInstance<CharacterData>();
+
+            foreach (var builder in this.TriggerBuilders)
+            {
+                this.Triggers.Add(builder.Build());
+            }
+            foreach (var builder in this.RoomModifierBuilders)
+            {
+                this.RoomModifiers.Add(builder.Build());
+            }
+
             AccessTools.Field(typeof(CharacterData), "id").SetValue(characterData, this.CharacterID);
             AccessTools.Field(typeof(CharacterData), "animationController").SetValue(characterData, this.AnimationController);
             AccessTools.Field(typeof(CharacterData), "ascendsTrainAutomatically").SetValue(characterData, this.AscendsTrainAutomatically);

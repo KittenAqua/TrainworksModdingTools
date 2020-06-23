@@ -151,7 +151,9 @@ namespace MonsterTrainModdingAPI.Builders
             if (UpgradeTreeBuilder != null) { UpgradeTree = UpgradeTreeBuilder.Build(); }
             AccessTools.Field(typeof(ClassData), "upgradeTree").SetValue(classData, this.UpgradeTree);
 
-            CustomClassManager.CustomClassFrame.Add(this.ClassID, new List<Sprite>() { this.CardFrameUnit, this.CardFrameSpell });
+            if (CardFrameSpell != null && CardFrameUnit != null) {
+                CustomClassManager.CustomClassFrame.Add(this.ClassID, new List<Sprite>() { this.CardFrameUnit, this.CardFrameSpell });
+            }
 
             return classData;
         }
