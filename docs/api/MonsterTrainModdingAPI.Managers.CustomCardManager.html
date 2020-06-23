@@ -103,6 +103,32 @@
   </h3>
   
   
+  <a id="MonsterTrainModdingAPI_Managers_CustomCardManager_CardBundleData_" data-uid="MonsterTrainModdingAPI.Managers.CustomCardManager.CardBundleData*"></a>
+  <h4 id="MonsterTrainModdingAPI_Managers_CustomCardManager_CardBundleData" data-uid="MonsterTrainModdingAPI.Managers.CustomCardManager.CardBundleData">CardBundleData</h4>
+  <div class="markdown level1 summary"><p>Maps custom card IDs to the information required to load their Assets.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IDictionary&lt;string, CustomAssetManager.AssetBundleLoadingInfo&gt; CardBundleData { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo.html">CustomAssetManager.AssetBundleLoadingInfo</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="MonsterTrainModdingAPI_Managers_CustomCardManager_CustomCardData_" data-uid="MonsterTrainModdingAPI.Managers.CustomCardManager.CustomCardData*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomCardManager_CustomCardData" data-uid="MonsterTrainModdingAPI.Managers.CustomCardManager.CustomCardData">CustomCardData</h4>
   <div class="markdown level1 summary"><p>Maps custom card IDs to their respective CardData.</p>
@@ -303,14 +329,14 @@ Used for loading custom card art.</p>
   
   
   <a id="MonsterTrainModdingAPI_Managers_CustomCardManager_RegisterCustomCard_" data-uid="MonsterTrainModdingAPI.Managers.CustomCardManager.RegisterCustomCard*"></a>
-  <h4 id="MonsterTrainModdingAPI_Managers_CustomCardManager_RegisterCustomCard_CardData_System_Collections_Generic_List_System_String__" data-uid="MonsterTrainModdingAPI.Managers.CustomCardManager.RegisterCustomCard(CardData,System.Collections.Generic.List{System.String})">RegisterCustomCard(CardData, List&lt;String&gt;)</h4>
+  <h4 id="MonsterTrainModdingAPI_Managers_CustomCardManager_RegisterCustomCard_CardData_System_Collections_Generic_List_System_String__MonsterTrainModdingAPI_Managers_CustomAssetManager_AssetBundleLoadingInfo_" data-uid="MonsterTrainModdingAPI.Managers.CustomCardManager.RegisterCustomCard(CardData,System.Collections.Generic.List{System.String},MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo)">RegisterCustomCard(CardData, List&lt;String&gt;, CustomAssetManager.AssetBundleLoadingInfo)</h4>
   <div class="markdown level1 summary"><p>Register a custom card with the manager, allowing it to show up in game
 both in the logbook and whenever cards are chosen from the specified pools.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void RegisterCustomCard(CardData cardData, List&lt;string&gt; cardPoolData)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void RegisterCustomCard(CardData cardData, List&lt;string&gt; cardPoolData, CustomAssetManager.AssetBundleLoadingInfo info = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -332,6 +358,12 @@ both in the logbook and whenever cards are chosen from the specified pools.</p>
         <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">cardPoolData</span></td>
         <td><p>The card pools the custom card should be a part of</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo.html">CustomAssetManager.AssetBundleLoadingInfo</a></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>The info used to load Art from AssetBundles</p>
 </td>
       </tr>
     </tbody>
