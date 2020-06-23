@@ -48,6 +48,7 @@ namespace MonsterTrainModdingAPI.Managers
                 ((ISettings<T>)info.LoadingDictionary[typeof(T)]).ApplySettings(ref @asset);
             }
         }
+
         /// <summary>
         /// Load an asset from an asset bundle
         /// </summary>
@@ -151,7 +152,7 @@ namespace MonsterTrainModdingAPI.Managers
         public class GameObjectImportSettings : ISettings<GameObject>
         {
             /// <summary>
-            /// A Function that is called after Settings are applied, use this to add your own Sprite Logic
+            /// A Function that is called after Settings are applied, use this to add your own Game Object Logic
             /// </summary>
             public Func<GameObject, GameObject> Func { get; set; }
             public GameObjectImportSettings()
@@ -170,7 +171,7 @@ namespace MonsterTrainModdingAPI.Managers
         public class Texture2DImportSettings : ISettings<Texture2D>
         {
             /// <summary>
-            /// A Function that is called after Settings are applied, use this to add your own Sprite Logic
+            /// A Function that is called after Settings are applied, use this to add your own Texture Logic
             /// </summary>
             public Func<Texture2D, Texture2D> Func { get; set; }
             /// <summary>
@@ -210,6 +211,7 @@ namespace MonsterTrainModdingAPI.Managers
                 }
             }
         }
+
         /// <summary>
         /// Import Settings for Sprites
         /// </summary>
@@ -259,7 +261,6 @@ namespace MonsterTrainModdingAPI.Managers
             }
             public void ApplySettings(ref Sprite @object)
             {
-                //Runtime Editing of the Sprite using AccessTools May not be wise, So I elected for the creation of a new one.
                 @object = Sprite.Create(
                     @object.texture,
                     new Rect(

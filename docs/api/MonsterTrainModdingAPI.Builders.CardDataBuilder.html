@@ -128,6 +128,32 @@
   </table>
   
   
+  <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_BundleLoadingInfo_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.BundleLoadingInfo*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_BundleLoadingInfo" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.BundleLoadingInfo">BundleLoadingInfo</h4>
+  <div class="markdown level1 summary"><p>Loading Info for loading a card's sprite from an asset bundle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CustomAssetManager.AssetBundleLoadingInfo BundleLoadingInfo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo.html">CustomAssetManager.AssetBundleLoadingInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_CardArtPrefabVariantRef_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.CardArtPrefabVariantRef*"></a>
   <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_CardArtPrefabVariantRef" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.CardArtPrefabVariantRef">CardArtPrefabVariantRef</h4>
   <div class="markdown level1 summary"><p>Use an existing base game card's art by filling this in with the appropriate card's asset reference information.</p>
@@ -339,7 +365,8 @@ Base game clan IDs should be retrieved via helper class &quot;MTClanIDs&quot;.</
   
   <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_Description_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.Description*"></a>
   <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_Description" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.Description">Description</h4>
-  <div class="markdown level1 summary"><p>Custom description text appended to the end of the card.</p>
+  <div class="markdown level1 summary"><p>Custom description text appended to the end of the card.
+Overridden by the OverrideDescriptionKey field.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -572,7 +599,8 @@ Base game clan IDs should be retrieved via helper class &quot;MTClanIDs&quot;.</
   
   <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_Name_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.Name*"></a>
   <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_Name" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.Name">Name</h4>
-  <div class="markdown level1 summary"><p>Name displayed on the card.</p>
+  <div class="markdown level1 summary"><p>Name displayed on the card.
+Overridden by the NameKey field.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -596,10 +624,37 @@ Base game clan IDs should be retrieved via helper class &quot;MTClanIDs&quot;.</
   </table>
   
   
+  <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_NameKey_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.NameKey*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_NameKey" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.NameKey">NameKey</h4>
+  <div class="markdown level1 summary"><p>Localization key for the card's name.
+Overrides the Name field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string NameKey { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_OverrideDescriptionKey_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.OverrideDescriptionKey*"></a>
   <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_OverrideDescriptionKey" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.OverrideDescriptionKey">OverrideDescriptionKey</h4>
-  <div class="markdown level1 summary"><p>Use an existing base game card's description key to copy the format of its description.
-Otherwise leave this blank.</p>
+  <div class="markdown level1 summary"><p>Localization key for the card's description.
+Overrides the Description field.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -830,6 +885,32 @@ Otherwise leave this blank.</p>
   </table>
   
   
+  <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_TriggerBuilders_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.TriggerBuilders*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_TriggerBuilders" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.TriggerBuilders">TriggerBuilders</h4>
+  <div class="markdown level1 summary"><p>Append to this list to add new card triggers. The Build() method recursively builds all nested builders.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CardTriggerEffectDataBuilder&gt; TriggerBuilders { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="MonsterTrainModdingAPI.Builders.CardTriggerEffectDataBuilder.html">CardTriggerEffectDataBuilder</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_Triggers_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.Triggers*"></a>
   <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_Triggers" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.Triggers">Triggers</h4>
   <div class="markdown level1 summary"><p>List of pre-built card triggers.</p>
@@ -906,7 +987,7 @@ Otherwise leave this blank.</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">cardPoolID</span></td>
-        <td><p>ID of the clan, most easily retrieved using the helper class &quot;MTCardPoolIDs&quot;</p>
+        <td><p>ID of the card pool, most easily retrieved using the helper class &quot;MTCardPoolIDs&quot;</p>
 </td>
       </tr>
     </tbody>
