@@ -22,9 +22,15 @@ namespace MonsterTrainModdingAPI.Builders
         public string CharacterID { get; set; }
 
         /// <summary>
-        /// Name displayed on the character.
+        /// Name displayed for the character.
+        /// Overridden by NameKey.
         /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Localization key for the character's name.
+        /// Overrides Name.
+        /// </summary>
+        public string NameKey { get; set; }
 
         /// <summary>
         /// The character's attack stat.
@@ -194,7 +200,14 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CharacterData), "impactVFX").SetValue(characterData, this.ImpactVFX);
             AccessTools.Field(typeof(CharacterData), "isMiniboss").SetValue(characterData, this.IsMiniboss);
             AccessTools.Field(typeof(CharacterData), "isOuterTrainBoss").SetValue(characterData, this.IsOuterTrainBoss);
-            AccessTools.Field(typeof(CharacterData), "nameKey").SetValue(characterData, this.Name);
+            if (this.NameKey == null)
+            {
+                this.NameKey = this.CharacterID + "Character_NameKey";
+                // Use Name field for all languages
+                // This should be changed in the future to add proper localization support to custom content
+                CustomLocalizationManager.ImportSingleLocalization(this.NameKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
+            }
+            AccessTools.Field(typeof(CharacterData), "nameKey").SetValue(characterData, this.NameKey);
             AccessTools.Field(typeof(CharacterData), "projectilePrefab").SetValue(characterData, this.ProjectilePrefab);
             AccessTools.Field(typeof(CharacterData), "roomModifiers").SetValue(characterData, this.RoomModifiers);
             AccessTools.Field(typeof(CharacterData), "size").SetValue(characterData, this.Size);

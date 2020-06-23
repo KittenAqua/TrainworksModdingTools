@@ -23,15 +23,25 @@ namespace MonsterTrainModdingAPI.Builders
         public string CollectableRelicID { get; set; }
 
         /// <summary>
-        /// Description name for the relic.
-        /// Set this to a base game relic's nameKey to copy its description.
+        /// Name displayed for the relic.
+        /// Overridden by the NameKey field.
         /// </summary>
         public string Name { get; set; }
         /// <summary>
-        /// Description text for the relic.
-        /// Set this to a base game relic's overrideDescriptionKey to copy its description.
+        /// Localization key for the relic's name.
+        /// Overrides the Name field.
+        /// </summary>
+        public string NameKey { get; set; }
+        /// <summary>
+        /// Description displayed for the relic.
+        /// Overridden by the DescriptionKey field.
         /// </summary>
         public string Description { get; set; }
+        /// <summary>
+        /// Localization key for the relic's description.
+        /// Overrides the Description field.
+        /// </summary>
+        public string DescriptionKey { get; set; }
         /// <summary>
         /// Custom asset path to load relic art from.
         /// </summary>
@@ -93,8 +103,16 @@ namespace MonsterTrainModdingAPI.Builders
 
             var relicData = new CollectableRelicData();
 
+            AccessTools.Field(typeof(GameData), "id").SetValue(relicData, this.CollectableRelicID);
             // RelicData fields
-            AccessTools.Field(typeof(RelicData), "descriptionKey").SetValue(relicData, this.Description);
+            if (this.DescriptionKey == null)
+            {
+                this.DescriptionKey = this.CollectableRelicID + "Relic_DescriptionKey";
+                // Use Description field for all languages
+                // This should be changed in the future to add proper localization support to custom content
+                CustomLocalizationManager.ImportSingleLocalization(this.DescriptionKey, "Text", "", "", "", "", this.Description, this.Description, this.Description, this.Description, this.Description, this.Description);
+            }
+            AccessTools.Field(typeof(RelicData), "descriptionKey").SetValue(relicData, this.DescriptionKey);
             AccessTools.Field(typeof(RelicData), "effects").SetValue(relicData, this.Effects);
             if (this.Icon == null && this.AssetPath != null)
             {
@@ -108,7 +126,14 @@ namespace MonsterTrainModdingAPI.Builders
                 }
             }
             AccessTools.Field(typeof(RelicData), "icon").SetValue(relicData, this.Icon);
-            AccessTools.Field(typeof(RelicData), "nameKey").SetValue(relicData, this.Name);
+            if (this.NameKey == null)
+            {
+                this.NameKey = this.CollectableRelicID + "Relic_NameKey";
+                // Use Name field for all languages
+                // This should be changed in the future to add proper localization support to custom content
+                CustomLocalizationManager.ImportSingleLocalization(this.NameKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
+            }
+            AccessTools.Field(typeof(RelicData), "nameKey").SetValue(relicData, this.NameKey);
             AccessTools.Field(typeof(RelicData), "relicActivatedKey").SetValue(relicData, this.RelicActivatedKey);
             AccessTools.Field(typeof(RelicData), "relicLoreTooltipKeys").SetValue(relicData, this.RelicLoreTooltipKeys);
 

@@ -35,22 +35,30 @@ namespace MonsterTrainModdingAPI.Builders
         public CardData.CostType CostType { get; set; }
         /// <summary>
         /// Name displayed on the card.
+        /// Overridden by the NameKey field.
         /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Localization key for the card's name.
+        /// Overrides the Name field.
+        /// </summary>
+        public string NameKey { get; set; }
+        /// <summary>
+        /// Custom description text appended to the end of the card.
+        /// Overridden by the OverrideDescriptionKey field.
+        /// </summary>
+        public string Description { get; set; }
+        /// <summary>
+        /// Localization key for the card's description.
+        /// Overrides the Description field.
+        /// </summary>
+        public string OverrideDescriptionKey { get; set; }
+
         /// <summary>
         /// ID of the clan the card is a part of. Leave null for clanless.
         /// Base game clan IDs should be retrieved via helper class "MTClanIDs".
         /// </summary>
         public string ClanID { get; set; }
-        /// <summary>
-        /// Custom description text appended to the end of the card.
-        /// </summary>
-        public string Description { get; set; }
-        /// <summary>
-        /// Use an existing base game card's description key to copy the format of its description.
-        /// Otherwise leave this blank.
-        /// </summary>
-        public string OverrideDescriptionKey { get; set; }
 
         /// <summary>
         /// Custom asset path to load card art from.
@@ -235,7 +243,21 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CardData), "ignoreWhenCountingMastery").SetValue(cardData, this.IgnoreWhenCountingMastery);
             AccessTools.Field(typeof(CardData), "linkedClass").SetValue(cardData, this.LinkedClass);
             AccessTools.Field(typeof(CardData), "linkedMasteryCard").SetValue(cardData, this.LinkedMasteryCard);
-            AccessTools.Field(typeof(CardData), "nameKey").SetValue(cardData, this.Name);
+            if (this.NameKey == null)
+            {
+                this.NameKey = this.CardID + "Card_NameKey";
+                // Use Name field for all languages
+                // This should be changed in the future to add proper localization support to custom content
+                CustomLocalizationManager.ImportSingleLocalization(this.NameKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
+            }
+            AccessTools.Field(typeof(CardData), "nameKey").SetValue(cardData, this.NameKey);
+            if (this.OverrideDescriptionKey == null)
+            {
+                this.OverrideDescriptionKey = this.CardID + "Card_OverrideDescriptionKey";
+                // Use Description field for all languages
+                // This should be changed in the future to add proper localization support to custom content
+                CustomLocalizationManager.ImportSingleLocalization(this.OverrideDescriptionKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
+            }
             AccessTools.Field(typeof(CardData), "overrideDescriptionKey").SetValue(cardData, this.OverrideDescriptionKey);
             AccessTools.Field(typeof(CardData), "rarity").SetValue(cardData, this.Rarity);
             AccessTools.Field(typeof(CardData), "sharedMasteryCards").SetValue(cardData, this.SharedMasteryCards);
