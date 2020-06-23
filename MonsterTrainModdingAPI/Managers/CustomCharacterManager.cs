@@ -50,7 +50,7 @@ namespace MonsterTrainModdingAPI.Managers
             {
                 CharacterSpriteBundleData.Add(data.GetID(), SpriteInfo);
             }
-            if(SkeletonAnimationInfo != null)
+            if (SkeletonAnimationInfo != null)
             {
                 CharacterSkeletonAnimationBundleData.Add(data.GetID(), SkeletonAnimationInfo);
             }
@@ -165,10 +165,15 @@ namespace MonsterTrainModdingAPI.Managers
             if (CharacterSkeletonAnimationBundleData.ContainsKey(characterID))
             {
                 GameObject skeletonData = CustomAssetManager.LoadAssetFromBundle<GameObject>(CharacterSkeletonAnimationBundleData[characterID]);
+
                 if (CharacterSpriteBundleData.ContainsKey(characterID))
                 {
+                    //Load Texture
                     Texture2D tex = CustomAssetManager.LoadAssetFromBundle<Texture2D>(CharacterSpriteBundleData[characterID]);
                     sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
+                    //Setup sprite stuff
+                    CustomAssetManager.ApplyImportSettings<Sprite>(CharacterSpriteBundleData[characterID], ref sprite);
+
                     return CreateCharacterGameObject(characterData, skeletonData, sprite);
                 }
                 return CreateCharacterGameObject(characterData, skeletonData);

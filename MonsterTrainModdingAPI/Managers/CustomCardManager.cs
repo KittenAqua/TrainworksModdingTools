@@ -121,9 +121,11 @@ namespace MonsterTrainModdingAPI.Managers
             Sprite sprite = null;
             if (CardBundleData.ContainsKey(cardID))
             {
+                //Load Texture Using AssetBundle and AssetBundle's Texture Settings
                 Texture2D tex = CustomAssetManager.LoadAssetFromBundle<Texture2D>(CardBundleData[cardID]);
+                //Load Sprite Using Texture and AssetBundle's Sprite Settings
                 sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-                
+                CustomAssetManager.ApplyImportSettings<Sprite>(CardBundleData[cardID], ref sprite);
             }
             else
             {
@@ -131,6 +133,7 @@ namespace MonsterTrainModdingAPI.Managers
                 string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(assetRef);
                 sprite = CustomAssetManager.LoadSpriteFromPath(assetPath);
             }
+            //Check if Sprite was successfully loaded
             if (sprite != null)
             {
                 return CreateCardGameObject(assetRef, sprite, cardID);
