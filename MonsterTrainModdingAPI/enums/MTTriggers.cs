@@ -1,12 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using MonsterTrainModdingAPI.Managers;
 using System.Text;
 
 namespace MonsterTrainModdingAPI.Enums.MTTriggers
 {
+    /// <summary>
+    /// An Interface Used to Represent an In Game Trigger
+    /// </summary>
     public interface IMTCharacterTrigger
     {
         int ID { get; }
+    }
+    /// <summary>
+    /// An Abstract Class used to Automatically Construct a working Character Trigger
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class MTCharacterTrigger<T> : IMTCharacterTrigger where T:MTCharacterTrigger<T>
+    {
+        public static int InternalID { get; private set; } = CustomTriggerManager.GetNewGUID<T>();
+        public int ID { get { return InternalID; } }
     }
 
     public class MTCharacterTrigger_OnDeath : IMTCharacterTrigger { public int ID => 0; }
@@ -35,45 +48,4 @@ namespace MonsterTrainModdingAPI.Enums.MTTriggers
     public class MTCharacterTrigger_OnBurnout : IMTCharacterTrigger { public int ID => 25; }
     public class MTCharacterTrigger_OnSpawnNotFromCard : IMTCharacterTrigger { public int ID => 26; }
     public class MTCharacterTrigger_OnUnscaledSpawn : IMTCharacterTrigger { public int ID => 27; }
-
-    public static class MTTriggers
-    {
-        private static int NumTriggers = 27;
-
-        /// <summary>
-        /// Set 
-        /// </summary>
-        /// <typeparam name="T">The type of the MTTrigger attempting</typeparam>
-        /// <returns></returns>
-        public static int GetNewGUID<T>() where T : IMTCharacterTrigger
-        {
-            return GetNewGUID<T>("Trigger_" + typeof(T).AssemblyQualifiedName);
-        }
-
-        public static int GetNewGUID<T>(string LocalizationKey) where T : IMTCharacterTrigger
-        {
-            NumTriggers++;
-            CharacterTriggerData.TriggerToLocalizationExpression.Add(GetTrigger(NumTriggers), LocalizationKey);
-            return NumTriggers;
-        }
-
-        public static CharacterTriggerData.Trigger GetTrigger(int ID)
-        {
-            return (CharacterTriggerData.Trigger)ID;
-        }
-        public static CharacterTriggerData.Trigger GetTrigger(IMTCharacterTrigger data)
-        {
-            return GetTrigger(data.ID);
-        }
-
-        public static CharacterTriggerData.Trigger GetTrigger(Type type)
-        {
-            if (typeof(IMTCharacterTrigger).IsAssignableFrom(type))
-            {
-                var trigger = (IMTCharacterTrigger)Activator.CreateInstance(type);
-                return GetTrigger(trigger);
-            }
-            return CharacterTriggerData.Trigger.OnDeath;
-        }
-    }
 }
