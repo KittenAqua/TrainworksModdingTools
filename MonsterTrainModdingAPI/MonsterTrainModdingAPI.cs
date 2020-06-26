@@ -37,8 +37,6 @@ namespace MonsterTrainModdingAPI
 
             var harmony = new Harmony("api.modding.train.monster");
             harmony.PatchAll();
-
-            
         }
     }
 }

@@ -11,32 +11,30 @@ namespace MonsterTrainModdingAPI.Managers
     {
         private const int TriggerGUIDOffset = 100;
         private static int NumTriggers = Enum.GetNames(typeof(CharacterTriggerData.Trigger)).Length + TriggerGUIDOffset;
-
         /// <summary>
-        /// Gets a New GUID and sets up a Localization Key of [Trigger_TypeName]
+        /// Gets a New GUID
         /// </summary>
-        /// <typeparam name="T">The type of the MTTrigger attempting</typeparam>
         /// <returns></returns>
-        public static int GetNewGUID<T>() where T : IMTCharacterTrigger
-        {
-            return GetNewGUID<T>("Trigger_" + typeof(T).Name);
-        }
-        /// <summary>
-        /// Gets a New GUID and sets up a Localization key
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="LocalizationKey"></param>
-        /// <returns></returns>
-        public static int GetNewGUID<T>(string LocalizationKey) where T : IMTCharacterTrigger
+        public static int GetNewGUID()
         {
             NumTriggers++;
-            CharacterTriggerData.TriggerToLocalizationExpression.Add(GetTrigger(NumTriggers), LocalizationKey);
             return NumTriggers;
+        }
+        /// <summary>
+        /// Registers a Localization String
+        /// </summary>
+        /// <typeparam name="T">The Trigger Type used to register for</typeparam>
+        /// <returns></returns>
+        public static string RegisterLocalizationString<T>(string RegisterName = "") where T:IMTCharacterTrigger
+        {
+            if(RegisterName == "") RegisterName = "Trigger_" + typeof(T).Name;
+            CharacterTriggerData.TriggerToLocalizationExpression[GetTrigger(typeof(T))] = RegisterName;
+            return RegisterName;
         }
         /// <summary>
         /// Returns a Trigger by Integer ID
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="ID">Integer to cast to Trigger</param>
         /// <returns></returns>
         public static CharacterTriggerData.Trigger GetTrigger(int ID)
         {
@@ -45,7 +43,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Returns a Trigger by an IMT reference
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="data">Data to get Integer ID</param>
         /// <returns></returns>
         public static CharacterTriggerData.Trigger GetTrigger(IMTCharacterTrigger data)
         {
@@ -54,7 +52,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Returns a Trigger by Type
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type">Type to get the ID from</param>
         /// <returns></returns>
         public static CharacterTriggerData.Trigger GetTrigger(Type type)
         {
@@ -66,16 +64,30 @@ namespace MonsterTrainModdingAPI.Managers
             return CharacterTriggerData.Trigger.OnDeath;
         }
         /// <summary>
-        /// Queues an internal Trigger
+        /// Returns a Localization Key by Type
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="character"></param>
-        /// <param name="canAttackOrHeal"></param>
-        /// <param name="canFireTriggers"></param>
-        /// <param name="fireTriggersData"></param>
-        /// <param name="triggerCount"></param>
+        /// <param name="type">Type to get the Localization Key from</param>
+        /// <returns></returns>
+        public static string GetLocalizationKey(Type type)
+        {
+            if (typeof(IMTCharacterTrigger).IsAssignableFrom(type))
+            {
+                var trigger = (IMTCharacterTrigger)Activator.CreateInstance(type);
+                return trigger.LocalizationKey;
+            }
+            return "";
+        }
+        /// <summary>
+        /// Queues a Trigger
+        /// </summary>
+        /// <typeparam name="T">Type of Trigger to Queue</typeparam>
+        /// <param name="character">Character to Queue the Trigger On</param>
+        /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+        /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+        /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+        /// <param name="triggerCount">Number of Times to Trigger</param>
         /// <returns>Returns Whether it succeeded at Queuing a trigger internally</returns>
-        public static bool QueueTrigger<T>(CharacterState character, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where T : IMTCharacterTrigger
+        public static void QueueTrigger<T>(CharacterState character, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where T : IMTCharacterTrigger
         {
             if (ProviderManager.TryGetProvider<CombatManager>(out CombatManager combatManager))
             {
@@ -87,21 +99,19 @@ namespace MonsterTrainModdingAPI.Managers
                     fireTriggersData,
                     triggerCount
                     );
-                return true;
             }
-            return false;
         }
         /// <summary>
-        /// Queues Internal Triggers to multiple characters
+        /// Queues a Trigger
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="characters"></param>
-        /// <param name="canAttackOrHeal"></param>
-        /// <param name="canFireTriggers"></param>
-        /// <param name="fireTriggersData"></param>
-        /// <param name="triggerCount"></param>
+        /// <typeparam name="T">Type of Trigger to Queue</typeparam>
+        /// <param name="characters">Characters to Queue trigger on</param>
+        /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+        /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+        /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+        /// <param name="triggerCount">Number of Times to Trigger</param>
         /// <returns></returns>
-        public static bool QueueTrigger<T>(CharacterState[] characters, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where T : IMTCharacterTrigger
+        public static void QueueTrigger<T>(CharacterState[] characters, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where T : IMTCharacterTrigger
         {
             if (ProviderManager.TryGetProvider<CombatManager>(out CombatManager combatManager))
             {
@@ -116,21 +126,19 @@ namespace MonsterTrainModdingAPI.Managers
                         triggerCount
                         );
                 }
-                return true;
             }
-            return false;
         }
         /// <summary>
-        /// Queues Internal Triggers to all characters of a Manager
+        /// Queues a Trigger
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <typeparam name="Manager"></typeparam>
-        /// <param name="canAttackOrHeal"></param>
-        /// <param name="canFireTriggers"></param>
-        /// <param name="fireTriggersData"></param>
-        /// <param name="triggerCount"></param>
+        /// <typeparam name="T">Type of Trigger to Queue</typeparam>
+        /// <typeparam name="Manager">Type of Manager to Queue and Run Triggers to</typeparam>
+        /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+        /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+        /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+        /// <param name="triggerCount">Number of Times to Trigger</param>
         /// <returns></returns>
-        public static bool QueueTrigger<T, Manager>(bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where T : IMTCharacterTrigger where Manager : ICharacterManager, IProvider
+        public static void QueueTrigger<T, Manager>(bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where T : IMTCharacterTrigger where Manager : ICharacterManager, IProvider
         {
             if (ProviderManager.TryGetProvider<CombatManager>(out CombatManager combatManager) && ProviderManager.TryGetProvider<Manager>(out Manager characterManager))
             {
@@ -145,9 +153,52 @@ namespace MonsterTrainModdingAPI.Managers
                         triggerCount
                         );
                 }
-                return true;
             }
-            return false;
+        }
+        /// <summary>
+        /// Queues and Runs a Trigger
+        /// </summary>
+        /// <typeparam name="T">Type of Trigger to Queue and Run</typeparam>
+        /// <param name="character">Character to Run the Trigger On</param>
+        /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+        /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+        /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+        /// <param name="triggerCount">Number of Times to Trigger</param>
+        /// <returns></returns>
+        public static IEnumerator QueueAndRunTrigger<T>(CharacterState character, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where T : IMTCharacterTrigger
+        {
+            QueueTrigger<T>(character, canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
+            yield return RunTriggerQueueRemote();
+        }
+        /// <summary>
+        /// Queues and Runs a Trigger
+        /// </summary>
+        /// <typeparam name="T">Type of Trigger to Queue and Run</typeparam>
+        /// <param name="characters">Characters to Run the Trigger On</param>
+        /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+        /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+        /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+        /// <param name="triggerCount">Number of Times to Trigger</param>
+        /// <returns></returns>
+        public static IEnumerator QueueAndRunTrigger<T>(CharacterState[] characters, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where T : IMTCharacterTrigger
+        {
+            QueueTrigger<T>(characters, canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
+            yield return RunTriggerQueueRemote();
+        }
+        /// <summary>
+        /// Queues and Runs a Trigger
+        /// </summary>
+        /// <typeparam name="T">Type of Trigger to Queue and Run</typeparam>
+        /// <typeparam name="Manager">Type of Manager to Queue and Run Triggers to</typeparam>
+        /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+        /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+        /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+        /// <param name="triggerCount">Number of Times to Trigger</param>
+        /// <returns></returns>
+        public static IEnumerator QueueAndRunTrigger<T, Manager>(bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where T : IMTCharacterTrigger where Manager : IProvider, ICharacterManager
+        {
+            QueueTrigger<T, Manager>(canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
+            yield return RunTriggerQueueRemote();
         }
         /// <summary>
         /// Remotely Runs the Trigger Queue
