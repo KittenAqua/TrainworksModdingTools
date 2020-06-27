@@ -76,7 +76,7 @@ namespace MonsterTrainModdingAPI.Builders
 
         public CardUpgradeData Build()
         {
-            CardUpgradeData cardUpgradeData = new CardUpgradeData();
+            CardUpgradeData cardUpgradeData = ScriptableObject.CreateInstance<CardUpgradeData>();
 
             foreach (var builder in this.traitDataUpgradeBuilders)
             {

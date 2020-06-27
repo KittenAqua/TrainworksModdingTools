@@ -79,10 +79,15 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         /// <param name="classData"></param>
         /// <param name="championCard"></param>
-        public static void SetChampion(ClassData classData, CardData championCard)
+        /// <param name="ChampionID"></param>
+        public static void SetChampion(ClassData classData, CardData championCard, CharacterData champion)
         {
             var champ = classData.GetStartingChampionData();
             champ.cardData = championCard;
+
+            CardUpgradeTreeData tree = classData.GetUpgradeTree();
+            AccessTools.Field(typeof(CardUpgradeTreeData), "champion").SetValue(tree, champion);
+            AccessTools.Field(typeof(ClassData), "upgradeTree").SetValue(classData, tree);
         }
 
         /// <summary>

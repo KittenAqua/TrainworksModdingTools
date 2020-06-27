@@ -58,7 +58,6 @@ namespace MonsterTrainModdingAPI.Patches
                     List<Sprite> cardFrame;
                     if (CustomClassManager.CustomClassFrame.TryGetValue(cardState.GetLinkedClassID(), out cardFrame))
                     {
-                        API.Log(BepInEx.Logging.LogLevel.All, "Installing card frame for " + cardState.GetLinkedClassID());
                         foreach (AbstractSpriteSelector spriteSelector in ___spriteSelectors)
                         {
                             switch (spriteSelector)
@@ -80,5 +79,21 @@ namespace MonsterTrainModdingAPI.Patches
                 }
             }
         }
+
+        // This patch fixes display on card upgrade trees
+        [HarmonyPatch(typeof(ChampionUpgradeRewardData), "GetUpgradeTree")]
+        public class CUSCanInit
+        {
+            static CardUpgradeTreeData Postfix(CardUpgradeTreeData ret, ref ChampionUpgradeRewardData __instance, SaveManager saveManager)
+            {
+                if (CustomClassManager.CustomClassData.ContainsKey(saveManager.GetMainClass().GetID()))
+                {
+                    return saveManager.GetMainClass().GetUpgradeTree();
+                }
+
+                return ret;
+            }
+        }
+        
     }
 }

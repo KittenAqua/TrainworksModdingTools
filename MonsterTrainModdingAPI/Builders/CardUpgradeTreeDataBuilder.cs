@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -24,27 +25,35 @@ namespace MonsterTrainModdingAPI.Builders
 
         public CardUpgradeTreeData Build()
         {
-            CardUpgradeTreeData cardUpgradeTreeData = new CardUpgradeTreeData();
+            // The Trunk
+            CardUpgradeTreeData cardUpgradeTreeData = ScriptableObject.CreateInstance<CardUpgradeTreeData>();
 
+            // If we have used builders instead of an existing upgrade tree
             if (upgradeTreesInternal == null)
             {
-                CardUpgradeTreeData.UpgradeTree tree = new CardUpgradeTreeData.UpgradeTree();
-                
+                // List of dest branches (Upgrade Paths)
+                upgradeTreesInternal = new List<CardUpgradeTreeData.UpgradeTree>();
+
+                // Iterate over each source branch
                 foreach (List<CardUpgradeDataBuilder> branch in upgradeTrees) 
                 {
-                    List<CardUpgradeData> newbranch = new List<CardUpgradeData>();
+                    // New Branch
+                    CardUpgradeTreeData.UpgradeTree newBranch = new CardUpgradeTreeData.UpgradeTree();
+                    
+                    List<CardUpgradeData> newbranchlist = new List<CardUpgradeData>();
 
+                    // Leaves (Make like a tree)
                     foreach (CardUpgradeDataBuilder leaf in branch)
                     {
-                        newbranch.Add(leaf.Build());
+                        newbranchlist.Add(leaf.Build());
                     }
-                    AccessTools.Field(typeof(CardUpgradeTreeData.UpgradeTree), "cardUpgrades").SetValue(tree, branch);
+                    AccessTools.Field(typeof(CardUpgradeTreeData.UpgradeTree), "cardUpgrades").SetValue(newBranch, newbranchlist);
 
+                    upgradeTreesInternal.Add(newBranch);
                 }
-                upgradeTreesInternal.Add(tree);
             }
 
-            AccessTools.Field(typeof(CardUpgradeTreeData), "champion").SetValue(cardUpgradeTreeData, this.champion);
+            // There needs to be at least two trees in here to work
             AccessTools.Field(typeof(CardUpgradeTreeData), "upgradeTrees").SetValue(cardUpgradeTreeData, this.upgradeTreesInternal);
 
             return cardUpgradeTreeData;

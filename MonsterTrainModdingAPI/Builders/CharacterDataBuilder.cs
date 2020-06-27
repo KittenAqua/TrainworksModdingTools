@@ -147,6 +147,8 @@ namespace MonsterTrainModdingAPI.Builders
             this.StartingStatusEffects = new StatusEffectStackData[0];
             this.StatusEffectImmunities = new string[0];
             this.ImpactVFX = (VfxAtLoc)FormatterServices.GetUninitializedObject(typeof(VfxAtLoc));
+            this.TriggerBuilders = new List<CharacterTriggerDataBuilder>();
+            this.RoomModifierBuilders = new List<RoomModifierDataBuilder>();
         }
 
         /// <summary>
@@ -169,7 +171,6 @@ namespace MonsterTrainModdingAPI.Builders
         public CharacterData Build()
         {
             CharacterData characterData = ScriptableObject.CreateInstance<CharacterData>();
-
             foreach (var builder in this.TriggerBuilders)
             {
                 this.Triggers.Add(builder.Build());
