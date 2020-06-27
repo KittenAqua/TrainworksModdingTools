@@ -8,7 +8,7 @@ namespace MonsterTrainModdingAPI
     /// <summary>
     /// The entry point for the API.
     /// </summary>
-    [BepInPlugin("api.modding.train.monster", "Monster Train Modding API", "0.0.5")]
+    [BepInPlugin("api.modding.train.monster", "Monster Train Modding API", "0.0.6")]
     [BepInProcess("MonsterTrain.exe")]
     [BepInProcess("MtLinkHandler.exe")]
     public class API : BaseUnityPlugin
@@ -33,6 +33,8 @@ namespace MonsterTrainModdingAPI
         /// </summary>
         private void Awake()
         {
+            DepInjector.AddClient(new MonsterTrainModdingAPI.Managers.ProviderManager());
+
             var harmony = new Harmony("api.modding.train.monster");
             harmony.PatchAll();
         }
