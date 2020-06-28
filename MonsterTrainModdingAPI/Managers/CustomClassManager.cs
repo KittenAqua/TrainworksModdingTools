@@ -79,7 +79,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         /// <param name="classData"></param>
         /// <param name="championCard"></param>
-        /// <param name="ChampionID"></param>
+        /// <param name="champion"></param>
         public static void SetChampion(ClassData classData, CardData championCard, CharacterData champion)
         {
             var champ = classData.GetStartingChampionData();
