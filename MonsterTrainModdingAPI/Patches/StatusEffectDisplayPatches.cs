@@ -29,12 +29,12 @@ namespace MonsterTrainModdingAPI.Patches
                 string format;
                 if ((stackCount > 1 || inCardBodyText) && isStackable)
                 {
-                    format = "StatusEffect_" + statusId + "_Stack_CardText".Localize();
+                    format = ("StatusEffect_" + statusId + "_Stack_CardText").Localize();
                     format = string.Format(format, stackCount);
                 }
                 else
                 {
-                    format = "StatusEffect_" + statusId + "_CardText".Localize();
+                    format = ("StatusEffect_" + statusId + "_CardText").Localize();
                 }
                 if (inBold)
                 {
