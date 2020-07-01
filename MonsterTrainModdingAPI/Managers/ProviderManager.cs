@@ -6,7 +6,7 @@ namespace MonsterTrainModdingAPI.Managers
 {
     public class ProviderManager : IClient
     {
-        private static IDictionary<Type, (bool, IProvider)> ProviderDictionary { get; set; } = new Dictionary<Type, (bool,IProvider)>();
+        private static IDictionary<Type, (bool, IProvider)> ProviderDictionary { get; set; } = new Dictionary<Type, (bool, IProvider)>();
         /// <summary>
         /// Attempts to Get an IProvider
         /// </summary>
@@ -42,14 +42,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="newProvider">Provider</param>
         public void NewProviderAvailable(IProvider newProvider)
         {
-            if (ProviderDictionary.ContainsKey(newProvider.GetType()))
-            {
-                ProviderDictionary[newProvider.GetType()] = (false,newProvider);
-            }
-            else
-            {
-                ProviderDictionary.Add(newProvider.GetType(), (false,newProvider));
-            }
+            ProviderDictionary[newProvider.GetType()] = (false, newProvider);
             MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel.Debug, newProvider.GetType().AssemblyQualifiedName + " Was Registered to ProviderManager");
         }
         /// <summary>
@@ -69,10 +62,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="removeProvider">Provider to Remove</param>
         public void ProviderRemoved(IProvider removeProvider)
         {
-            if (ProviderDictionary.ContainsKey(removeProvider.GetType()))
-            {
-                ProviderDictionary.Remove(removeProvider.GetType());
-            }
+            ProviderDictionary.Remove(removeProvider.GetType());
         }
     }
 }

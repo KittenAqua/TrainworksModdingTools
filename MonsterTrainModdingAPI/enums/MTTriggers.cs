@@ -6,13 +6,21 @@ using System.Text;
 namespace MonsterTrainModdingAPI.Enums.MTTriggers
 {
     /// <summary>
-    /// An Interface Used to Represent an In Game Character Trigger
+    /// An Interface Used to Represent a Trigger used by Monster Train
     /// </summary>
-    public interface IMTCharacterTrigger
+    public interface IMTTrigger
     {
         int ID { get; }
         string LocalizationKey { get; }
     }
+    /// <summary>
+    /// An Interface Used to Represent an In Game Card Trigger
+    /// </summary>
+    public interface IMTCardTrigger : IMTTrigger { }
+    /// <summary>
+    /// An Interface Used to Represent an In Game Character Trigger
+    /// </summary>
+    public interface IMTCharacterTrigger : IMTTrigger { }
     /// <summary>
     /// An Abstract Class used to Automatically Construct a working Character Trigger
     /// </summary>
@@ -32,8 +40,27 @@ namespace MonsterTrainModdingAPI.Enums.MTTriggers
 
         static MTCharacterTrigger()
         {
-            InternalID = CustomTriggerManager.GetNewGUID();
-            InternalLocalizationKey = CustomTriggerManager.RegisterLocalizationString<T>();
+            InternalID = CustomTriggerManager.GetNewCharacterGUID();
+            InternalLocalizationKey = CustomTriggerManager.RegisterCharacterLocalizationString<T>();
+        }
+    }
+
+    public abstract class MTCardTrigger<T> : IMTCardTrigger where T: MTCardTrigger<T>
+    {
+        private static int InternalID;
+        private static string InternalLocalizationKey;
+        /// <summary>
+        /// The ID of your Card Trigger 
+        /// </summary>
+        public int ID { get { return InternalID; } }
+        /// <summary>
+        /// The Localization Key of Your Trigger
+        /// </summary>
+        public string LocalizationKey { get { return InternalLocalizationKey; } }
+        static MTCardTrigger()
+        {
+            InternalID = CustomTriggerManager.GetNewCardGUID();
+            InternalLocalizationKey = CustomTriggerManager.RegisterCardLocalizationString<T>();
         }
     }
 
@@ -63,4 +90,19 @@ namespace MonsterTrainModdingAPI.Enums.MTTriggers
     public class MTCharacterTrigger_OnBurnout : IMTCharacterTrigger { public int ID => 25; public string LocalizationKey => String.Empty; }
     public class MTCharacterTrigger_OnSpawnNotFromCard : IMTCharacterTrigger { public int ID => 26; public string LocalizationKey => "Trigger_OnSpawn"; }
     public class MTCharacterTrigger_OnUnscaledSpawn : IMTCharacterTrigger { public int ID => 27; public string LocalizationKey => String.Empty; }
+
+
+
+    public class MTCardTrigger_OnCast : IMTCardTrigger { public int ID => 0; public string LocalizationKey => "Trigger_OnCast"; }
+    public class MTCardTrigger_OnKill : IMTCardTrigger { public int ID => 1; public string LocalizationKey => "Trigger_OnKill_CardTriggerType"; }
+    public class MTCardTrigger_OnDiscard : IMTCardTrigger { public int ID => 2; public string LocalizationKey => "Trigger_OnDiscard"; }
+    public class MTCardTrigger_OnMonsterDeath : IMTCardTrigger { public int ID => 3; public string LocalizationKey => "Trigger_OnMonsterDeath"; }
+    public class MTCardTrigger_OnAnyMonsterDeathOnFloor : IMTCardTrigger { public int ID => 4; public string LocalizationKey => "Trigger_OnAnyMonsterDeathOnFloor"; }
+    public class MTCardTrigger_OnAnyHeroDeathOnFloor : IMTCardTrigger { public int ID => 5; public string LocalizationKey => "Trigger_OnAnyHeroDeathOnFloor"; }
+    public class MTCardTrigger_OnHealed : IMTCardTrigger { public int ID => 6; public string LocalizationKey => "Trigger_OnHealed"; }
+    public class MTCardTrigger_OnPlayerDamageTaken : IMTCardTrigger { public int ID => 7; public string LocalizationKey => "Trigger_OnPlayerDamageTaken"; }
+    public class MTCardTrigger_OnAnyUnitDeathOnFloor : IMTCardTrigger { public int ID => 8; public string LocalizationKey => "Trigger_OnAnyUnitDeathOnFloor"; }
+    public class MTCardTrigger_OnTreasure : IMTCardTrigger { public int ID => 9; public string LocalizationKey => "Trigger_OnTreasure"; }
+    public class MTCardTrigger_OnUnplayed : IMTCardTrigger { public int ID => 10; public string LocalizationKey => "Trigger_OnUnplayed"; }
+    public class MTCardTrigger_OnFeed : IMTCardTrigger { public int ID => 11; public string LocalizationKey => "Trigger_OnCast"; }
 }

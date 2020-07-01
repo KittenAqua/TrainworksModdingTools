@@ -3,32 +3,61 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using MonsterTrainModdingAPI.Enums.MTTriggers;
+using HarmonyLib;
 using UnityEngine;
 
 namespace MonsterTrainModdingAPI.Managers
 {
     public class CustomTriggerManager
     {
-        private const int TriggerGUIDOffset = 100;
-        private static int NumTriggers = Enum.GetNames(typeof(CharacterTriggerData.Trigger)).Length + TriggerGUIDOffset;
         /// <summary>
-        /// Gets a New GUID
+        /// 576+ reservation makes it extraordinarily unlikely of a conflict with MT
+        /// </summary>
+        private static int NumCharTriggers = 576;
+        private static int NumCardTriggers = 576;
+        private static Dictionary<CharacterTriggerData.Trigger, CardTriggerType> CharToCardTriggerDict = new Dictionary<CharacterTriggerData.Trigger, CardTriggerType>();
+        private static Dictionary<CardTriggerType, CharacterTriggerData.Trigger> CardToCharTriggerDict = new Dictionary<CardTriggerType, CharacterTriggerData.Trigger>();
+        /// <summary>
+        /// Gets a New Character Trigger GUID
         /// </summary>
         /// <returns></returns>
-        public static int GetNewGUID()
+        public static int GetNewCharacterGUID()
         {
-            NumTriggers++;
-            return NumTriggers;
+            NumCharTriggers++;
+            return NumCharTriggers;
+        }
+        /// <summary>
+        /// Gets a New Card Trigger GUID
+        /// </summary>
+        /// <returns></returns>
+        public static int GetNewCardGUID()
+        {
+            NumCardTriggers++;
+            return NumCardTriggers;
         }
         /// <summary>
         /// Registers a Localization String
         /// </summary>
         /// <typeparam name="T">The Trigger Type used to register for</typeparam>
+        /// <param name="RegisterName">the string to register for localization</param>
         /// <returns></returns>
-        public static string RegisterLocalizationString<T>(string RegisterName = "") where T:IMTCharacterTrigger
+        public static string RegisterCharacterLocalizationString<T>(string RegisterName = "") where T : IMTCharacterTrigger
         {
-            if(RegisterName == "") RegisterName = "Trigger_" + typeof(T).Name;
-            CharacterTriggerData.TriggerToLocalizationExpression[GetTrigger(typeof(T))] = RegisterName;
+            if (RegisterName == "") RegisterName = "Trigger_" + typeof(T).Name;
+            CharacterTriggerData.TriggerToLocalizationExpression[GetCharacterTrigger(typeof(T))] = RegisterName;
+            return RegisterName;
+        }
+        /// <summary>
+        /// Registers a Localization String
+        /// </summary>
+        /// <typeparam name="T">The Card Trigger Type used to register for</typeparam>
+        /// <param name="RegisterName">The string to register for localization</param>
+        /// <returns></returns>
+        public static string RegisterCardLocalizationString<T>(string RegisterName = "") where T : IMTCardTrigger
+        {
+            if (RegisterName == "") RegisterName = "Trigger_" + typeof(T).Name;
+            Dictionary<CardTriggerType, string> dict = (Dictionary<CardTriggerType, string>)typeof(CardTriggerTypeMethods).GetField("TriggerToLocalizationExpression", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static).GetValue(null);
+            dict[GetCardTrigger(typeof(T))] = RegisterName;
             return RegisterName;
         }
         /// <summary>
@@ -36,32 +65,64 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         /// <param name="ID">Integer to cast to Trigger</param>
         /// <returns></returns>
-        public static CharacterTriggerData.Trigger GetTrigger(int ID)
+        public static CharacterTriggerData.Trigger GetCharacterTrigger(int ID)
         {
             return (CharacterTriggerData.Trigger)ID;
+        }
+        /// <summary>
+        /// Returns a Trigger by Integer ID
+        /// </summary>
+        /// <param name="ID">Integer to cast to CardTriggerType</param>
+        /// <returns></returns>
+        public static CardTriggerType GetCardTrigger(int ID)
+        {
+            return (CardTriggerType)ID;
         }
         /// <summary>
         /// Returns a Trigger by an IMT reference
         /// </summary>
         /// <param name="data">Data to get Integer ID</param>
         /// <returns></returns>
-        public static CharacterTriggerData.Trigger GetTrigger(IMTCharacterTrigger data)
+        public static CharacterTriggerData.Trigger GetCharacterTrigger(IMTCharacterTrigger data)
         {
-            return GetTrigger(data.ID);
+            return GetCharacterTrigger(data.ID);
+        }
+        /// <summary>
+        /// Returns a CardTriggerType by an IMT reference
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns>Data to get enum ID</returns>
+        public static CardTriggerType GetCardTrigger(IMTCardTrigger data)
+        {
+            return GetCardTrigger(data.ID);
         }
         /// <summary>
         /// Returns a Trigger by Type
         /// </summary>
         /// <param name="type">Type to get the ID from</param>
         /// <returns></returns>
-        public static CharacterTriggerData.Trigger GetTrigger(Type type)
+        public static CharacterTriggerData.Trigger GetCharacterTrigger(Type type)
         {
             if (typeof(IMTCharacterTrigger).IsAssignableFrom(type))
             {
                 var trigger = (IMTCharacterTrigger)Activator.CreateInstance(type);
-                return GetTrigger(trigger);
+                return GetCharacterTrigger(trigger);
             }
             return CharacterTriggerData.Trigger.OnDeath;
+        }
+        /// <summary>
+        /// Returns a CardTriggerType by Type
+        /// </summary>
+        /// <param name="type">Type to get the ID from</param>
+        /// <returns></returns>
+        public static CardTriggerType GetCardTrigger(Type type)
+        {
+            if (typeof(IMTCharacterTrigger).IsAssignableFrom(type))
+            {
+                var trigger = (IMTCardTrigger)Activator.CreateInstance(type);
+                return GetCardTrigger(trigger);
+            }
+            return CardTriggerType.OnCast;
         }
         /// <summary>
         /// Returns a Localization Key by Type
@@ -93,7 +154,7 @@ namespace MonsterTrainModdingAPI.Managers
             {
                 combatManager.QueueTrigger(
                     character,
-                    GetTrigger(typeof(T)),
+                    GetCharacterTrigger(typeof(T)),
                     canAttackOrHeal,
                     canFireTriggers,
                     fireTriggersData,
@@ -119,7 +180,7 @@ namespace MonsterTrainModdingAPI.Managers
                 {
                     combatManager.QueueTrigger(
                         character,
-                        GetTrigger(typeof(T)),
+                        GetCharacterTrigger(typeof(T)),
                         canAttackOrHeal,
                         canFireTriggers,
                         fireTriggersData,
@@ -146,7 +207,7 @@ namespace MonsterTrainModdingAPI.Managers
                 {
                     combatManager.QueueTrigger(
                         characterManager.GetCharacter(i),
-                        GetTrigger(typeof(T)),
+                        GetCharacterTrigger(typeof(T)),
                         canAttackOrHeal,
                         canFireTriggers,
                         fireTriggersData,
@@ -211,6 +272,89 @@ namespace MonsterTrainModdingAPI.Managers
                 yield return combatManager.RunTriggerQueue();
             }
             yield break;
+        }
+        /// <summary>
+        /// A general function for applying a custom card trigger.
+        /// </summary>
+        /// <typeparam name="T">Type of Trigger to Apply</typeparam>
+        /// <param name="playedCard">Card to apply triggers to</param>
+        /// <param name="fireAllMonsterTriggersInRoom">Whether Apply Card Triggers should fire on monster's Instead, requires Trigger to have an associated character trigger</param>
+        /// <param name="roomIndex">Room to fire triggers in, -1 defaults to selected room</param>
+        /// <param name="ignoreDeadInTargeting">Whether effects applied by the trigger should ignore dead in targetting</param>
+        /// <param name="triggeredCharacter">Character used to determine how many times Card Trigger should be applied</param>
+        /// <param name="cardTriggerFiredCallback">Action to take after applying trigger</param>
+        /// <returns></returns>
+        public static IEnumerator ApplyCardTriggers<T>(CardState playedCard, bool fireAllMonsterTriggersInRoom = false, int roomIndex = -1, bool ignoreDeadInTargeting = true, CharacterState triggeredCharacter = null, Action cardTriggerFiredCallback = null) where T : IMTCardTrigger
+        {
+            if (ProviderManager.TryGetProvider<CombatManager>(out CombatManager combatManager))
+            {
+                yield return combatManager.ApplyCardTriggers(
+                    GetCardTrigger(typeof(T)),
+                    playedCard,
+                    fireAllMonsterTriggersInRoom,
+                    roomIndex,
+                    ignoreDeadInTargeting,
+                    triggeredCharacter,
+                    cardTriggerFiredCallback
+                    );
+            }
+            yield break;
+        }
+        /// <summary>
+        /// Fires a Card Trigger
+        /// </summary>
+        /// <typeparam name="T">Type of Trigger to Fire</typeparam>
+        /// <param name="playedCard">Card to Fire Trigger on</param>
+        /// <param name="roomIndex">Room to fire trigger in, -1 is current room</param>
+        /// <param name="ignoreDeadInTargeting">Whether effect should ignore dead in targeting</param>
+        /// <param name="triggeredCharacter">Character used for applying effects</param>
+        /// <param name="fireCount">how many times the trigger fires</param>
+        /// <param name="cardTriggerFiredCallback">Action to call after function is called</param>
+        /// <returns></returns>
+        public static IEnumerator FireCardTriggers<T>(CardState playedCard, int roomIndex = -1, bool ignoreDeadInTargeting = true, CharacterState triggeredCharacter = null, int fireCount = 1, Action cardTriggerFiredCallback = null) where T : IMTCardTrigger
+        {
+            if (ProviderManager.TryGetProvider<CombatManager>(out CombatManager combatManager))
+            {
+                yield return AccessTools.Method(typeof(CombatManager), "FireCardTriggers").Invoke(combatManager, new object[7]
+                {
+                    GetCardTrigger(typeof(T)),
+                    playedCard,
+                    roomIndex,
+                    ignoreDeadInTargeting,
+                    triggeredCharacter,
+                    fireCount,
+                    cardTriggerFiredCallback
+                });
+            }
+            yield break;
+        }
+        /// <summary>
+        /// Associates two triggers with eachother allowing MT to cast from one trigger to another
+        /// </summary>
+        /// <typeparam name="Card">Card Trigger to Associate</typeparam>
+        /// <typeparam name="Char">Character Trigger to Associate</typeparam>
+        public static void AssociateTriggers<Card, Char>() where Card:IMTCardTrigger where Char:IMTCharacterTrigger
+        {
+            CharToCardTriggerDict[GetCharacterTrigger(typeof(Char))] = GetCardTrigger(typeof(Card));
+            CardToCharTriggerDict[GetCardTrigger(typeof(Card))] = GetCharacterTrigger(typeof(Char));
+        }
+        /// <summary>
+        /// Gets the Associated Trigger
+        /// </summary>
+        /// <param name="trigger">Trigger to get Associate for</param>
+        /// <returns></returns>
+        public static CardTriggerType? GetAssociate(CharacterTriggerData.Trigger trigger)
+        {
+            return CharToCardTriggerDict?[trigger];
+        }
+        /// <summary>
+        /// Gets the Associated Trigger
+        /// </summary>
+        /// <param name="trigger">Trigger to get Associate for</param>
+        /// <returns></returns>
+        public static CharacterTriggerData.Trigger? GetAssociate(CardTriggerType trigger)
+        {
+            return CardToCharTriggerDict?[trigger];
         }
     }
 }
