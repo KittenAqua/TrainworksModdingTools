@@ -23,7 +23,11 @@ namespace MonsterTrainModdingAPI.Patches
         {
             if (!__instance.HasCardArtPrefabVariant() && CustomCardManager.CustomCardData.ContainsKey(__instance.GetID()))
             {
-                CustomCardManager.CreateCardGameObject(__instance.GetID());
+                GameObject obj = CustomCardManager.CreateCardGameObject(__instance.GetID());
+                if (obj != null)
+                {
+                    UnityEngine.Object.DontDestroyOnLoad(obj);
+                }
             }
         }
     }
@@ -38,7 +42,11 @@ namespace MonsterTrainModdingAPI.Patches
         {
             if (!__instance.HasCharacterPrefabVariant() && CustomCharacterManager.CustomCharacterData.ContainsKey(__instance.GetID()))
             {
-                CustomCharacterManager.CreateCharacterGameObject(__instance.GetID());
+                GameObject obj = CustomCharacterManager.CreateCharacterGameObject(__instance.GetID());
+                if (obj != null)
+                {
+                    UnityEngine.Object.DontDestroyOnLoad(obj);
+                }
             }
         }
     }

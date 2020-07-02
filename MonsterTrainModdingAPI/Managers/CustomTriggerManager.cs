@@ -15,6 +15,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         private static int NumCharTriggers = 576;
         private static int NumCardTriggers = 576;
+        private static Dictionary<CardTriggerType, string> CardTriggerToNameDict = new Dictionary<CardTriggerType, string>();
         private static Dictionary<CharacterTriggerData.Trigger, CardTriggerType> CharToCardTriggerDict = new Dictionary<CharacterTriggerData.Trigger, CardTriggerType>();
         private static Dictionary<CardTriggerType, CharacterTriggerData.Trigger> CardToCharTriggerDict = new Dictionary<CardTriggerType, CharacterTriggerData.Trigger>();
         /// <summary>
@@ -58,6 +59,7 @@ namespace MonsterTrainModdingAPI.Managers
             if (RegisterName == "") RegisterName = "Trigger_" + typeof(T).Name;
             Dictionary<CardTriggerType, string> dict = (Dictionary<CardTriggerType, string>)typeof(CardTriggerTypeMethods).GetField("TriggerToLocalizationExpression", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static).GetValue(null);
             dict[GetCardTrigger(typeof(T))] = RegisterName;
+            CardTriggerToNameDict[GetCardTrigger(typeof(T))] = typeof(T).Name;
             return RegisterName;
         }
         /// <summary>
@@ -343,7 +345,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         /// <param name="trigger">Trigger to get Associate for</param>
         /// <returns></returns>
-        public static CardTriggerType? GetAssociate(CharacterTriggerData.Trigger trigger)
+        public static CardTriggerType? GetAssociatedCardTrigger(CharacterTriggerData.Trigger trigger)
         {
             return CharToCardTriggerDict?[trigger];
         }
@@ -352,9 +354,18 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         /// <param name="trigger">Trigger to get Associate for</param>
         /// <returns></returns>
-        public static CharacterTriggerData.Trigger? GetAssociate(CardTriggerType trigger)
+        public static CharacterTriggerData.Trigger? GetAssociatedCharacterTrigger(CardTriggerType trigger)
         {
             return CardToCharTriggerDict?[trigger];
+        }
+        /// <summary>
+        /// Converts Trigger to Read-able Name
+        /// </summary>
+        /// <param name="triggerType">Trigger to Convert</param>
+        /// <returns></returns>
+        public static string GetTypeName(CardTriggerType triggerType)
+        {
+            return CardTriggerToNameDict[triggerType];
         }
     }
 }

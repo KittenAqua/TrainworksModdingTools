@@ -13,7 +13,7 @@ namespace MonsterTrainModdingAPI.Patches
         {
             if (__result == null)
             {
-                __result = CustomTriggerManager.GetAssociate(charTrigger);
+                __result = CustomTriggerManager.GetAssociatedCardTrigger(charTrigger);
             }
         }
     }
@@ -21,11 +21,11 @@ namespace MonsterTrainModdingAPI.Patches
     [HarmonyPatch(typeof(CardTriggerTypeMethods), "GetAssociatedCharacterTrigger")]
     class GetAssociatedCustomCharacterTriggersPatch
     {
-        static void Postfix(ref CharacterTriggerData.Trigger? __result, ref CardTriggerType charTrigger)
+        static void Postfix(ref CharacterTriggerData.Trigger? __result, ref CardTriggerType cardTrigger)
         {
             if (__result == null)
             {
-                __result = CustomTriggerManager.GetAssociate(charTrigger);
+                __result = CustomTriggerManager.GetAssociatedCharacterTrigger(cardTrigger);
             }
         }
     }
