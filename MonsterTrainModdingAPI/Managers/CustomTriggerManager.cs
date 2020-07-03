@@ -44,11 +44,13 @@ namespace MonsterTrainModdingAPI.Managers
                 TypeToCardTriggerDict = new Dictionary<Type, CardTriggerType>();
                 TypeToCharacterTriggerDict = new Dictionary<Type, CharacterTriggerData.Trigger>();
 
+                IEnumerable<Type> AllTriggers = AppDomain.CurrentDomain
+                    .GetAssemblies()
+                    .SelectMany(x => x.GetTypes())
+                    .Where(x => typeof(IMTTrigger).IsAssignableFrom(x) && x != typeof(IMTTrigger) && !x.ContainsGenericParameters);
                 //Get all valid IMTCharacterTrigger Types
-                IEnumerable<Type> CharacterTriggers = AppDomain.CurrentDomain
-                        .GetAssemblies()
-                        .SelectMany(x => x.GetTypes())
-                        .Where(x => typeof(IMTCharacterTrigger).IsAssignableFrom(x) && x != typeof(IMTCharacterTrigger) && !x.ContainsGenericParameters);
+                IEnumerable<Type> CharacterTriggers = AllTriggers.Where(x => typeof(IMTCharacterTrigger).IsAssignableFrom(x) && x != typeof(IMTCharacterTrigger));
+                IEnumerable<Type> CardTriggers = AllTriggers.Where(x => typeof(IMTCardTrigger).IsAssignableFrom(x) && x != typeof(IMTCardTrigger));
                 //Iterate Through
                 foreach (Type type in CharacterTriggers)
                 {
@@ -57,11 +59,6 @@ namespace MonsterTrainModdingAPI.Managers
                     CharTriggerToNameDict[GetCharacterTrigger(myTrigger.ID)] = myTrigger.LocalizationKey;
                     TypeToCharacterTriggerDict[type] = GetCharacterTrigger(myTrigger.ID);
                 }
-                //Get all Valid IMTCardTriggers Types
-                IEnumerable<Type> CardTriggers = AppDomain.CurrentDomain
-                        .GetAssemblies()
-                        .SelectMany(x => x.GetTypes())
-                        .Where(x => typeof(IMTCardTrigger).IsAssignableFrom(x) && x != typeof(IMTCardTrigger) && !x.ContainsGenericParameters);
                 //Iterate Through
                 foreach (Type type in CardTriggers)
                 {
