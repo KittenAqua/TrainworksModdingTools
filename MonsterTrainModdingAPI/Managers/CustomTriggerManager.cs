@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using MonsterTrainModdingAPI.Enums.MTTriggers;
 using HarmonyLib;
+using System.Linq;
 using UnityEngine;
+using Unity;
 
 namespace MonsterTrainModdingAPI.Managers
 {
@@ -15,9 +17,61 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         private static int NumCharTriggers = 576;
         private static int NumCardTriggers = 576;
+        /// <summary>
+        /// Access to each Trigger by Type Reference
+        /// </summary>
+        private static Dictionary<Type, CardTriggerType> TypeToCardTriggerDict = null;
+        private static Dictionary<Type, CharacterTriggerData.Trigger> TypeToCharacterTriggerDict = null;
+        /// <summary>
+        /// Access to each Localization Key by Trigger Reference
+        /// </summary>
         private static Dictionary<CardTriggerType, string> CardTriggerToNameDict = new Dictionary<CardTriggerType, string>();
+        private static Dictionary<CharacterTriggerData.Trigger, string> CharTriggerToNameDict = new Dictionary<CharacterTriggerData.Trigger, string>();
+        /// <summary>
+        /// Merge into Double-sided dictionary later, used for Associated Triggers
+        /// </summary>
         private static Dictionary<CharacterTriggerData.Trigger, CardTriggerType> CharToCardTriggerDict = new Dictionary<CharacterTriggerData.Trigger, CardTriggerType>();
         private static Dictionary<CardTriggerType, CharacterTriggerData.Trigger> CardToCharTriggerDict = new Dictionary<CardTriggerType, CharacterTriggerData.Trigger>();
+        /// <summary>
+        /// A Function called by the API to Register all Triggers in AppDomain
+        /// </summary>
+        public static void RegisterAllTriggers()
+        {
+            //Since this function should and will be called only once, a slow operation is allowed
+            //This function will make it easier to deal with all the Types of Triggers during the game and faster.
+            if (TypeToCardTriggerDict == null || TypeToCharacterTriggerDict == null)
+            {
+                TypeToCardTriggerDict = new Dictionary<Type, CardTriggerType>();
+                TypeToCharacterTriggerDict = new Dictionary<Type, CharacterTriggerData.Trigger>();
+
+                //Get all valid IMTCharacterTrigger Types
+                IEnumerable<Type> CharacterTriggers = AppDomain.CurrentDomain
+                        .GetAssemblies()
+                        .SelectMany(x => x.GetTypes())
+                        .Where(x => typeof(IMTCharacterTrigger).IsAssignableFrom(x) && x != typeof(IMTCharacterTrigger) && !x.ContainsGenericParameters);
+                //Iterate Through
+                foreach (Type type in CharacterTriggers)
+                {
+                    IMTCharacterTrigger myTrigger = (IMTCharacterTrigger)Activator.CreateInstance(type);
+                    MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel.Debug, $"Registering: {myTrigger.LocalizationKey}");
+                    CharTriggerToNameDict[GetCharacterTrigger(myTrigger.ID)] = myTrigger.LocalizationKey;
+                    TypeToCharacterTriggerDict[type] = GetCharacterTrigger(myTrigger.ID);
+                }
+                //Get all Valid IMTCardTriggers Types
+                IEnumerable<Type> CardTriggers = AppDomain.CurrentDomain
+                        .GetAssemblies()
+                        .SelectMany(x => x.GetTypes())
+                        .Where(x => typeof(IMTCardTrigger).IsAssignableFrom(x) && x != typeof(IMTCardTrigger) && !x.ContainsGenericParameters);
+                //Iterate Through
+                foreach (Type type in CardTriggers)
+                {
+                    IMTCardTrigger myTrigger = (IMTCardTrigger)Activator.CreateInstance(type);
+                    MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel.Debug, $"Registering: {myTrigger.LocalizationKey}");
+                    CardTriggerToNameDict[GetCardTrigger(myTrigger.ID)] = myTrigger.LocalizationKey;
+                    TypeToCardTriggerDict[type] = GetCardTrigger(myTrigger.ID);
+                }
+            }
+        }
         /// <summary>
         /// Gets a New Character Trigger GUID
         /// </summary>
@@ -59,7 +113,7 @@ namespace MonsterTrainModdingAPI.Managers
             if (RegisterName == "") RegisterName = "Trigger_" + typeof(T).Name;
             Dictionary<CardTriggerType, string> dict = (Dictionary<CardTriggerType, string>)typeof(CardTriggerTypeMethods).GetField("TriggerToLocalizationExpression", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static).GetValue(null);
             dict[GetCardTrigger(typeof(T))] = RegisterName;
-            CardTriggerToNameDict[GetCardTrigger(typeof(T))] = typeof(T).Name;
+            CardTriggerToNameDict[GetCardTrigger(typeof(T))] = RegisterName;
             return RegisterName;
         }
         /// <summary>
@@ -101,30 +155,30 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Returns a Trigger by Type
         /// </summary>
-        /// <param name="type">Type to get the ID from</param>
+        /// <param name="type">Type to get the ID from, should inherit from IMTCharacterTrigger</param>
         /// <returns></returns>
         public static CharacterTriggerData.Trigger GetCharacterTrigger(Type type)
         {
-            if (typeof(IMTCharacterTrigger).IsAssignableFrom(type))
+            //if (typeof(IMTCharacterTrigger).IsAssignableFrom(type)) throw new Exception($"Type: {type} is not a CharacterTrigger"); 
+            if (!TypeToCharacterTriggerDict.ContainsKey(type))
             {
-                var trigger = (IMTCharacterTrigger)Activator.CreateInstance(type);
-                return GetCharacterTrigger(trigger);
+                TypeToCharacterTriggerDict[type] = GetCharacterTrigger((IMTCharacterTrigger)Activator.CreateInstance(type));
             }
-            return CharacterTriggerData.Trigger.OnDeath;
+            return TypeToCharacterTriggerDict[type];
         }
         /// <summary>
         /// Returns a CardTriggerType by Type
         /// </summary>
-        /// <param name="type">Type to get the ID from</param>
+        /// <param name="type">Type to get the ID from, should inherit from IMTCardTrigger</param>
         /// <returns></returns>
         public static CardTriggerType GetCardTrigger(Type type)
         {
-            if (typeof(IMTCharacterTrigger).IsAssignableFrom(type))
+            //if (typeof(IMTCardTrigger).IsAssignableFrom(type)) throw new Exception($"Type: {type} is not a CardTrigger");
+            if (!TypeToCardTriggerDict.ContainsKey(type))
             {
-                var trigger = (IMTCardTrigger)Activator.CreateInstance(type);
-                return GetCardTrigger(trigger);
+                TypeToCardTriggerDict[type] = GetCardTrigger((IMTCardTrigger)Activator.CreateInstance(type));
             }
-            return CardTriggerType.OnCast;
+            return TypeToCardTriggerDict[type];
         }
         /// <summary>
         /// Returns a Localization Key by Type
@@ -133,9 +187,9 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns></returns>
         public static string GetLocalizationKey(Type type)
         {
-            if (typeof(IMTCharacterTrigger).IsAssignableFrom(type))
+            if (typeof(IMTTrigger).IsAssignableFrom(type))
             {
-                var trigger = (IMTCharacterTrigger)Activator.CreateInstance(type);
+                var trigger = (IMTTrigger)Activator.CreateInstance(type);
                 return trigger.LocalizationKey;
             }
             return "";
@@ -286,11 +340,13 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="triggeredCharacter">Character used to determine how many times Card Trigger should be applied</param>
         /// <param name="cardTriggerFiredCallback">Action to take after applying trigger</param>
         /// <returns></returns>
-        public static IEnumerator ApplyCardTriggers<T>(CardState playedCard, bool fireAllMonsterTriggersInRoom = false, int roomIndex = -1, bool ignoreDeadInTargeting = true, CharacterState triggeredCharacter = null, Action cardTriggerFiredCallback = null) where T : IMTCardTrigger
+        public static void ApplyCardTriggers<T>(CardState playedCard, bool fireAllMonsterTriggersInRoom = false, int roomIndex = -1, bool ignoreDeadInTargeting = true, CharacterState triggeredCharacter = null, Action cardTriggerFiredCallback = null) where T : IMTCardTrigger
         {
+            API.Log(BepInEx.Logging.LogLevel.Info, $"Applying {typeof(T).Name}");
             if (ProviderManager.TryGetProvider<CombatManager>(out CombatManager combatManager))
             {
-                yield return combatManager.ApplyCardTriggers(
+                combatManager.StartCoroutine(
+                    combatManager.ApplyCardTriggers(
                     GetCardTrigger(typeof(T)),
                     playedCard,
                     fireAllMonsterTriggersInRoom,
@@ -298,9 +354,10 @@ namespace MonsterTrainModdingAPI.Managers
                     ignoreDeadInTargeting,
                     triggeredCharacter,
                     cardTriggerFiredCallback
-                    );
+                    )
+                );
+                
             }
-            yield break;
         }
         /// <summary>
         /// Fires a Card Trigger
@@ -313,29 +370,36 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="fireCount">how many times the trigger fires</param>
         /// <param name="cardTriggerFiredCallback">Action to call after function is called</param>
         /// <returns></returns>
-        public static IEnumerator FireCardTriggers<T>(CardState playedCard, int roomIndex = -1, bool ignoreDeadInTargeting = true, CharacterState triggeredCharacter = null, int fireCount = 1, Action cardTriggerFiredCallback = null) where T : IMTCardTrigger
+        public static void FireCardTriggers<T>(CardState playedCard, int roomIndex = -1, bool ignoreDeadInTargeting = true, CharacterState triggeredCharacter = null, int fireCount = 1, Action cardTriggerFiredCallback = null) where T : IMTCardTrigger
         {
             if (ProviderManager.TryGetProvider<CombatManager>(out CombatManager combatManager))
             {
-                yield return AccessTools.Method(typeof(CombatManager), "FireCardTriggers").Invoke(combatManager, new object[7]
-                {
-                    GetCardTrigger(typeof(T)),
-                    playedCard,
-                    roomIndex,
-                    ignoreDeadInTargeting,
-                    triggeredCharacter,
-                    fireCount,
-                    cardTriggerFiredCallback
-                });
+                combatManager.StartCoroutine(
+                    (IEnumerator)AccessTools.Method(
+                            typeof(CombatManager), 
+                            "FireCardTriggers"
+                        )
+                        .Invoke(combatManager, 
+                            new object[7]
+                            {
+                                GetCardTrigger(typeof(T)),
+                                playedCard,
+                                roomIndex,
+                                ignoreDeadInTargeting,
+                                triggeredCharacter,
+                                fireCount,
+                                cardTriggerFiredCallback
+                            }
+                        )
+                    );
             }
-            yield break;
         }
         /// <summary>
         /// Associates two triggers with eachother allowing MT to cast from one trigger to another
         /// </summary>
         /// <typeparam name="Card">Card Trigger to Associate</typeparam>
         /// <typeparam name="Char">Character Trigger to Associate</typeparam>
-        public static void AssociateTriggers<Card, Char>() where Card:IMTCardTrigger where Char:IMTCharacterTrigger
+        public static void AssociateTriggers<Card, Char>() where Card : IMTCardTrigger where Char : IMTCharacterTrigger
         {
             CharToCardTriggerDict[GetCharacterTrigger(typeof(Char))] = GetCardTrigger(typeof(Card));
             CardToCharTriggerDict[GetCardTrigger(typeof(Card))] = GetCharacterTrigger(typeof(Char));
@@ -347,7 +411,14 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns></returns>
         public static CardTriggerType? GetAssociatedCardTrigger(CharacterTriggerData.Trigger trigger)
         {
-            return CharToCardTriggerDict?[trigger];
+            if (CharToCardTriggerDict.ContainsKey(trigger))
+            {
+                return CharToCardTriggerDict[trigger];
+            }
+            else
+            {
+                return null;
+            }
         }
         /// <summary>
         /// Gets the Associated Trigger
@@ -356,7 +427,14 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns></returns>
         public static CharacterTriggerData.Trigger? GetAssociatedCharacterTrigger(CardTriggerType trigger)
         {
-            return CardToCharTriggerDict?[trigger];
+            if (CardToCharTriggerDict.ContainsKey(trigger))
+            {
+                return CardToCharTriggerDict?[trigger];
+            }
+            else
+            {
+                return null;
+            }
         }
         /// <summary>
         /// Converts Trigger to Read-able Name
@@ -365,7 +443,24 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns></returns>
         public static string GetTypeName(CardTriggerType triggerType)
         {
-            return CardTriggerToNameDict[triggerType];
+            if (CardTriggerToNameDict.ContainsKey(triggerType))
+            {
+                return CardTriggerToNameDict[triggerType];
+            }
+            return ((int)triggerType).ToString();
+        }
+        /// <summary>
+        /// Converts Trigger to Read-able Name
+        /// </summary>
+        /// <param name="triggerType">Trigger to Convert</param>
+        /// <returns></returns>
+        public static string GetTypeName(CharacterTriggerData.Trigger triggerType)
+        {
+            if (CharTriggerToNameDict.ContainsKey(triggerType))
+            {
+                return CharTriggerToNameDict[triggerType];
+            }
+            return ((int)triggerType).ToString();
         }
     }
 }
