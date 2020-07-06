@@ -35,8 +35,6 @@ namespace MonsterTrainModdingAPI
         {
             DepInjector.AddClient(new MonsterTrainModdingAPI.Managers.ProviderManager());
 
-            MonsterTrainModdingAPI.Managers.CustomTriggerManager.RegisterAllTriggers();
-
             var harmony = new Harmony("api.modding.train.monster");
             harmony.PatchAll();
         }
