@@ -1,52 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using MonsterTrainModdingAPI.Enums;
 using MonsterTrainModdingAPI.Managers;
 using System.Linq;
 using System.Text;
 
 namespace MonsterTrainModdingAPI.Enums.MTTriggers
 {
-    /// <summary>
-    /// Move to Another Class
-    /// </summary>
-    /// <typeparam name="TExtendedEnum"></typeparam>
-    /// <typeparam name="TEnum"></typeparam>
-    public abstract class ExtendedEnum<TExtendedEnum, TEnum>
-        where TExtendedEnum : ExtendedEnum<TExtendedEnum, TEnum>
-        where TEnum : Enum
-    {
-        protected static Dictionary<int, TExtendedEnum> IntToExtendedEnumMap = new Dictionary<int, TExtendedEnum>();
-        protected static Dictionary<string, TExtendedEnum> NameToExtendedEnumMap = new Dictionary<string, TExtendedEnum>();
-        protected int ID;
-        protected string Name;
-        public ExtendedEnum(string Name, int ID)
-        {
-            this.ID = ID;
-            this.Name = Name;
-            if (NameToExtendedEnumMap.ContainsKey(this.Name))
-            {
-                MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel.Warning, $"Name: {this.Name} Conflict in domain, {typeof(TExtendedEnum).Name}");
-            }
-            if (IntToExtendedEnumMap.ContainsKey(this.ID))
-            {
-                MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel.Warning, $"ID#{this.ID} Conflict between {Name} and {IntToExtendedEnumMap[this.ID].GetName()} in domain, {typeof(TExtendedEnum).Name}");
-            }
-            NameToExtendedEnumMap[Name] = GetDerivedClass();
-            IntToExtendedEnumMap[ID] = GetDerivedClass();
-        }
-        /// <summary>
-        /// A Function that Returns a Reference of the Subclass
-        /// </summary>
-        /// <returns></returns>
-        public abstract TExtendedEnum GetDerivedClass();
-        public int GetID() => ID;
-        public virtual TEnum GetEnum() => (TEnum)Enum.ToObject(typeof(TEnum), ID);
-        public string GetName() => Name;
-        public static int[] GetAllIDs() => IntToExtendedEnumMap.Keys.ToArray();
-        public static string[] GetAllNames => NameToExtendedEnumMap.Keys.ToArray();
-        public static TExtendedEnum GetValueOrDefault(string Key) => NameToExtendedEnumMap.GetValueOrDefault(Key);
-        public static TExtendedEnum GetValueOrDefault(int Key) => IntToExtendedEnumMap.GetValueOrDefault(Key);
-    }
+    
     public class CardTrigger : ExtendedEnum<CardTrigger, CardTriggerType>
     {
         private static int NumCardTriggers = 576;
@@ -55,12 +16,6 @@ namespace MonsterTrainModdingAPI.Enums.MTTriggers
             Dictionary<CardTriggerType, string> dict = (Dictionary<CardTriggerType, string>)typeof(CardTriggerTypeMethods).GetField("TriggerToLocalizationExpression", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static).GetValue(null);
             dict[this.GetEnum()] = localizationKey;
         }
-
-        public override CardTrigger GetDerivedClass()
-        {
-            return this;
-        }
-
         public static int GetNewCardGUID()
         {
             NumCardTriggers++;
@@ -75,12 +30,6 @@ namespace MonsterTrainModdingAPI.Enums.MTTriggers
         {
             CharacterTriggerData.TriggerToLocalizationExpression[this.GetEnum()] = localizationKey;
         }
-
-        public override CharacterTrigger GetDerivedClass()
-        {
-            return this;
-        }
-
         public static int GetNewCharacterGUID()
         {
             NumCharTriggers++;

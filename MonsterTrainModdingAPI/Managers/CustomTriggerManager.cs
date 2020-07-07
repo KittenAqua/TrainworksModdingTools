@@ -13,22 +13,14 @@ namespace MonsterTrainModdingAPI.Managers
     public class CustomTriggerManager
     {
         /// <summary>
-        /// 576+ reservation makes it extraordinarily unlikely of a conflict with MT
+        /// Dictionaries Used for Conversion of CharacterTriggers to CardTriggers
         /// </summary>
-        private static int NumCharTriggers = 576;
-        
-
         private static Dictionary<CharacterTriggerData.Trigger, CardTriggerType> CharToCardTriggerDict = new Dictionary<CharacterTriggerData.Trigger, CardTriggerType>();
         private static Dictionary<CardTriggerType, CharacterTriggerData.Trigger> CardToCharTriggerDict = new Dictionary<CardTriggerType, CharacterTriggerData.Trigger>();
         /// <summary>
-        /// Gets a New Character Trigger GUID
-        /// </summary>
-        /// <returns></returns>
-        
-        /// <summary>
         /// Queues a Trigger
         /// </summary>
-        /// <typeparam name="T">Type of Trigger to Queue</typeparam>
+        /// <param name="charTrigger">CharacterTrigger to be queued</param>
         /// <param name="character">Character to Queue the Trigger On</param>
         /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
         /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
@@ -52,7 +44,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Queues a Trigger
         /// </summary>
-        /// <typeparam name="T">Type of Trigger to Queue</typeparam>
+        /// <param name="charTrigger">CharacterTrigger to be queued</param>
         /// <param name="characters">Characters to Queue trigger on</param>
         /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
         /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
@@ -79,8 +71,8 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Queues a Trigger
         /// </summary>
-        /// <typeparam name="T">Type of Trigger to Queue</typeparam>
         /// <typeparam name="Manager">Type of Manager to Queue and Run Triggers to</typeparam>
+        /// <param name="charTrigger">CharacterTrigger to be queued</param>
         /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
         /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
         /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
@@ -106,7 +98,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Queues and Runs a Trigger
         /// </summary>
-        /// <typeparam name="T">Type of Trigger to Queue and Run</typeparam>
+        /// <param name="charTrigger">CharacterTrigger to be queued</param>
         /// <param name="character">Character to Run the Trigger On</param>
         /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
         /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
@@ -121,7 +113,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Queues and Runs a Trigger
         /// </summary>
-        /// <typeparam name="T">Type of Trigger to Queue and Run</typeparam>
+        /// <param name="charTrigger">CharacterTrigger to be queued</param>
         /// <param name="characters">Characters to Run the Trigger On</param>
         /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
         /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
@@ -136,8 +128,8 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Queues and Runs a Trigger
         /// </summary>
-        /// <typeparam name="T">Type of Trigger to Queue and Run</typeparam>
         /// <typeparam name="Manager">Type of Manager to Queue and Run Triggers to</typeparam>
+        /// <param name="charTrigger">CharacterTrigger to be queued</param>
         /// <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
         /// <param name="canFireTriggers">Whether the trigger can currently be fired</param>
         /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
@@ -163,7 +155,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// A general function for applying a custom card trigger.
         /// </summary>
-        /// <typeparam name="T">Type of Trigger to Apply</typeparam>
+        /// <param name="cardTrigger">CardTrigger to be Applied</param>
         /// <param name="playedCard">Card to apply triggers to</param>
         /// <param name="fireAllMonsterTriggersInRoom">Whether Apply Card Triggers should fire on monster's Instead, requires Trigger to have an associated character trigger</param>
         /// <param name="roomIndex">Room to fire triggers in, -1 defaults to selected room</param>
@@ -193,7 +185,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Fires a Card Trigger
         /// </summary>
-        /// <typeparam name="T">Type of Trigger to Fire</typeparam>
+        /// <param name="cardTrigger">CardTrigger to be Fired</param>
         /// <param name="playedCard">Card to Fire Trigger on</param>
         /// <param name="roomIndex">Room to fire trigger in, -1 is current room</param>
         /// <param name="ignoreDeadInTargeting">Whether effect should ignore dead in targeting</param>
@@ -228,8 +220,8 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Associates two triggers with eachother allowing MT to cast from one trigger to another
         /// </summary>
-        /// <typeparam name="Card">Card Trigger to Associate</typeparam>
-        /// <typeparam name="Char">Character Trigger to Associate</typeparam>
+        /// <param name="cardTrigger">CardTrigger to be Associated</param>
+        /// <param name="characterTrigger">CharacterTrigger to be Associated</param>
         public static void AssociateTriggers(CardTrigger cardTrigger, CharacterTrigger characterTrigger)
         {
             CharToCardTriggerDict[characterTrigger.GetEnum()] = cardTrigger.GetEnum();
