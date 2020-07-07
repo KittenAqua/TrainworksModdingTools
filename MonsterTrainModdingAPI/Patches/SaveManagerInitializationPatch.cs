@@ -23,7 +23,6 @@ namespace MonsterTrainModdingAPI.Patches
             CustomCharacterManager.SaveManager = __instance;
             CustomCollectableRelicManager.SaveManager = __instance;
             CustomClassManager.SaveManager = __instance;
-            CustomMapNodeManager.SaveManager = __instance;
             CustomCharacterManager.FallbackData = (FallbackData)AccessTools.Field(typeof(CharacterData), "fallbackData")
                 .GetValue(__instance.GetAllGameData().GetAllCharacterData()[0]);
         }
