@@ -49,8 +49,8 @@ namespace MonsterTrainModdingAPI.Managers
             }
             catch (IOException e)
             {
-                API.Log(LogLevel.All, "We couldn't read the file at " + "BepInEx/plugins/" + path);
-                API.Log(LogLevel.All ,e.Message);
+                API.Log(LogLevel.Error, "We couldn't read the file at " + "BepInEx/plugins/" + path);
+                API.Log(LogLevel.Error, e.Message);
             }
 
             List<string> categories = LocalizationManager.Sources[0].GetCategories(true, (List<string>)null);
