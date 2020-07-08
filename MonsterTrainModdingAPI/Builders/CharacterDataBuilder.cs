@@ -136,6 +136,10 @@ namespace MonsterTrainModdingAPI.Builders
         /// "The default character prefab to use if one isn't found.  (Which should never happen in the shpped game)" - base game comment
         /// </summary>
         public FallbackData FallBackData { get; set; }
+        /// <summary>
+        /// Sets whether or not this unit should be considered for being automatically drawn as part of the priority unit draw system for hands. Defaults to true based 
+        /// </summary>
+        public bool PriorityDraw { get; set; }
 
         public CharacterDataBuilder()
         {
@@ -155,6 +159,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.ImpactVFX = (VfxAtLoc)FormatterServices.GetUninitializedObject(typeof(VfxAtLoc));
             this.TriggerBuilders = new List<CharacterTriggerDataBuilder>();
             this.RoomModifierBuilders = new List<RoomModifierDataBuilder>();
+            this.PriorityDraw = true;
         }
 
         /// <summary>
@@ -227,6 +232,10 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CharacterData), "startingStatusEffects").SetValue(characterData, this.StartingStatusEffects);
             AccessTools.Field(typeof(CharacterData), "statusEffectImmunities").SetValue(characterData, this.StatusEffectImmunities);
             //AccessTools.Field(typeof(CardData), "stringBuilder").SetValue(cardData, this.);
+            if (this.PriorityDraw)
+            {
+                this.SubtypeKeys.Add("SubtypesData_Chosen");
+            }
             AccessTools.Field(typeof(CharacterData), "subtypeKeys").SetValue(characterData, this.SubtypeKeys);
             AccessTools.Field(typeof(CharacterData), "triggers").SetValue(characterData, this.Triggers);
             return characterData;
