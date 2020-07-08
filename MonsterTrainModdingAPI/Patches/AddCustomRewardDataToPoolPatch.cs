@@ -25,9 +25,12 @@ namespace MonsterTrainModdingAPI.Patches
                 { // Insert custom nodes into the map node list local variable
                     var nameGetter = AccessTools.PropertyGetter(typeof(RandomMapDataContainer), "name");
                     var addRewardsMethod = AccessTools.Method(typeof(CustomMapNodeManager), "AddRewardNodesForPool");
+                    var classTypeOverrideField = AccessTools.Field(typeof(RandomMapDataContainer), "classTypeOverride");
                     yield return new CodeInstruction(OpCodes.Ldarg_0);
                     yield return new CodeInstruction(OpCodes.Call, nameGetter);
                     yield return new CodeInstruction(OpCodes.Ldloc_3);
+                    yield return new CodeInstruction(OpCodes.Ldarg_0);
+                    yield return new CodeInstruction(OpCodes.Ldfld, classTypeOverrideField);
                     yield return new CodeInstruction(OpCodes.Call, addRewardsMethod);
                     newObjFound++; // Increment so we don't do this more than once
                 }

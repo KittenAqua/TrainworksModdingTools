@@ -47,12 +47,33 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         /// <param name="mapNodePoolID">ID of the map node pool to get nodes for</param>
         /// <param name="mapNodes">List of map nodes to add the nodes to</param>
+        /// <param name="classTypeOverride">Whether or not only nodes matching the main/subclass should be added</param>
         /// <returns>A list of reward nodes added to the map node pool with given ID by mods</returns>
-        public static void AddRewardNodesForPool(string mapNodePoolID, List<MapNodeData> mapNodes)
+        public static void AddRewardNodesForPool(string mapNodePoolID, List<MapNodeData> mapNodes, RunState.ClassType classTypeOverride)
         {
             if (CustomRewardNodeData.ContainsKey(mapNodePoolID))
             {
-                mapNodes.AddRange(CustomRewardNodeData[mapNodePoolID]);
+                var validMapNodes = new List<MapNodeData>();
+                var possibleMapNodes = CustomRewardNodeData[mapNodePoolID];
+
+                foreach (MapNodeData mapNodeData in possibleMapNodes)
+                {
+                    RewardNodeData rewardNodeData;
+                    if ((rewardNodeData = (mapNodeData as RewardNodeData)) != null && rewardNodeData.RequiredClass != null)
+                    {
+                        if (classTypeOverride == RunState.ClassType.MainClass && SaveManager.GetMainClass() != rewardNodeData.RequiredClass)
+                        {
+                            continue;
+                        }
+                        else if (classTypeOverride == RunState.ClassType.SubClass && SaveManager.GetSubClass() != rewardNodeData.RequiredClass)
+                        {
+                            continue;
+                        }
+                    }
+                    validMapNodes.Add(mapNodeData);
+                }
+
+                mapNodes.AddRange(validMapNodes);
             }
         }
     }
