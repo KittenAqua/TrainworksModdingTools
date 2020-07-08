@@ -80,6 +80,11 @@ namespace MonsterTrainModdingAPI.Builders
         public string TitleLoc { get; set; }
         public string DescriptionLoc { get; set; }
         public string SubclassDescriptionLoc { get; set; }
+        /// <summary>
+        /// Add a custom icon for the card draft on battle victory.
+        /// </summary>
+        public Sprite DraftIcon { get; set; }
+
 
         public ClassDataBuilder()
         {
@@ -151,8 +156,15 @@ namespace MonsterTrainModdingAPI.Builders
             if (UpgradeTreeBuilder != null) { UpgradeTree = UpgradeTreeBuilder.Build(); }
             AccessTools.Field(typeof(ClassData), "upgradeTree").SetValue(classData, this.UpgradeTree);
 
+            // Card Frame
             if (CardFrameSpell != null && CardFrameUnit != null) {
                 CustomClassManager.CustomClassFrame.Add(this.ClassID, new List<Sprite>() { this.CardFrameUnit, this.CardFrameSpell });
+            }
+
+            // Draft Icon
+            if (CardFrameSpell != null && CardFrameUnit != null)
+            {
+                CustomClassManager.CustomClassDraftIcons.Add(this.ClassID, this.DraftIcon);
             }
 
             return classData;

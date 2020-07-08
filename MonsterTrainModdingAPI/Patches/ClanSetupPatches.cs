@@ -94,6 +94,33 @@ namespace MonsterTrainModdingAPI.Patches
                 return ret;
             }
         }
-        
+
+        // This patch adds in the cusom icon for a clan. We could theoretically add these to VictoryUI's ClassIconMapping list, which seems better in theory. 
+        // In practice, we have no way to guarantee the existence of VictoryUI in the scene at the time of Class instantiation, and no way to serialize the class mapping in advance of 
+        [HarmonyPatch(typeof(RewardItemUI), "TryOverrideDraftIcon")]
+        public class CustomClanRewardDraftIcon
+        {
+            static void Prefix(RewardItemUI __instance, ref Sprite mainClassIcon, ref Sprite subClassIcon)
+            {
+                DraftRewardData draftRewardData;
+                if ((object)(draftRewardData = (__instance.rewardState?.RewardData as DraftRewardData)) != null)
+                {
+                    if (draftRewardData.ClassType == RunState.ClassType.MainClass)
+                    {
+                        string mainClass = CustomClassManager.SaveManager.GetMainClass().GetID();
+                        if (CustomClassManager.CustomClassDraftIcons.ContainsKey(mainClass))
+                            CustomClassManager.CustomClassDraftIcons.TryGetValue(mainClass, out mainClassIcon);
+                    }
+                    else if (draftRewardData.ClassType == RunState.ClassType.SubClass)
+                    {
+                        string subClass = CustomClassManager.SaveManager.GetSubClass().GetID();
+                        if (CustomClassManager.CustomClassDraftIcons.ContainsKey(subClass))
+                            CustomClassManager.CustomClassDraftIcons.TryGetValue(subClass, out subClassIcon);
+                    }
+                }
+            }
+        }
+
+
     }
 }
