@@ -23,7 +23,8 @@ namespace MonsterTrainModdingAPI.Patches
         {
             if (!__instance.HasCardArtPrefabVariant() && CustomCardManager.CustomCardData.ContainsKey(__instance.GetID()))
             {
-                GameObject obj = CustomCardManager.CreateCardGameObject(__instance.GetID()); ;
+                GameObject obj = CustomCardManager.CreateCardGameObject(__instance.GetID());
+
                 if (obj != null)
                 {
                     UnityEngine.Object.DontDestroyOnLoad(obj);
