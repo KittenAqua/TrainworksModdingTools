@@ -19,7 +19,6 @@ namespace MonsterTrainModdingAPI.Patches
             int newObjFound = 0;
             foreach (var instruction in instructions)
             {
-                UnityEngine.Debug.Log(instruction.opcode);
                 yield return instruction;
                 if (newObjFound == 2)
                 { // Insert custom nodes into the map node list local variable
