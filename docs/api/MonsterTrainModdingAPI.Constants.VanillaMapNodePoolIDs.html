@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace MonsterTrainModdingAPI.Patches
+    <title>Class VanillaMapNodePoolIDs
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace MonsterTrainModdingAPI.Patches
+    <meta name="title" content="Class VanillaMapNodePoolIDs
    ">
     <meta name="generator" content="docfx 2.54.0.0">
     
@@ -68,30 +68,77 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="MonsterTrainModdingAPI.Patches">
+            <article class="content wrap" id="_content" data-uid="MonsterTrainModdingAPI.Constants.VanillaMapNodePoolIDs">
   
-  <h1 id="MonsterTrainModdingAPI_Patches" data-uid="MonsterTrainModdingAPI.Patches" class="text-break">Namespace MonsterTrainModdingAPI.Patches
+  
+  <h1 id="MonsterTrainModdingAPI_Constants_VanillaMapNodePoolIDs" data-uid="MonsterTrainModdingAPI.Constants.VanillaMapNodePoolIDs" class="text-break">Class VanillaMapNodePoolIDs
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Provides easy access to all of the base game's map node pool IDs</p>
+</div>
   <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">VanillaMapNodePoolIDs</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="MonsterTrainModdingAPI.Constants.html">MonsterTrainModdingAPI.Constants</a></h6>
+  <h6><strong>Assembly</strong>: MonsterTrainModdingAPI.dll</h6>
+  <h5 id="MonsterTrainModdingAPI_Constants_VanillaMapNodePoolIDs_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class VanillaMapNodePoolIDs : Object</code></pre>
+  </div>
+  <h3 id="fields">Fields
   </h3>
-      <h4><a class="xref" href="MonsterTrainModdingAPI.Patches.CreateCustomCardTraitPatch.html">CreateCustomCardTraitPatch</a></h4>
-      <section><p>The base game instantiates card traits by using reflection on their names.
-This is done using Type.GetType().
-Type.GetType() only searches the core library and current assembly by default,
-so it is insufficient to add new trait types.
-This patch changes the means through which traits are instantiated by also searching all running assemblies.</p>
-</section>
-      <h4><a class="xref" href="MonsterTrainModdingAPI.Patches.SECardTooltipLocalizationPatch.html">SECardTooltipLocalizationPatch</a></h4>
-      <section></section>
-      <h4><a class="xref" href="MonsterTrainModdingAPI.Patches.SENameLocalizationPatch.html">SENameLocalizationPatch</a></h4>
-      <section></section>
-      <h4><a class="xref" href="MonsterTrainModdingAPI.Patches.SENoticeLocalizationPatch.html">SENoticeLocalizationPatch</a></h4>
-      <section></section>
-      <h4><a class="xref" href="MonsterTrainModdingAPI.Patches.SETooltipLocalizationPatch.html">SETooltipLocalizationPatch</a></h4>
-      <section></section>
+  
+  
+  <h4 id="MonsterTrainModdingAPI_Constants_VanillaMapNodePoolIDs_RandomChosenMainClassUnit" data-uid="MonsterTrainModdingAPI.Constants.VanillaMapNodePoolIDs.RandomChosenMainClassUnit">RandomChosenMainClassUnit</h4>
+  <div class="markdown level1 summary"><p>Holds all the clans' banners, but selects only the one corresponding to the current primary clan</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly string RandomChosenMainClassUnit</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="MonsterTrainModdingAPI_Constants_VanillaMapNodePoolIDs_RandomChosenSubClassUnit" data-uid="MonsterTrainModdingAPI.Constants.VanillaMapNodePoolIDs.RandomChosenSubClassUnit">RandomChosenSubClassUnit</h4>
+  <div class="markdown level1 summary"><p>Holds all the clans' banners, but selects only the one corresponding to the current allied clan</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly string RandomChosenSubClassUnit</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
