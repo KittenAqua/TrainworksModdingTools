@@ -5,8 +5,6 @@ using BepInEx.Harmony;
 using System.Reflection;
 using BepInEx.Logging;
 using HarmonyLib;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
