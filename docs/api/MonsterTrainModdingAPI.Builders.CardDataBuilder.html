@@ -994,35 +994,6 @@ Overrides the Description field.</p>
   </table>
   
   
-  <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_AddToCardPool_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.AddToCardPool*"></a>
-  <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_AddToCardPool_System_Type_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.AddToCardPool(System.Type)">AddToCardPool(Type)</h4>
-  <div class="markdown level1 summary"><p>Adds this card to the cardpool whose type is passed in</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddToCardPool(Type cardPoolType)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Type</span></td>
-        <td><span class="parametername">cardPoolType</span></td>
-        <td><p>Must implement IMTCardPool</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_Build_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.Build*"></a>
   <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_Build" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.Build">Build()</h4>
   <div class="markdown level1 summary"><p>Builds the CardData represented by this builder's parameters recursively;
@@ -1139,35 +1110,6 @@ Cards with custom art should not use this method.</p>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">clanID</span></td>
         <td><p>ID of the clan, most easily retrieved using the helper class &quot;MTClanIDs&quot;</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_SetClan_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.SetClan*"></a>
-  <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_SetClan_System_Type_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.SetClan(System.Type)">SetClan(Type)</h4>
-  <div class="markdown level1 summary"><p>Sets this card's clan to the clan whose type is passed in</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetClan(Type clanType)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Type</span></td>
-        <td><span class="parametername">clanType</span></td>
-        <td><p>Must implement IMTClan</p>
 </td>
       </tr>
     </tbody>
