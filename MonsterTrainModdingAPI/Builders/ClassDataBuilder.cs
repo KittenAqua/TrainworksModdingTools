@@ -9,8 +9,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
 
 namespace MonsterTrainModdingAPI.Builders
 {
