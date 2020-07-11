@@ -74,6 +74,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.Description = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
 
             this.Effects = new List<RelicEffectData>();
+            this.EffectBuilders = new List<RelicEffectDataBuilder>();
         }
 
         /// <summary>
