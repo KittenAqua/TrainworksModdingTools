@@ -10,7 +10,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -258,17 +257,6 @@ namespace MonsterTrainModdingAPI.Builders
             this.CharacterPrefabVariantRef = assetReferenceGameObject;
 
             this.AssetPath = m_AssetGUID;
-        }
-
-        /// <summary>
-        /// Add a status effect to this character's starting status effect array.
-        /// </summary>
-        /// <param name="statusEffectType">Must implement IMTStatusEffect</param>
-        /// <param name="stackCount">Number of stacks to apply</param>
-        public void AddStartingStatusEffect(Type statusEffectType, int stackCount)
-        {
-            string statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
-            this.AddStartingStatusEffect(statusEffectID, stackCount);
         }
 
         /// <summary>

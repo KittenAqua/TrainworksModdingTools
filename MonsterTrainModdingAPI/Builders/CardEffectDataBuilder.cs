@@ -8,7 +8,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -186,17 +185,6 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CardEffectData), "useIntRange").SetValue(cardEffectData, this.UseIntRange);
             AccessTools.Field(typeof(CardEffectData), "useStatusEffectStackMultiplier").SetValue(cardEffectData, this.UseStatusEffectStackMultiplier);
             return cardEffectData;
-        }
-
-        /// <summary>
-        /// Add a status effect to this effect's status effect array.
-        /// </summary>
-        /// <param name="statusEffectType">Must implement IMTStatusEffect</param>
-        /// <param name="stackCount">Number of stacks to apply</param>
-        public void AddStatusEffect(Type statusEffectType, int stackCount)
-        {
-            string statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
-            this.AddStatusEffect(statusEffectID, stackCount);
         }
 
         /// <summary>

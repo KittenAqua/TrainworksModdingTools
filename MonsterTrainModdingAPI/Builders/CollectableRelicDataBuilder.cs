@@ -10,8 +10,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -145,16 +143,6 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CollectableRelicData), "rarity").SetValue(relicData, this.Rarity);
             AccessTools.Field(typeof(CollectableRelicData), "unlockLevel").SetValue(relicData, this.UnlockLevel);
             return relicData;
-        }
-
-        /// <summary>
-        /// Sets this card's clan to the clan whose type is passed in
-        /// </summary>
-        /// <param name="clanType">Must implement IMTClan</param>
-        public void SetClan(Type clanType)
-        {
-            string clanID = MTClanIDs.GetIDForType(clanType);
-            this.SetClan(clanID);
         }
 
         /// <summary>

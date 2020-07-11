@@ -9,8 +9,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTCardPools;
-using MonsterTrainModdingAPI.Enums.MTClans;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -237,6 +235,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
             AccessTools.Field(typeof(CardData), "id").SetValue(cardData, this.CardID);
+            cardData.name = this.CardID;
             if (this.CardArtPrefabVariantRef == null)
             {
                 this.CreateAndSetCardArtPrefabVariantRef(this.AssetPath, this.AssetPath);
@@ -308,31 +307,12 @@ namespace MonsterTrainModdingAPI.Builders
         }
 
         /// <summary>
-        /// Sets this card's clan to the clan whose type is passed in
-        /// </summary>
-        /// <param name="clanType">Must implement IMTClan</param>
-        public void SetClan(Type clanType)
-        {
-            string clanID = MTClanIDs.GetIDForType(clanType);
-            this.SetClan(clanID);
-        }
-
-        /// <summary>
         /// Sets this card's clan to the clan whose ID is passed in
         /// </summary>
         /// <param name="clanID">ID of the clan, most easily retrieved using the helper class "MTClanIDs"</param>
         public void SetClan(string clanID)
         {
             this.ClanID = clanID;
-        }
-        
-        /// <summary>
-        /// Adds this card to the cardpool whose type is passed in
-        /// </summary>
-        /// <param name="cardPoolType">Must implement IMTCardPool</param>
-        public void AddToCardPool(Type cardPoolType)
-        {
-            this.CardPoolIDs.Add(MTCardPoolIDs.GetIDForType(cardPoolType));
         }
 
         /// <summary>
