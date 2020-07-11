@@ -18,7 +18,7 @@ namespace MonsterTrainModdingAPI.Managers
         private static Dictionary<CharacterTriggerData.Trigger, CardTriggerType> CharToCardTriggerDict = new Dictionary<CharacterTriggerData.Trigger, CardTriggerType>();
         private static Dictionary<CardTriggerType, CharacterTriggerData.Trigger> CardToCharTriggerDict = new Dictionary<CardTriggerType, CharacterTriggerData.Trigger>();
         /// <summary>
-        /// Queues a Trigger
+        /// Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.
         /// </summary>
         /// <param name="charTrigger">CharacterTrigger to be queued</param>
         /// <param name="character">Character to Queue the Trigger On</param>
@@ -42,7 +42,7 @@ namespace MonsterTrainModdingAPI.Managers
             }
         }
         /// <summary>
-        /// Queues a Trigger
+        /// Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.
         /// </summary>
         /// <param name="charTrigger">CharacterTrigger to be queued</param>
         /// <param name="characters">Characters to Queue trigger on</param>
@@ -69,7 +69,7 @@ namespace MonsterTrainModdingAPI.Managers
             }
         }
         /// <summary>
-        /// Queues a Trigger
+        /// Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.
         /// </summary>
         /// <typeparam name="Manager">Type of Manager to Queue and Run Triggers to</typeparam>
         /// <param name="charTrigger">CharacterTrigger to be queued</param>
@@ -96,7 +96,7 @@ namespace MonsterTrainModdingAPI.Managers
             }
         }
         /// <summary>
-        /// Queues and Runs a Trigger
+        /// Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.
         /// </summary>
         /// <param name="charTrigger">CharacterTrigger to be queued</param>
         /// <param name="character">Character to Run the Trigger On</param>
@@ -105,13 +105,13 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
         /// <param name="triggerCount">Number of Times to Trigger</param>
         /// <returns></returns>
-        public static IEnumerator QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState character, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)
+        public static void QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState character, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)
         {
             QueueTrigger(charTrigger, character, canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
-            yield return RunTriggerQueueRemote();
+            RunTriggerQueueRemote();
         }
         /// <summary>
-        /// Queues and Runs a Trigger
+        /// Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger
         /// </summary>
         /// <param name="charTrigger">CharacterTrigger to be queued</param>
         /// <param name="characters">Characters to Run the Trigger On</param>
@@ -120,13 +120,13 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
         /// <param name="triggerCount">Number of Times to Trigger</param>
         /// <returns></returns>
-        public static IEnumerator QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState[] characters, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)
+        public static void QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState[] characters, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)
         {
             QueueTrigger(charTrigger, characters, canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
-            yield return RunTriggerQueueRemote();
+            RunTriggerQueueRemote();
         }
         /// <summary>
-        /// Queues and Runs a Trigger
+        /// Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger
         /// </summary>
         /// <typeparam name="Manager">Type of Manager to Queue and Run Triggers to</typeparam>
         /// <param name="charTrigger">CharacterTrigger to be queued</param>
@@ -135,25 +135,24 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
         /// <param name="triggerCount">Number of Times to Trigger</param>
         /// <returns></returns>
-        public static IEnumerator QueueAndRunTrigger<Manager>(CharacterTrigger charTrigger, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where Manager : IProvider, ICharacterManager
+        public static void QueueAndRunTrigger<Manager>(CharacterTrigger charTrigger, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where Manager : IProvider, ICharacterManager
         {
             QueueTrigger<Manager>(charTrigger, canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
-            yield return RunTriggerQueueRemote();
+            RunTriggerQueueRemote();
         }
         /// <summary>
-        /// Remotely Runs the Trigger Queue
+        /// Remotely Runs the Trigger Queue of the CombatManager
         /// </summary>
         /// <returns></returns>
-        public static IEnumerator RunTriggerQueueRemote()
+        public static void RunTriggerQueueRemote()
         {
             if (ProviderManager.TryGetProvider<CombatManager>(out CombatManager combatManager))
             {
-                yield return combatManager.RunTriggerQueue();
+                combatManager.StartCoroutine(combatManager.RunTriggerQueue());
             }
-            yield break;
         }
         /// <summary>
-        /// A general function for applying a custom card trigger.
+        /// A general function used to Apply a Card Trigger in different ways, dependant on parameters 
         /// </summary>
         /// <param name="cardTrigger">CardTrigger to be Applied</param>
         /// <param name="playedCard">Card to apply triggers to</param>
@@ -183,7 +182,7 @@ namespace MonsterTrainModdingAPI.Managers
             }
         }
         /// <summary>
-        /// Fires a Card Trigger
+        /// A function used to fire a card trigger, causing the effects of the corresponding trigger on the playedCard to be fired.
         /// </summary>
         /// <param name="cardTrigger">CardTrigger to be Fired</param>
         /// <param name="playedCard">Card to Fire Trigger on</param>
@@ -228,7 +227,7 @@ namespace MonsterTrainModdingAPI.Managers
             CardToCharTriggerDict[cardTrigger.GetEnum()] = characterTrigger.GetEnum();
         }
         /// <summary>
-        /// Gets the Associated Trigger
+        /// Gets the Associated Card Trigger from a Character Trigger or null
         /// </summary>
         /// <param name="trigger">Trigger to get Associate for</param>
         /// <returns></returns>
@@ -244,7 +243,7 @@ namespace MonsterTrainModdingAPI.Managers
             }
         }
         /// <summary>
-        /// Gets the Associated Trigger
+        /// Gets the Associated Character Trigger from a Card Trigger or null
         /// </summary>
         /// <param name="trigger">Trigger to get Associate for</param>
         /// <returns></returns>

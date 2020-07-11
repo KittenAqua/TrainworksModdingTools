@@ -7,6 +7,24 @@ namespace MonsterTrainModdingAPI.Managers
     public class ProviderManager : IClient
     {
         private static IDictionary<Type, (bool, IProvider)> ProviderDictionary { get; set; } = new Dictionary<Type, (bool, IProvider)>();
+        
+        public static SaveManager SaveManager
+        {
+            get
+            {
+                TryGetProvider<SaveManager>(out SaveManager provider);
+                return provider;
+            }
+        }
+
+        public static CombatManager CombatManager
+        {
+            get
+            {
+                TryGetProvider<CombatManager>(out CombatManager provider);
+                return provider;
+            }
+        }
         /// <summary>
         /// Attempts to Get an IProvider
         /// </summary>
