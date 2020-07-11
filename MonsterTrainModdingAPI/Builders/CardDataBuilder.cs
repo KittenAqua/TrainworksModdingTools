@@ -235,6 +235,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
             AccessTools.Field(typeof(CardData), "id").SetValue(cardData, this.CardID);
+            cardData.name = this.CardID;
             if (this.CardArtPrefabVariantRef == null)
             {
                 this.CreateAndSetCardArtPrefabVariantRef(this.AssetPath, this.AssetPath);
