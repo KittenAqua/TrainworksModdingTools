@@ -8,7 +8,6 @@ namespace MonsterTrainModdingAPI.Builders
 {
     public class CardUpgradeMaskDataBuilder
     {
-
         public CardType CardType { get; set; } = CardType.Invalid;
         public List<string> RequiredSubtypes { get; set; } = new List<string>();
         public List<string> ExcludedSubtypes { get; set; } = new List<string>();

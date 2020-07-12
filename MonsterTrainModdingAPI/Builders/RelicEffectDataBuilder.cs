@@ -33,7 +33,30 @@ namespace MonsterTrainModdingAPI.Builders
             }
         }
 
-        public string RelicEffectClassName { get; set; }
+        /// <summary>
+        /// Don't set directly; use RelicEffectClassName instead.
+        /// </summary>
+        public string relicEffectClassName;
+
+        /// <summary>
+        /// Implicitly sets TooltipBodyKey and TooltipTitleKey if null.
+        /// </summary>
+        public string RelicEffectClassName
+        {
+            get { return this.relicEffectClassName; }
+            set
+            {
+                this.relicEffectClassName = value;
+                if (this.TooltipBodyKey == null)
+                {
+                    this.TooltipBodyKey = this.relicEffectClassName + "_RelicEffectData_TooltipBodyKey";
+                }
+                if (this.TooltipTitleKey == null)
+                {
+                    this.TooltipTitleKey = this.relicEffectClassName + "_RelicEffectData_TooltipTitleKey";
+                }
+            }
+        }
 
         public List<RelicEffectCondition> EffectConditions { get; set; }
         public List<CardTraitData> Traits { get; set; }
@@ -68,6 +91,8 @@ namespace MonsterTrainModdingAPI.Builders
         public string TargetCardTraitParam { get; set; }
         public List<CardTraitData> ExcludedTraits { get; set; }
 
+        public string TooltipBody { get; set; }
+        public string TooltipTitle { get; set; }
         public string TooltipBodyKey { get; set; }
         public string TooltipTitleKey { get; set; }
         public bool TriggerTooltipsSuppressed { get; set; }
@@ -127,7 +152,9 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(RelicEffectData), "relicEffectClassName").SetValue(relicEffectData, this.RelicEffectClassName);
             AccessTools.Field(typeof(RelicEffectData), "sourceCardTraitParam").SetValue(relicEffectData, this.SourceCardTraitParam);
             AccessTools.Field(typeof(RelicEffectData), "targetCardTraitParam").SetValue(relicEffectData, this.TargetCardTraitParam);
+            BuilderUtils.ImportStandardLocalization(this.TooltipBodyKey, this.TooltipBody);
             AccessTools.Field(typeof(RelicEffectData), "tooltipBodyKey").SetValue(relicEffectData, this.TooltipBodyKey);
+            BuilderUtils.ImportStandardLocalization(this.TooltipTitleKey, this.TooltipTitle);
             AccessTools.Field(typeof(RelicEffectData), "tooltipTitleKey").SetValue(relicEffectData, this.TooltipTitleKey);
             AccessTools.Field(typeof(RelicEffectData), "traits").SetValue(relicEffectData, this.Traits);
             AccessTools.Field(typeof(RelicEffectData), "triggers").SetValue(relicEffectData, this.Triggers);

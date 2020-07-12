@@ -34,14 +34,46 @@ namespace MonsterTrainModdingAPI.Builders
             }
         }
 
-        public string RoomStateModifierClassName { get; set; }
+        /// <summary>
+        /// Don't set directly; use RoomStateModifierClassName instead.
+        /// </summary>
+        public string roomStateModifierClassName;
+
+        /// <summary>
+        /// Implicitly sets DescriptionKey, ExtraTooltipBodyKey, and ExtraTooltipTitleKey if null.
+        /// </summary>
+        public string RoomStateModifierClassName
+        {
+            get { return this.roomStateModifierClassName; }
+            set
+            {
+                this.roomStateModifierClassName = value;
+                if (this.DescriptionKey == null)
+                {
+                    this.DescriptionKey = this.roomStateModifierClassName + "_RoomModifierData_DescriptionKey";
+                }
+                if (this.ExtraTooltipBodyKey == null)
+                {
+                    this.ExtraTooltipBodyKey = this.roomStateModifierClassName + "_RoomModifierData_ExtraTooltipBodyKey";
+                }
+                if (this.ExtraTooltipTitleKey == null)
+                {
+                    this.ExtraTooltipTitleKey = this.roomStateModifierClassName + "_RoomModifierData_ExtraTooltipTitleKey";
+                }
+            }
+        }
+
+        public string Description { get; set; }
         public string DescriptionKey { get; set; }
+        public string ExtraTooltipBody { get; set; }
+        public string ExtraTooltipTitle { get; set; }
+        public string ExtraTooltipTitleKey { get; set; }
+        public string ExtraTooltipBodyKey { get; set; }
+
         public Sprite Icon { get; set; }
         public int ParamInt { get; set; }
         public string ParamSubtype { get; set; }
         public StatusEffectStackData[] ParamStatusEffects { get; set; }
-        public string ExtraTooltipTitleKey { get; set; }
-        public string ExtraTooltipBodyKey { get; set; }
 
         public RoomModifierDataBuilder()
         {
@@ -54,8 +86,11 @@ namespace MonsterTrainModdingAPI.Builders
         public RoomModifierData Build()
         {
             RoomModifierData roomModifierData = new RoomModifierData();
+            BuilderUtils.ImportStandardLocalization(this.DescriptionKey, this.Description);
             AccessTools.Field(typeof(RoomModifierData), "descriptionKey").SetValue(roomModifierData, this.DescriptionKey);
+            BuilderUtils.ImportStandardLocalization(this.ExtraTooltipBodyKey, this.ExtraTooltipBody);
             AccessTools.Field(typeof(RoomModifierData), "extraTooltipBodyKey").SetValue(roomModifierData, this.ExtraTooltipBodyKey);
+            BuilderUtils.ImportStandardLocalization(this.ExtraTooltipTitleKey, this.ExtraTooltipTitle);
             AccessTools.Field(typeof(RoomModifierData), "extraTooltipTitleKey").SetValue(roomModifierData, this.ExtraTooltipTitleKey);
             AccessTools.Field(typeof(RoomModifierData), "icon").SetValue(roomModifierData, this.Icon);
             AccessTools.Field(typeof(RoomModifierData), "paramInt").SetValue(roomModifierData, this.ParamInt);

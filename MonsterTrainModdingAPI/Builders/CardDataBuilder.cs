@@ -15,9 +15,32 @@ namespace MonsterTrainModdingAPI.Builders
     public class CardDataBuilder
     {
         /// <summary>
+        /// Don't set directly; use CardID instead.
         /// Unique string used to store and retrieve the card data.
         /// </summary>
-        public string CardID { get; set; }
+        public string cardID;
+
+        /// <summary>
+        /// Unique string used to store and retrieve the card data.
+        /// Implicitly sets NameKey and OverrideDescriptionKey if null
+        /// </summary>
+        public string CardID
+        {
+            get { return this.cardID; }
+            set
+            {
+                this.cardID = value;
+                if (this.NameKey == null)
+                {
+                    this.NameKey = this.cardID + "_CardData_NameKey";
+                }
+                if (this.OverrideDescriptionKey == null)
+                {
+                    this.OverrideDescriptionKey = this.cardID + "_CardData_OverrideDescriptionKey";
+                }
+            }
+        }
+
         /// <summary>
         /// The IDs of all card pools the card should be inserted into.
         /// </summary>
@@ -251,17 +274,15 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CardData), "ignoreWhenCountingMastery").SetValue(cardData, this.IgnoreWhenCountingMastery);
             AccessTools.Field(typeof(CardData), "linkedClass").SetValue(cardData, this.LinkedClass);
             AccessTools.Field(typeof(CardData), "linkedMasteryCard").SetValue(cardData, this.LinkedMasteryCard);
-            if (this.NameKey == null)
+            if (this.Name != null)
             {
-                this.NameKey = this.CardID + "Card_NameKey";
                 // Use Name field for all languages
                 // This should be changed in the future to add proper localization support to custom content
                 CustomLocalizationManager.ImportSingleLocalization(this.NameKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
             }
             AccessTools.Field(typeof(CardData), "nameKey").SetValue(cardData, this.NameKey);
-            if (this.OverrideDescriptionKey == null)
+            if (this.Description != null)
             {
-                this.OverrideDescriptionKey = this.CardID + "Card_OverrideDescriptionKey";
                 // Use Description field for all languages
                 // This should be changed in the future to add proper localization support to custom content
                 CustomLocalizationManager.ImportSingleLocalization(this.OverrideDescriptionKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
