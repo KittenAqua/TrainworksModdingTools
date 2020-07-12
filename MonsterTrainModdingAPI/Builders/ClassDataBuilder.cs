@@ -116,6 +116,8 @@ namespace MonsterTrainModdingAPI.Builders
         public ClassData Build()
         {
             ClassData classData = ScriptableObject.CreateInstance<ClassData>();
+            classData.name = this.ClassID;
+
             AccessTools.Field(typeof(ClassData), "id").SetValue(classData, this.ClassID);
             AccessTools.Field(typeof(ClassData), "cardStyle").SetValue(classData, this.CardStyle);
             AccessTools.Field(typeof(ClassData), "championIcon").SetValue(classData, this.ChampionIcon);

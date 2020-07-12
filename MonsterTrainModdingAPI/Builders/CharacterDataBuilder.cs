@@ -181,6 +181,8 @@ namespace MonsterTrainModdingAPI.Builders
         public CharacterData Build()
         {
             CharacterData characterData = ScriptableObject.CreateInstance<CharacterData>();
+            characterData.name = this.CharacterID;
+
             foreach (var builder in this.TriggerBuilders)
             {
                 this.Triggers.Add(builder.Build());

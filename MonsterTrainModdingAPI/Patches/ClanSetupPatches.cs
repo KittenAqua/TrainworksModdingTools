@@ -27,19 +27,29 @@ namespace MonsterTrainModdingAPI.Patches
                 if (ascensionLevel == 0) { return; }
                 if (CustomClassManager.CustomClassData.ContainsKey(mainClass.GetID()))
                 {
-                    foreach (CardData cardData in mainClass.CreateMainClassStartingDeck())
-                        SaveManagerInitializationPatch.SaveManager.AddCardToDeck(cardData);
-                    if (ascensionLevel >= 6) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
-                    if (ascensionLevel >= 13) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
-                    //SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.GetStartingChampionCard());
+                    if (mainClass.CreateMainClassStartingDeck().Count > 0)
+                    {
+                        foreach (CardData cardData in mainClass.CreateMainClassStartingDeck())
+                            SaveManagerInitializationPatch.SaveManager.AddCardToDeck(cardData);
+                        if (ascensionLevel >= 6) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
+                        if (ascensionLevel >= 13) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
+                    }
                 }
+
+                if (subClass == null)
+                    return;
 
                 if (CustomClassManager.CustomClassData.ContainsKey(subClass.GetID()))
                 {
-                    foreach (CardData cardData in subClass.CreateSubClassStartingDeck())
-                        SaveManagerInitializationPatch.SaveManager.AddCardToDeck(cardData);
-                    if (ascensionLevel >= 8) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
-                    if (ascensionLevel >= 15) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
+                    if (subClass.CreateSubClassStartingDeck().Count > 0)
+                    {
+                        foreach (CardData cardData in subClass.CreateSubClassStartingDeck())
+                        {
+                            SaveManagerInitializationPatch.SaveManager.AddCardToDeck(cardData);
+                        }
+                        if (ascensionLevel >= 8) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateSubClassStartingDeck()[0]); }
+                        if (ascensionLevel >= 15) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateSubClassStartingDeck()[0]); }
+                    }
                 }
             }
         }

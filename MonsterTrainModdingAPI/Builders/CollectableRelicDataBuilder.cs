@@ -103,6 +103,7 @@ namespace MonsterTrainModdingAPI.Builders
             var relicData = new CollectableRelicData();
 
             AccessTools.Field(typeof(GameData), "id").SetValue(relicData, this.CollectableRelicID);
+            relicData.name = this.CollectableRelicID;
             // RelicData fields
             if (this.DescriptionKey == null)
             {
