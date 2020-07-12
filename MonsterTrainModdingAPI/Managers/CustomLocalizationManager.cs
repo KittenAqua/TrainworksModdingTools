@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using BepInEx.Logging;
 using HarmonyLib;
 using I2.Loc;
@@ -47,8 +49,8 @@ namespace MonsterTrainModdingAPI.Managers
             }
             catch (IOException e)
             {
-                API.Log(LogLevel.All, "We couldn't read the file at " + "BepInEx/plugins/" + path);
-                API.Log(LogLevel.All ,e.Message);
+                API.Log(LogLevel.Error, "We couldn't read the file at " + "BepInEx/plugins/" + path);
+                API.Log(LogLevel.Error, e.Message);
             }
 
             List<string> categories = LocalizationManager.Sources[0].GetCategories(true, (List<string>)null);
@@ -73,6 +75,7 @@ namespace MonsterTrainModdingAPI.Managers
             miniCSVBuilder.Append(portuguese + ";");
             miniCSVBuilder.Append(chinese);
 
+            API.Log(LogLevel.Info, "Missing Localization: " + miniCSVBuilder.ToString().Split(Environment.NewLine.ToCharArray())[1]);
             List<string> categories = LocalizationManager.Sources[0].GetCategories(true, (List<string>)null);
             foreach (string Category in categories)
                 LocalizationManager.Sources[0].Import_CSV(Category, miniCSVBuilder.ToString(), eSpreadsheetUpdateMode.AddNewTerms, ';');

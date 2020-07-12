@@ -10,7 +10,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
-using MonsterTrainModdingAPI.Enums.MTStatusEffects;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -45,6 +44,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public int Size { get; set; }
 
+        public List<CharacterTriggerDataBuilder> TriggerBuilders { get; set; }
         public List<CharacterTriggerData> Triggers { get; set; }
 
         /// <summary>
@@ -97,6 +97,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public List<string> CharacterLoreTooltipKeys { get; set; }
 
+        public List<RoomModifierDataBuilder> RoomModifierBuilders { get; set; }
         public List<RoomModifierData> RoomModifiers { get; set; }
 
         public bool AscendsTrainAutomatically { get; set; }
@@ -134,6 +135,10 @@ namespace MonsterTrainModdingAPI.Builders
         /// "The default character prefab to use if one isn't found.  (Which should never happen in the shpped game)" - base game comment
         /// </summary>
         public FallbackData FallBackData { get; set; }
+        /// <summary>
+        /// Sets whether or not this unit should be considered for being automatically drawn as part of the priority unit draw system for hands. Defaults to true based 
+        /// </summary>
+        public bool PriorityDraw { get; set; }
 
         public CharacterDataBuilder()
         {
@@ -151,6 +156,9 @@ namespace MonsterTrainModdingAPI.Builders
             this.StartingStatusEffects = new StatusEffectStackData[0];
             this.StatusEffectImmunities = new string[0];
             this.ImpactVFX = (VfxAtLoc)FormatterServices.GetUninitializedObject(typeof(VfxAtLoc));
+            this.TriggerBuilders = new List<CharacterTriggerDataBuilder>();
+            this.RoomModifierBuilders = new List<RoomModifierDataBuilder>();
+            this.PriorityDraw = true;
         }
 
         /// <summary>
@@ -173,6 +181,15 @@ namespace MonsterTrainModdingAPI.Builders
         public CharacterData Build()
         {
             CharacterData characterData = ScriptableObject.CreateInstance<CharacterData>();
+            foreach (var builder in this.TriggerBuilders)
+            {
+                this.Triggers.Add(builder.Build());
+            }
+            foreach (var builder in this.RoomModifierBuilders)
+            {
+                this.RoomModifiers.Add(builder.Build());
+            }
+
             AccessTools.Field(typeof(CharacterData), "id").SetValue(characterData, this.CharacterID);
             AccessTools.Field(typeof(CharacterData), "animationController").SetValue(characterData, this.AnimationController);
             AccessTools.Field(typeof(CharacterData), "ascendsTrainAutomatically").SetValue(characterData, this.AscendsTrainAutomatically);
@@ -214,6 +231,10 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CharacterData), "startingStatusEffects").SetValue(characterData, this.StartingStatusEffects);
             AccessTools.Field(typeof(CharacterData), "statusEffectImmunities").SetValue(characterData, this.StatusEffectImmunities);
             //AccessTools.Field(typeof(CardData), "stringBuilder").SetValue(cardData, this.);
+            if (this.PriorityDraw)
+            {
+                this.SubtypeKeys.Add("SubtypesData_Chosen");
+            }
             AccessTools.Field(typeof(CharacterData), "subtypeKeys").SetValue(characterData, this.SubtypeKeys);
             AccessTools.Field(typeof(CharacterData), "triggers").SetValue(characterData, this.Triggers);
             return characterData;
@@ -236,17 +257,6 @@ namespace MonsterTrainModdingAPI.Builders
             this.CharacterPrefabVariantRef = assetReferenceGameObject;
 
             this.AssetPath = m_AssetGUID;
-        }
-
-        /// <summary>
-        /// Add a status effect to this character's starting status effect array.
-        /// </summary>
-        /// <param name="statusEffectType">Must implement IMTStatusEffect</param>
-        /// <param name="stackCount">Number of stacks to apply</param>
-        public void AddStartingStatusEffect(Type statusEffectType, int stackCount)
-        {
-            string statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
-            this.AddStartingStatusEffect(statusEffectID, stackCount);
         }
 
         /// <summary>
