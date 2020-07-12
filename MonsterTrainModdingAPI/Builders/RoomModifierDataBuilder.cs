@@ -15,14 +15,14 @@ namespace MonsterTrainModdingAPI.Builders
     public class RoomModifierDataBuilder
     {
 
-        public string roomStateModifierClassName;
-        public string descriptionKey;
-        public Sprite icon;
-        public int paramInt;
-        public string paramSubtype;
-        public StatusEffectStackData[] paramStatusEffects;
-        public string extraTooltipTitleKey;
-        public string extraTooltipBodyKey;
+        public string RoomStateModifierClassName;
+        public string DescriptionKey;
+        public Sprite Icon;
+        public int ParamInt;
+        public string ParamSubtype;
+        public StatusEffectStackData[] ParamStatusEffects;
+        public string ExtraTooltipTitleKey;
+        public string ExtraTooltipBodyKey;
 
         public RoomModifierDataBuilder()
         {
@@ -35,14 +35,14 @@ namespace MonsterTrainModdingAPI.Builders
         public RoomModifierData Build()
         {
             RoomModifierData roomModifierData = new RoomModifierData();
-            AccessTools.Field(typeof(RoomModifierData), "roomStateModifierClassName").SetValue(roomModifierData, this.roomStateModifierClassName);
-            AccessTools.Field(typeof(RoomModifierData), "descriptionKey").SetValue(roomModifierData, this.descriptionKey);
-            AccessTools.Field(typeof(RoomModifierData), "icon").SetValue(roomModifierData, this.icon);
-            AccessTools.Field(typeof(RoomModifierData), "paramInt").SetValue(roomModifierData, this.paramInt);
-            AccessTools.Field(typeof(RoomModifierData), "paramSubtype").SetValue(roomModifierData, this.paramSubtype);
-            AccessTools.Field(typeof(RoomModifierData), "paramStatusEffects").SetValue(roomModifierData, this.paramStatusEffects);
-            AccessTools.Field(typeof(RoomModifierData), "extraTooltipTitleKey").SetValue(roomModifierData, this.extraTooltipTitleKey);
-            AccessTools.Field(typeof(RoomModifierData), "extraTooltipBodyKey").SetValue(roomModifierData, this.extraTooltipBodyKey);
+            AccessTools.Field(typeof(RoomModifierData), "descriptionKey").SetValue(roomModifierData, this.DescriptionKey);
+            AccessTools.Field(typeof(RoomModifierData), "extraTooltipBodyKey").SetValue(roomModifierData, this.ExtraTooltipBodyKey);
+            AccessTools.Field(typeof(RoomModifierData), "extraTooltipTitleKey").SetValue(roomModifierData, this.ExtraTooltipTitleKey);
+            AccessTools.Field(typeof(RoomModifierData), "icon").SetValue(roomModifierData, this.Icon);
+            AccessTools.Field(typeof(RoomModifierData), "paramInt").SetValue(roomModifierData, this.ParamInt);
+            AccessTools.Field(typeof(RoomModifierData), "paramStatusEffects").SetValue(roomModifierData, this.ParamStatusEffects);
+            AccessTools.Field(typeof(RoomModifierData), "paramSubtype").SetValue(roomModifierData, this.ParamSubtype);
+            AccessTools.Field(typeof(RoomModifierData), "roomStateModifierClassName").SetValue(roomModifierData, this.RoomStateModifierClassName);
             return roomModifierData;
         }
 
@@ -53,7 +53,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// <param name="stackCount">Number of stacks to apply</param>
         public void AddStartingStatusEffect(string statusEffectID, int stackCount)
         {
-            this.paramStatusEffects = BuilderUtils.AddStatusEffect(statusEffectID, stackCount, this.paramStatusEffects);
+            this.ParamStatusEffects = BuilderUtils.AddStatusEffect(statusEffectID, stackCount, this.ParamStatusEffects);
         }
     }
 }

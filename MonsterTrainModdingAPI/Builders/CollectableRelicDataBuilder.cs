@@ -99,7 +99,7 @@ namespace MonsterTrainModdingAPI.Builders
             }
             this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
 
-            var relicData = new CollectableRelicData();
+            var relicData = ScriptableObject.CreateInstance<CollectableRelicData>();
 
             AccessTools.Field(typeof(GameData), "id").SetValue(relicData, this.CollectableRelicID);
             // RelicData fields

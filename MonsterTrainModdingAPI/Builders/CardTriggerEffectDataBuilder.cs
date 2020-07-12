@@ -23,29 +23,29 @@ namespace MonsterTrainModdingAPI.Builders
         /// <item><description>OnFeed</description></item>
         /// </list>
         /// </summary>
-        public CardTriggerType trigger { get; set; }
+        public CardTriggerType Trigger { get; set; }
 
         /// <summary>
         /// Use an existing base game trigger's description key to copy the format of its description.
         /// </summary>
-        public string descriptionKey { get; set; }
+        public string DescriptionKey { get; set; }
 
         /// <summary>
         /// Append to this list to add new card trigger effects. The Build() method recursively builds all nested builders.
         /// </summary>
-        public List<CardTriggerData> cardTriggers { get; set; }
+        public List<CardTriggerData> CardTriggerEffects { get; set; }
 
         /// <summary>
         /// Append to this list to add new card effects. The Build() method recursively builds all nested builders.
         /// </summary>
-        public List<CardEffectDataBuilder> EffectBuilders { get; set; }
-        public List<CardEffectData> Effects { get; set; }
+        public List<CardEffectDataBuilder> CardEffectBuilders { get; set; }
+        public List<CardEffectData> CardEffects { get; set; }
 
         public CardTriggerEffectDataBuilder()
         {
-            this.cardTriggers = new List<CardTriggerData>();
-            this.EffectBuilders = new List<CardEffectDataBuilder>();
-            this.Effects = new List<CardEffectData>();
+            this.CardTriggerEffects = new List<CardTriggerData>();
+            this.CardEffectBuilders = new List<CardEffectDataBuilder>();
+            this.CardEffects = new List<CardEffectData>();
         }
 
         /// <summary>
@@ -55,16 +55,16 @@ namespace MonsterTrainModdingAPI.Builders
         /// <returns>The newly created CardTriggerEffectData</returns>
         public CardTriggerEffectData Build()
         {
-            foreach (var builder in this.EffectBuilders)
+            foreach (var builder in this.CardEffectBuilders)
             {
-                this.Effects.Add(builder.Build());
+                this.CardEffects.Add(builder.Build());
             }
 
             CardTriggerEffectData cardTriggerEffectData = new CardTriggerEffectData();
-            AccessTools.Field(typeof(CardTriggerEffectData), "trigger").SetValue(cardTriggerEffectData, this.trigger);
-            AccessTools.Field(typeof(CardTriggerEffectData), "descriptionKey").SetValue(cardTriggerEffectData, this.descriptionKey);
-            AccessTools.Field(typeof(CardTriggerEffectData), "cardTriggerEffects").SetValue(cardTriggerEffectData, this.cardTriggers);
-            AccessTools.Field(typeof(CardTriggerEffectData), "cardEffects").SetValue(cardTriggerEffectData, this.Effects);
+            AccessTools.Field(typeof(CardTriggerEffectData), "cardEffects").SetValue(cardTriggerEffectData, this.CardEffects);
+            AccessTools.Field(typeof(CardTriggerEffectData), "cardTriggerEffects").SetValue(cardTriggerEffectData, this.CardTriggerEffects);
+            AccessTools.Field(typeof(CardTriggerEffectData), "descriptionKey").SetValue(cardTriggerEffectData, this.DescriptionKey);
+            AccessTools.Field(typeof(CardTriggerEffectData), "trigger").SetValue(cardTriggerEffectData, this.Trigger);
 
             return cardTriggerEffectData;
         }
@@ -86,7 +86,7 @@ namespace MonsterTrainModdingAPI.Builders
             trigger.buffEffectType = buffEffectType;
             trigger.paramInt = paramInt;
 
-            cardTriggers.Add(trigger);
+            CardTriggerEffects.Add(trigger);
             return trigger;
         }
     }
