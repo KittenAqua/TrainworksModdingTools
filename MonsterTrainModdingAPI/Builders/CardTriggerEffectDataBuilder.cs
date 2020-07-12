@@ -1,12 +1,19 @@
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
 using System.Collections.Generic;
+using MonsterTrainModdingAPI.Managers;
 
 namespace MonsterTrainModdingAPI.Builders
 {
     public class CardTriggerEffectDataBuilder
     {
         /// <summary>
+        /// Don't set directly; use Trigger instead.
+        /// </summary>
+        public CardTriggerType trigger;
+
+        /// <summary>
+        /// Implicitly sets DescriptionKey if null.
         /// Any of the below CardTriggerType can be used to proc the listed effects.
         /// <list type="bullet">
         /// <item><description>OnCast</description></item>
@@ -23,7 +30,24 @@ namespace MonsterTrainModdingAPI.Builders
         /// <item><description>OnFeed</description></item>
         /// </list>
         /// </summary>
-        public CardTriggerType Trigger { get; set; }
+        public CardTriggerType Trigger
+        {
+            get { return this.trigger; }
+            set
+            {
+                this.trigger = value;
+                if (this.DescriptionKey == null)
+                {
+                    this.DescriptionKey = this.trigger + "_CardTriggerEffectData_DescriptionKey";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Custom description for the trigger effect.
+        /// Overrides DescriptionKey.
+        /// </summary>
+        public string Description { get; set; }
 
         /// <summary>
         /// Use an existing base game trigger's description key to copy the format of its description.
@@ -63,6 +87,7 @@ namespace MonsterTrainModdingAPI.Builders
             CardTriggerEffectData cardTriggerEffectData = new CardTriggerEffectData();
             AccessTools.Field(typeof(CardTriggerEffectData), "cardEffects").SetValue(cardTriggerEffectData, this.CardEffects);
             AccessTools.Field(typeof(CardTriggerEffectData), "cardTriggerEffects").SetValue(cardTriggerEffectData, this.CardTriggerEffects);
+            BuilderUtils.ImportStandardLocalization(this.DescriptionKey, this.Description);
             AccessTools.Field(typeof(CardTriggerEffectData), "descriptionKey").SetValue(cardTriggerEffectData, this.DescriptionKey);
             AccessTools.Field(typeof(CardTriggerEffectData), "trigger").SetValue(cardTriggerEffectData, this.Trigger);
 

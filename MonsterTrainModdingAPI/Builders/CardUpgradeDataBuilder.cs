@@ -13,9 +13,46 @@ using MonsterTrainModdingAPI.Managers;
 namespace MonsterTrainModdingAPI.Builders
 {
     public class CardUpgradeDataBuilder
-    {    
+    {
         // Note: add status effect adder, it's different than the one in BuilderUtils
-        
+
+        /// <summary>
+        /// Don't set directly; use UpgradeTitle instead.
+        /// </summary>
+        public string upgradeTitle;
+
+        /// <summary>
+        /// Overrides UpgradeTitleKey
+        /// Implicitly sets UpgradeTitleKey, UpgradeDescriptionKey, and UpgradeNotificationKey if null
+        /// </summary>
+        public string UpgradeTitle
+        {
+            get { return this.upgradeTitle; }
+            set
+            {
+                this.upgradeTitle = value;
+                if (this.UpgradeTitleKey == null)
+                {
+                    this.UpgradeTitleKey = this.UpgradeTitleKey + "_CardUpgradeData_UpgradeTitleKey";
+                }
+                if (this.UpgradeDescriptionKey == null)
+                {
+                    this.UpgradeDescriptionKey = this.UpgradeTitleKey + "_CardUpgradeData_UpgradeDescriptionKey";
+                }
+                if (this.UpgradeNotificationKey == null)
+                {
+                    this.UpgradeNotificationKey = this.UpgradeTitleKey + "_CardUpgradeData_UpgradeNotificationKey";
+                }
+            }
+        }
+        /// <summary>
+        /// Overrides UpgradeDescriptionKey
+        /// </summary>
+        public string UpgradeDescription { get; set; }
+        /// <summary>
+        /// Overrides UpgradeNotificationKey
+        /// </summary>
+        public string UpgradeNotification { get; set; }
         public string UpgradeTitleKey { get; set; }
         public string UpgradeDescriptionKey { get; set; }
         public string UpgradeNotificationKey { get; set; }
@@ -114,10 +151,13 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CardUpgradeData), "statusEffectUpgrades").SetValue(cardUpgradeData, this.StatusEffectUpgrades);
             AccessTools.Field(typeof(CardUpgradeData), "traitDataUpgrades").SetValue(cardUpgradeData, this.TraitDataUpgrades);
             AccessTools.Field(typeof(CardUpgradeData), "triggerUpgrades").SetValue(cardUpgradeData, this.TriggerUpgrades);
+            BuilderUtils.ImportStandardLocalization(this.UpgradeDescriptionKey, this.UpgradeDescription);
             AccessTools.Field(typeof(CardUpgradeData), "upgradeDescriptionKey").SetValue(cardUpgradeData, this.UpgradeDescriptionKey);
             AccessTools.Field(typeof(CardUpgradeData), "upgradeIcon").SetValue(cardUpgradeData, this.UpgradeIcon);
+            BuilderUtils.ImportStandardLocalization(this.UpgradeNotificationKey, this.UpgradeNotification);
             AccessTools.Field(typeof(CardUpgradeData), "upgradeNotificationKey").SetValue(cardUpgradeData, this.UpgradeNotificationKey);
             AccessTools.Field(typeof(CardUpgradeData), "upgradesToRemove").SetValue(cardUpgradeData, this.UpgradesToRemove);
+            BuilderUtils.ImportStandardLocalization(this.UpgradeTitleKey, this.UpgradeTitle);
             AccessTools.Field(typeof(CardUpgradeData), "upgradeTitleKey").SetValue(cardUpgradeData, this.UpgradeTitleKey);
             AccessTools.Field(typeof(CardUpgradeData), "useUpgradeHighlightTextTags").SetValue(cardUpgradeData, this.UseUpgradeHighlightTextTags);
             AccessTools.Field(typeof(CardUpgradeData), "xCostReduction").SetValue(cardUpgradeData, this.XCostReduction);
