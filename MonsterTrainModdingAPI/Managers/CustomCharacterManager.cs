@@ -208,7 +208,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="ID">The key used for assigning the subtype, and for its localization</param>
         public static void RegisterSubtype(string ID)
         {
-            CustomSubtypeData.Add(ID, new SubtypeDataBuilder { _subtype = ID }.Build());
+            CustomSubtypeData.Add(ID, new SubtypeDataBuilder { _Subtype = ID }.Build());
         }
     }
 }

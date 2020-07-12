@@ -16,112 +16,111 @@ namespace MonsterTrainModdingAPI.Builders
     {    
         // Note: add status effect adder, it's different than the one in BuilderUtils
         
-        public string upgradeTitleKey { get; set; }
-        public string upgradeDescriptionKey { get; set; }
-        public string upgradeNotificationKey { get; set; }
-        public Sprite upgradeIcon { get; set; }
-        public bool hideUpgradeIconOnCard { get; set; }
-        public bool useUpgradeHighlightTextTags { get; set; }
-        public int bonusDamage { get; set; }
-        public int bonusHP { get; set; }
-        public int costReduction { get; set; }
-        public int xCostReduction { get; set; }
-        public int bonusHeal { get; set; }
-        public int bonusSize { get; set; }
+        public string UpgradeTitleKey { get; set; }
+        public string UpgradeDescriptionKey { get; set; }
+        public string UpgradeNotificationKey { get; set; }
+        public Sprite UpgradeIcon { get; set; }
+        public bool HideUpgradeIconOnCard { get; set; }
+        public bool UseUpgradeHighlightTextTags { get; set; }
+        public int BonusDamage { get; set; }
+        public int BonusHP { get; set; }
+        public int CostReduction { get; set; }
+        public int XCostReduction { get; set; }
+        public int BonusHeal { get; set; }
+        public int BonusSize { get; set; }
 
-
-        public List<CardTraitDataBuilder> traitDataUpgradeBuilders { get; set; }
-        public List<CharacterTriggerDataBuilder> triggerUpgradeBuilders { get; set; }
-        public List<CardTriggerEffectDataBuilder> cardTriggerUpgradeBuilders { get; set; }
-        public List<RoomModifierDataBuilder> roomModifierUpgradeBuilders { get; set; }
-        public List<CardUpgradeMaskDataBuilder> filtersBuilders { get; set; }
-        public List<CardUpgradeDataBuilder> upgradesToRemoveBuilders { get; set; }
+        public List<CardTraitDataBuilder> TraitDataUpgradeBuilders { get; set; }
+        public List<CharacterTriggerDataBuilder> TriggerUpgradeBuilders { get; set; }
+        public List<CardTriggerEffectDataBuilder> CardTriggerUpgradeBuilders { get; set; }
+        public List<RoomModifierDataBuilder> RoomModifierUpgradeBuilders { get; set; }
+        public List<CardUpgradeMaskDataBuilder> FiltersBuilders { get; set; }
+        public List<CardUpgradeDataBuilder> UpgradesToRemoveBuilders { get; set; }
 
         /// <summary>
         /// To add a status effect, no need for a builder. new StatusEffectStackData with properties statusId (string) and count (int) are sufficient.
         /// Get the string with -> statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
         /// </summary>
-        public List<StatusEffectStackData> statusEffectUpgrades { get; set; }
-        public List<CardTraitData> traitDataUpgrades { get; set; }
-        public List<string> removeTraitUpgrades { get; set; }
-        public List<CharacterTriggerData> triggerUpgrades { get; set; }
-        public List<CardTriggerEffectData> cardTriggerUpgrades { get; set; }
-        public List<RoomModifierData> roomModifierUpgrades { get; set; }
-        public List<CardUpgradeMaskData> filters { get; set; }
-        public List<CardUpgradeData> upgradesToRemove { get; set; }
+        public List<StatusEffectStackData> StatusEffectUpgrades { get; set; }
+        public List<CardTraitData> TraitDataUpgrades { get; set; }
+        public List<string> RemoveTraitUpgrades { get; set; }
+        public List<CharacterTriggerData> TriggerUpgrades { get; set; }
+        public List<CardTriggerEffectData> CardTriggerUpgrades { get; set; }
+        public List<RoomModifierData> RoomModifierUpgrades { get; set; }
+        public List<CardUpgradeMaskData> Filters { get; set; }
+        public List<CardUpgradeData> UpgradesToRemove { get; set; }
 
         public CardUpgradeDataBuilder()
         {
-            this.upgradeNotificationKey = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
-            this.useUpgradeHighlightTextTags = true;
+            this.UpgradeNotificationKey = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
+            this.UseUpgradeHighlightTextTags = true;
 
-            this.traitDataUpgradeBuilders = new List<CardTraitDataBuilder>();
-            this.triggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>();
-            this.cardTriggerUpgradeBuilders = new List<CardTriggerEffectDataBuilder>();
-            this.roomModifierUpgradeBuilders = new List<RoomModifierDataBuilder>();
-            this.filtersBuilders = new List<CardUpgradeMaskDataBuilder>();
-            this.upgradesToRemoveBuilders = new List<CardUpgradeDataBuilder>();
+            this.TraitDataUpgradeBuilders = new List<CardTraitDataBuilder>();
+            this.TriggerUpgradeBuilders = new List<CharacterTriggerDataBuilder>();
+            this.CardTriggerUpgradeBuilders = new List<CardTriggerEffectDataBuilder>();
+            this.RoomModifierUpgradeBuilders = new List<RoomModifierDataBuilder>();
+            this.FiltersBuilders = new List<CardUpgradeMaskDataBuilder>();
+            this.UpgradesToRemoveBuilders = new List<CardUpgradeDataBuilder>();
 
-            this.statusEffectUpgrades = new List<StatusEffectStackData>();
-            this.traitDataUpgrades = new List<CardTraitData>();
-            this.removeTraitUpgrades = new List<string>();
-            this.triggerUpgrades = new List<CharacterTriggerData>();
-            this.cardTriggerUpgrades = new List<CardTriggerEffectData>();
-            this.roomModifierUpgrades = new List<RoomModifierData>();
-            this.filters = new List<CardUpgradeMaskData>();
-            this.upgradesToRemove = new List<CardUpgradeData>();
+            this.StatusEffectUpgrades = new List<StatusEffectStackData>();
+            this.TraitDataUpgrades = new List<CardTraitData>();
+            this.RemoveTraitUpgrades = new List<string>();
+            this.TriggerUpgrades = new List<CharacterTriggerData>();
+            this.CardTriggerUpgrades = new List<CardTriggerEffectData>();
+            this.RoomModifierUpgrades = new List<RoomModifierData>();
+            this.Filters = new List<CardUpgradeMaskData>();
+            this.UpgradesToRemove = new List<CardUpgradeData>();
         }
 
         public CardUpgradeData Build()
         {
             CardUpgradeData cardUpgradeData = ScriptableObject.CreateInstance<CardUpgradeData>();
-            cardUpgradeData.name = upgradeTitleKey;
+            cardUpgradeData.name = UpgradeTitleKey;
 
-            foreach (var builder in this.traitDataUpgradeBuilders)
+            foreach (var builder in this.TraitDataUpgradeBuilders)
             {
-                this.traitDataUpgrades.Add(builder.Build());
+                this.TraitDataUpgrades.Add(builder.Build());
             }
-            foreach (var builder in this.triggerUpgradeBuilders)
+            foreach (var builder in this.TriggerUpgradeBuilders)
             {
-                this.triggerUpgrades.Add(builder.Build());
+                this.TriggerUpgrades.Add(builder.Build());
             }
-            foreach (var builder in this.cardTriggerUpgradeBuilders)
+            foreach (var builder in this.CardTriggerUpgradeBuilders)
             {
-                this.cardTriggerUpgrades.Add(builder.Build());
+                this.CardTriggerUpgrades.Add(builder.Build());
             }
-            foreach (var builder in this.roomModifierUpgradeBuilders)
+            foreach (var builder in this.RoomModifierUpgradeBuilders)
             {
-                this.roomModifierUpgrades.Add(builder.Build());
+                this.RoomModifierUpgrades.Add(builder.Build());
             }
-            foreach (var builder in this.filtersBuilders)
+            foreach (var builder in this.FiltersBuilders)
             {
-                this.filters.Add(builder.Build());
+                this.Filters.Add(builder.Build());
             }
-            foreach (var builder in this.upgradesToRemoveBuilders)
+            foreach (var builder in this.UpgradesToRemoveBuilders)
             {
-                this.upgradesToRemove.Add(builder.Build());
+                this.UpgradesToRemove.Add(builder.Build());
             }
 
-            AccessTools.Field(typeof(CardUpgradeData), "upgradeTitleKey").SetValue(cardUpgradeData, this.upgradeTitleKey);
-            AccessTools.Field(typeof(CardUpgradeData), "upgradeDescriptionKey").SetValue(cardUpgradeData, this.upgradeDescriptionKey);
-            AccessTools.Field(typeof(CardUpgradeData), "upgradeNotificationKey").SetValue(cardUpgradeData, this.upgradeNotificationKey);
-            AccessTools.Field(typeof(CardUpgradeData), "upgradeIcon").SetValue(cardUpgradeData, this.upgradeIcon);
-            AccessTools.Field(typeof(CardUpgradeData), "hideUpgradeIconOnCard").SetValue(cardUpgradeData, this.hideUpgradeIconOnCard);
-            AccessTools.Field(typeof(CardUpgradeData), "useUpgradeHighlightTextTags").SetValue(cardUpgradeData, this.useUpgradeHighlightTextTags);
-            AccessTools.Field(typeof(CardUpgradeData), "bonusDamage").SetValue(cardUpgradeData, this.bonusDamage);
-            AccessTools.Field(typeof(CardUpgradeData), "bonusHP").SetValue(cardUpgradeData, this.bonusHP);
-            AccessTools.Field(typeof(CardUpgradeData), "costReduction").SetValue(cardUpgradeData, this.costReduction);
-            AccessTools.Field(typeof(CardUpgradeData), "xCostReduction").SetValue(cardUpgradeData, this.xCostReduction);
-            AccessTools.Field(typeof(CardUpgradeData), "bonusHeal").SetValue(cardUpgradeData, this.bonusHeal);
-            AccessTools.Field(typeof(CardUpgradeData), "bonusSize").SetValue(cardUpgradeData, this.bonusSize);
-            AccessTools.Field(typeof(CardUpgradeData), "statusEffectUpgrades").SetValue(cardUpgradeData, this.statusEffectUpgrades);
-            AccessTools.Field(typeof(CardUpgradeData), "traitDataUpgrades").SetValue(cardUpgradeData, this.traitDataUpgrades);
-            AccessTools.Field(typeof(CardUpgradeData), "removeTraitUpgrades").SetValue(cardUpgradeData, this.removeTraitUpgrades);
-            AccessTools.Field(typeof(CardUpgradeData), "triggerUpgrades").SetValue(cardUpgradeData, this.triggerUpgrades);
-            AccessTools.Field(typeof(CardUpgradeData), "cardTriggerUpgrades").SetValue(cardUpgradeData, this.cardTriggerUpgrades);
-            AccessTools.Field(typeof(CardUpgradeData), "roomModifierUpgrades").SetValue(cardUpgradeData, this.roomModifierUpgrades);
-            AccessTools.Field(typeof(CardUpgradeData), "filters").SetValue(cardUpgradeData, this.filters);
-            AccessTools.Field(typeof(CardUpgradeData), "upgradesToRemove").SetValue(cardUpgradeData, this.upgradesToRemove);
+            AccessTools.Field(typeof(CardUpgradeData), "bonusDamage").SetValue(cardUpgradeData, this.BonusDamage);
+            AccessTools.Field(typeof(CardUpgradeData), "bonusHeal").SetValue(cardUpgradeData, this.BonusHeal);
+            AccessTools.Field(typeof(CardUpgradeData), "bonusHP").SetValue(cardUpgradeData, this.BonusHP);
+            AccessTools.Field(typeof(CardUpgradeData), "bonusSize").SetValue(cardUpgradeData, this.BonusSize);
+            AccessTools.Field(typeof(CardUpgradeData), "cardTriggerUpgrades").SetValue(cardUpgradeData, this.CardTriggerUpgrades);
+            AccessTools.Field(typeof(CardUpgradeData), "costReduction").SetValue(cardUpgradeData, this.CostReduction);
+            AccessTools.Field(typeof(CardUpgradeData), "filters").SetValue(cardUpgradeData, this.Filters);
+            AccessTools.Field(typeof(CardUpgradeData), "hideUpgradeIconOnCard").SetValue(cardUpgradeData, this.HideUpgradeIconOnCard);
+            AccessTools.Field(typeof(CardUpgradeData), "removeTraitUpgrades").SetValue(cardUpgradeData, this.RemoveTraitUpgrades);
+            AccessTools.Field(typeof(CardUpgradeData), "roomModifierUpgrades").SetValue(cardUpgradeData, this.RoomModifierUpgrades);
+            AccessTools.Field(typeof(CardUpgradeData), "statusEffectUpgrades").SetValue(cardUpgradeData, this.StatusEffectUpgrades);
+            AccessTools.Field(typeof(CardUpgradeData), "traitDataUpgrades").SetValue(cardUpgradeData, this.TraitDataUpgrades);
+            AccessTools.Field(typeof(CardUpgradeData), "triggerUpgrades").SetValue(cardUpgradeData, this.TriggerUpgrades);
+            AccessTools.Field(typeof(CardUpgradeData), "upgradeDescriptionKey").SetValue(cardUpgradeData, this.UpgradeDescriptionKey);
+            AccessTools.Field(typeof(CardUpgradeData), "upgradeIcon").SetValue(cardUpgradeData, this.UpgradeIcon);
+            AccessTools.Field(typeof(CardUpgradeData), "upgradeNotificationKey").SetValue(cardUpgradeData, this.UpgradeNotificationKey);
+            AccessTools.Field(typeof(CardUpgradeData), "upgradesToRemove").SetValue(cardUpgradeData, this.UpgradesToRemove);
+            AccessTools.Field(typeof(CardUpgradeData), "upgradeTitleKey").SetValue(cardUpgradeData, this.UpgradeTitleKey);
+            AccessTools.Field(typeof(CardUpgradeData), "useUpgradeHighlightTextTags").SetValue(cardUpgradeData, this.UseUpgradeHighlightTextTags);
+            AccessTools.Field(typeof(CardUpgradeData), "xCostReduction").SetValue(cardUpgradeData, this.XCostReduction);
 
             return cardUpgradeData;
         }

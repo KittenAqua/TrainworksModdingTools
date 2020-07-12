@@ -14,11 +14,11 @@ namespace MonsterTrainModdingAPI.Builders
 {
     public class SubtypeDataBuilder
     {
-        public string _subtype { get; set; }
-        public bool _isChampion { get; set; }
-        public bool _isNone { get; set; }
-        public bool _isTreasureCollector { get; set; }
-        public bool _isImp { get; set; }
+        public string _Subtype { get; set; }
+        public bool _IsChampion { get; set; }
+        public bool _IsNone { get; set; }
+        public bool _IsTreasureCollector { get; set; }
+        public bool _IsImp { get; set; }
 
         /// <summary>
         /// Builds the SubtypeData represented by this builders's parameters;
@@ -27,11 +27,11 @@ namespace MonsterTrainModdingAPI.Builders
         public SubtypeData Build()
         {
             SubtypeData subtypeData = new SubtypeData();
-            AccessTools.Field(typeof(SubtypeData), "_subtype").SetValue(subtypeData, this._subtype);
-            AccessTools.Field(typeof(SubtypeData), "_isChampion").SetValue(subtypeData, this._isChampion);
-            AccessTools.Field(typeof(SubtypeData), "_isNone").SetValue(subtypeData, this._isNone);
-            AccessTools.Field(typeof(SubtypeData), "_isTreasureCollector").SetValue(subtypeData, this._isTreasureCollector);
-            AccessTools.Field(typeof(SubtypeData), "_isImp").SetValue(subtypeData, this._isImp);
+            AccessTools.Field(typeof(SubtypeData), "_subtype").SetValue(subtypeData, this._Subtype);
+            AccessTools.Field(typeof(SubtypeData), "_isChampion").SetValue(subtypeData, this._IsChampion);
+            AccessTools.Field(typeof(SubtypeData), "_isNone").SetValue(subtypeData, this._IsNone);
+            AccessTools.Field(typeof(SubtypeData), "_isTreasureCollector").SetValue(subtypeData, this._IsTreasureCollector);
+            AccessTools.Field(typeof(SubtypeData), "_isImp").SetValue(subtypeData, this._IsImp);
             return subtypeData;
         }
     }
