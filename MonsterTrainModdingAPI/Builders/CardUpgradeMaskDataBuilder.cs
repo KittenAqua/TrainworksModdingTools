@@ -62,7 +62,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// <returns>The newly created RoomModifierData</returns>
         public CardUpgradeMaskData Build()
         {
-            CardUpgradeMaskData cardUpgradeMaskData = new CardUpgradeMaskData();
+            CardUpgradeMaskData cardUpgradeMaskData = ScriptableObject.CreateInstance<CardUpgradeMaskData>();
             AccessTools.Field(typeof(CardUpgradeMaskData), "cardType").SetValue(cardUpgradeMaskData, this.cardType);
             AccessTools.Field(typeof(CardUpgradeMaskData), "requiredSubtypes").SetValue(cardUpgradeMaskData, this.requiredSubtypes);
             AccessTools.Field(typeof(CardUpgradeMaskData), "excludedSubtypes").SetValue(cardUpgradeMaskData, this.excludedSubtypes);
