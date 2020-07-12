@@ -19,6 +19,10 @@ namespace MonsterTrainModdingAPI.Builders
         /// Unique string used to store and retrieve the relic data.
         /// </summary>
         public string CollectableRelicID { get; set; }
+        /// <summary>
+        /// The IDs of all relic pools the relic should be inserted into.
+        /// </summary>
+        public List<string> RelicPoolIDs { get; set; }
 
         /// <summary>
         /// Name displayed for the relic.
@@ -82,7 +86,7 @@ namespace MonsterTrainModdingAPI.Builders
         public CollectableRelicData BuildAndRegister()
         {
             var relicData = this.Build();
-            CustomCollectableRelicManager.RegisterCustomRelic(relicData);
+            CustomCollectableRelicManager.RegisterCustomRelic(relicData, this.RelicPoolIDs);
             return relicData;
         }
 

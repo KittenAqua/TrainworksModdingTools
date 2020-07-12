@@ -28,11 +28,13 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Register a custom relic with the manager, allowing it to show up in game.
         /// </summary>
-        /// <param name="data">The custom relic data to register</param>
-        public static void RegisterCustomRelic(CollectableRelicData data)
+        /// <param name="relicData">The custom relic data to register</param>
+        /// <param name="relicPoolData">The pools to insert the custom relic data into</param>
+        public static void RegisterCustomRelic(CollectableRelicData relicData, List<string> relicPoolData)
         {
-            CustomRelicData.Add(data.GetID(), data);
-            SaveManager.GetAllGameData().GetAllCollectableRelicData().Add(data);
+            CustomRelicData.Add(relicData.GetID(), relicData);
+            CustomRelicPoolManager.AddRelicToPools(relicData, relicPoolData);
+            SaveManager.GetAllGameData().GetAllCollectableRelicData().Add(relicData);
         }
 
         /// <summary>
