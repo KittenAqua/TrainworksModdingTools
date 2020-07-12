@@ -14,7 +14,28 @@ namespace MonsterTrainModdingAPI.Builders
     public class CardEffectDataBuilder
     {
         /// <summary>
+        /// Don't set directly; use EffectStateType instead.
+        /// Type of the effect class to instantiate.
+        /// </summary>
+        public Type effectStateType;
+
+        /// <summary>
+        /// Type of the effect class to instantiate.
+        /// Implicitly sets EffectStateName.
+        /// </summary>
+        public Type EffectStateType
+        {
+            get { return this.effectStateType; }
+            set
+            {
+                this.effectStateType = value;
+                this.EffectStateName = this.effectStateType.AssemblyQualifiedName;
+            }
+        }
+
+        /// <summary>
         /// Name of the effect class to instantiate.
+        /// Either pass an assembly qualified type name or use EffectStateType instead.
         /// </summary>
         public string EffectStateName { get; set; }
 

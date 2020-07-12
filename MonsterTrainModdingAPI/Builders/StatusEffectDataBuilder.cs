@@ -11,7 +11,27 @@ namespace MonsterTrainModdingAPI.Builders
 {
 	public class StatusEffectDataBuilder
 	{
-		public string StatusEffectStateName { get; set; }
+        /// <summary>
+        /// Don't set directly; use StatusEffectStateType instead.
+        /// Type of the status effect class to instantiate.
+        /// </summary>
+        public Type statusEffectStateType;
+
+        /// <summary>
+        /// Type of the status effect class to instantiate.
+        /// Implicitly sets StatusEffectStateName.
+        /// </summary>
+        public Type StatusEffectStateType
+        {
+            get { return this.statusEffectStateType; }
+            set
+            {
+                this.statusEffectStateType = value;
+                this.StatusEffectStateName = this.statusEffectStateType.AssemblyQualifiedName;
+            }
+        }
+
+        public string StatusEffectStateName { get; set; }
 		public string StatusId { get; set; }
 		public Sprite Icon { get; set; }
 		public string AppliedSFXName { get; set; }

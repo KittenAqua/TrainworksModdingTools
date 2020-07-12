@@ -14,6 +14,26 @@ namespace MonsterTrainModdingAPI.Builders
     public class CardTraitDataBuilder
     {
         /// <summary>
+        /// Don't set directly; use TraitStateType instead.
+        /// Type of the trait class to instantiate.
+        /// </summary>
+        public Type traitStateType;
+
+        /// <summary>
+        /// Type of the trait class to instantiate.
+        /// Implicitly sets TraitStateName.
+        /// </summary>
+        public Type TraitStateType
+        {
+            get { return this.traitStateType; }
+            set
+            {
+                this.traitStateType = value;
+                this.TraitStateName = this.traitStateType.AssemblyQualifiedName;
+            }
+        }
+
+        /// <summary>
         /// Name of the trait class to instantiate.
         /// </summary>
         public string TraitStateName { get; set; }
