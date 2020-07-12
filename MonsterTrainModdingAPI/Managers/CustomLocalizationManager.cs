@@ -60,25 +60,29 @@ namespace MonsterTrainModdingAPI.Managers
 
         public static void ImportSingleLocalization(string key, string type, string desc, string plural, string group, string descriptions, string english, string french, string german, string russian, string portuguese, string chinese)
         {
-            var miniCSVBuilder = new System.Text.StringBuilder();
-            miniCSVBuilder.Append("Key;Type;Desc;Plural;Group;Descriptions;English [en-US];French [fr-FR];German [de-DE];Russian;Portuguese (Brazil);Chinese [zh-CN]\n");
-            miniCSVBuilder.Append(key + ";");
-            miniCSVBuilder.Append(type + ";");
-            miniCSVBuilder.Append(desc + ";");
-            miniCSVBuilder.Append(plural + ";");
-            miniCSVBuilder.Append(group + ";");
-            miniCSVBuilder.Append(descriptions + ";");
-            miniCSVBuilder.Append(english + ";");
-            miniCSVBuilder.Append(french + ";");
-            miniCSVBuilder.Append(german + ";");
-            miniCSVBuilder.Append(russian + ";");
-            miniCSVBuilder.Append(portuguese + ";");
-            miniCSVBuilder.Append(chinese);
+            if (!key.HasTranslation())
+            {
+                var miniCSVBuilder = new System.Text.StringBuilder();
+                miniCSVBuilder.Append("Key;Type;Desc;Plural;Group;Descriptions;English [en-US];French [fr-FR];German [de-DE];Russian;Portuguese (Brazil);Chinese [zh-CN]\n");
+                miniCSVBuilder.Append(key + ";");
+                miniCSVBuilder.Append(type + ";");
+                miniCSVBuilder.Append(desc + ";");
+                miniCSVBuilder.Append(plural + ";");
+                miniCSVBuilder.Append(group + ";");
+                miniCSVBuilder.Append(descriptions + ";");
+                miniCSVBuilder.Append(english + ";");
+                miniCSVBuilder.Append(french + ";");
+                miniCSVBuilder.Append(german + ";");
+                miniCSVBuilder.Append(russian + ";");
+                miniCSVBuilder.Append(portuguese + ";");
+                miniCSVBuilder.Append(chinese);
 
-            API.Log(LogLevel.Info, "Missing Localization: " + miniCSVBuilder.ToString().Split(Environment.NewLine.ToCharArray())[1]);
-            List<string> categories = LocalizationManager.Sources[0].GetCategories(true, (List<string>)null);
-            foreach (string Category in categories)
-                LocalizationManager.Sources[0].Import_CSV(Category, miniCSVBuilder.ToString(), eSpreadsheetUpdateMode.AddNewTerms, ';');
+                List<string> categories = LocalizationManager.Sources[0].GetCategories(true, (List<string>)null);
+                foreach (string Category in categories)
+                {
+                    LocalizationManager.Sources[0].Import_CSV(Category, miniCSVBuilder.ToString(), eSpreadsheetUpdateMode.AddNewTerms, ';');
+                }
+            }
         }
 
         public static string ExportCSV(int language=0)
