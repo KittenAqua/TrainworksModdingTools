@@ -13,6 +13,26 @@ namespace MonsterTrainModdingAPI.Builders
 {
     public class RelicEffectDataBuilder
     {
+        /// <summary>
+        /// Don't set directly; use RelicEffectClassType instead.
+        /// Type of the relic effect class to instantiate.
+        /// </summary>
+        public Type relicEffectClassType;
+
+        /// <summary>
+        /// Type of the relic effect class to instantiate.
+        /// Implicitly sets RelicEffectClassName.
+        /// </summary>
+        public Type RelicEffectClassType
+        {
+            get { return this.relicEffectClassType; }
+            set
+            {
+                this.relicEffectClassType = value;
+                this.RelicEffectClassName = this.relicEffectClassType.AssemblyQualifiedName;
+            }
+        }
+
         public string RelicEffectClassName { get; set; }
 
         public List<RelicEffectCondition> EffectConditions { get; set; }

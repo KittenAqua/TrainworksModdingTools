@@ -14,6 +14,25 @@ namespace MonsterTrainModdingAPI.Builders
 {
     public class RoomModifierDataBuilder
     {
+        /// <summary>
+        /// Don't set directly; use RoomStateModifierClassType instead.
+        /// Type of the room state modifier class to instantiate.
+        /// </summary>
+        public Type roomStateModifierClassType;
+
+        /// <summary>
+        /// Type of the room state modifier class to instantiate.
+        /// Implicitly sets RoomStateModifierClassName.
+        /// </summary>
+        public Type RoomStateModifierClassType
+        {
+            get { return this.roomStateModifierClassType; }
+            set
+            {
+                this.roomStateModifierClassType = value;
+                this.RoomStateModifierClassName = this.roomStateModifierClassType.AssemblyQualifiedName;
+            }
+        }
 
         public string RoomStateModifierClassName { get; set; }
         public string DescriptionKey { get; set; }
