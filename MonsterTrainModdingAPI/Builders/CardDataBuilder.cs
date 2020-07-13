@@ -230,14 +230,6 @@ namespace MonsterTrainModdingAPI.Builders
         /// <returns>The newly created CardData</returns>
         public CardData Build()
         {
-            if (this.Description != "")
-            {
-                this.TraitBuilders.Add(new CardTraitDataBuilder
-                {
-                    TraitStateName = "CardTraitCustomDescription",
-                    ParamStr = "<size=50%><br><br></size>" + this.Description
-                });
-            }
             foreach (var builder in this.EffectBuilders)
             {
                 this.Effects.Add(builder.Build());
