@@ -14,7 +14,30 @@ namespace MonsterTrainModdingAPI.Builders
 {
     public class CharacterTriggerDataBuilder
     {
-        public CharacterTriggerData.Trigger Trigger { get; set; }
+        /// <summary>
+        /// Don't set directly; use Trigger instead.
+        /// </summary>
+        public CharacterTriggerData.Trigger trigger;
+
+        /// <summary>
+        /// Implicitly sets DescriptionKey and AdditionalTextOnTriggerKey if null.
+        /// </summary>
+        public CharacterTriggerData.Trigger Trigger
+        {
+            get { return this.trigger; }
+            set
+            {
+                this.trigger = value;
+                if (this.DescriptionKey == null)
+                {
+                    this.DescriptionKey = this.trigger + "_CharacterTriggerData_DescriptionKey";
+                }
+                if (this.AdditionalTextOnTriggerKey == null)
+                {
+                    this.AdditionalTextOnTriggerKey = this.trigger + "_CharacterTriggerData_AdditionalTextOnTriggerKey";
+                }
+            }
+        }
 
         /// <summary>
         /// Append to this list to add new card effects. The Build() method recursively builds all nested builders.
@@ -24,6 +47,15 @@ namespace MonsterTrainModdingAPI.Builders
         /// List of pre-built card effects.
         /// </summary>
         public List<CardEffectData> Effects { get; set; }
+
+        /// <summary>
+        /// Overrides DescriptionKey
+        /// </summary>
+        public string Description { get; set; }
+        /// <summary>
+        /// Overrides AdditionalTextOnTrigger
+        /// </summary>
+        public string AdditionalTextOnTrigger { get; set; }
 
         /// <summary>
         /// Use an existing base game trigger's description key to copy the format of its description.
@@ -52,7 +84,9 @@ namespace MonsterTrainModdingAPI.Builders
                 this.Effects.Add(builder.Build());
             }
             CharacterTriggerData characterTriggerData = new CharacterTriggerData(this.Trigger, null);
+            BuilderUtils.ImportStandardLocalization(this.AdditionalTextOnTriggerKey, this.AdditionalTextOnTrigger);
             AccessTools.Field(typeof(CharacterTriggerData), "additionalTextOnTriggerKey").SetValue(characterTriggerData, this.AdditionalTextOnTriggerKey);
+            BuilderUtils.ImportStandardLocalization(this.DescriptionKey, this.Description);
             AccessTools.Field(typeof(CharacterTriggerData), "descriptionKey").SetValue(characterTriggerData, this.DescriptionKey);
             AccessTools.Field(typeof(CharacterTriggerData), "displayEffectHintText").SetValue(characterTriggerData, this.DisplayEffectHintText);
             AccessTools.Field(typeof(CharacterTriggerData), "effects").SetValue(characterTriggerData, this.Effects);

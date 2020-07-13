@@ -14,7 +14,8 @@ namespace MonsterTrainModdingAPI.Patches
     {
         static void Postfix(ref RelicPool __instance, ref List<CollectableRelicData> __result)
         {
-            __result.AddRange(MonsterTrainModdingAPI.Managers.CustomCollectableRelicManager.CustomRelicData.Values);
+            var customRelicsToAdd = MonsterTrainModdingAPI.Managers.CustomRelicPoolManager.GetRelicsForPool(__instance.name);
+            __result.AddRange(customRelicsToAdd);
         }
     }
 

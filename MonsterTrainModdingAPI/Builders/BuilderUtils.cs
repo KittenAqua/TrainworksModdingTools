@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using MonsterTrainModdingAPI.Enums;
+using MonsterTrainModdingAPI.Managers;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -29,6 +30,21 @@ namespace MonsterTrainModdingAPI.Builders
             }
             newStatuses[i] = statusEffectData;
             return newStatuses;
+        }
+
+        /// <summary>
+        /// Imports localization data for a key.
+        /// Sets the translation to text for all languages.
+        /// If either key or text is null, the function returns harmlessly.
+        /// </summary>
+        /// <param name="key">Key to set localization data for</param>
+        /// <param name="text">Text for the key in all languages</param>
+        public static void ImportStandardLocalization(string key, string text)
+        {
+            if (key != null && text != null)
+            {
+                CustomLocalizationManager.ImportSingleLocalization(key, "Text", "", "", "", "", text, text, text, text, text, text);
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace MonsterTrainModdingAPI.Managers
     /// <summary>
     /// Handles registration and storage of custom character data.
     /// </summary>
-    class CustomCharacterManager
+    public class CustomCharacterManager
     {
         /// <summary>
         /// Maps custom character IDs to their respective CharacterData.
@@ -197,5 +197,18 @@ namespace MonsterTrainModdingAPI.Managers
             return null;
         }
 
+
+        /// <summary>
+        /// Maps custom subtypes IDs to their respective SubtypeData.
+        /// </summary>
+        public static IDictionary<string, SubtypeData> CustomSubtypeData { get; } = new Dictionary<string, SubtypeData>();
+        /// <summary>
+        /// Registers a subtype, making it available for localization
+        /// </summary>
+        /// <param name="ID">The key used for assigning the subtype, and for its localization</param>
+        public static void RegisterSubtype(string ID)
+        {
+            CustomSubtypeData.Add(ID, new SubtypeDataBuilder { _Subtype = ID }.Build());
+        }
     }
 }

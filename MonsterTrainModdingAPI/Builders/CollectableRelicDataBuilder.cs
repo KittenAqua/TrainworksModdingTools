@@ -16,9 +16,35 @@ namespace MonsterTrainModdingAPI.Builders
     public class CollectableRelicDataBuilder
     {
         /// <summary>
+        /// Don't set directly; use CardID instead.
         /// Unique string used to store and retrieve the relic data.
         /// </summary>
-        public string CollectableRelicID { get; set; }
+        public string collectableRelicID;
+
+        /// <summary>
+        /// Unique string used to store and retrieve the relic data.
+        /// Implicitly sets NameKey and DescriptionKey.
+        /// </summary>
+        public string CollectableRelicID
+        {
+            get { return this.collectableRelicID; }
+            set
+            {
+                this.collectableRelicID = value;
+                if (this.NameKey == null)
+                {
+                    this.NameKey = this.collectableRelicID + "_CollectableRelicData_NameKey";
+                }
+                if (this.DescriptionKey == null)
+                {
+                    this.DescriptionKey = this.collectableRelicID + "_CollectableRelicData_DescriptionKey";
+                }
+            }
+        }
+        /// <summary>
+        /// The IDs of all relic pools the relic should be inserted into.
+        /// </summary>
+        public List<string> RelicPoolIDs { get; set; }
 
         /// <summary>
         /// Name displayed for the relic.
@@ -72,6 +98,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.Description = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
 
             this.Effects = new List<RelicEffectData>();
+            this.EffectBuilders = new List<RelicEffectDataBuilder>();
         }
 
         /// <summary>
@@ -82,7 +109,7 @@ namespace MonsterTrainModdingAPI.Builders
         public CollectableRelicData BuildAndRegister()
         {
             var relicData = this.Build();
-            CustomCollectableRelicManager.RegisterCustomRelic(relicData);
+            CustomCollectableRelicManager.RegisterCustomRelic(relicData, this.RelicPoolIDs);
             return relicData;
         }
 
@@ -99,17 +126,12 @@ namespace MonsterTrainModdingAPI.Builders
             }
             this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
 
-            var relicData = new CollectableRelicData();
+            var relicData = ScriptableObject.CreateInstance<CollectableRelicData>();
 
             AccessTools.Field(typeof(GameData), "id").SetValue(relicData, this.CollectableRelicID);
+            relicData.name = this.CollectableRelicID;
             // RelicData fields
-            if (this.DescriptionKey == null)
-            {
-                this.DescriptionKey = this.CollectableRelicID + "Relic_DescriptionKey";
-                // Use Description field for all languages
-                // This should be changed in the future to add proper localization support to custom content
-                CustomLocalizationManager.ImportSingleLocalization(this.DescriptionKey, "Text", "", "", "", "", this.Description, this.Description, this.Description, this.Description, this.Description, this.Description);
-            }
+            BuilderUtils.ImportStandardLocalization(this.DescriptionKey, this.Description);
             AccessTools.Field(typeof(RelicData), "descriptionKey").SetValue(relicData, this.DescriptionKey);
             AccessTools.Field(typeof(RelicData), "effects").SetValue(relicData, this.Effects);
             if (this.Icon == null && this.AssetPath != null)
@@ -124,13 +146,7 @@ namespace MonsterTrainModdingAPI.Builders
                 }
             }
             AccessTools.Field(typeof(RelicData), "icon").SetValue(relicData, this.Icon);
-            if (this.NameKey == null)
-            {
-                this.NameKey = this.CollectableRelicID + "Relic_NameKey";
-                // Use Name field for all languages
-                // This should be changed in the future to add proper localization support to custom content
-                CustomLocalizationManager.ImportSingleLocalization(this.NameKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
-            }
+            BuilderUtils.ImportStandardLocalization(this.NameKey, this.Name);
             AccessTools.Field(typeof(RelicData), "nameKey").SetValue(relicData, this.NameKey);
             AccessTools.Field(typeof(RelicData), "relicActivatedKey").SetValue(relicData, this.RelicActivatedKey);
             AccessTools.Field(typeof(RelicData), "relicLoreTooltipKeys").SetValue(relicData, this.RelicLoreTooltipKeys);

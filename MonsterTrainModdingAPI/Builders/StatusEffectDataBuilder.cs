@@ -11,89 +11,115 @@ namespace MonsterTrainModdingAPI.Builders
 {
 	public class StatusEffectDataBuilder
 	{
-		public string statusEffectStateName { get; set; }
-		public string statusId { get; set; }
-		public Sprite icon { get; set; }
-		public string appliedSFXName { get; set; }
-		public string triggeredSFXName { get; set; }
+        /// <summary>
+        /// Don't set directly; use StatusEffectStateType instead.
+        /// Type of the status effect class to instantiate.
+        /// </summary>
+        public Type statusEffectStateType;
+
+        /// <summary>
+        /// Type of the status effect class to instantiate.
+        /// Implicitly sets StatusEffectStateName.
+        /// </summary>
+        public Type StatusEffectStateType
+        {
+            get { return this.statusEffectStateType; }
+            set
+            {
+                this.statusEffectStateType = value;
+                this.StatusEffectStateName = this.statusEffectStateType.AssemblyQualifiedName;
+            }
+        }
+
+        public string StatusEffectStateName { get; set; }
+		public string StatusId { get; set; }
+		public Sprite Icon { get; set; }
+		public string AppliedSFXName { get; set; }
+		public string TriggeredSFXName { get; set; }
 
 		//[Tooltip("This category determines the color used for the icon.")]
-		public StatusEffectData.DisplayCategory displayCategory { get; set; }
+		public StatusEffectData.DisplayCategory DisplayCategory { get; set; }
 
 		//[Tooltip("The VFX to display on the character when the status effect is added.")]
-		public VfxAtLoc addedVFX { get; set; }
-		public VfxAtLocList moreAddedVFX { get; set; }
+		public VfxAtLoc AddedVFX { get; set; }
+		public VfxAtLocList MoreAddedVFX { get; set; }
 
 		//[Tooltip("The VFX to display on the character while this status effect is active")]
-		public VfxAtLoc persistentVFX { get; set; }
-		public VfxAtLocList morePersistentVFX { get; set; }
+		public VfxAtLoc PersistentVFX { get; set; }
+		public VfxAtLocList MorePersistentVFX { get; set; }
 
 		//[Tooltip("The VFX to display on the character when the effect is triggered.")]
-		public VfxAtLoc triggeredVFX { get; set; }
-		public VfxAtLocList moreTriggeredVFX { get; set; }
+		public VfxAtLoc TriggeredVFX { get; set; }
+		public VfxAtLocList MoreTriggeredVFX { get; set; }
 
 		//[Tooltip("The VFX to display on the character when the status effect is removed.")]
-		public VfxAtLoc removedVFX { get; set; }
-		public VfxAtLocList moreRemovedVFX { get; set; }
+		public VfxAtLoc RemovedVFX { get; set; }
+		public VfxAtLocList MoreRemovedVFX { get; set; }
 
 		//[Tooltip("The VFX to display on a character when it is damaged/affected by this effect.")]
-		public VfxAtLoc affectedVFX { get; set; }
+		public VfxAtLoc AffectedVFX { get; set; }
 
-		public TriggerStage triggerStage { get; set; }
-		public bool removeStackAtEndOfTurn { get; set; }
-		public bool removeAtEndOfTurn { get; set; }
-		public bool removeWhenTriggered { get; set; }
+		public TriggerStage TriggerStage { get; set; }
+		public bool RemoveStackAtEndOfTurn { get; set; }
+		public bool RemoveAtEndOfTurn { get; set; }
+		public bool RemoveWhenTriggered { get; set; }
 
 		//[Tooltip("This is the same as Remove When Triggered except it will be removed only after the card currently being played finishes playing\n\nNOTE: This should only be used for status effects that are triggered by a card being played.")]
-		public bool removeWhenTriggeredAfterCardPlayed { get; set; }
-		public bool isStackable { get; set; }
-		public bool showNotificationsOnRemoval { get; set; }
-		public string paramStr { get; set; }
-		public int paramInt { get; set; }
-		public int paramSecondaryInt { get; set; }
-		public float paramFloat { get; set; }
+		public bool RemoveWhenTriggeredAfterCardPlayed { get; set; }
+        /// <summary>
+        /// Whether or not the status effect is stackable. Defaults to true.
+        /// </summary>
+		public bool IsStackable { get; set; }
+        /// <summary>
+        /// Defaults to true.
+        /// </summary>
+		public bool ShowNotificationsOnRemoval { get; set; }
+		public string ParamStr { get; set; }
+		public int ParamInt { get; set; }
+		public int ParamSecondaryInt { get; set; }
+		public float ParamFloat { get; set; }
 
 		public StatusEffectDataBuilder()
 		{
-			isStackable = true;
-			showNotificationsOnRemoval = true;
+			IsStackable = true;
+			ShowNotificationsOnRemoval = true;
 		}
 
 		public StatusEffectData Build()
 		{
 			StatusEffectData statusEffect = new StatusEffectData();
 
-			AccessTools.Field(typeof(StatusEffectData), "statusEffectStateName").SetValue(statusEffect, statusEffectStateName);
-			AccessTools.Field(typeof(StatusEffectData), "statusId").SetValue(statusEffect, statusId);
-			AccessTools.Field(typeof(StatusEffectData), "icon").SetValue(statusEffect, icon);
-			AccessTools.Field(typeof(StatusEffectData), "appliedSFXName").SetValue(statusEffect, appliedSFXName);
-			AccessTools.Field(typeof(StatusEffectData), "triggeredSFXName").SetValue(statusEffect, triggeredSFXName);
-			AccessTools.Field(typeof(StatusEffectData), "displayCategory").SetValue(statusEffect, displayCategory);
-			AccessTools.Field(typeof(StatusEffectData), "addedVFX").SetValue(statusEffect, addedVFX);
-			AccessTools.Field(typeof(StatusEffectData), "moreAddedVFX").SetValue(statusEffect, moreAddedVFX);
-			AccessTools.Field(typeof(StatusEffectData), "persistentVFX").SetValue(statusEffect, persistentVFX);
-			AccessTools.Field(typeof(StatusEffectData), "morePersistentVFX").SetValue(statusEffect, morePersistentVFX);
-			AccessTools.Field(typeof(StatusEffectData), "triggeredVFX").SetValue(statusEffect, triggeredVFX);
-			AccessTools.Field(typeof(StatusEffectData), "moreTriggeredVFX").SetValue(statusEffect, moreTriggeredVFX);
-			AccessTools.Field(typeof(StatusEffectData), "removedVFX").SetValue(statusEffect, removedVFX);
-			AccessTools.Field(typeof(StatusEffectData), "moreRemovedVFX").SetValue(statusEffect, moreRemovedVFX);
-			AccessTools.Field(typeof(StatusEffectData), "affectedVFX").SetValue(statusEffect, affectedVFX);
-			AccessTools.Field(typeof(StatusEffectData), "triggerStage").SetValue(statusEffect, triggerStage);
-			AccessTools.Field(typeof(StatusEffectData), "removeStackAtEndOfTurn").SetValue(statusEffect, removeStackAtEndOfTurn);
-			AccessTools.Field(typeof(StatusEffectData), "removeAtEndOfTurn").SetValue(statusEffect, removeAtEndOfTurn);
-			AccessTools.Field(typeof(StatusEffectData), "removeWhenTriggered").SetValue(statusEffect, removeWhenTriggered);
-			AccessTools.Field(typeof(StatusEffectData), "removeWhenTriggeredAfterCardPlayed").SetValue(statusEffect, removeWhenTriggeredAfterCardPlayed);
-			AccessTools.Field(typeof(StatusEffectData), "isStackable").SetValue(statusEffect, isStackable);
-			AccessTools.Field(typeof(StatusEffectData), "showNotificationsOnRemoval").SetValue(statusEffect, showNotificationsOnRemoval);
-			AccessTools.Field(typeof(StatusEffectData), "paramStr").SetValue(statusEffect, paramStr);
-			AccessTools.Field(typeof(StatusEffectData), "paramInt").SetValue(statusEffect, paramInt);
-			AccessTools.Field(typeof(StatusEffectData), "paramSecondaryInt").SetValue(statusEffect, paramSecondaryInt);
-			AccessTools.Field(typeof(StatusEffectData), "paramFloat").SetValue(statusEffect, paramFloat);
+            AccessTools.Field(typeof(StatusEffectData), "addedVFX").SetValue(statusEffect, AddedVFX);
+            AccessTools.Field(typeof(StatusEffectData), "affectedVFX").SetValue(statusEffect, AffectedVFX);
+            AccessTools.Field(typeof(StatusEffectData), "appliedSFXName").SetValue(statusEffect, AppliedSFXName);
+            AccessTools.Field(typeof(StatusEffectData), "displayCategory").SetValue(statusEffect, DisplayCategory);
+            AccessTools.Field(typeof(StatusEffectData), "icon").SetValue(statusEffect, Icon);
+            AccessTools.Field(typeof(StatusEffectData), "isStackable").SetValue(statusEffect, IsStackable);
+            AccessTools.Field(typeof(StatusEffectData), "moreAddedVFX").SetValue(statusEffect, MoreAddedVFX);
+            AccessTools.Field(typeof(StatusEffectData), "morePersistentVFX").SetValue(statusEffect, MorePersistentVFX);
+            AccessTools.Field(typeof(StatusEffectData), "moreRemovedVFX").SetValue(statusEffect, MoreRemovedVFX);
+            AccessTools.Field(typeof(StatusEffectData), "moreTriggeredVFX").SetValue(statusEffect, MoreTriggeredVFX);
+            AccessTools.Field(typeof(StatusEffectData), "paramFloat").SetValue(statusEffect, ParamFloat);
+            AccessTools.Field(typeof(StatusEffectData), "paramInt").SetValue(statusEffect, ParamInt);
+            AccessTools.Field(typeof(StatusEffectData), "paramSecondaryInt").SetValue(statusEffect, ParamSecondaryInt);
+            AccessTools.Field(typeof(StatusEffectData), "paramStr").SetValue(statusEffect, ParamStr);
+            AccessTools.Field(typeof(StatusEffectData), "persistentVFX").SetValue(statusEffect, PersistentVFX);
+            AccessTools.Field(typeof(StatusEffectData), "removeAtEndOfTurn").SetValue(statusEffect, RemoveAtEndOfTurn);
+            AccessTools.Field(typeof(StatusEffectData), "removedVFX").SetValue(statusEffect, RemovedVFX);
+            AccessTools.Field(typeof(StatusEffectData), "removeStackAtEndOfTurn").SetValue(statusEffect, RemoveStackAtEndOfTurn);
+            AccessTools.Field(typeof(StatusEffectData), "removeWhenTriggered").SetValue(statusEffect, RemoveWhenTriggered);
+            AccessTools.Field(typeof(StatusEffectData), "removeWhenTriggeredAfterCardPlayed").SetValue(statusEffect, RemoveWhenTriggeredAfterCardPlayed);
+            AccessTools.Field(typeof(StatusEffectData), "showNotificationsOnRemoval").SetValue(statusEffect, ShowNotificationsOnRemoval);
+            AccessTools.Field(typeof(StatusEffectData), "statusEffectStateName").SetValue(statusEffect, StatusEffectStateName);
+            AccessTools.Field(typeof(StatusEffectData), "statusId").SetValue(statusEffect, StatusId);
+            AccessTools.Field(typeof(StatusEffectData), "triggeredSFXName").SetValue(statusEffect, TriggeredSFXName);
+            AccessTools.Field(typeof(StatusEffectData), "triggeredVFX").SetValue(statusEffect, TriggeredVFX);
+            AccessTools.Field(typeof(StatusEffectData), "triggerStage").SetValue(statusEffect, TriggerStage);
 
-			StatusEffectManager manager = GameObject.FindObjectOfType<StatusEffectManager>() as StatusEffectManager;
-			manager.GetAllStatusEffectsData().GetStatusEffectData().Add(statusEffect);
+            StatusEffectManager manager = GameObject.FindObjectOfType<StatusEffectManager>() as StatusEffectManager;
+            manager.GetAllStatusEffectsData().GetStatusEffectData().Add(statusEffect);
 
-			return statusEffect;
+            return statusEffect;
 		}
 	}
 }

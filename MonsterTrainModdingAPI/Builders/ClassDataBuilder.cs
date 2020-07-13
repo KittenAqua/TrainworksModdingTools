@@ -18,9 +18,34 @@ namespace MonsterTrainModdingAPI.Builders
     public class ClassDataBuilder
     {
         /// <summary>
-        /// Unique string used to store and retrieve the clan data.
+        /// Don't set directly; use ClassID instead.
         /// </summary>
-        public string ClassID { get; set; }
+        public string classID;
+
+        /// <summary>
+        /// Unique string used to store and retrieve the clan data.
+        /// Implictly sets TitleLoc, DescriptionLoc, and SubclassDescriptionLoc if null.
+        /// </summary>
+        public string ClassID
+        {
+            get { return this.classID; }
+            set
+            {
+                this.classID = value;
+                if (this.TitleLoc == null)
+                {
+                    this.TitleLoc = this.classID + "_ClassData_TitleLoc";
+                }
+                if (this.DescriptionLoc == null)
+                {
+                    this.DescriptionLoc = this.classID + "_ClassData_DescriptionLoc";
+                }
+                if (this.SubclassDescriptionLoc == null)
+                {
+                    this.SubclassDescriptionLoc = this.classID + "_ClassData_SubclassDescriptionLoc";
+                }
+            }
+        }
         /// <summary>
         /// Name of the clan.
         /// </summary>
@@ -75,6 +100,7 @@ namespace MonsterTrainModdingAPI.Builders
         public int ClassUnlockParam { get; set; }
         public List<string> ClassUnlockPreviewTexts { get; set; }
 
+
         public string TitleLoc { get; set; }
         public string DescriptionLoc { get; set; }
         public string SubclassDescriptionLoc { get; set; }
@@ -86,8 +112,6 @@ namespace MonsterTrainModdingAPI.Builders
 
         public ClassDataBuilder()
         {
-            this.Name = "";
-            this.Description = "";
             this.Icons = new List<Sprite>();
             this.MainClassStartingCards = new List<ClassData.StartingCardOptions>();
             this.SubclassStartingCards = new List<ClassData.StartingCardOptions>();
@@ -116,6 +140,8 @@ namespace MonsterTrainModdingAPI.Builders
         public ClassData Build()
         {
             ClassData classData = ScriptableObject.CreateInstance<ClassData>();
+            classData.name = this.ClassID;
+
             AccessTools.Field(typeof(ClassData), "id").SetValue(classData, this.ClassID);
             AccessTools.Field(typeof(ClassData), "cardStyle").SetValue(classData, this.CardStyle);
             AccessTools.Field(typeof(ClassData), "championIcon").SetValue(classData, this.ChampionIcon);
@@ -123,10 +149,7 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(ClassData), "classUnlockCondition").SetValue(classData, this.ClassUnlockCondition);
             AccessTools.Field(typeof(ClassData), "classUnlockParam").SetValue(classData, this.ClassUnlockParam);
             AccessTools.Field(typeof(ClassData), "classUnlockPreviewTexts").SetValue(classData, this.ClassUnlockPreviewTexts);
-            if (this.DescriptionLoc == null)
-            {
-                this.DescriptionLoc = this.Description;
-            }
+            BuilderUtils.ImportStandardLocalization(this.DescriptionLoc, this.Description);
             AccessTools.Field(typeof(ClassData), "descriptionLoc").SetValue(classData, this.DescriptionLoc);
             Type iconSetType = AccessTools.Inner(typeof(ClassData), "IconSet");
             var iconSet = Activator.CreateInstance(iconSetType);
@@ -137,16 +160,10 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(ClassData), "icons").SetValue(classData, iconSet);
             AccessTools.Field(typeof(ClassData), "mainClassStartingCards").SetValue(classData, this.MainClassStartingCards);
             AccessTools.Field(typeof(ClassData), "startingChampion").SetValue(classData, this.StartingChampion);
-            if (this.SubclassDescriptionLoc == null)
-            {
-                this.SubclassDescriptionLoc = this.SubclassDescription;
-            }
+            BuilderUtils.ImportStandardLocalization(this.SubclassDescriptionLoc, this.SubclassDescription);
             AccessTools.Field(typeof(ClassData), "subclassDescriptionLoc").SetValue(classData, this.SubclassDescriptionLoc);
             AccessTools.Field(typeof(ClassData), "subclassStartingCards").SetValue(classData, this.SubclassStartingCards);
-            if (this.TitleLoc == null)
-            {
-                this.TitleLoc = this.Name;
-            }
+            BuilderUtils.ImportStandardLocalization(this.TitleLoc, this.Name);
             AccessTools.Field(typeof(ClassData), "titleLoc").SetValue(classData, this.TitleLoc);
             AccessTools.Field(typeof(ClassData), "uiColor").SetValue(classData, this.UiColor);
             AccessTools.Field(typeof(ClassData), "uiColorDark").SetValue(classData, this.UiColorDark);

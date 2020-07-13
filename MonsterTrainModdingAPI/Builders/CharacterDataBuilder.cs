@@ -16,9 +16,27 @@ namespace MonsterTrainModdingAPI.Builders
     public class CharacterDataBuilder
     {
         /// <summary>
+        /// Don't set directly; use CharacterID instead.
         /// Unique string used to store and retrieve the character data.
         /// </summary>
-        public string CharacterID { get; set; }
+        public string characterID;
+
+        /// <summary>
+        /// Unique string used to store and retrieve the character data.
+        /// Implictly sets NameKey if null.
+        /// </summary>
+        public string CharacterID
+        {
+            get { return this.characterID; }
+            set
+            {
+                this.characterID = value;
+                if (this.NameKey == null)
+                {
+                    this.NameKey = this.characterID + "_CharacterData_NameKey";
+                }
+            }
+        }
 
         /// <summary>
         /// Name displayed for the character.
@@ -181,6 +199,8 @@ namespace MonsterTrainModdingAPI.Builders
         public CharacterData Build()
         {
             CharacterData characterData = ScriptableObject.CreateInstance<CharacterData>();
+            characterData.name = this.CharacterID;
+
             foreach (var builder in this.TriggerBuilders)
             {
                 this.Triggers.Add(builder.Build());
@@ -217,13 +237,7 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CharacterData), "impactVFX").SetValue(characterData, this.ImpactVFX);
             AccessTools.Field(typeof(CharacterData), "isMiniboss").SetValue(characterData, this.IsMiniboss);
             AccessTools.Field(typeof(CharacterData), "isOuterTrainBoss").SetValue(characterData, this.IsOuterTrainBoss);
-            if (this.NameKey == null)
-            {
-                this.NameKey = this.CharacterID + "Character_NameKey";
-                // Use Name field for all languages
-                // This should be changed in the future to add proper localization support to custom content
-                CustomLocalizationManager.ImportSingleLocalization(this.NameKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
-            }
+            BuilderUtils.ImportStandardLocalization(this.NameKey, this.Name);
             AccessTools.Field(typeof(CharacterData), "nameKey").SetValue(characterData, this.NameKey);
             AccessTools.Field(typeof(CharacterData), "projectilePrefab").SetValue(characterData, this.ProjectilePrefab);
             AccessTools.Field(typeof(CharacterData), "roomModifiers").SetValue(characterData, this.RoomModifiers);
