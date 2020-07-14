@@ -277,7 +277,7 @@ namespace MonsterTrainModdingAPI.Builders
             {
                 // Use Description field for all languages
                 // This should be changed in the future to add proper localization support to custom content
-                CustomLocalizationManager.ImportSingleLocalization(this.OverrideDescriptionKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
+                CustomLocalizationManager.ImportSingleLocalization(this.OverrideDescriptionKey, "Text", "", "", "", "", this.Description, this.Description, this.Description, this.Description, this.Description, this.Description);
             }
             AccessTools.Field(typeof(CardData), "overrideDescriptionKey").SetValue(cardData, this.OverrideDescriptionKey);
             AccessTools.Field(typeof(CardData), "rarity").SetValue(cardData, this.Rarity);
