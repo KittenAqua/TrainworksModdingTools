@@ -30,6 +30,7 @@ namespace MonsterTrainModdingAPI.Constants
         public static readonly Type CardEffectCopyCardUpgradesToUnits = typeof(CardEffectCopyCardUpgradesToUnits);
         public static readonly Type CardEffectCopyUnits = typeof(CardEffectCopyUnits);
         public static readonly Type CardEffectDamage = typeof(CardEffectDamage);
+        public static readonly Type CardEffectDamagePerTargetAttack = typeof(CardEffectDamagePerTargetAttack);
         public static readonly Type CardEffectDebuffMaxHealth = typeof(CardEffectDebuffMaxHealth);
         public static readonly Type CardEffectDespawnCharacter = typeof(CardEffectDespawnCharacter);
         public static readonly Type CardEffectDiscardHand = typeof(CardEffectDiscardHand);

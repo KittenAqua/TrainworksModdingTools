@@ -9,6 +9,7 @@ namespace MonsterTrainModdingAPI.Constants
     /// </summary>
     public static class VanillaCardTraitTypes
     {
+        public static readonly Type CardTraitDummy = typeof(CardTraitDummy);
         public static readonly Type CardTraitExhaustState = typeof(CardTraitExhaustState);
         public static readonly Type CardTraitFreeze = typeof(CardTraitFreeze);
         public static readonly Type CardTraitIgnoreArmor = typeof(CardTraitIgnoreArmor);
