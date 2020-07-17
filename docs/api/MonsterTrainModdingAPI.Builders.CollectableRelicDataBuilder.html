@@ -98,6 +98,34 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public CollectableRelicDataBuilder()</code></pre>
   </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="MonsterTrainModdingAPI_Builders_CollectableRelicDataBuilder_collectableRelicID" data-uid="MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.collectableRelicID">collectableRelicID</h4>
+  <div class="markdown level1 summary"><p>Don't set directly; use CardID instead.
+Unique string used to store and retrieve the relic data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string collectableRelicID</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
   
@@ -157,7 +185,8 @@ Base game clan IDs should be retrieved via helper class &quot;MTClanIDs&quot;.</
   
   <a id="MonsterTrainModdingAPI_Builders_CollectableRelicDataBuilder_CollectableRelicID_" data-uid="MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.CollectableRelicID*"></a>
   <h4 id="MonsterTrainModdingAPI_Builders_CollectableRelicDataBuilder_CollectableRelicID" data-uid="MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.CollectableRelicID">CollectableRelicID</h4>
-  <div class="markdown level1 summary"><p>Unique string used to store and retrieve the relic data.</p>
+  <div class="markdown level1 summary"><p>Unique string used to store and retrieve the relic data.
+Implicitly sets NameKey and DescriptionKey.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -496,6 +525,32 @@ Overrides the Name field.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public List&lt;string&gt; RelicLoreTooltipKeys { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="MonsterTrainModdingAPI_Builders_CollectableRelicDataBuilder_RelicPoolIDs_" data-uid="MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.RelicPoolIDs*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_CollectableRelicDataBuilder_RelicPoolIDs" data-uid="MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.RelicPoolIDs">RelicPoolIDs</h4>
+  <div class="markdown level1 summary"><p>The IDs of all relic pools the relic should be inserted into.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; RelicPoolIDs { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
