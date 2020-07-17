@@ -12,7 +12,7 @@
           "hash": "BNNl0S0ViR+6bOa26WI6Lw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.BuilderUtils.html",
-          "hash": "Nyh34C2OTgbZXYHuZNwzsg=="
+          "hash": "jWVsoGcvqKSwIGeBW4YkGg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.CardDataBuilder.html",
-          "hash": "iZMZKl8AKWAwFlj7VL8xNg=="
+          "hash": "f/qo7zUZJV0sHh9inukP5A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.html",
-          "hash": "6RwJtIZdqfA8I1VSNdM/2Q=="
+          "hash": "MOYJ5e7lTWTMRvdDVEOv7A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.html",
-          "hash": "MOUwAQ1pnyR5eQccShODHA=="
+          "hash": "Zbb6wOR8wZQKotrz//lWQQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -69,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.CardTriggerEffectDataBuilder.html",
-          "hash": "Hccr8b1CD5jXuUAw4X108w=="
+          "hash": "gZo+W7V+vo4NEuxF17JCMg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -81,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.html",
-          "hash": "gN/QvKFmp5sWRmbOH/+fow=="
+          "hash": "8SaVYVWr8OMFOcMCDnOgwQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -96,7 +96,7 @@
           "hash": "C7YbD1qKWT+XaQnDjLUC+g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -105,10 +105,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.html",
-          "hash": "H5GkSyi7/2ZIOEwn9AUiYg=="
+          "hash": "a5okumonuXJPjEZRCfchUw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -117,10 +117,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.CardUpgradeTreeDataBuilder.html",
-          "hash": "4HqMfNNGyt3V/q8mfxTqjw=="
+          "hash": "4OHV8mzEEPg/CQNzV7bkCA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -129,10 +129,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.CharacterDataBuilder.html",
-          "hash": "8Snm9rI8+RCW9jbGQNzpfw=="
+          "hash": "CXtuE2Y/da8tTqLHbCit9Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.CharacterTriggerDataBuilder.html",
-          "hash": "06rQjfGTqyOoE/3WrOVmCw=="
+          "hash": "wNjvNYaKYODy4S/8zBIFJw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -153,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html",
-          "hash": "cIgUwRG06EqBYae8RxdtjA=="
+          "hash": "bwutYlfL7rmTOdsZgJCVfQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.html",
-          "hash": "74tv2OZkW83e0ewYl7kzRA=="
+          "hash": "wj0nSGLRg9HXAj/uhpBmag=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -180,7 +180,7 @@
           "hash": "sCPT9yx5m2jOwRPQMZrpmQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -192,7 +192,7 @@
           "hash": "Cu27b+sUVZMO3RkzI0YVrg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -201,10 +201,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.html",
-          "hash": "joBBZSiaIAuZpG6EilvkNA=="
+          "hash": "PNt//7h7zrcitz/9cML6jA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -216,7 +216,7 @@
           "hash": "PfWUpJBTzdb6LTYSegKraA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -225,10 +225,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.RoomModifierDataBuilder.html",
-          "hash": "ASJIMggzQQ5ndjde2B6pRA=="
+          "hash": "eYxAGRKIb0Cir8sqChNL8Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -237,10 +237,22 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.StatusEffectDataBuilder.html",
-          "hash": "nJ81rvMar8qjY1p1mEQvWg=="
+          "hash": "aYuJUNYIppljUAlvjpp0EQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MonsterTrainModdingAPI.Builders.SubtypeDataBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MonsterTrainModdingAPI.Builders.SubtypeDataBuilder.html",
+          "hash": "CJE7j8JUp58Y/QLHkvrLOA=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -249,10 +261,22 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Builders.html",
-          "hash": "XOyvS9ByDrOlagzIyN+39A=="
+          "hash": "qmygZmIyymTIAJP6cQ/K/A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes.html",
+          "hash": "LeDgXTHEhL7ci+6CESJ5FQ=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -264,7 +288,19 @@
           "hash": "x2T25FJrIBIpBt5nPCbT1w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MonsterTrainModdingAPI.Constants.VanillaCardTraitTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MonsterTrainModdingAPI.Constants.VanillaCardTraitTypes.html",
+          "hash": "Wdh7Y9TA/a+mcgzwIsW6pQ=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -276,7 +312,7 @@
           "hash": "MJh+gbLadhUi3IeReZm4YQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -288,7 +324,19 @@
           "hash": "dW3EscT7PTqCSQ8yRXIF7A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MonsterTrainModdingAPI.Constants.VanillaRelicPoolIDs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MonsterTrainModdingAPI.Constants.VanillaRelicPoolIDs.html",
+          "hash": "MQgZ40wh4zkPa3iGj4+yvg=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -300,7 +348,7 @@
           "hash": "h3mTgAvhQ4Mp8X0u3zmMPA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -309,10 +357,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Constants.html",
-          "hash": "GoWwe8ZDK4i4Zq+EVm52AQ=="
+          "hash": "DX394Qr3Xyd9kV+CbFUCMA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -324,7 +372,7 @@
           "hash": "34Bsp4grmak5xSmQnc+CLg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -336,7 +384,7 @@
           "hash": "vZjYF6YtKLTBoiYVzVavMw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -348,7 +396,7 @@
           "hash": "lupWfoX2gLNzkc2v0szOuw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -360,7 +408,7 @@
           "hash": "R0+WveFDdm5N/eHAJHyANA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -372,7 +420,7 @@
           "hash": "jmv7ouNmMqEwU+6ozdQujQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -384,7 +432,7 @@
           "hash": "8NFUYYTiJWNjYJf7Njkm+A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -396,7 +444,7 @@
           "hash": "UTd1TRiIqKhIJhJ4qaVi/g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -408,7 +456,7 @@
           "hash": "stnPHMnLuaOWij44t1Q2Yg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -420,7 +468,7 @@
           "hash": "EcoCAT8ie4dEj5iNT7HL3Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -432,7 +480,7 @@
           "hash": "tD/hHJtVJaoMGM+llSz8NA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -444,7 +492,7 @@
           "hash": "EHOsaYkva8Nt3FdU2mKUbA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -456,7 +504,7 @@
           "hash": "cMNiKumjTVk/6sAHKqkm2w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -468,7 +516,7 @@
           "hash": "TQVXOWY6Y/qdgdqaK9TvNg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -480,7 +528,7 @@
           "hash": "aFy0sNQn+sSOfwdqcXg8DA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -492,7 +540,7 @@
           "hash": "8yUWHAb1o81IbSfGDzdIqQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -504,7 +552,7 @@
           "hash": "a+zxdQowEZZTmGb/PJ4Adg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -516,7 +564,19 @@
           "hash": "+tw9fRXWHGc+1DSv72A6bg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MonsterTrainModdingAPI.Managers.CustomCharacterManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MonsterTrainModdingAPI.Managers.CustomCharacterManager.html",
+          "hash": "xL4yMcvYAEGPBEl+ZCQAcw=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -528,7 +588,7 @@
           "hash": "Bc8xvfRY8SxgLFVmGb0U+g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -540,7 +600,7 @@
           "hash": "EzViunfIW0CAZTD2r/B+nA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -552,7 +612,7 @@
           "hash": "DgnDxsLkxs/UHfJ+99KPuQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -561,10 +621,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Managers.CustomTriggerManager.html",
-          "hash": "fsiXwyacpUoWUS+NG+Fe9Q=="
+          "hash": "z1iWlgFG6FRaq+H+xGQ0pg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -576,7 +636,7 @@
           "hash": "EWbKFAaAbhHMBt91kZHK3Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -585,10 +645,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Managers.ProviderManager.html",
-          "hash": "k+NNJGJN+EY0vjjXy6DAxg=="
+          "hash": "cXkrQ+93lWkh+bBXtlDX9g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -597,22 +657,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Managers.html",
-          "hash": "d0w6cJ/K/Lmf7eQcpGgr6A=="
+          "hash": "cCwjDmktdZa7iAlhrTuXag=="
         }
       },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/MonsterTrainModdingAPI.Patches.CreateCustomCardTraitPatch.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/MonsterTrainModdingAPI.Patches.CreateCustomCardTraitPatch.html",
-          "hash": "PMrjKat7trf8JnS9Kae+IA=="
-        }
-      },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -624,7 +672,7 @@
           "hash": "UZrzdSkQAZYKA5LB2S0S0g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -636,7 +684,7 @@
           "hash": "w1nNn/gqrDbW7o2lbI9wyQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -648,7 +696,7 @@
           "hash": "futqoqE7dwPHeuwdLQ2N4g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -660,7 +708,7 @@
           "hash": "d6i1PIptFjJs/6kZIhYtrQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -669,34 +717,10 @@
       "output": {
         ".html": {
           "relative_path": "api/MonsterTrainModdingAPI.Patches.html",
-          "hash": "LQ6Y+OU5WY9XAklAR8w5BA=="
+          "hash": "Ti62BFZutmdZ52AQEK2xSQ=="
         }
       },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/MonsterTrainModdingAPI.Traits.CardTraitCustomDescription.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/MonsterTrainModdingAPI.Traits.CardTraitCustomDescription.html",
-          "hash": "imTpq9JD1JgdCZDpcbEwuQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/MonsterTrainModdingAPI.Traits.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/MonsterTrainModdingAPI.Traits.html",
-          "hash": "1Sz+HdN9MxnD2rHkdZ39jA=="
-        }
-      },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -708,7 +732,7 @@
           "hash": "DetuJgdgda6PYpFwHVntow=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -720,7 +744,7 @@
           "hash": "jE2KJX47OAr7xjts5djfkQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -729,7 +753,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "umQRgalv91KrQLzl0O2dZQ=="
+          "hash": "phy3rFgc+dx0bMHxiPTBEw=="
         }
       },
       "is_incremental": false,
@@ -802,8 +826,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 59,
-          "skipped_file_count": 59
+          "total_file_count": 61,
+          "skipped_file_count": 35
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
