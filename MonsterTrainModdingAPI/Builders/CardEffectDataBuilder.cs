@@ -198,7 +198,6 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CardEffectData), "targetCardType").SetValue(cardEffectData, this.TargetCardType);
             AccessTools.Field(typeof(CardEffectData), "targetCharacterSubtype").SetValue(cardEffectData, this.TargetCharacterSubtype);
             AccessTools.Field(typeof(CardEffectData), "targetIgnoreBosses").SetValue(cardEffectData, this.TargetIgnoreBosses);
-            AccessTools.Field(typeof(CardEffectData), "targetIgnorePyre").SetValue(cardEffectData, this.TargetIgnorePyre);
             AccessTools.Field(typeof(CardEffectData), "targetMode").SetValue(cardEffectData, this.TargetMode);
             AccessTools.Field(typeof(CardEffectData), "targetModeHealthFilter").SetValue(cardEffectData, this.TargetModeHealthFilter);
             AccessTools.Field(typeof(CardEffectData), "targetModeStatusEffectsFilter").SetValue(cardEffectData, this.TargetModeStatusEffectsFilter);
