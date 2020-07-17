@@ -71,6 +71,10 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
 		public bool IsStackable { get; set; }
         /// <summary>
+        /// Whether or not the status effect should show stacks in the card text. Defaults to true.
+        /// </summary>
+		public bool ShowStackCount { get; set; }
+        /// <summary>
         /// Defaults to true.
         /// </summary>
 		public bool ShowNotificationsOnRemoval { get; set; }
@@ -95,6 +99,7 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(StatusEffectData), "displayCategory").SetValue(statusEffect, DisplayCategory);
             AccessTools.Field(typeof(StatusEffectData), "icon").SetValue(statusEffect, Icon);
             AccessTools.Field(typeof(StatusEffectData), "isStackable").SetValue(statusEffect, IsStackable);
+            AccessTools.Field(typeof(StatusEffectData), "showStackCount").SetValue(statusEffect, ShowStackCount);
             AccessTools.Field(typeof(StatusEffectData), "moreAddedVFX").SetValue(statusEffect, MoreAddedVFX);
             AccessTools.Field(typeof(StatusEffectData), "morePersistentVFX").SetValue(statusEffect, MorePersistentVFX);
             AccessTools.Field(typeof(StatusEffectData), "moreRemovedVFX").SetValue(statusEffect, MoreRemovedVFX);
