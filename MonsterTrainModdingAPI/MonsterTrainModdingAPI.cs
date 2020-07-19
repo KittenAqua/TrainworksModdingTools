@@ -8,7 +8,7 @@ namespace MonsterTrainModdingAPI
     /// <summary>
     /// The entry point for the API.
     /// </summary>
-    [BepInPlugin("api.modding.train.monster", "Monster Train Modding API", "0.0.7")]
+    [BepInPlugin("api.modding.train.monster", "Monster Train Modding API", "0.0.8")]
     [BepInProcess("MonsterTrain.exe")]
     [BepInProcess("MtLinkHandler.exe")]
     public class API : BaseUnityPlugin

@@ -59,6 +59,7 @@ namespace MonsterTrainModdingAPI.Builders
         public Sprite _RewardSprite { get; set; }
         public bool _ShowCancelOverride { get; set; }
         public bool _ShowRewardFlowInEvent { get; set; }
+        public int _MerchantServiceIndex { get; set; }
 
         public DraftRewardDataBuilder()
         {
@@ -85,10 +86,11 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(GrantableRewardData), "CanBeSkippedOverride").SetValue(rewardData, this.CanBeSkippedOverride);
             AccessTools.Field(typeof(GrantableRewardData), "ForceContentUnlocked").SetValue(rewardData, this.ForceContentUnlocked);
             AccessTools.Field(typeof(GrantableRewardData), "saveManager").SetValue(rewardData, this.SaveManager);
+            AccessTools.Field(typeof(GrantableRewardData), "_isServiceMerchantReward").SetValue(rewardData, this._IsServiceMerchantReward);
+            AccessTools.Field(typeof(GrantableRewardData), "_merchantServiceIndex").SetValue(rewardData, this._MerchantServiceIndex);
             AccessTools.Field(typeof(RewardData), "costs").SetValue(rewardData, this.Costs);
             AccessTools.Field(typeof(RewardData), "ShowRewardAnimationInEvent").SetValue(rewardData, this.ShowRewardAnimationInEvent);
             AccessTools.Field(typeof(RewardData), "_collectSFXCueName").SetValue(rewardData, this._CollectSFXCueName);
-            AccessTools.Field(typeof(RewardData), "_isServiceMerchantReward").SetValue(rewardData, this._IsServiceMerchantReward);
             if (this.Description != null)
             {
                 this._RewardDescriptionKey = "DraftRewardData_" + this.DraftRewardID + "_RewardDescriptionKey";

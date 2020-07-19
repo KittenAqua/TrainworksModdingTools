@@ -22,12 +22,12 @@ namespace MonsterTrainModdingAPI.Patches
     [HarmonyPatch(typeof(StatusEffectManager), "GetLocalizedName")]
     public class SENameLocalizationPatch
     {
-        static string Postfix(string ret, string statusId, int stackCount, bool inBold, bool isStackable, bool inCardBodyText)
+        static string Postfix(string ret, string statusId, int stackCount, bool inBold, bool showStacks, bool inCardBodyText)
         {
             if (!StatusEffectManager.StatusIdToLocalizationExpression.ContainsKey(statusId.ToLowerInvariant()))
             {
                 string format;
-                if ((stackCount > 1 || inCardBodyText) && isStackable)
+                if ((stackCount > 1 || inCardBodyText) && showStacks)
                 {
                     format = ("StatusEffect_" + statusId + "_Stack_CardText").Localize();
                     format = string.Format(format, stackCount);
@@ -36,10 +36,7 @@ namespace MonsterTrainModdingAPI.Patches
                 {
                     format = ("StatusEffect_" + statusId + "_CardText").Localize();
                 }
-                if (inBold)
-                {
-                    format = "<b>" + format + "</b>";
-                }
+
                 return format;
             }
             return ret;

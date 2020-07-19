@@ -32,10 +32,6 @@ namespace MonsterTrainModdingAPI.Builders
                 {
                     this.DescriptionKey = this.trigger + "_CharacterTriggerData_DescriptionKey";
                 }
-                if (this.AdditionalTextOnTriggerKey == null)
-                {
-                    this.AdditionalTextOnTriggerKey = this.trigger + "_CharacterTriggerData_AdditionalTextOnTriggerKey";
-                }
             }
         }
 

@@ -104,7 +104,7 @@
   
   <a id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_ApplyCardTriggers_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.ApplyCardTriggers*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_ApplyCardTriggers_MonsterTrainModdingAPI_Enums_MTTriggers_CardTrigger_CardState_System_Boolean_System_Int32_System_Boolean_CharacterState_System_Action_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.ApplyCardTriggers(MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger,CardState,System.Boolean,System.Int32,System.Boolean,CharacterState,System.Action)">ApplyCardTriggers(CardTrigger, CardState, Boolean, Int32, Boolean, CharacterState, Action)</h4>
-  <div class="markdown level1 summary"><p>A general function for applying a custom card trigger.</p>
+  <div class="markdown level1 summary"><p>A general function used to Apply a Card Trigger in different ways, dependant on parameters</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -204,7 +204,7 @@
   
   <a id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_FireCardTriggers_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.FireCardTriggers*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_FireCardTriggers_MonsterTrainModdingAPI_Enums_MTTriggers_CardTrigger_CardState_System_Int32_System_Boolean_CharacterState_System_Int32_System_Action_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.FireCardTriggers(MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger,CardState,System.Int32,System.Boolean,CharacterState,System.Int32,System.Action)">FireCardTriggers(CardTrigger, CardState, Int32, Boolean, CharacterState, Int32, Action)</h4>
-  <div class="markdown level1 summary"><p>Fires a Card Trigger</p>
+  <div class="markdown level1 summary"><p>A function used to fire a card trigger, causing the effects of the corresponding trigger on the playedCard to be fired.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -269,7 +269,7 @@
   
   <a id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_GetAssociatedCardTrigger_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.GetAssociatedCardTrigger*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_GetAssociatedCardTrigger_CharacterTriggerData_Trigger_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.GetAssociatedCardTrigger(CharacterTriggerData.Trigger)">GetAssociatedCardTrigger(CharacterTriggerData.Trigger)</h4>
-  <div class="markdown level1 summary"><p>Gets the Associated Trigger</p>
+  <div class="markdown level1 summary"><p>Gets the Associated Card Trigger from a Character Trigger or null</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -313,7 +313,7 @@
   
   <a id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_GetAssociatedCharacterTrigger_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.GetAssociatedCharacterTrigger*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_GetAssociatedCharacterTrigger_CardTriggerType_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.GetAssociatedCharacterTrigger(CardTriggerType)">GetAssociatedCharacterTrigger(CardTriggerType)</h4>
-  <div class="markdown level1 summary"><p>Gets the Associated Trigger</p>
+  <div class="markdown level1 summary"><p>Gets the Associated Character Trigger from a Card Trigger or null</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -357,12 +357,12 @@
   
   <a id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueAndRunTrigger_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueAndRunTrigger*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueAndRunTrigger_MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTrigger_CharacterState_System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueAndRunTrigger(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,CharacterState,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueAndRunTrigger(CharacterTrigger, CharacterState, Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
-  <div class="markdown level1 summary"><p>Queues and Runs a Trigger</p>
+  <div class="markdown level1 summary"><p>Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerator QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState character, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState character, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -412,31 +412,16 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   
   
   <a id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueAndRunTrigger_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueAndRunTrigger*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueAndRunTrigger_MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTrigger_CharacterState___System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueAndRunTrigger(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,CharacterState[],System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueAndRunTrigger(CharacterTrigger, CharacterState[], Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
-  <div class="markdown level1 summary"><p>Queues and Runs a Trigger</p>
+  <div class="markdown level1 summary"><p>Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerator QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState[] characters, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState[] characters, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -486,31 +471,16 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   
   
   <a id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueAndRunTrigger_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueAndRunTrigger*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueAndRunTrigger__1_MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTrigger_System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueAndRunTrigger``1(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueAndRunTrigger&lt;Manager&gt;(CharacterTrigger, Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
-  <div class="markdown level1 summary"><p>Queues and Runs a Trigger</p>
+  <div class="markdown level1 summary"><p>Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerator QueueAndRunTrigger&lt;Manager&gt;(CharacterTrigger charTrigger, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)
+    <pre><code class="lang-csharp hljs">public static void QueueAndRunTrigger&lt;Manager&gt;(CharacterTrigger charTrigger, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)
     where Manager : IProvider, ICharacterManager</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -555,21 +525,6 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -590,7 +545,7 @@
   
   <a id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueTrigger_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueTrigger*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueTrigger_MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTrigger_CharacterState_System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueTrigger(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,CharacterState,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueTrigger(CharacterTrigger, CharacterState, Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
-  <div class="markdown level1 summary"><p>Queues a Trigger</p>
+  <div class="markdown level1 summary"><p>Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -649,7 +604,7 @@
   
   <a id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueTrigger_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueTrigger*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueTrigger_MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTrigger_CharacterState___System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueTrigger(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,CharacterState[],System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueTrigger(CharacterTrigger, CharacterState[], Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
-  <div class="markdown level1 summary"><p>Queues a Trigger</p>
+  <div class="markdown level1 summary"><p>Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -708,7 +663,7 @@
   
   <a id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueTrigger_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueTrigger*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_QueueTrigger__1_MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTrigger_System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueTrigger``1(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueTrigger&lt;Manager&gt;(CharacterTrigger, Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
-  <div class="markdown level1 summary"><p>Queues a Trigger</p>
+  <div class="markdown level1 summary"><p>Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -778,28 +733,13 @@
   
   <a id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_RunTriggerQueueRemote_" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.RunTriggerQueueRemote*"></a>
   <h4 id="MonsterTrainModdingAPI_Managers_CustomTriggerManager_RunTriggerQueueRemote" data-uid="MonsterTrainModdingAPI.Managers.CustomTriggerManager.RunTriggerQueueRemote">RunTriggerQueueRemote()</h4>
-  <div class="markdown level1 summary"><p>Remotely Runs the Trigger Queue</p>
+  <div class="markdown level1 summary"><p>Remotely Runs the Trigger Queue of the CombatManager</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerator RunTriggerQueueRemote()</code></pre>
+    <pre><code class="lang-csharp hljs">public static void RunTriggerQueueRemote()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.IEnumerator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           

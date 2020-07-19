@@ -98,6 +98,34 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public CardEffectDataBuilder()</code></pre>
   </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="MonsterTrainModdingAPI_Builders_CardEffectDataBuilder_effectStateType" data-uid="MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.effectStateType">effectStateType</h4>
+  <div class="markdown level1 summary"><p>Don't set directly; use EffectStateType instead.
+Type of the effect class to instantiate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type effectStateType</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
   
@@ -256,7 +284,8 @@
   
   <a id="MonsterTrainModdingAPI_Builders_CardEffectDataBuilder_EffectStateName_" data-uid="MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.EffectStateName*"></a>
   <h4 id="MonsterTrainModdingAPI_Builders_CardEffectDataBuilder_EffectStateName" data-uid="MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.EffectStateName">EffectStateName</h4>
-  <div class="markdown level1 summary"><p>Name of the effect class to instantiate.</p>
+  <div class="markdown level1 summary"><p>Name of the effect class to instantiate.
+Either pass an assembly qualified type name or use EffectStateType instead.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -274,6 +303,33 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="MonsterTrainModdingAPI_Builders_CardEffectDataBuilder_EffectStateType_" data-uid="MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.EffectStateType*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_CardEffectDataBuilder_EffectStateType" data-uid="MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.EffectStateType">EffectStateType</h4>
+  <div class="markdown level1 summary"><p>Type of the effect class to instantiate.
+Implicitly sets EffectStateName.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type EffectStateType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
         <td></td>
       </tr>
     </tbody>
