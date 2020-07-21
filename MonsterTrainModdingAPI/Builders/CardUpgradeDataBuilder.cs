@@ -88,7 +88,7 @@ namespace MonsterTrainModdingAPI.Builders
 
         public CardUpgradeDataBuilder()
         {
-            this.UpgradeNotificationKey = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
+            this.UpgradeNotificationKey = null;
             this.UseUpgradeHighlightTextTags = true;
 
             this.TraitDataUpgradeBuilders = new List<CardTraitDataBuilder>();
