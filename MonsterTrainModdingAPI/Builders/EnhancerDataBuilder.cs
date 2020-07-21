@@ -50,12 +50,36 @@ namespace MonsterTrainModdingAPI.Builders
         public CardUpgradeDataBuilder Upgrade { get; set; }
         public CollectableRarity Rarity { get; set; }
         public ClassData LinkedClass { get; set; }
+        /// <summary>
+        /// Determines which kinds of cards it upgrades.
+        /// </summary>
+        public CardType CardType { get; set; }
+        /// <summary>
+        /// The IDs of all enhancer pools the relic should be inserted into.
+        /// </summary>
+        public List<string> EnhancerPoolIDs { get; set; }
 
 
         public EnhancerDataBuilder()
         {
             this.Name = "";
             this.Description = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
+            this.EnhancerPoolIDs = new List<string>();
+        }
+
+        /// <summary>
+        /// Builds the EnhancerData represented by this builder's parameters
+        /// and registers it and its components with the appropriate managers.
+        /// </summary>
+        /// <returns>The newly registered EnhancerData</returns>
+        public EnhancerData BuildAndRegister()
+        {
+            var enhancerData = this.Build();
+            foreach (var pool in EnhancerPoolIDs)
+            {
+                CustomEnhancerPoolManager.AddEnhancerToPool(enhancerData, pool);
+            }
+            return enhancerData;
         }
 
         /// <summary>
@@ -77,6 +101,8 @@ namespace MonsterTrainModdingAPI.Builders
                 {
                     relicEffectClassName = "RelicEffectCardUpgrade",
                     ParamCardUpgradeData = Upgrade.Build(),
+                    ParamCardType = CardType,
+                    ParamCharacterSubtype = "SubtypesData_None",
                 }.Build()
             };
             t.Field("effects").SetValue(Effects);
