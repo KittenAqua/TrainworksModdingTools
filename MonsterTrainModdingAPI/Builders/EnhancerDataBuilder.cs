@@ -132,7 +132,7 @@ namespace MonsterTrainModdingAPI.Builders
             }
             t.Field("icon").SetValue(Icon);
 
-            // Rarity
+            // A steak pun is a rare medium well done.
             t.Field("rarity").SetValue(Rarity);
 
             return enhancerData;
