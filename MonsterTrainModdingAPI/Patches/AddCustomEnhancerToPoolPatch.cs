@@ -9,7 +9,7 @@ using UnityEngine;
 namespace MonsterTrainModdingAPI.Patches
 {
     /// <summary>
-    /// Adds custom relics to their appropriate pools.
+    /// Adds custom enhancers to their appropriate pools.
     /// </summary>
     [HarmonyPatch(typeof(EnhancerPool), "GetAllChoices")]
     class AddCustomEnhancerToPoolPatch
@@ -24,7 +24,7 @@ namespace MonsterTrainModdingAPI.Patches
     public class EnhancerDataList : ReorderableArray<EnhancerData> { }
 
     /// <summary>
-    /// Without this patch, custom relics, when chosen from a pool, will be replaced by an empty slot.
+    /// Redirects the filtered searching to grab from the getter function we patched, instead of direct access to the private list.
     /// </summary>
     [HarmonyPatch(typeof(EnhancerPool), "GetFilteredChoices")]
     class AddCustomEnhancerToFilteredPoolPatch
