@@ -88,7 +88,7 @@ namespace MonsterTrainModdingAPI.Builders
 
         public CardUpgradeDataBuilder()
         {
-            this.UpgradeNotificationKey = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
+            this.UpgradeNotificationKey = null;
             this.UseUpgradeHighlightTextTags = true;
 
             this.TraitDataUpgradeBuilders = new List<CardTraitDataBuilder>();
@@ -161,6 +161,12 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CardUpgradeData), "upgradeTitleKey").SetValue(cardUpgradeData, this.UpgradeTitleKey);
             AccessTools.Field(typeof(CardUpgradeData), "useUpgradeHighlightTextTags").SetValue(cardUpgradeData, this.UseUpgradeHighlightTextTags);
             AccessTools.Field(typeof(CardUpgradeData), "xCostReduction").SetValue(cardUpgradeData, this.XCostReduction);
+
+            // If CardUpgrades are not added to allGameData, there are many troubles.
+            var field = Traverse.Create(ProviderManager.SaveManager.GetAllGameData()).Field("cardUpgradeDatas");
+            var upgradeList = field.GetValue<List<CardUpgradeData>>();
+            upgradeList.Add(cardUpgradeData);
+            field.SetValue(upgradeList);
 
             return cardUpgradeData;
         }
