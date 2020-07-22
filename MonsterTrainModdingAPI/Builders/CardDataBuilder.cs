@@ -14,6 +14,7 @@ namespace MonsterTrainModdingAPI.Builders
 {
     public class CardDataBuilder
     {
+
         /// <summary>
         /// Don't set directly; use CardID instead.
         /// Unique string used to store and retrieve the card data.
@@ -185,7 +186,7 @@ namespace MonsterTrainModdingAPI.Builders
         {
             this.Name = "";
             this.Description = "";
-            this.OverrideDescriptionKey = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
+            this.OverrideDescriptionKey = null;
 
             this.CardPoolIDs = new List<string>();
             this.EffectBuilders = new List<CardEffectDataBuilder>();
