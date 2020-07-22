@@ -57,9 +57,24 @@ namespace MonsterTrainModdingAPI.Managers
             foreach (string Category in categories)
                 LocalizationManager.Sources[0].Import_CSV(Category, CSVstring, eSpreadsheetUpdateMode.AddNewTerms, Separator);
         }
-
+        /// <summary>
+        /// Appends a Single Localization to the Localization Manager
+        /// </summary>
+        /// <param name="key">a string that is not null or empty that will act as a key for other strings</param>
+        /// <param name="type">type for the string to be converted to, typically is Text</param>
+        /// <param name="desc">description of what key represents, typically unused</param>
+        /// <param name="plural">The plural of the string, currently broken</param>
+        /// <param name="group">the name of the group that the key is apart of</param>
+        /// <param name="descriptions">an extra description</param>
+        /// <param name="english">The English Translation</param>
+        /// <param name="french">The French Translation</param>
+        /// <param name="german">The German Translation</param>
+        /// <param name="russian">The Russian Translation</param>
+        /// <param name="portuguese">The Portuguese Translation</param>
+        /// <param name="chinese">The Chinese Translation</param>
         public static void ImportSingleLocalization(string key, string type, string desc, string plural, string group, string descriptions, string english, string french, string german, string russian, string portuguese, string chinese)
         {
+            if (string.IsNullOrEmpty(key)) return;
             if (!key.HasTranslation())
             {
                 var miniCSVBuilder = new System.Text.StringBuilder();

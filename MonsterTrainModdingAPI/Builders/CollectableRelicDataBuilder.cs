@@ -94,9 +94,9 @@ namespace MonsterTrainModdingAPI.Builders
 
         public CollectableRelicDataBuilder()
         {
-            this.Name = "";
-            this.Description = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
 
+            this.Name = "";
+            this.Description = null;
             this.Effects = new List<RelicEffectData>();
             this.EffectBuilders = new List<RelicEffectDataBuilder>();
         }
