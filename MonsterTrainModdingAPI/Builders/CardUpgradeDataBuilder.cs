@@ -162,6 +162,12 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CardUpgradeData), "useUpgradeHighlightTextTags").SetValue(cardUpgradeData, this.UseUpgradeHighlightTextTags);
             AccessTools.Field(typeof(CardUpgradeData), "xCostReduction").SetValue(cardUpgradeData, this.XCostReduction);
 
+            // If CardUpgrades are not added to allGameData, there are many troubles.
+            var field = Traverse.Create(ProviderManager.SaveManager.GetAllGameData()).Field("cardUpgradeDatas");
+            var upgradeList = field.GetValue<List<CardUpgradeData>>();
+            upgradeList.Add(cardUpgradeData);
+            field.SetValue(upgradeList);
+
             return cardUpgradeData;
         }
     }
