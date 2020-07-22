@@ -15,24 +15,24 @@ namespace MonsterTrainModdingAPI.Patches
         /// It also extends that functionality for covenants.
         /// It only applies to custom classes.
         /// </summary>
-        [HarmonyPatch(typeof(GameStateManager), "StartRun")]
+        [HarmonyPatch(typeof(SaveManager), "SetupRun")]
         public class ClanCardSetupPatch
         {
-            static void Postfix(ref GameStateManager __instance, RunType runType,
-                                string sharecode,
-                                ClassData mainClass,
-                                ClassData subClass,
-                                int ascensionLevel)
+            static void Postfix(SaveManager __instance)
             {
+                int ascensionLevel = __instance.GetAscensionLevel();
+                ClassData mainClass = __instance.GetMainClass();
+                ClassData subClass = __instance.GetSubClass();
+
                 if (ascensionLevel == 0) { return; }
                 if (CustomClassManager.CustomClassData.ContainsKey(mainClass.GetID()))
                 {
                     if (mainClass.CreateMainClassStartingDeck().Count > 0)
                     {
                         foreach (CardData cardData in mainClass.CreateMainClassStartingDeck())
-                            SaveManagerInitializationPatch.SaveManager.AddCardToDeck(cardData);
-                        if (ascensionLevel >= 6) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
-                        if (ascensionLevel >= 13) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
+                            __instance.AddCardToDeck(cardData);
+                        if (ascensionLevel >= 6) { __instance.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
+                        if (ascensionLevel >= 13) { __instance.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
                     }
                 }
 
@@ -45,10 +45,10 @@ namespace MonsterTrainModdingAPI.Patches
                     {
                         foreach (CardData cardData in subClass.CreateSubClassStartingDeck())
                         {
-                            SaveManagerInitializationPatch.SaveManager.AddCardToDeck(cardData);
+                            __instance.AddCardToDeck(cardData);
                         }
-                        if (ascensionLevel >= 8) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateSubClassStartingDeck()[0]); }
-                        if (ascensionLevel >= 15) { SaveManagerInitializationPatch.SaveManager.AddCardToDeck(mainClass.CreateSubClassStartingDeck()[0]); }
+                        if (ascensionLevel >= 8) { __instance.AddCardToDeck(mainClass.CreateSubClassStartingDeck()[0]); }
+                        if (ascensionLevel >= 15) { __instance.AddCardToDeck(mainClass.CreateSubClassStartingDeck()[0]); }
                     }
                 }
             }
