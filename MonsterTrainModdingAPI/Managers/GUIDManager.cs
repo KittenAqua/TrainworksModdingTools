@@ -9,29 +9,30 @@ namespace MonsterTrainModdingAPI.Managers
 {
     public class GUIDManager
     {
-        public static MD5CryptoServiceProvider provider = new MD5CryptoServiceProvider();
-        public static string byteString = "";
+        private static SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
         public static void ResetProvider()
         {
-            provider = new MD5CryptoServiceProvider();
+            provider = new SHA256CryptoServiceProvider();
         }
         public static string GenerateDeterministicGUID(string Key)
         {
             //Generate a Byte Array from a string using default encoding
             byte[] inputBytes = Encoding.Default.GetBytes(Key);
-            //Use Bytes to Generate a Byte Array of Length 16
+            //Use Bytes to Generate a Byte Array of Length 16 using MD5CryptoServiceProvider
             byte[] hashBytes = provider.ComputeHash(inputBytes);
-
+            //Set the first nibble of the byte to be 0100
             hashBytes[7] = (byte)(0x40 | ((int)hashBytes[7] & 0xf));
+            //Set the first crumb of the byte to be 10
             hashBytes[8] = (byte)(0x80 | ((int)hashBytes[8] & 0x3f));
-
+            //Resive the Array to get the first 16 bytes
+            Array.Resize<byte>(ref hashBytes, 16);
             Guid guid = new Guid(hashBytes);
             return guid.ToString();
         }
         /// <summary>
         /// Tests to See if GUID generation meets all demands required
         /// </summary>
-        public static void DetTest()
+        public static void Test()
         {
             ResetTest();
             ConcurrenceTest();
@@ -41,7 +42,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// If the Provider is Reset and given the same input, the strings generated should be equal 
         /// </summary>
-        public static void ResetTest()
+        private static void ResetTest()
         {
             for (int i = 0; i < 100; i++)
             {
@@ -60,7 +61,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Generating from the Same key should have the same result no matter how many times its generated
         /// </summary>
-        public static void ConcurrenceTest()
+        private static void ConcurrenceTest()
         {
             ResetProvider();
             for (int i = 0; i < 100; i++)
@@ -79,8 +80,10 @@ namespace MonsterTrainModdingAPI.Managers
             }
 
         }
-
-        public static void UUIDVersion4Test()
+        /// <summary>
+        /// Makes sure that the GUID generated is UUID v4 compliant.
+        /// </summary>
+        private static void UUIDVersion4Test()
         {
             Random random = new Random();
             for (int i = 0; i < 100; i++)
@@ -89,27 +92,24 @@ namespace MonsterTrainModdingAPI.Managers
                 random.NextBytes(buffer);
                 string conversion = Encoding.UTF8.GetString(buffer);
                 string gen = GenerateDeterministicGUID(conversion);
-
+                //Check if Index 14 is 4
                 bool value1 = gen[14] != '4';
                 if (value1)
                 {
                     MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel.Info, $"Format Failed, no 4: {value1}:{gen}");
                 }
+                //Check if Index 19 is a,b,8,or 9
                 char testchar = gen[19];
                 if(testchar != 'a' && testchar != 'b' && testchar != '8' && testchar != '9')
                 {
                     MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel.Info, $"Format Failed, no {testchar}: {gen}");
                 }
-                
-
-
-
             }
         }
         /// <summary>
         /// Goes through a couple of Random strings and outputs them to make sure format looks correct
         /// </summary>
-        public static void OutputKeyForFormatReasons()
+        private static void OutputKeyForFormatReasons()
         {
             Random random = new Random();
             for (int i = 0; i < 100; i++)
@@ -119,7 +119,6 @@ namespace MonsterTrainModdingAPI.Managers
                 string conversion = Encoding.UTF8.GetString(buffer);
                 string gen = GenerateDeterministicGUID(conversion);
                 MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel.Info, $"{conversion} becomes {gen}");
-
             }
         }
     }

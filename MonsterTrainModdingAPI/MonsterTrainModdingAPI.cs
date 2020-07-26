@@ -33,7 +33,7 @@ namespace MonsterTrainModdingAPI
         /// </summary>
         private void Awake()
         {
-            MonsterTrainModdingAPI.Managers.GUIDManager.DetTest();
+            MonsterTrainModdingAPI.Managers.GUIDManager.Test();
             DepInjector.AddClient(new MonsterTrainModdingAPI.Managers.ProviderManager());
 
             var harmony = new Harmony("api.modding.train.monster");
