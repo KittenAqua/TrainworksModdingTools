@@ -248,7 +248,7 @@ namespace MonsterTrainModdingAPI.Builders
                 this.Triggers.Add(builder.Build());
             }
 
-            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
+            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(GUIDManager.GenerateDeterministicGUID(this.ClanID));
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
             AccessTools.Field(typeof(CardData), "id").SetValue(cardData, this.CardID);
             cardData.name = this.CardID;

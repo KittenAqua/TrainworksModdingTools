@@ -142,7 +142,9 @@ namespace MonsterTrainModdingAPI.Builders
             ClassData classData = ScriptableObject.CreateInstance<ClassData>();
             classData.name = this.ClassID;
 
-            AccessTools.Field(typeof(ClassData), "id").SetValue(classData, this.ClassID);
+            MonsterTrainModdingAPI.API.Log(LogLevel.Info, GUIDManager.GenerateDeterministicGUID(this.ClassID));
+            MonsterTrainModdingAPI.API.Log(LogLevel.Info, GUIDManager.GenerateDeterministicGUID(this.ClassID));
+            AccessTools.Field(typeof(ClassData), "id").SetValue(classData, GUIDManager.GenerateDeterministicGUID(this.ClassID));
             AccessTools.Field(typeof(ClassData), "cardStyle").SetValue(classData, this.CardStyle);
             AccessTools.Field(typeof(ClassData), "championIcon").SetValue(classData, this.ChampionIcon);
             AccessTools.Field(typeof(ClassData), "clanSelectSfxCue").SetValue(classData, this.ClanSelectSfxCue);
