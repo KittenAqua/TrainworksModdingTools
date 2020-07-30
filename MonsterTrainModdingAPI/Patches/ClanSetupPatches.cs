@@ -47,8 +47,8 @@ namespace MonsterTrainModdingAPI.Patches
                         {
                             __instance.AddCardToDeck(cardData);
                         }
-                        if (ascensionLevel >= 8) { __instance.AddCardToDeck(mainClass.CreateSubClassStartingDeck()[0]); }
-                        if (ascensionLevel >= 15) { __instance.AddCardToDeck(mainClass.CreateSubClassStartingDeck()[0]); }
+                        if (ascensionLevel >= 8) { __instance.AddCardToDeck(subClass.CreateSubClassStartingDeck()[0]); }
+                        if (ascensionLevel >= 15) { __instance.AddCardToDeck(subClass.CreateSubClassStartingDeck()[0]); }
                     }
                 }
             }

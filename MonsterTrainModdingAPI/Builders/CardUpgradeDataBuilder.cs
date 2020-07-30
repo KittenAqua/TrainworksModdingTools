@@ -111,7 +111,6 @@ namespace MonsterTrainModdingAPI.Builders
         public CardUpgradeData Build()
         {
             CardUpgradeData cardUpgradeData = ScriptableObject.CreateInstance<CardUpgradeData>();
-            cardUpgradeData.name = UpgradeTitleKey;
 
             foreach (var builder in this.TraitDataUpgradeBuilders)
             {
@@ -161,6 +160,9 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CardUpgradeData), "upgradeTitleKey").SetValue(cardUpgradeData, this.UpgradeTitleKey);
             AccessTools.Field(typeof(CardUpgradeData), "useUpgradeHighlightTextTags").SetValue(cardUpgradeData, this.UseUpgradeHighlightTextTags);
             AccessTools.Field(typeof(CardUpgradeData), "xCostReduction").SetValue(cardUpgradeData, this.XCostReduction);
+
+            cardUpgradeData.name = UpgradeTitleKey;
+            Traverse.Create(cardUpgradeData).Field("id").SetValue(UpgradeTitleKey);
 
             // If CardUpgrades are not added to allGameData, there are many troubles.
             var field = Traverse.Create(ProviderManager.SaveManager.GetAllGameData()).Field("cardUpgradeDatas");
