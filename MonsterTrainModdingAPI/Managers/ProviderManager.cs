@@ -25,6 +25,15 @@ namespace MonsterTrainModdingAPI.Managers
                 return provider;
             }
         }
+
+        public static CardStatistics CardStatistics
+        {
+            get
+            {
+                TryGetProvider<CardStatistics>(out CardStatistics provider);
+                return provider;
+            }
+        }
         /// <summary>
         /// Attempts to Get an IProvider
         /// </summary>
