@@ -81,7 +81,11 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns>The sprite, or null if there is no texture at the given path</returns>
         public static Sprite LoadSpriteFromPath(string path)
         {
-            if (File.Exists(path))
+            var localPath = Path.GetDirectoryName(new Uri(Assembly.GetCallingAssembly().CodeBase).LocalPath);
+            string fullPath = Path.Combine(localPath, path);
+            API.Log(BepInEx.Logging.LogLevel.All, "File: " + Path.Combine(localPath, path));
+            //string fullPath = "BepInEx/plugins/" + path;
+            if (File.Exists(fullPath))
             {
                 // Create the card sprite
                 byte[] fileData = File.ReadAllBytes(path);
@@ -137,7 +141,12 @@ namespace MonsterTrainModdingAPI.Managers
             {
                 return LoadedAssetBundles[path];
             }
-            AssetBundle bundle = AssetBundle.LoadFromFile(path);
+
+            var localPath = Path.GetDirectoryName(new Uri(Assembly.GetCallingAssembly().CodeBase).LocalPath);
+            string fullPath = Path.Combine(localPath, path);
+            API.Log(BepInEx.Logging.LogLevel.All, "File: " + Path.Combine(localPath, path));
+
+            AssetBundle bundle = AssetBundle.LoadFromFile(fullPath);
             LoadedAssetBundles.Add(path, bundle);
             return bundle;
         }
