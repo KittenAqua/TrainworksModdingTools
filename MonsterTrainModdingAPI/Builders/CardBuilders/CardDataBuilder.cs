@@ -10,6 +10,7 @@ using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Utilities;
+using System.IO;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -120,6 +121,10 @@ namespace MonsterTrainModdingAPI.Builders
         /// Append to this list to add new card triggers. The Build() method recursively builds all nested builders.
         /// </summary>
         public List<CardTriggerEffectDataBuilder> TriggerBuilders { get; set; }
+        /// <summary>
+        /// Set CardArtPrefabVariantRef without reflection. The Build() method recursively builds all nested builders.
+        /// </summary>
+        public AssetRefBuilder CardArtPrefabVariantRefBuilder { get; set; }
 
 
         /// <summary>
@@ -193,6 +198,10 @@ namespace MonsterTrainModdingAPI.Builders
 
         public CardDataBuilder()
         {
+            string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            UriBuilder uri = new UriBuilder(codeBase);
+            string path = Uri.UnescapeDataString(uri.Path);
+            string assemblyPath = Path.GetDirectoryName(path);
             this.Name = "";
             this.Description = "";
             this.OverrideDescriptionKey = null;
@@ -255,11 +264,21 @@ namespace MonsterTrainModdingAPI.Builders
 
             this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
-            AccessTools.Field(typeof(CardData), "id").SetValue(cardData, this.CardID);
+            var guid = GUIDGenerator.GenerateDeterministicGUID(this.CardID);
+            AccessTools.Field(typeof(CardData), "id").SetValue(cardData, guid);
             cardData.name = this.CardID;
             if (this.CardArtPrefabVariantRef == null)
             {
-                this.CreateAndSetCardArtPrefabVariantRef(this.AssetPath, this.FullAssetPath);
+                if (this.CardArtPrefabVariantRefBuilder == null)
+                {
+                    this.CardArtPrefabVariantRefBuilder = new AssetRefBuilder
+                    {
+                        Filename = this.FullAssetPath,
+                        DebugName = this.AssetPath,
+                        AssetType = AssetRefBuilder.AssetTypeEnum.CardArt
+                    };
+                }
+                this.CardArtPrefabVariantRef = this.CardArtPrefabVariantRefBuilder.BuildAndRegister();
             }
             AccessTools.Field(typeof(CardData), "cardArtPrefabVariantRef").SetValue(cardData, this.CardArtPrefabVariantRef);
             AccessTools.Field(typeof(CardData), "cardLoreTooltipKeys").SetValue(cardData, this.CardLoreTooltipKeys);
