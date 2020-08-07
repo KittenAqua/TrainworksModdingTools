@@ -30,7 +30,7 @@ namespace MonsterTrainModdingAPI.Constants
         public static readonly string Inedible = StatusEffectInedibleState.StatusId;
         public static readonly string Inert = StatusEffectInertState.StatusId;
         public static readonly string Lifesteal = StatusEffectLifestealState.StatusId;
-        public static readonly string Frostbite = StatusEffectMultiplyDamageStatusEffectState.StatusId_ExploitPoison;
+        public static readonly string Frostbite = StatusEffectPoisonState.StatusId;
         public static readonly string Multistrike = StatusEffectMultistrikeState.StatusId;
         public static readonly string Regen = StatusEffectRegenState.StatusId;
         public static readonly string Relentless = StatusEffectRelentlessState.StatusId;
