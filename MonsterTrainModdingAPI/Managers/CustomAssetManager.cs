@@ -24,7 +24,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Create a sprite from texture at provided path.
         /// </summary>
-        /// <param name="path">Path of the texture relative to the BepInEx/plugins folder</param>
+        /// <param name="path">Absolute path of the texture</param>
         /// <returns>The sprite, or null if there is no texture at the given path</returns>
         public static Sprite LoadSpriteFromPath(string path)
         {
@@ -76,7 +76,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Loads an asset bundle from the path provided.
         /// </summary>
-        /// <param name="path">Path of the bundle relative to the BepInEx/plugins folder</param>
+        /// <param name="path">Absolute path of the bundle</param>
         /// <returns></returns>
         public static AssetBundle LoadAssetBundleFromPath(string path)
         {
