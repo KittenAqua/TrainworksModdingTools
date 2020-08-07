@@ -83,7 +83,15 @@ namespace MonsterTrainModdingAPI.Builders
         public string ClanID { get; set; }
 
         /// <summary>
-        /// Custom asset path to load card art from.
+        /// The full, absolute path to the asset. Concatenates BaseAssetPath and AssetPath.
+        /// </summary>
+        public string FullAssetPath => BaseAssetPath + "/" + AssetPath;
+        /// <summary>
+        /// Set automatically in the constructor. Base asset path, usually the plugin directory.
+        /// </summary>
+        public string BaseAssetPath { get; set; }
+        /// <summary>
+        /// Custom asset path to load from. Must be inside the BaseAssetPath.
         /// </summary>
         public string AssetPath { get; set; }
         /// <summary>
@@ -200,6 +208,9 @@ namespace MonsterTrainModdingAPI.Builders
             this.SharedMasteryCards = new List<CardData>();
             this.StartingUpgrades = new List<CardUpgradeData>();
             this.CardLoreTooltipKeys = new List<string>();
+
+            var assembly = Assembly.GetCallingAssembly();
+            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
         }
 
         /// <summary>
@@ -254,7 +265,7 @@ namespace MonsterTrainModdingAPI.Builders
             cardData.name = this.CardID;
             if (this.CardArtPrefabVariantRef == null)
             {
-                this.CreateAndSetCardArtPrefabVariantRef(this.AssetPath, this.AssetPath);
+                this.CreateAndSetCardArtPrefabVariantRef(this.AssetPath, this.FullAssetPath);
             }
             AccessTools.Field(typeof(CardData), "cardArtPrefabVariantRef").SetValue(cardData, this.CardArtPrefabVariantRef);
             AccessTools.Field(typeof(CardData), "cardLoreTooltipKeys").SetValue(cardData, this.CardLoreTooltipKeys);

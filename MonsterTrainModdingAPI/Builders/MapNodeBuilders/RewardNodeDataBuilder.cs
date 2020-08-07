@@ -39,6 +39,10 @@ namespace MonsterTrainModdingAPI.Builders
         public string TooltipBodyKey { get; set; }
 
         /// <summary>
+        /// Set automatically in the constructor. Base asset path, usually the plugin directory.
+        /// </summary>
+        public string BaseAssetPath { get; set; }
+        /// <summary>
         /// Sprite used when the node is on the same path but has not been visited.
         /// </summary>
         public string EnabledSpritePath { get; set; }
@@ -95,6 +99,9 @@ namespace MonsterTrainModdingAPI.Builders
             this.MapNodePoolIDs = new List<string>();
             this.Rewards = new List<RewardData>();
             this.RewardBuilders = new List<IRewardDataBuilder>();
+
+            var assembly = Assembly.GetCallingAssembly();
+            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
         }
 
         /// <summary>
@@ -142,7 +149,7 @@ namespace MonsterTrainModdingAPI.Builders
                 };
                 for (int i = 0; i < images.Length; i++)
                 { // This method of modifying the image's sprite has the unfortunate side-effect of removing the white mouse-over outline
-                    var sprite = CustomAssetManager.LoadSpriteFromPath(spritePaths[i]);
+                    var sprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + spritePaths[i]);
                     if (sprite != null)
                     {
                         images[i].sprite = sprite;

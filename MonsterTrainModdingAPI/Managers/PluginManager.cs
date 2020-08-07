@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
+using System.IO;
 using BepInEx;
 using System.Linq;
 
@@ -12,6 +14,11 @@ namespace MonsterTrainModdingAPI.Managers
         /// Maps BepInEx plugin names to the actual plugins.
         /// </summary>
         public static Dictionary<string, BaseUnityPlugin> Plugins { get; } = new Dictionary<string, BaseUnityPlugin>();
+
+        /// <summary>
+        /// Maps plugins' assembly names to their filepaths
+        /// </summary>
+        public static IDictionary<string, string> AssemblyNameToPath { get; } = new Dictionary<string, string>();
 
         /// <summary>
         /// Get the GUIDs of all plugins recognized by BepInEx.
@@ -48,6 +55,11 @@ namespace MonsterTrainModdingAPI.Managers
         public static void RegisterPlugin(BaseUnityPlugin plugin)
         {
             Plugins.Add(plugin.Info.Metadata.Name, plugin);
+
+            var assembly = plugin.GetType().Assembly;
+            var uri = new UriBuilder(assembly.CodeBase);
+            var path = Path.GetDirectoryName(Uri.UnescapeDataString(uri.Path));
+            AssemblyNameToPath[assembly.FullName] = path;
         }
     }
 }

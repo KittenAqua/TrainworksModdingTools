@@ -24,18 +24,14 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Create a sprite from texture at provided path.
         /// </summary>
-        /// <param name="path">Path of the texture relative to the BepInEx/plugins folder</param>
+        /// <param name="path">Absolute path of the texture</param>
         /// <returns>The sprite, or null if there is no texture at the given path</returns>
         public static Sprite LoadSpriteFromPath(string path)
         {
-            var localPath = Path.GetDirectoryName(new Uri(Assembly.GetCallingAssembly().CodeBase).LocalPath);
-            string fullPath = Path.Combine(localPath, path);
-            API.Log(BepInEx.Logging.LogLevel.All, "File: " + Path.Combine(localPath, path));
-            //string fullPath = "BepInEx/plugins/" + path;
-            if (File.Exists(fullPath))
+            if (File.Exists(path))
             {
                 // Create the card sprite
-                byte[] fileData = File.ReadAllBytes(fullPath);
+                byte[] fileData = File.ReadAllBytes(path);
                 Texture2D tex = new Texture2D(1, 1);
                 UnityEngine.ImageConversion.LoadImage(tex, fileData);
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
@@ -80,7 +76,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Loads an asset bundle from the path provided.
         /// </summary>
-        /// <param name="path">Path of the bundle relative to the BepInEx/plugins folder</param>
+        /// <param name="path">Absolute path of the bundle</param>
         /// <returns></returns>
         public static AssetBundle LoadAssetBundleFromPath(string path)
         {
@@ -88,12 +84,7 @@ namespace MonsterTrainModdingAPI.Managers
             {
                 return LoadedAssetBundles[path];
             }
-
-            var localPath = Path.GetDirectoryName(new Uri(Assembly.GetCallingAssembly().CodeBase).LocalPath);
-            string fullPath = Path.Combine(localPath, path);
-            API.Log(BepInEx.Logging.LogLevel.All, "File: " + Path.Combine(localPath, path));
-
-            AssetBundle bundle = AssetBundle.LoadFromFile(fullPath);
+            AssetBundle bundle = AssetBundle.LoadFromFile(path);
             LoadedAssetBundles.Add(path, bundle);
             return bundle;
         }
