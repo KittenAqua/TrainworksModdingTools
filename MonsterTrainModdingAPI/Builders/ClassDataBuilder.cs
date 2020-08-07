@@ -67,14 +67,19 @@ namespace MonsterTrainModdingAPI.Builders
         public CardUpgradeTreeData UpgradeTree { get; set; }
 
         /// <summary>
-        /// Must contain 4 sprites; in order:
+        /// Set automatically in the constructor. Base asset path, usually the plugin directory.
+        /// </summary>
+        public string BaseAssetPath { get; set; }
+
+        /// <summary>
+        /// Must contain 4 sprite paths; in order:
         /// small icon (32x32)
         /// medium icon (??x??)
         /// large icon (89x89)
         /// silhouette icon (43x43)
         /// </summary>
-        public List<Sprite> Icons { get; set; }
-        public Sprite ChampionIcon { get; set; }
+        public List<string> IconAssetPaths { get; set; }
+        public string ChampionIconPath { get; set; }
         /// <summary>
         /// Use CardStyle only for accessing the base game card frames. Otherwise use CardFrame for custom frames
         /// </summary>
@@ -82,11 +87,16 @@ namespace MonsterTrainModdingAPI.Builders
         /// <summary>
         /// Add a custom CardFrame as a sprite for unit cards.
         /// </summary>
-        public Sprite CardFrameUnit { get; set; }
+        public string CardFrameUnitPath { get; set; }
         /// <summary>
         /// Add a custom CardFrame as a sprite for spell cards.
         /// </summary>
-        public Sprite CardFrameSpell { get; set; }
+        public string CardFrameSpellPath { get; set; }
+        /// <summary>
+        /// Add a custom icon for the card draft on battle victory.
+        /// </summary>
+        public string DraftIconPath { get; set; }
+
         public string ClanSelectSfxCue { get; set; }
 
         public List<ClassData.StartingCardOptions> MainClassStartingCards { get; set; }
@@ -104,20 +114,19 @@ namespace MonsterTrainModdingAPI.Builders
         public string TitleLoc { get; set; }
         public string DescriptionLoc { get; set; }
         public string SubclassDescriptionLoc { get; set; }
-        /// <summary>
-        /// Add a custom icon for the card draft on battle victory.
-        /// </summary>
-        public Sprite DraftIcon { get; set; }
 
 
         public ClassDataBuilder()
         {
-            this.Icons = new List<Sprite>();
+            this.IconAssetPaths = new List<string>();
             this.MainClassStartingCards = new List<ClassData.StartingCardOptions>();
             this.SubclassStartingCards = new List<ClassData.StartingCardOptions>();
             this.UnlockKeys = new Dictionary<MetagameSaveData.TrackedValue, string>();
             this.ClassUnlockPreviewTexts = new List<string>();
             this.StartingChampion = (ChampionData)UnityEngine.ScriptableObject.CreateInstance("ChampionData");
+
+            var assembly = Assembly.GetCallingAssembly();
+            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
         }
 
         /// <summary>
@@ -146,19 +155,28 @@ namespace MonsterTrainModdingAPI.Builders
             MonsterTrainModdingAPI.API.Log(LogLevel.Info, GUIDManager.GenerateDeterministicGUID(this.ClassID));
             AccessTools.Field(typeof(ClassData), "id").SetValue(classData, GUIDManager.GenerateDeterministicGUID(this.ClassID));
             AccessTools.Field(typeof(ClassData), "cardStyle").SetValue(classData, this.CardStyle);
-            AccessTools.Field(typeof(ClassData), "championIcon").SetValue(classData, this.ChampionIcon);
+            if (this.ChampionIconPath != null)
+            {
+                Sprite championIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.ChampionIconPath);
+                AccessTools.Field(typeof(ClassData), "championIcon").SetValue(classData, championIconSprite);
+            }
             AccessTools.Field(typeof(ClassData), "clanSelectSfxCue").SetValue(classData, this.ClanSelectSfxCue);
             AccessTools.Field(typeof(ClassData), "classUnlockCondition").SetValue(classData, this.ClassUnlockCondition);
             AccessTools.Field(typeof(ClassData), "classUnlockParam").SetValue(classData, this.ClassUnlockParam);
             AccessTools.Field(typeof(ClassData), "classUnlockPreviewTexts").SetValue(classData, this.ClassUnlockPreviewTexts);
             BuilderUtils.ImportStandardLocalization(this.DescriptionLoc, this.Description);
             AccessTools.Field(typeof(ClassData), "descriptionLoc").SetValue(classData, this.DescriptionLoc);
+            var icons = new List<Sprite>();
+            foreach (string iconPath in this.IconAssetPaths)
+            {
+                icons.Add(CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + iconPath));
+            }
             Type iconSetType = AccessTools.Inner(typeof(ClassData), "IconSet");
             var iconSet = Activator.CreateInstance(iconSetType);
-            AccessTools.Field(iconSetType, "small").SetValue(iconSet, this.Icons[0]);
-            AccessTools.Field(iconSetType, "medium").SetValue(iconSet, this.Icons[1]);
-            AccessTools.Field(iconSetType, "large").SetValue(iconSet, this.Icons[2]);
-            AccessTools.Field(iconSetType, "silhouette").SetValue(iconSet, this.Icons[3]);
+            AccessTools.Field(iconSetType, "small").SetValue(iconSet, icons[0]);
+            AccessTools.Field(iconSetType, "medium").SetValue(iconSet, icons[1]);
+            AccessTools.Field(iconSetType, "large").SetValue(iconSet, icons[2]);
+            AccessTools.Field(iconSetType, "silhouette").SetValue(iconSet, icons[3]);
             AccessTools.Field(typeof(ClassData), "icons").SetValue(classData, iconSet);
             AccessTools.Field(typeof(ClassData), "mainClassStartingCards").SetValue(classData, this.MainClassStartingCards);
             AccessTools.Field(typeof(ClassData), "startingChampion").SetValue(classData, this.StartingChampion);
@@ -173,15 +191,20 @@ namespace MonsterTrainModdingAPI.Builders
             if (UpgradeTreeBuilder != null) { UpgradeTree = UpgradeTreeBuilder.Build(); }
             AccessTools.Field(typeof(ClassData), "upgradeTree").SetValue(classData, this.UpgradeTree);
 
+
             // Card Frame
-            if (CardFrameSpell != null && CardFrameUnit != null) {
-                CustomClassManager.CustomClassFrame.Add(this.ClassID, new List<Sprite>() { this.CardFrameUnit, this.CardFrameSpell });
+            if (this.CardFrameSpellPath != null && this.CardFrameUnitPath != null)
+            {
+                Sprite cardFrameSpellSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.CardFrameSpellPath);
+                Sprite cardFrameUnitSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.CardFrameUnitPath);
+                CustomClassManager.CustomClassFrame.Add(this.ClassID, new List<Sprite>() { cardFrameUnitSprite, cardFrameSpellSprite });
             }
 
             // Draft Icon
-            if (CardFrameSpell != null && CardFrameUnit != null)
+            if (this.DraftIconPath != null)
             {
-                CustomClassManager.CustomClassDraftIcons.Add(this.ClassID, this.DraftIcon);
+                Sprite draftIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.DraftIconPath);
+                CustomClassManager.CustomClassDraftIcons.Add(this.ClassID, draftIconSprite);
             }
 
             return classData;
