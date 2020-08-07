@@ -72,7 +72,15 @@ namespace MonsterTrainModdingAPI.Builders
         public string[] StatusEffectImmunities { get; set; }
 
         /// <summary>
-        /// Custom asset path to load character art from.
+        /// The full, absolute path to the asset. Concatenates BaseAssetPath and AssetPath.
+        /// </summary>
+        public string FullAssetPath => BaseAssetPath + "/" + AssetPath;
+        /// <summary>
+        /// Set automatically in the constructor. Base asset path, usually the plugin directory.
+        /// </summary>
+        public string BaseAssetPath { get; set; }
+        /// <summary>
+        /// Custom asset path to load from. Must be inside the BaseAssetPath.
         /// </summary>
         public string AssetPath { get; set; }
         /// <summary>
@@ -177,6 +185,9 @@ namespace MonsterTrainModdingAPI.Builders
             this.TriggerBuilders = new List<CharacterTriggerDataBuilder>();
             this.RoomModifierBuilders = new List<RoomModifierDataBuilder>();
             this.PriorityDraw = true;
+
+            var assembly = Assembly.GetCallingAssembly();
+            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
         }
 
         /// <summary>
@@ -224,7 +235,7 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CharacterData), "characterLoreTooltipKeys").SetValue(characterData, this.CharacterLoreTooltipKeys);
             if (this.CharacterPrefabVariantRef == null)
             {
-                this.CreateAndSetCharacterArtPrefabVariantRef(this.AssetPath, this.AssetPath);
+                this.CreateAndSetCharacterArtPrefabVariantRef(this.AssetPath, this.FullAssetPath);
             }
             AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef").SetValue(characterData, this.CharacterPrefabVariantRef);
             AccessTools.Field(typeof(CharacterData), "characterSoundData").SetValue(characterData, this.CharacterSoundData);

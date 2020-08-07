@@ -28,11 +28,10 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns>The sprite, or null if there is no texture at the given path</returns>
         public static Sprite LoadSpriteFromPath(string path)
         {
-            string fullPath = "BepInEx/plugins/" + path;
-            if (File.Exists(fullPath))
+            if (File.Exists(path))
             {
                 // Create the card sprite
-                byte[] fileData = File.ReadAllBytes(fullPath);
+                byte[] fileData = File.ReadAllBytes(path);
                 Texture2D tex = new Texture2D(1, 1);
                 UnityEngine.ImageConversion.LoadImage(tex, fileData);
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
@@ -85,8 +84,7 @@ namespace MonsterTrainModdingAPI.Managers
             {
                 return LoadedAssetBundles[path];
             }
-            string fullPath = "BepInEx/plugins/" + path;
-            AssetBundle bundle = AssetBundle.LoadFromFile(fullPath);
+            AssetBundle bundle = AssetBundle.LoadFromFile(path);
             LoadedAssetBundles.Add(path, bundle);
             return bundle;
         }
