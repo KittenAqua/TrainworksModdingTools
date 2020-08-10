@@ -130,14 +130,14 @@
   </h3>
   
   
-  <a id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameSpell_" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpell*"></a>
-  <h4 id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameSpell" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpell">CardFrameSpell</h4>
-  <div class="markdown level1 summary"><p>Add a custom CardFrame as a sprite for spell cards.</p>
+  <a id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_BaseAssetPath_" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.BaseAssetPath*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_BaseAssetPath" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.BaseAssetPath">BaseAssetPath</h4>
+  <div class="markdown level1 summary"><p>Set automatically in the constructor. Base asset path, usually the plugin directory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Sprite CardFrameSpell { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string BaseAssetPath { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -149,21 +149,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UnityEngine.Sprite</span></td>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameUnit_" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnit*"></a>
-  <h4 id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameUnit" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnit">CardFrameUnit</h4>
-  <div class="markdown level1 summary"><p>Add a custom CardFrame as a sprite for unit cards.</p>
+  <a id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameSpellPath_" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpellPath*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameSpellPath" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpellPath">CardFrameSpellPath</h4>
+  <div class="markdown level1 summary"><p>Add a custom CardFrame as a sprite for spell cards.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Sprite CardFrameUnit { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string CardFrameSpellPath { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -175,7 +175,33 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UnityEngine.Sprite</span></td>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameUnitPath_" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnitPath*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameUnitPath" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnitPath">CardFrameUnitPath</h4>
+  <div class="markdown level1 summary"><p>Add a custom CardFrame as a sprite for unit cards.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string CardFrameUnitPath { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -208,13 +234,13 @@
   </table>
   
   
-  <a id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_ChampionIcon_" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIcon*"></a>
-  <h4 id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_ChampionIcon" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIcon">ChampionIcon</h4>
+  <a id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_ChampionIconPath_" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIconPath*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_ChampionIconPath" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIconPath">ChampionIconPath</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Sprite ChampionIcon { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string ChampionIconPath { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -226,7 +252,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UnityEngine.Sprite</span></td>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -411,14 +437,14 @@ Implictly sets TitleLoc, DescriptionLoc, and SubclassDescriptionLoc if null.</p>
   </table>
   
   
-  <a id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_DraftIcon_" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIcon*"></a>
-  <h4 id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_DraftIcon" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIcon">DraftIcon</h4>
+  <a id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_DraftIconPath_" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIconPath*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_DraftIconPath" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIconPath">DraftIconPath</h4>
   <div class="markdown level1 summary"><p>Add a custom icon for the card draft on battle victory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Sprite DraftIcon { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string DraftIconPath { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -430,16 +456,16 @@ Implictly sets TitleLoc, DescriptionLoc, and SubclassDescriptionLoc if null.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UnityEngine.Sprite</span></td>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_Icons_" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.Icons*"></a>
-  <h4 id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_Icons" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.Icons">Icons</h4>
-  <div class="markdown level1 summary"><p>Must contain 4 sprites; in order:
+  <a id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_IconAssetPaths_" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.IconAssetPaths*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_ClassDataBuilder_IconAssetPaths" data-uid="MonsterTrainModdingAPI.Builders.ClassDataBuilder.IconAssetPaths">IconAssetPaths</h4>
+  <div class="markdown level1 summary"><p>Must contain 4 sprite paths; in order:
 small icon (32x32)
 medium icon (??x??)
 large icon (89x89)
@@ -448,7 +474,7 @@ silhouette icon (43x43)</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;Sprite&gt; Icons { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; IconAssetPaths { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -460,7 +486,7 @@ silhouette icon (43x43)</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Sprite</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
