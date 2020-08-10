@@ -2,6 +2,7 @@
 using MonsterTrainModdingAPI.Managers;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using UnityEngine;
 using static CharacterTriggerData;
@@ -33,7 +34,7 @@ namespace MonsterTrainModdingAPI.Builders
 
         public string StatusEffectStateName { get; set; }
 		public string StatusId { get; set; }
-		public Sprite Icon { get; set; }
+		public string IconPath { get; set; }
 		public string AppliedSFXName { get; set; }
 		public string TriggeredSFXName { get; set; }
 
@@ -82,15 +83,19 @@ namespace MonsterTrainModdingAPI.Builders
 		public int ParamInt { get; set; }
 		public int ParamSecondaryInt { get; set; }
 		public float ParamFloat { get; set; }
+        public string BaseAssetPath { get; private set; }
 
-		public StatusEffectDataBuilder()
+        public StatusEffectDataBuilder()
 		{
 			IsStackable = true;
 			ShowNotificationsOnRemoval = true;
             ShowStackCount = true;
-		}
 
-		public StatusEffectData Build()
+            var assembly = Assembly.GetCallingAssembly();
+            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
+        }
+
+        public StatusEffectData Build()
 		{
 			StatusEffectData statusEffect = new StatusEffectData();
 
@@ -98,7 +103,6 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(StatusEffectData), "affectedVFX").SetValue(statusEffect, AffectedVFX);
             AccessTools.Field(typeof(StatusEffectData), "appliedSFXName").SetValue(statusEffect, AppliedSFXName);
             AccessTools.Field(typeof(StatusEffectData), "displayCategory").SetValue(statusEffect, DisplayCategory);
-            AccessTools.Field(typeof(StatusEffectData), "icon").SetValue(statusEffect, Icon);
             AccessTools.Field(typeof(StatusEffectData), "isStackable").SetValue(statusEffect, IsStackable);
             AccessTools.Field(typeof(StatusEffectData), "moreAddedVFX").SetValue(statusEffect, MoreAddedVFX);
             AccessTools.Field(typeof(StatusEffectData), "morePersistentVFX").SetValue(statusEffect, MorePersistentVFX);
@@ -121,6 +125,12 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(StatusEffectData), "triggeredSFXName").SetValue(statusEffect, TriggeredSFXName);
             AccessTools.Field(typeof(StatusEffectData), "triggeredVFX").SetValue(statusEffect, TriggeredVFX);
             AccessTools.Field(typeof(StatusEffectData), "triggerStage").SetValue(statusEffect, TriggerStage);
+
+            if (this.IconPath != null)
+            {
+                Sprite draftIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.IconPath);
+                AccessTools.Field(typeof(StatusEffectData), "icon").SetValue(statusEffect, draftIconSprite);
+            }
 
             StatusEffectManager manager = GameObject.FindObjectOfType<StatusEffectManager>() as StatusEffectManager;
             manager.GetAllStatusEffectsData().GetStatusEffectData().Add(statusEffect);
