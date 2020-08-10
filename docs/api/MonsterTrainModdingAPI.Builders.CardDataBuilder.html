@@ -132,12 +132,38 @@ Unique string used to store and retrieve the card data.</p>
   
   <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_AssetPath_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.AssetPath*"></a>
   <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_AssetPath" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.AssetPath">AssetPath</h4>
-  <div class="markdown level1 summary"><p>Custom asset path to load card art from.</p>
+  <div class="markdown level1 summary"><p>Custom asset path to load from. Must be inside the BaseAssetPath.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string AssetPath { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_BaseAssetPath_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.BaseAssetPath*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_BaseAssetPath" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.BaseAssetPath">BaseAssetPath</h4>
+  <div class="markdown level1 summary"><p>Set automatically in the constructor. Base asset path, usually the plugin directory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string BaseAssetPath { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -543,6 +569,32 @@ Overridden by the OverrideDescriptionKey field.</p>
     <tbody>
       <tr>
         <td><span class="xref">FallbackData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="MonsterTrainModdingAPI_Builders_CardDataBuilder_FullAssetPath_" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.FullAssetPath*"></a>
+  <h4 id="MonsterTrainModdingAPI_Builders_CardDataBuilder_FullAssetPath" data-uid="MonsterTrainModdingAPI.Builders.CardDataBuilder.FullAssetPath">FullAssetPath</h4>
+  <div class="markdown level1 summary"><p>The full, absolute path to the asset. Concatenates BaseAssetPath and AssetPath.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FullAssetPath { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>

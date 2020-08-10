@@ -130,6 +130,18 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Builders.CardDataBuilder.AssetPath
   fullName: MonsterTrainModdingAPI.Builders.CardDataBuilder.AssetPath
   nameWithType: CardDataBuilder.AssetPath
+- uid: MonsterTrainModdingAPI.Builders.CardDataBuilder.BaseAssetPath
+  name: BaseAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.CardDataBuilder.html#MonsterTrainModdingAPI_Builders_CardDataBuilder_BaseAssetPath
+  commentId: P:MonsterTrainModdingAPI.Builders.CardDataBuilder.BaseAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.CardDataBuilder.BaseAssetPath
+  nameWithType: CardDataBuilder.BaseAssetPath
+- uid: MonsterTrainModdingAPI.Builders.CardDataBuilder.BaseAssetPath*
+  name: BaseAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.CardDataBuilder.html#MonsterTrainModdingAPI_Builders_CardDataBuilder_BaseAssetPath_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.CardDataBuilder.BaseAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.CardDataBuilder.BaseAssetPath
+  nameWithType: CardDataBuilder.BaseAssetPath
 - uid: MonsterTrainModdingAPI.Builders.CardDataBuilder.Build
   name: Build()
   href: api/MonsterTrainModdingAPI.Builders.CardDataBuilder.html#MonsterTrainModdingAPI_Builders_CardDataBuilder_Build
@@ -352,6 +364,18 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Builders.CardDataBuilder.FallbackData
   fullName: MonsterTrainModdingAPI.Builders.CardDataBuilder.FallbackData
   nameWithType: CardDataBuilder.FallbackData
+- uid: MonsterTrainModdingAPI.Builders.CardDataBuilder.FullAssetPath
+  name: FullAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.CardDataBuilder.html#MonsterTrainModdingAPI_Builders_CardDataBuilder_FullAssetPath
+  commentId: P:MonsterTrainModdingAPI.Builders.CardDataBuilder.FullAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.CardDataBuilder.FullAssetPath
+  nameWithType: CardDataBuilder.FullAssetPath
+- uid: MonsterTrainModdingAPI.Builders.CardDataBuilder.FullAssetPath*
+  name: FullAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.CardDataBuilder.html#MonsterTrainModdingAPI_Builders_CardDataBuilder_FullAssetPath_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.CardDataBuilder.FullAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.CardDataBuilder.FullAssetPath
+  nameWithType: CardDataBuilder.FullAssetPath
 - uid: MonsterTrainModdingAPI.Builders.CardDataBuilder.IgnoreWhenCountingMastery
   name: IgnoreWhenCountingMastery
   href: api/MonsterTrainModdingAPI.Builders.CardDataBuilder.html#MonsterTrainModdingAPI_Builders_CardDataBuilder_IgnoreWhenCountingMastery
@@ -2338,6 +2362,18 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.AttackTeleportsToDefender
   fullName: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.AttackTeleportsToDefender
   nameWithType: CharacterDataBuilder.AttackTeleportsToDefender
+- uid: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.BaseAssetPath
+  name: BaseAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.CharacterDataBuilder.html#MonsterTrainModdingAPI_Builders_CharacterDataBuilder_BaseAssetPath
+  commentId: P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.BaseAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.BaseAssetPath
+  nameWithType: CharacterDataBuilder.BaseAssetPath
+- uid: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.BaseAssetPath*
+  name: BaseAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.CharacterDataBuilder.html#MonsterTrainModdingAPI_Builders_CharacterDataBuilder_BaseAssetPath_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.BaseAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.BaseAssetPath
+  nameWithType: CharacterDataBuilder.BaseAssetPath
 - uid: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.BossActionGroups
   name: BossActionGroups
   href: api/MonsterTrainModdingAPI.Builders.CharacterDataBuilder.html#MonsterTrainModdingAPI_Builders_CharacterDataBuilder_BossActionGroups
@@ -2560,6 +2596,18 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.FallBackData
   fullName: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.FallBackData
   nameWithType: CharacterDataBuilder.FallBackData
+- uid: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.FullAssetPath
+  name: FullAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.CharacterDataBuilder.html#MonsterTrainModdingAPI_Builders_CharacterDataBuilder_FullAssetPath
+  commentId: P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.FullAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.FullAssetPath
+  nameWithType: CharacterDataBuilder.FullAssetPath
+- uid: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.FullAssetPath*
+  name: FullAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.CharacterDataBuilder.html#MonsterTrainModdingAPI_Builders_CharacterDataBuilder_FullAssetPath_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.FullAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.FullAssetPath
+  nameWithType: CharacterDataBuilder.FullAssetPath
 - uid: MonsterTrainModdingAPI.Builders.CharacterDataBuilder.Health
   name: Health
   href: api/MonsterTrainModdingAPI.Builders.CharacterDataBuilder.html#MonsterTrainModdingAPI_Builders_CharacterDataBuilder_Health
@@ -2938,6 +2986,18 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.#ctor
   fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.ClassDataBuilder
   nameWithType: ClassDataBuilder.ClassDataBuilder
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.BaseAssetPath
+  name: BaseAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_BaseAssetPath
+  commentId: P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.BaseAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.BaseAssetPath
+  nameWithType: ClassDataBuilder.BaseAssetPath
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.BaseAssetPath*
+  name: BaseAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_BaseAssetPath_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.BaseAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.BaseAssetPath
+  nameWithType: ClassDataBuilder.BaseAssetPath
 - uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.Build
   name: Build()
   href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_Build
@@ -2962,30 +3022,30 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.BuildAndRegister
   fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.BuildAndRegister
   nameWithType: ClassDataBuilder.BuildAndRegister
-- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpell
-  name: CardFrameSpell
-  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameSpell
-  commentId: P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpell
-  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpell
-  nameWithType: ClassDataBuilder.CardFrameSpell
-- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpell*
-  name: CardFrameSpell
-  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameSpell_
-  commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpell
-  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpell
-  nameWithType: ClassDataBuilder.CardFrameSpell
-- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnit
-  name: CardFrameUnit
-  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameUnit
-  commentId: P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnit
-  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnit
-  nameWithType: ClassDataBuilder.CardFrameUnit
-- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnit*
-  name: CardFrameUnit
-  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameUnit_
-  commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnit
-  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnit
-  nameWithType: ClassDataBuilder.CardFrameUnit
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpellPath
+  name: CardFrameSpellPath
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameSpellPath
+  commentId: P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpellPath
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpellPath
+  nameWithType: ClassDataBuilder.CardFrameSpellPath
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpellPath*
+  name: CardFrameSpellPath
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameSpellPath_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpellPath
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpellPath
+  nameWithType: ClassDataBuilder.CardFrameSpellPath
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnitPath
+  name: CardFrameUnitPath
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameUnitPath
+  commentId: P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnitPath
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnitPath
+  nameWithType: ClassDataBuilder.CardFrameUnitPath
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnitPath*
+  name: CardFrameUnitPath
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardFrameUnitPath_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnitPath
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnitPath
+  nameWithType: ClassDataBuilder.CardFrameUnitPath
 - uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardStyle
   name: CardStyle
   href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_CardStyle
@@ -2998,18 +3058,18 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardStyle
   fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardStyle
   nameWithType: ClassDataBuilder.CardStyle
-- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIcon
-  name: ChampionIcon
-  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_ChampionIcon
-  commentId: P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIcon
-  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIcon
-  nameWithType: ClassDataBuilder.ChampionIcon
-- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIcon*
-  name: ChampionIcon
-  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_ChampionIcon_
-  commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIcon
-  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIcon
-  nameWithType: ClassDataBuilder.ChampionIcon
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIconPath
+  name: ChampionIconPath
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_ChampionIconPath
+  commentId: P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIconPath
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIconPath
+  nameWithType: ClassDataBuilder.ChampionIconPath
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIconPath*
+  name: ChampionIconPath
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_ChampionIconPath_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIconPath
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.ChampionIconPath
+  nameWithType: ClassDataBuilder.ChampionIconPath
 - uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.ClanSelectSfxCue
   name: ClanSelectSfxCue
   href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_ClanSelectSfxCue
@@ -3100,30 +3160,30 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.DescriptionLoc
   fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.DescriptionLoc
   nameWithType: ClassDataBuilder.DescriptionLoc
-- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIcon
-  name: DraftIcon
-  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_DraftIcon
-  commentId: P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIcon
-  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIcon
-  nameWithType: ClassDataBuilder.DraftIcon
-- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIcon*
-  name: DraftIcon
-  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_DraftIcon_
-  commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIcon
-  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIcon
-  nameWithType: ClassDataBuilder.DraftIcon
-- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.Icons
-  name: Icons
-  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_Icons
-  commentId: P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.Icons
-  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.Icons
-  nameWithType: ClassDataBuilder.Icons
-- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.Icons*
-  name: Icons
-  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_Icons_
-  commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.Icons
-  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.Icons
-  nameWithType: ClassDataBuilder.Icons
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIconPath
+  name: DraftIconPath
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_DraftIconPath
+  commentId: P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIconPath
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIconPath
+  nameWithType: ClassDataBuilder.DraftIconPath
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIconPath*
+  name: DraftIconPath
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_DraftIconPath_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIconPath
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIconPath
+  nameWithType: ClassDataBuilder.DraftIconPath
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.IconAssetPaths
+  name: IconAssetPaths
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_IconAssetPaths
+  commentId: P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.IconAssetPaths
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.IconAssetPaths
+  nameWithType: ClassDataBuilder.IconAssetPaths
+- uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.IconAssetPaths*
+  name: IconAssetPaths
+  href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_IconAssetPaths_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.ClassDataBuilder.IconAssetPaths
+  fullName: MonsterTrainModdingAPI.Builders.ClassDataBuilder.IconAssetPaths
+  nameWithType: ClassDataBuilder.IconAssetPaths
 - uid: MonsterTrainModdingAPI.Builders.ClassDataBuilder.MainClassStartingCards
   name: MainClassStartingCards
   href: api/MonsterTrainModdingAPI.Builders.ClassDataBuilder.html#MonsterTrainModdingAPI_Builders_ClassDataBuilder_MainClassStartingCards
@@ -3586,6 +3646,18 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder._IsServiceMerchantReward
   fullName: MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder._IsServiceMerchantReward
   nameWithType: DraftRewardDataBuilder._IsServiceMerchantReward
+- uid: MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder._MerchantServiceIndex
+  name: _MerchantServiceIndex
+  href: api/MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.html#MonsterTrainModdingAPI_Builders_DraftRewardDataBuilder__MerchantServiceIndex
+  commentId: P:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder._MerchantServiceIndex
+  fullName: MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder._MerchantServiceIndex
+  nameWithType: DraftRewardDataBuilder._MerchantServiceIndex
+- uid: MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder._MerchantServiceIndex*
+  name: _MerchantServiceIndex
+  href: api/MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.html#MonsterTrainModdingAPI_Builders_DraftRewardDataBuilder__MerchantServiceIndex_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder._MerchantServiceIndex
+  fullName: MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder._MerchantServiceIndex
+  nameWithType: DraftRewardDataBuilder._MerchantServiceIndex
 - uid: MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder._RewardDescriptionKey
   name: _RewardDescriptionKey
   href: api/MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.html#MonsterTrainModdingAPI_Builders_DraftRewardDataBuilder__RewardDescriptionKey
@@ -3850,6 +3922,204 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.UseRunRarityFloors
   fullName: MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.UseRunRarityFloors
   nameWithType: DraftRewardDataBuilder.UseRunRarityFloors
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder
+  name: EnhancerDataBuilder
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html
+  commentId: T:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder
+  nameWithType: EnhancerDataBuilder
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.#ctor
+  name: EnhancerDataBuilder()
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder__ctor
+  commentId: M:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.#ctor
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.EnhancerDataBuilder()
+  nameWithType: EnhancerDataBuilder.EnhancerDataBuilder()
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.#ctor*
+  name: EnhancerDataBuilder
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder__ctor_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.#ctor
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.EnhancerDataBuilder
+  nameWithType: EnhancerDataBuilder.EnhancerDataBuilder
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.AssetPath
+  name: AssetPath
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_AssetPath
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.AssetPath
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.AssetPath
+  nameWithType: EnhancerDataBuilder.AssetPath
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.AssetPath*
+  name: AssetPath
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_AssetPath_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.AssetPath
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.AssetPath
+  nameWithType: EnhancerDataBuilder.AssetPath
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Build
+  name: Build()
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Build
+  commentId: M:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Build
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Build()
+  nameWithType: EnhancerDataBuilder.Build()
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Build*
+  name: Build
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Build_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Build
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Build
+  nameWithType: EnhancerDataBuilder.Build
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.BuildAndRegister
+  name: BuildAndRegister()
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_BuildAndRegister
+  commentId: M:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.BuildAndRegister
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.BuildAndRegister()
+  nameWithType: EnhancerDataBuilder.BuildAndRegister()
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.BuildAndRegister*
+  name: BuildAndRegister
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_BuildAndRegister_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.BuildAndRegister
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.BuildAndRegister
+  nameWithType: EnhancerDataBuilder.BuildAndRegister
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.CardType
+  name: CardType
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_CardType
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.CardType
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.CardType
+  nameWithType: EnhancerDataBuilder.CardType
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.CardType*
+  name: CardType
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_CardType_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.CardType
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.CardType
+  nameWithType: EnhancerDataBuilder.CardType
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ClanID
+  name: ClanID
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_ClanID
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ClanID
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ClanID
+  nameWithType: EnhancerDataBuilder.ClanID
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ClanID*
+  name: ClanID
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_ClanID_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ClanID
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ClanID
+  nameWithType: EnhancerDataBuilder.ClanID
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Description
+  name: Description
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Description
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Description
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Description
+  nameWithType: EnhancerDataBuilder.Description
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Description*
+  name: Description
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Description_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Description
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Description
+  nameWithType: EnhancerDataBuilder.Description
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.DescriptionKey
+  name: DescriptionKey
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_DescriptionKey
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.DescriptionKey
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.DescriptionKey
+  nameWithType: EnhancerDataBuilder.DescriptionKey
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.DescriptionKey*
+  name: DescriptionKey
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_DescriptionKey_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.DescriptionKey
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.DescriptionKey
+  nameWithType: EnhancerDataBuilder.DescriptionKey
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.EnhancerPoolIDs
+  name: EnhancerPoolIDs
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_EnhancerPoolIDs
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.EnhancerPoolIDs
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.EnhancerPoolIDs
+  nameWithType: EnhancerDataBuilder.EnhancerPoolIDs
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.EnhancerPoolIDs*
+  name: EnhancerPoolIDs
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_EnhancerPoolIDs_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.EnhancerPoolIDs
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.EnhancerPoolIDs
+  nameWithType: EnhancerDataBuilder.EnhancerPoolIDs
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Icon
+  name: Icon
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Icon
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Icon
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Icon
+  nameWithType: EnhancerDataBuilder.Icon
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Icon*
+  name: Icon
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Icon_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Icon
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Icon
+  nameWithType: EnhancerDataBuilder.Icon
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ID
+  name: ID
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_ID
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ID
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ID
+  nameWithType: EnhancerDataBuilder.ID
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ID*
+  name: ID
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_ID_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ID
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ID
+  nameWithType: EnhancerDataBuilder.ID
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.LinkedClass
+  name: LinkedClass
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_LinkedClass
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.LinkedClass
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.LinkedClass
+  nameWithType: EnhancerDataBuilder.LinkedClass
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.LinkedClass*
+  name: LinkedClass
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_LinkedClass_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.LinkedClass
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.LinkedClass
+  nameWithType: EnhancerDataBuilder.LinkedClass
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Name
+  name: Name
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Name
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Name
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Name
+  nameWithType: EnhancerDataBuilder.Name
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Name*
+  name: Name
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Name_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Name
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Name
+  nameWithType: EnhancerDataBuilder.Name
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.NameKey
+  name: NameKey
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_NameKey
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.NameKey
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.NameKey
+  nameWithType: EnhancerDataBuilder.NameKey
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.NameKey*
+  name: NameKey
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_NameKey_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.NameKey
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.NameKey
+  nameWithType: EnhancerDataBuilder.NameKey
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Rarity
+  name: Rarity
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Rarity
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Rarity
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Rarity
+  nameWithType: EnhancerDataBuilder.Rarity
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Rarity*
+  name: Rarity
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Rarity_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Rarity
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Rarity
+  nameWithType: EnhancerDataBuilder.Rarity
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Upgrade
+  name: Upgrade
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Upgrade
+  commentId: P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Upgrade
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Upgrade
+  nameWithType: EnhancerDataBuilder.Upgrade
+- uid: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Upgrade*
+  name: Upgrade
+  href: api/MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.html#MonsterTrainModdingAPI_Builders_EnhancerDataBuilder_Upgrade_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Upgrade
+  fullName: MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Upgrade
+  nameWithType: EnhancerDataBuilder.Upgrade
 - uid: MonsterTrainModdingAPI.Builders.IRewardDataBuilder
   name: IRewardDataBuilder
   href: api/MonsterTrainModdingAPI.Builders.IRewardDataBuilder.html
@@ -4408,6 +4678,18 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.#ctor
   fullName: MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.RewardNodeDataBuilder
   nameWithType: RewardNodeDataBuilder.RewardNodeDataBuilder
+- uid: MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.BaseAssetPath
+  name: BaseAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.html#MonsterTrainModdingAPI_Builders_RewardNodeDataBuilder_BaseAssetPath
+  commentId: P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.BaseAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.BaseAssetPath
+  nameWithType: RewardNodeDataBuilder.BaseAssetPath
+- uid: MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.BaseAssetPath*
+  name: BaseAssetPath
+  href: api/MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.html#MonsterTrainModdingAPI_Builders_RewardNodeDataBuilder_BaseAssetPath_
+  commentId: Overload:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.BaseAssetPath
+  fullName: MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.BaseAssetPath
+  nameWithType: RewardNodeDataBuilder.BaseAssetPath
 - uid: MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.Build
   name: Build()
   href: api/MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.html#MonsterTrainModdingAPI_Builders_RewardNodeDataBuilder_Build
@@ -5518,6 +5800,12 @@ references:
   commentId: F:MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes.CardEffectDamage
   fullName: MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes.CardEffectDamage
   nameWithType: VanillaCardEffectTypes.CardEffectDamage
+- uid: MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes.CardEffectDamagePerTargetAttack
+  name: CardEffectDamagePerTargetAttack
+  href: api/MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes.html#MonsterTrainModdingAPI_Constants_VanillaCardEffectTypes_CardEffectDamagePerTargetAttack
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes.CardEffectDamagePerTargetAttack
+  fullName: MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes.CardEffectDamagePerTargetAttack
+  nameWithType: VanillaCardEffectTypes.CardEffectDamagePerTargetAttack
 - uid: MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes.CardEffectDebuffMaxHealth
   name: CardEffectDebuffMaxHealth
   href: api/MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes.html#MonsterTrainModdingAPI_Constants_VanillaCardEffectTypes_CardEffectDebuffMaxHealth
@@ -5746,6 +6034,12 @@ references:
   commentId: T:MonsterTrainModdingAPI.Constants.VanillaCardTraitTypes
   fullName: MonsterTrainModdingAPI.Constants.VanillaCardTraitTypes
   nameWithType: VanillaCardTraitTypes
+- uid: MonsterTrainModdingAPI.Constants.VanillaCardTraitTypes.CardTraitDummy
+  name: CardTraitDummy
+  href: api/MonsterTrainModdingAPI.Constants.VanillaCardTraitTypes.html#MonsterTrainModdingAPI_Constants_VanillaCardTraitTypes_CardTraitDummy
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaCardTraitTypes.CardTraitDummy
+  fullName: MonsterTrainModdingAPI.Constants.VanillaCardTraitTypes.CardTraitDummy
+  nameWithType: VanillaCardTraitTypes.CardTraitDummy
 - uid: MonsterTrainModdingAPI.Constants.VanillaCardTraitTypes.CardTraitExhaustState
   name: CardTraitExhaustState
   href: api/MonsterTrainModdingAPI.Constants.VanillaCardTraitTypes.html#MonsterTrainModdingAPI_Constants_VanillaCardTraitTypes_CardTraitExhaustState
@@ -5980,6 +6274,42 @@ references:
   commentId: F:MonsterTrainModdingAPI.Constants.VanillaClanIDs.Umbra
   fullName: MonsterTrainModdingAPI.Constants.VanillaClanIDs.Umbra
   nameWithType: VanillaClanIDs.Umbra
+- uid: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs
+  name: VanillaEnhancerPoolIDs
+  href: api/MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.html
+  commentId: T:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs
+  fullName: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs
+  nameWithType: VanillaEnhancerPoolIDs
+- uid: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePool
+  name: SpellUpgradePool
+  href: api/MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.html#MonsterTrainModdingAPI_Constants_VanillaEnhancerPoolIDs_SpellUpgradePool
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePool
+  fullName: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePool
+  nameWithType: VanillaEnhancerPoolIDs.SpellUpgradePool
+- uid: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePoolCommon
+  name: SpellUpgradePoolCommon
+  href: api/MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.html#MonsterTrainModdingAPI_Constants_VanillaEnhancerPoolIDs_SpellUpgradePoolCommon
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePoolCommon
+  fullName: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePoolCommon
+  nameWithType: VanillaEnhancerPoolIDs.SpellUpgradePoolCommon
+- uid: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePoolCostReduction
+  name: SpellUpgradePoolCostReduction
+  href: api/MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.html#MonsterTrainModdingAPI_Constants_VanillaEnhancerPoolIDs_SpellUpgradePoolCostReduction
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePoolCostReduction
+  fullName: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePoolCostReduction
+  nameWithType: VanillaEnhancerPoolIDs.SpellUpgradePoolCostReduction
+- uid: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.UnitUpgradePool
+  name: UnitUpgradePool
+  href: api/MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.html#MonsterTrainModdingAPI_Constants_VanillaEnhancerPoolIDs_UnitUpgradePool
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.UnitUpgradePool
+  fullName: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.UnitUpgradePool
+  nameWithType: VanillaEnhancerPoolIDs.UnitUpgradePool
+- uid: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.UnitUpgradePoolCommon
+  name: UnitUpgradePoolCommon
+  href: api/MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.html#MonsterTrainModdingAPI_Constants_VanillaEnhancerPoolIDs_UnitUpgradePoolCommon
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.UnitUpgradePoolCommon
+  fullName: MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.UnitUpgradePoolCommon
+  nameWithType: VanillaEnhancerPoolIDs.UnitUpgradePoolCommon
 - uid: MonsterTrainModdingAPI.Constants.VanillaMapNodePoolIDs
   name: VanillaMapNodePoolIDs
   href: api/MonsterTrainModdingAPI.Constants.VanillaMapNodePoolIDs.html
@@ -6034,6 +6364,12 @@ references:
   commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Armor
   fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Armor
   nameWithType: VanillaStatusEffectIDs.Armor
+- uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.AttractDamage
+  name: AttractDamage
+  href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_AttractDamage
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.AttractDamage
+  fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.AttractDamage
+  nameWithType: VanillaStatusEffectIDs.AttractDamage
 - uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Burnout
   name: Burnout
   href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_Burnout
@@ -6070,6 +6406,12 @@ references:
   commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Endless
   fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Endless
   nameWithType: VanillaStatusEffectIDs.Endless
+- uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Fragile
+  name: Fragile
+  href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_Fragile
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Fragile
+  fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Fragile
+  nameWithType: VanillaStatusEffectIDs.Fragile
 - uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Frostbite
   name: Frostbite
   href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_Frostbite
@@ -6094,6 +6436,12 @@ references:
   commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.HealImmunity
   fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.HealImmunity
   nameWithType: VanillaStatusEffectIDs.HealImmunity
+- uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.HealMultiplier
+  name: HealMultiplier
+  href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_HealMultiplier
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.HealMultiplier
+  fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.HealMultiplier
+  nameWithType: VanillaStatusEffectIDs.HealMultiplier
 - uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Immobile
   name: Immobile
   href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_Immobile
@@ -6106,6 +6454,12 @@ references:
   commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Immune
   fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Immune
   nameWithType: VanillaStatusEffectIDs.Immune
+- uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Inedible
+  name: Inedible
+  href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_Inedible
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Inedible
+  fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Inedible
+  nameWithType: VanillaStatusEffectIDs.Inedible
 - uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Inert
   name: Inert
   href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_Inert
@@ -6148,6 +6502,12 @@ references:
   commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Relentless
   fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Relentless
   nameWithType: VanillaStatusEffectIDs.Relentless
+- uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Revive
+  name: Revive
+  href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_Revive
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Revive
+  fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Revive
+  nameWithType: VanillaStatusEffectIDs.Revive
 - uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Rooted
   name: Rooted
   href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_Rooted
@@ -6190,6 +6550,12 @@ references:
   commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Spikes
   fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Spikes
   nameWithType: VanillaStatusEffectIDs.Spikes
+- uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Splash
+  name: Splash
+  href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_Splash
+  commentId: F:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Splash
+  fullName: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Splash
+  nameWithType: VanillaStatusEffectIDs.Splash
 - uid: MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.Stealth
   name: Stealth
   href: api/MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs.html#MonsterTrainModdingAPI_Constants_VanillaStatusEffectIDs_Stealth
@@ -6239,6 +6605,22 @@ references:
   fullName.vb: MonsterTrainModdingAPI.Enums.ExtendedEnum(Of TExtendedEnum, TEnum).ExtendedEnum
   nameWithType: ExtendedEnum<TExtendedEnum, TEnum>.ExtendedEnum
   nameWithType.vb: ExtendedEnum(Of TExtendedEnum, TEnum).ExtendedEnum
+- uid: MonsterTrainModdingAPI.Enums.ExtendedEnum`2.Convert(`1)
+  name: Convert(TEnum)
+  href: api/MonsterTrainModdingAPI.Enums.ExtendedEnum-2.html#MonsterTrainModdingAPI_Enums_ExtendedEnum_2_Convert__1_
+  commentId: M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.Convert(`1)
+  fullName: MonsterTrainModdingAPI.Enums.ExtendedEnum<TExtendedEnum, TEnum>.Convert(TEnum)
+  fullName.vb: MonsterTrainModdingAPI.Enums.ExtendedEnum(Of TExtendedEnum, TEnum).Convert(TEnum)
+  nameWithType: ExtendedEnum<TExtendedEnum, TEnum>.Convert(TEnum)
+  nameWithType.vb: ExtendedEnum(Of TExtendedEnum, TEnum).Convert(TEnum)
+- uid: MonsterTrainModdingAPI.Enums.ExtendedEnum`2.Convert*
+  name: Convert
+  href: api/MonsterTrainModdingAPI.Enums.ExtendedEnum-2.html#MonsterTrainModdingAPI_Enums_ExtendedEnum_2_Convert_
+  commentId: Overload:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.Convert
+  fullName: MonsterTrainModdingAPI.Enums.ExtendedEnum<TExtendedEnum, TEnum>.Convert
+  fullName.vb: MonsterTrainModdingAPI.Enums.ExtendedEnum(Of TExtendedEnum, TEnum).Convert
+  nameWithType: ExtendedEnum<TExtendedEnum, TEnum>.Convert
+  nameWithType.vb: ExtendedEnum(Of TExtendedEnum, TEnum).Convert
 - uid: MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetAllIDs
   name: GetAllIDs()
   href: api/MonsterTrainModdingAPI.Enums.ExtendedEnum-2.html#MonsterTrainModdingAPI_Enums_ExtendedEnum_2_GetAllIDs
@@ -6375,6 +6757,14 @@ references:
   fullName.vb: MonsterTrainModdingAPI.Enums.ExtendedEnum(Of TExtendedEnum, TEnum).NameToExtendedEnumMap
   nameWithType: ExtendedEnum<TExtendedEnum, TEnum>.NameToExtendedEnumMap
   nameWithType.vb: ExtendedEnum(Of TExtendedEnum, TEnum).NameToExtendedEnumMap
+- uid: MonsterTrainModdingAPI.Enums.ExtendedEnum`2.ReservedIDs
+  name: ReservedIDs
+  href: api/MonsterTrainModdingAPI.Enums.ExtendedEnum-2.html#MonsterTrainModdingAPI_Enums_ExtendedEnum_2_ReservedIDs
+  commentId: F:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.ReservedIDs
+  fullName: MonsterTrainModdingAPI.Enums.ExtendedEnum<TExtendedEnum, TEnum>.ReservedIDs
+  fullName.vb: MonsterTrainModdingAPI.Enums.ExtendedEnum(Of TExtendedEnum, TEnum).ReservedIDs
+  nameWithType: ExtendedEnum<TExtendedEnum, TEnum>.ReservedIDs
+  nameWithType.vb: ExtendedEnum(Of TExtendedEnum, TEnum).ReservedIDs
 - uid: MonsterTrainModdingAPI.Enums.MTTriggers
   name: MonsterTrainModdingAPI.Enums.MTTriggers
   href: api/MonsterTrainModdingAPI.Enums.MTTriggers.html
@@ -6414,168 +6804,24 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.GetNewCardGUID
   fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.GetNewCardGUID
   nameWithType: CardTrigger.GetNewCardGUID
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers
-  name: CardTriggers
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html
-  commentId: T:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers
-  nameWithType: CardTriggers
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.#ctor
-  name: CardTriggers()
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers__ctor
-  commentId: M:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.#ctor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.CardTriggers()
-  nameWithType: CardTriggers.CardTriggers()
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.#ctor*
-  name: CardTriggers
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers__ctor_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.#ctor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.CardTriggers
-  nameWithType: CardTriggers.CardTriggers
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyHeroDeathOnFloor
-  name: MTCardTrigger_OnAnyHeroDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnAnyHeroDeathOnFloor
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyHeroDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyHeroDeathOnFloor
-  nameWithType: CardTriggers.MTCardTrigger_OnAnyHeroDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyHeroDeathOnFloor*
-  name: MTCardTrigger_OnAnyHeroDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnAnyHeroDeathOnFloor_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyHeroDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyHeroDeathOnFloor
-  nameWithType: CardTriggers.MTCardTrigger_OnAnyHeroDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyMonsterDeathOnFloor
-  name: MTCardTrigger_OnAnyMonsterDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnAnyMonsterDeathOnFloor
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyMonsterDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyMonsterDeathOnFloor
-  nameWithType: CardTriggers.MTCardTrigger_OnAnyMonsterDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyMonsterDeathOnFloor*
-  name: MTCardTrigger_OnAnyMonsterDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnAnyMonsterDeathOnFloor_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyMonsterDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyMonsterDeathOnFloor
-  nameWithType: CardTriggers.MTCardTrigger_OnAnyMonsterDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyUnitDeathOnFloor
-  name: MTCardTrigger_OnAnyUnitDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnAnyUnitDeathOnFloor
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyUnitDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyUnitDeathOnFloor
-  nameWithType: CardTriggers.MTCardTrigger_OnAnyUnitDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyUnitDeathOnFloor*
-  name: MTCardTrigger_OnAnyUnitDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnAnyUnitDeathOnFloor_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyUnitDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnAnyUnitDeathOnFloor
-  nameWithType: CardTriggers.MTCardTrigger_OnAnyUnitDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnCast
-  name: MTCardTrigger_OnCast
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnCast
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnCast
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnCast
-  nameWithType: CardTriggers.MTCardTrigger_OnCast
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnCast*
-  name: MTCardTrigger_OnCast
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnCast_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnCast
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnCast
-  nameWithType: CardTriggers.MTCardTrigger_OnCast
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnDiscard
-  name: MTCardTrigger_OnDiscard
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnDiscard
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnDiscard
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnDiscard
-  nameWithType: CardTriggers.MTCardTrigger_OnDiscard
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnDiscard*
-  name: MTCardTrigger_OnDiscard
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnDiscard_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnDiscard
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnDiscard
-  nameWithType: CardTriggers.MTCardTrigger_OnDiscard
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnFeed
-  name: MTCardTrigger_OnFeed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnFeed
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnFeed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnFeed
-  nameWithType: CardTriggers.MTCardTrigger_OnFeed
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnFeed*
-  name: MTCardTrigger_OnFeed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnFeed_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnFeed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnFeed
-  nameWithType: CardTriggers.MTCardTrigger_OnFeed
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnHealed
-  name: MTCardTrigger_OnHealed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnHealed
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnHealed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnHealed
-  nameWithType: CardTriggers.MTCardTrigger_OnHealed
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnHealed*
-  name: MTCardTrigger_OnHealed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnHealed_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnHealed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnHealed
-  nameWithType: CardTriggers.MTCardTrigger_OnHealed
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnKill
-  name: MTCardTrigger_OnKill
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnKill
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnKill
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnKill
-  nameWithType: CardTriggers.MTCardTrigger_OnKill
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnKill*
-  name: MTCardTrigger_OnKill
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnKill_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnKill
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnKill
-  nameWithType: CardTriggers.MTCardTrigger_OnKill
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnMonsterDeath
-  name: MTCardTrigger_OnMonsterDeath
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnMonsterDeath
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnMonsterDeath
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnMonsterDeath
-  nameWithType: CardTriggers.MTCardTrigger_OnMonsterDeath
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnMonsterDeath*
-  name: MTCardTrigger_OnMonsterDeath
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnMonsterDeath_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnMonsterDeath
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnMonsterDeath
-  nameWithType: CardTriggers.MTCardTrigger_OnMonsterDeath
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnPlayerDamageTaken
-  name: MTCardTrigger_OnPlayerDamageTaken
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnPlayerDamageTaken
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnPlayerDamageTaken
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnPlayerDamageTaken
-  nameWithType: CardTriggers.MTCardTrigger_OnPlayerDamageTaken
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnPlayerDamageTaken*
-  name: MTCardTrigger_OnPlayerDamageTaken
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnPlayerDamageTaken_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnPlayerDamageTaken
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnPlayerDamageTaken
-  nameWithType: CardTriggers.MTCardTrigger_OnPlayerDamageTaken
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnTreasure
-  name: MTCardTrigger_OnTreasure
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnTreasure
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnTreasure
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnTreasure
-  nameWithType: CardTriggers.MTCardTrigger_OnTreasure
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnTreasure*
-  name: MTCardTrigger_OnTreasure
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnTreasure_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnTreasure
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnTreasure
-  nameWithType: CardTriggers.MTCardTrigger_OnTreasure
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnUnplayed
-  name: MTCardTrigger_OnUnplayed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnUnplayed
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnUnplayed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnUnplayed
-  nameWithType: CardTriggers.MTCardTrigger_OnUnplayed
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnUnplayed*
-  name: MTCardTrigger_OnUnplayed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTriggers_MTCardTrigger_OnUnplayed_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnUnplayed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTriggers.MTCardTrigger_OnUnplayed
-  nameWithType: CardTriggers.MTCardTrigger_OnUnplayed
+- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.op_Implicit(CardTriggerType)~MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger
+  name: Implicit(CardTriggerType to CardTrigger)
+  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTrigger_op_Implicit_CardTriggerType__MonsterTrainModdingAPI_Enums_MTTriggers_CardTrigger
+  commentId: M:MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.op_Implicit(CardTriggerType)~MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger
+  name.vb: Widening(CardTriggerType to CardTrigger)
+  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.Implicit(CardTriggerType to MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger)
+  fullName.vb: MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.Widening(CardTriggerType to MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger)
+  nameWithType: CardTrigger.Implicit(CardTriggerType to CardTrigger)
+  nameWithType.vb: CardTrigger.Widening(CardTriggerType to CardTrigger)
+- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.op_Implicit*
+  name: Implicit
+  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.html#MonsterTrainModdingAPI_Enums_MTTriggers_CardTrigger_op_Implicit_
+  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.op_Implicit
+  name.vb: Widening
+  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.Implicit
+  fullName.vb: MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger.Widening
+  nameWithType: CardTrigger.Implicit
+  nameWithType.vb: CardTrigger.Widening
 - uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger
   name: CharacterTrigger
   href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.html
@@ -6609,336 +6855,57 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.GetNewCharacterGUID
   fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.GetNewCharacterGUID
   nameWithType: CharacterTrigger.GetNewCharacterGUID
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers
-  name: CharacterTriggers
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html
-  commentId: T:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers
-  nameWithType: CharacterTriggers
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.#ctor
-  name: CharacterTriggers()
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers__ctor
-  commentId: M:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.#ctor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.CharacterTriggers()
-  nameWithType: CharacterTriggers.CharacterTriggers()
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.#ctor*
-  name: CharacterTriggers
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers__ctor_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.#ctor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.CharacterTriggers
-  nameWithType: CharacterTriggers.CharacterTriggers
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_AfterSpawnEnchant
-  name: MTCharacterTrigger_AfterSpawnEnchant
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_AfterSpawnEnchant
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_AfterSpawnEnchant
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_AfterSpawnEnchant
-  nameWithType: CharacterTriggers.MTCharacterTrigger_AfterSpawnEnchant
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_AfterSpawnEnchant*
-  name: MTCharacterTrigger_AfterSpawnEnchant
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_AfterSpawnEnchant_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_AfterSpawnEnchant
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_AfterSpawnEnchant
-  nameWithType: CharacterTriggers.MTCharacterTrigger_AfterSpawnEnchant
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardMonsterPlayed
-  name: MTCharacterTrigger_CardMonsterPlayed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_CardMonsterPlayed
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardMonsterPlayed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardMonsterPlayed
-  nameWithType: CharacterTriggers.MTCharacterTrigger_CardMonsterPlayed
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardMonsterPlayed*
-  name: MTCharacterTrigger_CardMonsterPlayed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_CardMonsterPlayed_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardMonsterPlayed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardMonsterPlayed
-  nameWithType: CharacterTriggers.MTCharacterTrigger_CardMonsterPlayed
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardSpellPlayed
-  name: MTCharacterTrigger_CardSpellPlayed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_CardSpellPlayed
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardSpellPlayed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardSpellPlayed
-  nameWithType: CharacterTriggers.MTCharacterTrigger_CardSpellPlayed
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardSpellPlayed*
-  name: MTCharacterTrigger_CardSpellPlayed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_CardSpellPlayed_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardSpellPlayed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_CardSpellPlayed
-  nameWithType: CharacterTriggers.MTCharacterTrigger_CardSpellPlayed
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_EndTurnPreHandDiscard
-  name: MTCharacterTrigger_EndTurnPreHandDiscard
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_EndTurnPreHandDiscard
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_EndTurnPreHandDiscard
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_EndTurnPreHandDiscard
-  nameWithType: CharacterTriggers.MTCharacterTrigger_EndTurnPreHandDiscard
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_EndTurnPreHandDiscard*
-  name: MTCharacterTrigger_EndTurnPreHandDiscard
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_EndTurnPreHandDiscard_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_EndTurnPreHandDiscard
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_EndTurnPreHandDiscard
-  nameWithType: CharacterTriggers.MTCharacterTrigger_EndTurnPreHandDiscard
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyHeroDeathOnFloor
-  name: MTCharacterTrigger_OnAnyHeroDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnAnyHeroDeathOnFloor
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyHeroDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyHeroDeathOnFloor
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnAnyHeroDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyHeroDeathOnFloor*
-  name: MTCharacterTrigger_OnAnyHeroDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnAnyHeroDeathOnFloor_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyHeroDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyHeroDeathOnFloor
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnAnyHeroDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyMonsterDeathOnFloor
-  name: MTCharacterTrigger_OnAnyMonsterDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnAnyMonsterDeathOnFloor
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyMonsterDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyMonsterDeathOnFloor
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnAnyMonsterDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyMonsterDeathOnFloor*
-  name: MTCharacterTrigger_OnAnyMonsterDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnAnyMonsterDeathOnFloor_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyMonsterDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyMonsterDeathOnFloor
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnAnyMonsterDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyUnitDeathOnFloor
-  name: MTCharacterTrigger_OnAnyUnitDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnAnyUnitDeathOnFloor
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyUnitDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyUnitDeathOnFloor
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnAnyUnitDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyUnitDeathOnFloor*
-  name: MTCharacterTrigger_OnAnyUnitDeathOnFloor
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnAnyUnitDeathOnFloor_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyUnitDeathOnFloor
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAnyUnitDeathOnFloor
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnAnyUnitDeathOnFloor
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAttacking
-  name: MTCharacterTrigger_OnAttacking
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnAttacking
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAttacking
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAttacking
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnAttacking
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAttacking*
-  name: MTCharacterTrigger_OnAttacking
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnAttacking_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAttacking
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnAttacking
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnAttacking
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnBurnout
-  name: MTCharacterTrigger_OnBurnout
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnBurnout
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnBurnout
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnBurnout
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnBurnout
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnBurnout*
-  name: MTCharacterTrigger_OnBurnout
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnBurnout_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnBurnout
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnBurnout
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnBurnout
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnDeath
-  name: MTCharacterTrigger_OnDeath
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnDeath
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnDeath
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnDeath
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnDeath
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnDeath*
-  name: MTCharacterTrigger_OnDeath
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnDeath_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnDeath
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnDeath
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnDeath
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnEaten
-  name: MTCharacterTrigger_OnEaten
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnEaten
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnEaten
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnEaten
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnEaten
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnEaten*
-  name: MTCharacterTrigger_OnEaten
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnEaten_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnEaten
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnEaten
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnEaten
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnFeed
-  name: MTCharacterTrigger_OnFeed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnFeed
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnFeed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnFeed
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnFeed
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnFeed*
-  name: MTCharacterTrigger_OnFeed
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnFeed_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnFeed
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnFeed
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnFeed
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHeal
-  name: MTCharacterTrigger_OnHeal
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnHeal
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHeal
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHeal
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnHeal
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHeal*
-  name: MTCharacterTrigger_OnHeal
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnHeal_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHeal
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHeal
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnHeal
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHit
-  name: MTCharacterTrigger_OnHit
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnHit
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHit
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHit
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnHit
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHit*
-  name: MTCharacterTrigger_OnHit
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnHit_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHit
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnHit
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnHit
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnKill
-  name: MTCharacterTrigger_OnKill
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnKill
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnKill
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnKill
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnKill
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnKill*
-  name: MTCharacterTrigger_OnKill
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnKill_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnKill
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnKill
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnKill
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnRevenge
-  name: MTCharacterTrigger_OnRevenge
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnRevenge
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnRevenge
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnRevenge
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnRevenge
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnRevenge*
-  name: MTCharacterTrigger_OnRevenge
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnRevenge_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnRevenge
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnRevenge
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnRevenge
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawn
-  name: MTCharacterTrigger_OnSpawn
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnSpawn
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawn
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawn
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnSpawn
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawn*
-  name: MTCharacterTrigger_OnSpawn
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnSpawn_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawn
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawn
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnSpawn
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawnNotFromCard
-  name: MTCharacterTrigger_OnSpawnNotFromCard
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnSpawnNotFromCard
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawnNotFromCard
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawnNotFromCard
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnSpawnNotFromCard
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawnNotFromCard*
-  name: MTCharacterTrigger_OnSpawnNotFromCard
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnSpawnNotFromCard_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawnNotFromCard
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnSpawnNotFromCard
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnSpawnNotFromCard
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTeamTurnBegin
-  name: MTCharacterTrigger_OnTeamTurnBegin
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnTeamTurnBegin
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTeamTurnBegin
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTeamTurnBegin
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnTeamTurnBegin
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTeamTurnBegin*
-  name: MTCharacterTrigger_OnTeamTurnBegin
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnTeamTurnBegin_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTeamTurnBegin
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTeamTurnBegin
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnTeamTurnBegin
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTurnBegin
-  name: MTCharacterTrigger_OnTurnBegin
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnTurnBegin
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTurnBegin
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTurnBegin
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnTurnBegin
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTurnBegin*
-  name: MTCharacterTrigger_OnTurnBegin
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnTurnBegin_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTurnBegin
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnTurnBegin
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnTurnBegin
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnUnscaledSpawn
-  name: MTCharacterTrigger_OnUnscaledSpawn
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnUnscaledSpawn
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnUnscaledSpawn
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnUnscaledSpawn
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnUnscaledSpawn
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnUnscaledSpawn*
-  name: MTCharacterTrigger_OnUnscaledSpawn
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_OnUnscaledSpawn_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnUnscaledSpawn
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_OnUnscaledSpawn
-  nameWithType: CharacterTriggers.MTCharacterTrigger_OnUnscaledSpawn
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostAscension
-  name: MTCharacterTrigger_PostAscension
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_PostAscension
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostAscension
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostAscension
-  nameWithType: CharacterTriggers.MTCharacterTrigger_PostAscension
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostAscension*
-  name: MTCharacterTrigger_PostAscension
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_PostAscension_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostAscension
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostAscension
-  nameWithType: CharacterTriggers.MTCharacterTrigger_PostAscension
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombat
-  name: MTCharacterTrigger_PostCombat
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_PostCombat
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombat
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombat
-  nameWithType: CharacterTriggers.MTCharacterTrigger_PostCombat
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombat*
-  name: MTCharacterTrigger_PostCombat
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_PostCombat_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombat
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombat
-  nameWithType: CharacterTriggers.MTCharacterTrigger_PostCombat
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombatHealing
-  name: MTCharacterTrigger_PostCombatHealing
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_PostCombatHealing
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombatHealing
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombatHealing
-  nameWithType: CharacterTriggers.MTCharacterTrigger_PostCombatHealing
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombatHealing*
-  name: MTCharacterTrigger_PostCombatHealing
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_PostCombatHealing_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombatHealing
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostCombatHealing
-  nameWithType: CharacterTriggers.MTCharacterTrigger_PostCombatHealing
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostDescension
-  name: MTCharacterTrigger_PostDescension
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_PostDescension
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostDescension
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostDescension
-  nameWithType: CharacterTriggers.MTCharacterTrigger_PostDescension
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostDescension*
-  name: MTCharacterTrigger_PostDescension
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_PostDescension_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostDescension
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PostDescension
-  nameWithType: CharacterTriggers.MTCharacterTrigger_PostDescension
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PreCombat
-  name: MTCharacterTrigger_PreCombat
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_PreCombat
-  commentId: P:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PreCombat
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PreCombat
-  nameWithType: CharacterTriggers.MTCharacterTrigger_PreCombat
-- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PreCombat*
-  name: MTCharacterTrigger_PreCombat
-  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTriggers_MTCharacterTrigger_PreCombat_
-  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PreCombat
-  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTriggers.MTCharacterTrigger_PreCombat
-  nameWithType: CharacterTriggers.MTCharacterTrigger_PreCombat
+- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.op_Implicit(CharacterTriggerData.Trigger)~MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger
+  name: Implicit(CharacterTriggerData.Trigger to CharacterTrigger)
+  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTrigger_op_Implicit_CharacterTriggerData_Trigger__MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTrigger
+  commentId: M:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.op_Implicit(CharacterTriggerData.Trigger)~MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger
+  name.vb: Widening(CharacterTriggerData.Trigger to CharacterTrigger)
+  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.Implicit(CharacterTriggerData.Trigger to MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger)
+  fullName.vb: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.Widening(CharacterTriggerData.Trigger to MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger)
+  nameWithType: CharacterTrigger.Implicit(CharacterTriggerData.Trigger to CharacterTrigger)
+  nameWithType.vb: CharacterTrigger.Widening(CharacterTriggerData.Trigger to CharacterTrigger)
+- uid: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.op_Implicit*
+  name: Implicit
+  href: api/MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.html#MonsterTrainModdingAPI_Enums_MTTriggers_CharacterTrigger_op_Implicit_
+  commentId: Overload:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.op_Implicit
+  name.vb: Widening
+  fullName: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.Implicit
+  fullName.vb: MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger.Widening
+  nameWithType: CharacterTrigger.Implicit
+  nameWithType.vb: CharacterTrigger.Widening
+- uid: MonsterTrainModdingAPI.Enums.TrackedValueType
+  name: TrackedValueType
+  href: api/MonsterTrainModdingAPI.Enums.TrackedValueType.html
+  commentId: T:MonsterTrainModdingAPI.Enums.TrackedValueType
+  fullName: MonsterTrainModdingAPI.Enums.TrackedValueType
+  nameWithType: TrackedValueType
+- uid: MonsterTrainModdingAPI.Enums.TrackedValueType.#ctor(System.String,System.Nullable{System.Int32})
+  name: TrackedValueType(String, Nullable<Int32>)
+  href: api/MonsterTrainModdingAPI.Enums.TrackedValueType.html#MonsterTrainModdingAPI_Enums_TrackedValueType__ctor_System_String_System_Nullable_System_Int32__
+  commentId: M:MonsterTrainModdingAPI.Enums.TrackedValueType.#ctor(System.String,System.Nullable{System.Int32})
+  name.vb: TrackedValueType(String, Nullable(Of Int32))
+  fullName: MonsterTrainModdingAPI.Enums.TrackedValueType.TrackedValueType(System.String, System.Nullable<System.Int32>)
+  fullName.vb: MonsterTrainModdingAPI.Enums.TrackedValueType.TrackedValueType(System.String, System.Nullable(Of System.Int32))
+  nameWithType: TrackedValueType.TrackedValueType(String, Nullable<Int32>)
+  nameWithType.vb: TrackedValueType.TrackedValueType(String, Nullable(Of Int32))
+- uid: MonsterTrainModdingAPI.Enums.TrackedValueType.#ctor*
+  name: TrackedValueType
+  href: api/MonsterTrainModdingAPI.Enums.TrackedValueType.html#MonsterTrainModdingAPI_Enums_TrackedValueType__ctor_
+  commentId: Overload:MonsterTrainModdingAPI.Enums.TrackedValueType.#ctor
+  fullName: MonsterTrainModdingAPI.Enums.TrackedValueType.TrackedValueType
+  nameWithType: TrackedValueType.TrackedValueType
+- uid: MonsterTrainModdingAPI.Enums.TrackedValueType.GetNewCharacterGUID
+  name: GetNewCharacterGUID()
+  href: api/MonsterTrainModdingAPI.Enums.TrackedValueType.html#MonsterTrainModdingAPI_Enums_TrackedValueType_GetNewCharacterGUID
+  commentId: M:MonsterTrainModdingAPI.Enums.TrackedValueType.GetNewCharacterGUID
+  fullName: MonsterTrainModdingAPI.Enums.TrackedValueType.GetNewCharacterGUID()
+  nameWithType: TrackedValueType.GetNewCharacterGUID()
+- uid: MonsterTrainModdingAPI.Enums.TrackedValueType.GetNewCharacterGUID*
+  name: GetNewCharacterGUID
+  href: api/MonsterTrainModdingAPI.Enums.TrackedValueType.html#MonsterTrainModdingAPI_Enums_TrackedValueType_GetNewCharacterGUID_
+  commentId: Overload:MonsterTrainModdingAPI.Enums.TrackedValueType.GetNewCharacterGUID
+  fullName: MonsterTrainModdingAPI.Enums.TrackedValueType.GetNewCharacterGUID
+  nameWithType: TrackedValueType.GetNewCharacterGUID
 - uid: MonsterTrainModdingAPI.Interfaces
   name: MonsterTrainModdingAPI.Interfaces
   href: api/MonsterTrainModdingAPI.Interfaces.html
@@ -8075,12 +8042,78 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Managers.CustomTriggerManager.RunTriggerQueueRemote
   fullName: MonsterTrainModdingAPI.Managers.CustomTriggerManager.RunTriggerQueueRemote
   nameWithType: CustomTriggerManager.RunTriggerQueueRemote
+- uid: MonsterTrainModdingAPI.Managers.GUIDManager
+  name: GUIDManager
+  href: api/MonsterTrainModdingAPI.Managers.GUIDManager.html
+  commentId: T:MonsterTrainModdingAPI.Managers.GUIDManager
+  fullName: MonsterTrainModdingAPI.Managers.GUIDManager
+  nameWithType: GUIDManager
+- uid: MonsterTrainModdingAPI.Managers.GUIDManager.#ctor
+  name: GUIDManager()
+  href: api/MonsterTrainModdingAPI.Managers.GUIDManager.html#MonsterTrainModdingAPI_Managers_GUIDManager__ctor
+  commentId: M:MonsterTrainModdingAPI.Managers.GUIDManager.#ctor
+  fullName: MonsterTrainModdingAPI.Managers.GUIDManager.GUIDManager()
+  nameWithType: GUIDManager.GUIDManager()
+- uid: MonsterTrainModdingAPI.Managers.GUIDManager.#ctor*
+  name: GUIDManager
+  href: api/MonsterTrainModdingAPI.Managers.GUIDManager.html#MonsterTrainModdingAPI_Managers_GUIDManager__ctor_
+  commentId: Overload:MonsterTrainModdingAPI.Managers.GUIDManager.#ctor
+  fullName: MonsterTrainModdingAPI.Managers.GUIDManager.GUIDManager
+  nameWithType: GUIDManager.GUIDManager
+- uid: MonsterTrainModdingAPI.Managers.GUIDManager.GenerateDeterministicGUID(System.String)
+  name: GenerateDeterministicGUID(String)
+  href: api/MonsterTrainModdingAPI.Managers.GUIDManager.html#MonsterTrainModdingAPI_Managers_GUIDManager_GenerateDeterministicGUID_System_String_
+  commentId: M:MonsterTrainModdingAPI.Managers.GUIDManager.GenerateDeterministicGUID(System.String)
+  fullName: MonsterTrainModdingAPI.Managers.GUIDManager.GenerateDeterministicGUID(System.String)
+  nameWithType: GUIDManager.GenerateDeterministicGUID(String)
+- uid: MonsterTrainModdingAPI.Managers.GUIDManager.GenerateDeterministicGUID*
+  name: GenerateDeterministicGUID
+  href: api/MonsterTrainModdingAPI.Managers.GUIDManager.html#MonsterTrainModdingAPI_Managers_GUIDManager_GenerateDeterministicGUID_
+  commentId: Overload:MonsterTrainModdingAPI.Managers.GUIDManager.GenerateDeterministicGUID
+  fullName: MonsterTrainModdingAPI.Managers.GUIDManager.GenerateDeterministicGUID
+  nameWithType: GUIDManager.GenerateDeterministicGUID
+- uid: MonsterTrainModdingAPI.Managers.GUIDManager.ResetProvider
+  name: ResetProvider()
+  href: api/MonsterTrainModdingAPI.Managers.GUIDManager.html#MonsterTrainModdingAPI_Managers_GUIDManager_ResetProvider
+  commentId: M:MonsterTrainModdingAPI.Managers.GUIDManager.ResetProvider
+  fullName: MonsterTrainModdingAPI.Managers.GUIDManager.ResetProvider()
+  nameWithType: GUIDManager.ResetProvider()
+- uid: MonsterTrainModdingAPI.Managers.GUIDManager.ResetProvider*
+  name: ResetProvider
+  href: api/MonsterTrainModdingAPI.Managers.GUIDManager.html#MonsterTrainModdingAPI_Managers_GUIDManager_ResetProvider_
+  commentId: Overload:MonsterTrainModdingAPI.Managers.GUIDManager.ResetProvider
+  fullName: MonsterTrainModdingAPI.Managers.GUIDManager.ResetProvider
+  nameWithType: GUIDManager.ResetProvider
+- uid: MonsterTrainModdingAPI.Managers.GUIDManager.Test
+  name: Test()
+  href: api/MonsterTrainModdingAPI.Managers.GUIDManager.html#MonsterTrainModdingAPI_Managers_GUIDManager_Test
+  commentId: M:MonsterTrainModdingAPI.Managers.GUIDManager.Test
+  fullName: MonsterTrainModdingAPI.Managers.GUIDManager.Test()
+  nameWithType: GUIDManager.Test()
+- uid: MonsterTrainModdingAPI.Managers.GUIDManager.Test*
+  name: Test
+  href: api/MonsterTrainModdingAPI.Managers.GUIDManager.html#MonsterTrainModdingAPI_Managers_GUIDManager_Test_
+  commentId: Overload:MonsterTrainModdingAPI.Managers.GUIDManager.Test
+  fullName: MonsterTrainModdingAPI.Managers.GUIDManager.Test
+  nameWithType: GUIDManager.Test
 - uid: MonsterTrainModdingAPI.Managers.PluginManager
   name: PluginManager
   href: api/MonsterTrainModdingAPI.Managers.PluginManager.html
   commentId: T:MonsterTrainModdingAPI.Managers.PluginManager
   fullName: MonsterTrainModdingAPI.Managers.PluginManager
   nameWithType: PluginManager
+- uid: MonsterTrainModdingAPI.Managers.PluginManager.AssemblyNameToPath
+  name: AssemblyNameToPath
+  href: api/MonsterTrainModdingAPI.Managers.PluginManager.html#MonsterTrainModdingAPI_Managers_PluginManager_AssemblyNameToPath
+  commentId: P:MonsterTrainModdingAPI.Managers.PluginManager.AssemblyNameToPath
+  fullName: MonsterTrainModdingAPI.Managers.PluginManager.AssemblyNameToPath
+  nameWithType: PluginManager.AssemblyNameToPath
+- uid: MonsterTrainModdingAPI.Managers.PluginManager.AssemblyNameToPath*
+  name: AssemblyNameToPath
+  href: api/MonsterTrainModdingAPI.Managers.PluginManager.html#MonsterTrainModdingAPI_Managers_PluginManager_AssemblyNameToPath_
+  commentId: Overload:MonsterTrainModdingAPI.Managers.PluginManager.AssemblyNameToPath
+  fullName: MonsterTrainModdingAPI.Managers.PluginManager.AssemblyNameToPath
+  nameWithType: PluginManager.AssemblyNameToPath
 - uid: MonsterTrainModdingAPI.Managers.PluginManager.GetAllPluginGUIDs
   name: GetAllPluginGUIDs()
   href: api/MonsterTrainModdingAPI.Managers.PluginManager.html#MonsterTrainModdingAPI_Managers_PluginManager_GetAllPluginGUIDs
@@ -8159,6 +8192,18 @@ references:
   commentId: Overload:MonsterTrainModdingAPI.Managers.ProviderManager.#ctor
   fullName: MonsterTrainModdingAPI.Managers.ProviderManager.ProviderManager
   nameWithType: ProviderManager.ProviderManager
+- uid: MonsterTrainModdingAPI.Managers.ProviderManager.CardStatistics
+  name: CardStatistics
+  href: api/MonsterTrainModdingAPI.Managers.ProviderManager.html#MonsterTrainModdingAPI_Managers_ProviderManager_CardStatistics
+  commentId: P:MonsterTrainModdingAPI.Managers.ProviderManager.CardStatistics
+  fullName: MonsterTrainModdingAPI.Managers.ProviderManager.CardStatistics
+  nameWithType: ProviderManager.CardStatistics
+- uid: MonsterTrainModdingAPI.Managers.ProviderManager.CardStatistics*
+  name: CardStatistics
+  href: api/MonsterTrainModdingAPI.Managers.ProviderManager.html#MonsterTrainModdingAPI_Managers_ProviderManager_CardStatistics_
+  commentId: Overload:MonsterTrainModdingAPI.Managers.ProviderManager.CardStatistics
+  fullName: MonsterTrainModdingAPI.Managers.ProviderManager.CardStatistics
+  nameWithType: ProviderManager.CardStatistics
 - uid: MonsterTrainModdingAPI.Managers.ProviderManager.CombatManager
   name: CombatManager
   href: api/MonsterTrainModdingAPI.Managers.ProviderManager.html#MonsterTrainModdingAPI_Managers_ProviderManager_CombatManager
@@ -8249,6 +8294,24 @@ references:
   commentId: N:MonsterTrainModdingAPI.Patches
   fullName: MonsterTrainModdingAPI.Patches
   nameWithType: MonsterTrainModdingAPI.Patches
+- uid: MonsterTrainModdingAPI.Patches.EnhancerDataList
+  name: EnhancerDataList
+  href: api/MonsterTrainModdingAPI.Patches.EnhancerDataList.html
+  commentId: T:MonsterTrainModdingAPI.Patches.EnhancerDataList
+  fullName: MonsterTrainModdingAPI.Patches.EnhancerDataList
+  nameWithType: EnhancerDataList
+- uid: MonsterTrainModdingAPI.Patches.EnhancerDataList.#ctor
+  name: EnhancerDataList()
+  href: api/MonsterTrainModdingAPI.Patches.EnhancerDataList.html#MonsterTrainModdingAPI_Patches_EnhancerDataList__ctor
+  commentId: M:MonsterTrainModdingAPI.Patches.EnhancerDataList.#ctor
+  fullName: MonsterTrainModdingAPI.Patches.EnhancerDataList.EnhancerDataList()
+  nameWithType: EnhancerDataList.EnhancerDataList()
+- uid: MonsterTrainModdingAPI.Patches.EnhancerDataList.#ctor*
+  name: EnhancerDataList
+  href: api/MonsterTrainModdingAPI.Patches.EnhancerDataList.html#MonsterTrainModdingAPI_Patches_EnhancerDataList__ctor_
+  commentId: Overload:MonsterTrainModdingAPI.Patches.EnhancerDataList.#ctor
+  fullName: MonsterTrainModdingAPI.Patches.EnhancerDataList.EnhancerDataList
+  nameWithType: EnhancerDataList.EnhancerDataList
 - uid: MonsterTrainModdingAPI.Patches.SECardTooltipLocalizationPatch
   name: SECardTooltipLocalizationPatch
   href: api/MonsterTrainModdingAPI.Patches.SECardTooltipLocalizationPatch.html
