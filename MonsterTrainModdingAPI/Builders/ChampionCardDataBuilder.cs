@@ -1,0 +1,82 @@
+﻿using BepInEx.Logging;
+using HarmonyLib;
+using MonsterTrainModdingAPI.Managers;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Text;
+using UnityEngine;
+
+namespace MonsterTrainModdingAPI.Builders
+{
+    public class ChampionCardDataBuilder : CardDataBuilder
+    {
+        public CharacterDataBuilder Champion { get; set; }
+        public CardData StarterCardData { get; set; }
+        public CardUpgradeTreeDataBuilder UpgradeTree { get; set; }
+        public String ChampionIcon { get; set; }
+
+        public ChampionCardDataBuilder()
+        {
+            Rarity = CollectableRarity.Champion;
+
+            EffectBuilders.Add(new CardEffectDataBuilder
+            {
+                EffectStateName = "CardEffectSpawnMonster",
+                TargetMode = TargetMode.DropTargetCharacter,
+            }
+            );
+
+            PluginManager.AssemblyNameToPath.TryGetValue(Assembly.GetCallingAssembly().FullName, out string basePath);
+            this.BaseAssetPath = basePath;
+        }
+
+        /// <summary>
+        /// Builds the CardData represented by this builder's parameters recursively
+        /// and registers it and its components with the appropriate managers.
+        /// </summary>
+        /// <returns>The newly registered CardData</returns>
+        public CardData BuildAndRegister(int ChampionIndex = 0)
+        {
+            var cardData = this.Build();
+            API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
+            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs, BundleLoadingInfo);
+
+            API.Log(LogLevel.All, ClanID);
+            var Clan = cardData.GetLinkedClass();
+
+            ChampionData ClanChamp = Clan.GetChampionData(ChampionIndex);
+            ClanChamp.championCardData = cardData;
+            if (this.ChampionIcon != null)
+            {
+                Sprite championIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.ChampionIcon);
+                ClanChamp.championIcon = championIconSprite;
+            }
+            ClanChamp.starterCardData = StarterCardData;
+            ClanChamp.upgradeTree = UpgradeTree.Build();
+
+            return cardData;
+        }
+
+        public new CardData BuildAndRegister()
+        {
+            API.Log(LogLevel.Debug, "1q");
+            return BuildAndRegister(0);
+        }
+
+        /// <summary>
+        /// Builds the CardData represented by this builder's parameters recursively;
+        /// i.e. all CardEffectBuilders in EffectBuilders will also be built.
+        /// </summary>
+        /// <returns>The newly created CardData</returns>
+        public new CardData Build()
+        {
+            Champion.SubtypeKeys.Add("SubtypesData_Champion_83f21cbe-9d9b-4566-a2c3-ca559ab8ff34");
+            EffectBuilders[0].ParamCharacterDataBuilder = Champion;
+
+            CardData cardData = base.Build();
+
+            return cardData;
+        }
+    }
+}

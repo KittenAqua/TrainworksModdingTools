@@ -62,9 +62,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// <summary>
         /// Please set storyChampionData and championCharacterArt
         /// </summary>
-        public ChampionData StartingChampion { get; set; }
-        public CardUpgradeTreeDataBuilder UpgradeTreeBuilder { get; set; }
-        public CardUpgradeTreeData UpgradeTree { get; set; }
+        public List<ChampionData> Champions { get; set; }
 
         /// <summary>
         /// Set automatically in the constructor. Base asset path, usually the plugin directory.
@@ -123,7 +121,11 @@ namespace MonsterTrainModdingAPI.Builders
             this.SubclassStartingCards = new List<ClassData.StartingCardOptions>();
             this.UnlockKeys = new Dictionary<MetagameSaveData.TrackedValue, string>();
             this.ClassUnlockPreviewTexts = new List<string>();
-            this.StartingChampion = (ChampionData)UnityEngine.ScriptableObject.CreateInstance("ChampionData");
+            this.Champions = new List<ChampionData>
+            {
+                (ChampionData)UnityEngine.ScriptableObject.CreateInstance("ChampionData"),
+                (ChampionData)UnityEngine.ScriptableObject.CreateInstance("ChampionData"),
+            };
 
             var assembly = Assembly.GetCallingAssembly();
             this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
@@ -155,11 +157,6 @@ namespace MonsterTrainModdingAPI.Builders
             MonsterTrainModdingAPI.API.Log(LogLevel.Info, GUIDManager.GenerateDeterministicGUID(this.ClassID));
             AccessTools.Field(typeof(ClassData), "id").SetValue(classData, GUIDManager.GenerateDeterministicGUID(this.ClassID));
             AccessTools.Field(typeof(ClassData), "cardStyle").SetValue(classData, this.CardStyle);
-            if (this.ChampionIconPath != null)
-            {
-                Sprite championIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.ChampionIconPath);
-                AccessTools.Field(typeof(ClassData), "championIcon").SetValue(classData, championIconSprite);
-            }
             AccessTools.Field(typeof(ClassData), "clanSelectSfxCue").SetValue(classData, this.ClanSelectSfxCue);
             AccessTools.Field(typeof(ClassData), "classUnlockCondition").SetValue(classData, this.ClassUnlockCondition);
             AccessTools.Field(typeof(ClassData), "classUnlockParam").SetValue(classData, this.ClassUnlockParam);
@@ -178,18 +175,14 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(iconSetType, "large").SetValue(iconSet, icons[2]);
             AccessTools.Field(iconSetType, "silhouette").SetValue(iconSet, icons[3]);
             AccessTools.Field(typeof(ClassData), "icons").SetValue(classData, iconSet);
-            AccessTools.Field(typeof(ClassData), "mainClassStartingCards").SetValue(classData, this.MainClassStartingCards);
-            AccessTools.Field(typeof(ClassData), "startingChampion").SetValue(classData, this.StartingChampion);
+            AccessTools.Field(typeof(ClassData), "champions").SetValue(classData, this.Champions);
             BuilderUtils.ImportStandardLocalization(this.SubclassDescriptionLoc, this.SubclassDescription);
             AccessTools.Field(typeof(ClassData), "subclassDescriptionLoc").SetValue(classData, this.SubclassDescriptionLoc);
-            AccessTools.Field(typeof(ClassData), "subclassStartingCards").SetValue(classData, this.SubclassStartingCards);
             BuilderUtils.ImportStandardLocalization(this.TitleLoc, this.Name);
             AccessTools.Field(typeof(ClassData), "titleLoc").SetValue(classData, this.TitleLoc);
             AccessTools.Field(typeof(ClassData), "uiColor").SetValue(classData, this.UiColor);
             AccessTools.Field(typeof(ClassData), "uiColorDark").SetValue(classData, this.UiColorDark);
             //AccessTools.Field(typeof(ClassData), "UNLOCK_KEYS").SetValue(classData, this.);
-            if (UpgradeTreeBuilder != null) { UpgradeTree = UpgradeTreeBuilder.Build(); }
-            AccessTools.Field(typeof(ClassData), "upgradeTree").SetValue(classData, this.UpgradeTree);
 
 
             // Card Frame
@@ -197,14 +190,14 @@ namespace MonsterTrainModdingAPI.Builders
             {
                 Sprite cardFrameSpellSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.CardFrameSpellPath);
                 Sprite cardFrameUnitSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.CardFrameUnitPath);
-                CustomClassManager.CustomClassFrame.Add(this.ClassID, new List<Sprite>() { cardFrameUnitSprite, cardFrameSpellSprite });
+                CustomClassManager.CustomClassFrame.Add(GUIDManager.GenerateDeterministicGUID(this.ClassID), new List<Sprite>() { cardFrameUnitSprite, cardFrameSpellSprite });
             }
 
             // Draft Icon
             if (this.DraftIconPath != null)
             {
                 Sprite draftIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.DraftIconPath);
-                CustomClassManager.CustomClassDraftIcons.Add(this.ClassID, draftIconSprite);
+                CustomClassManager.CustomClassDraftIcons.Add(GUIDManager.GenerateDeterministicGUID(this.ClassID), draftIconSprite);
             }
 
             return classData;
