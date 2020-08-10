@@ -197,14 +197,14 @@ namespace MonsterTrainModdingAPI.Builders
             {
                 Sprite cardFrameSpellSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.CardFrameSpellPath);
                 Sprite cardFrameUnitSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.CardFrameUnitPath);
-                CustomClassManager.CustomClassFrame.Add(this.ClassID, new List<Sprite>() { cardFrameUnitSprite, cardFrameSpellSprite });
+                CustomClassManager.CustomClassFrame.Add(GUIDManager.GenerateDeterministicGUID(this.ClassID), new List<Sprite>() { cardFrameUnitSprite, cardFrameSpellSprite });
             }
 
             // Draft Icon
             if (this.DraftIconPath != null)
             {
                 Sprite draftIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.DraftIconPath);
-                CustomClassManager.CustomClassDraftIcons.Add(this.ClassID, draftIconSprite);
+                CustomClassManager.CustomClassDraftIcons.Add(GUIDManager.GenerateDeterministicGUID(this.ClassID), draftIconSprite);
             }
 
             return classData;
