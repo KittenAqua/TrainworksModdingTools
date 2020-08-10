@@ -11,50 +11,6 @@ namespace MonsterTrainModdingAPI.Patches
     class ClanSetupPatches
     {
         /// <summary>
-        /// This patch reimplements the functionality of SaveManager.LoadClassAndSubclass, which is called and then retconned away
-        /// It also extends that functionality for covenants.
-        /// It only applies to custom classes.
-        /// </summary>
-        [HarmonyPatch(typeof(SaveManager), "SetupRun")]
-        public class ClanCardSetupPatch
-        {
-            static void Postfix(SaveManager __instance)
-            {
-                int ascensionLevel = __instance.GetAscensionLevel();
-                ClassData mainClass = __instance.GetMainClass();
-                ClassData subClass = __instance.GetSubClass();
-
-                if (ascensionLevel == 0) { return; }
-                if (CustomClassManager.CustomClassData.ContainsKey(mainClass.GetID()))
-                {
-                    if (mainClass.CreateMainClassStartingDeck().Count > 0)
-                    {
-                        foreach (CardData cardData in mainClass.CreateMainClassStartingDeck())
-                            __instance.AddCardToDeck(cardData);
-                        if (ascensionLevel >= 6) { __instance.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
-                        if (ascensionLevel >= 13) { __instance.AddCardToDeck(mainClass.CreateMainClassStartingDeck()[0]); }
-                    }
-                }
-
-                if (subClass == null)
-                    return;
-
-                if (CustomClassManager.CustomClassData.ContainsKey(subClass.GetID()))
-                {
-                    if (subClass.CreateSubClassStartingDeck().Count > 0)
-                    {
-                        foreach (CardData cardData in subClass.CreateSubClassStartingDeck())
-                        {
-                            __instance.AddCardToDeck(cardData);
-                        }
-                        if (ascensionLevel >= 8) { __instance.AddCardToDeck(subClass.CreateSubClassStartingDeck()[0]); }
-                        if (ascensionLevel >= 15) { __instance.AddCardToDeck(subClass.CreateSubClassStartingDeck()[0]); }
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Identifies the necessary card frame for the class and installs it through ridiculous means.
         /// </summary>
         [HarmonyPatch(typeof(CardFrameUI), "SetUpFrame")]
@@ -98,7 +54,11 @@ namespace MonsterTrainModdingAPI.Patches
             {
                 if (CustomClassManager.CustomClassData.ContainsKey(saveManager.GetMainClass().GetID()))
                 {
-                    return saveManager.GetMainClass().GetUpgradeTree();
+                    var classData = CustomClassManager.GetClassDataByID(saveManager.GetMainClass().GetID());
+                    var champ = saveManager.GetDeckState().Find((CardState cs) => cs.IsChampionCard());
+                    var upgradeTree = classData.FindUpgradeTreeForChampion(champ?.GetSpawnCharacterData());
+
+                    return upgradeTree;
                 }
 
                 return ret;
