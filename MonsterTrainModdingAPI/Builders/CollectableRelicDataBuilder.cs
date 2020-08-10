@@ -69,7 +69,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// <summary>
         /// Custom asset path to load relic art from.
         /// </summary>
-        public string AssetPath { get; set; }
+        public string IconPath { get; set; }
 
         /// <summary>
         /// ID of the clan the card is a part of. Leave null for clanless.
@@ -90,7 +90,7 @@ namespace MonsterTrainModdingAPI.Builders
         public bool FromStoryEvent { get; set; }
         public bool IsBossGivenRelic { get; set; }
 
-        public Sprite Icon { get; set; }
+        public string BaseAssetPath { get; private set; }
 
         public CollectableRelicDataBuilder()
         {
@@ -99,6 +99,10 @@ namespace MonsterTrainModdingAPI.Builders
             this.Description = null;
             this.Effects = new List<RelicEffectData>();
             this.EffectBuilders = new List<RelicEffectDataBuilder>();
+
+            var assembly = Assembly.GetCallingAssembly();
+            PluginManager.AssemblyNameToPath.TryGetValue(assembly.FullName, out string basePath);
+            this.BaseAssetPath = basePath;
         }
 
         /// <summary>
@@ -124,7 +128,7 @@ namespace MonsterTrainModdingAPI.Builders
             {
                 this.Effects.Add(builder.Build());
             }
-            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
+            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(GUIDManager.GenerateDeterministicGUID(this.ClanID));
 
             var relicData = ScriptableObject.CreateInstance<CollectableRelicData>();
 
@@ -134,18 +138,11 @@ namespace MonsterTrainModdingAPI.Builders
             BuilderUtils.ImportStandardLocalization(this.DescriptionKey, this.Description);
             AccessTools.Field(typeof(RelicData), "descriptionKey").SetValue(relicData, this.DescriptionKey);
             AccessTools.Field(typeof(RelicData), "effects").SetValue(relicData, this.Effects);
-            if (this.Icon == null && this.AssetPath != null)
+            if (this.IconPath != null)
             {
-                string path = "BepInEx/plugins/" + this.AssetPath;
-                if (File.Exists(path))
-                {
-                    byte[] fileData = File.ReadAllBytes(path);
-                    Texture2D tex = new Texture2D(1, 1);
-                    UnityEngine.ImageConversion.LoadImage(tex, fileData);
-                    this.Icon = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-                }
+                Sprite iconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.IconPath);
+                AccessTools.Field(typeof(RelicData), "icon").SetValue(relicData, iconSprite);
             }
-            AccessTools.Field(typeof(RelicData), "icon").SetValue(relicData, this.Icon);
             BuilderUtils.ImportStandardLocalization(this.NameKey, this.Name);
             AccessTools.Field(typeof(RelicData), "nameKey").SetValue(relicData, this.NameKey);
             AccessTools.Field(typeof(RelicData), "relicActivatedKey").SetValue(relicData, this.RelicActivatedKey);
