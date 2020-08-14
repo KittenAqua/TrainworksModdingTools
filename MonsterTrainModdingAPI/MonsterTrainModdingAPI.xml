@@ -1,0 +1,2249 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MonsterTrainModdingAPI</name>
+    </assembly>
+    <members>
+        <member name="M:MonsterTrainModdingAPI.Builders.BuilderUtils.AddStatusEffect(System.String,System.Int32,StatusEffectStackData[])">
+            <summary>
+            Create a new status effect array and add the status effect with the specified information onto the end of it.
+            </summary>
+            <param name="statusEffectID">ID of the status effect</param>
+            <param name="stackCount">Number of stacks to apply</param>
+            <param name="oldStatuses">Status effect array to append to</param>
+            <returns>A new status effect array one element longer than the previous one, with the status effect in the last slot</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.BuilderUtils.ImportStandardLocalization(System.String,System.String)">
+            <summary>
+            Imports localization data for a key.
+            Sets the translation to text for all languages.
+            If either key or text is null, the function returns harmlessly.
+            </summary>
+            <param name="key">Key to set localization data for</param>
+            <param name="text">Text for the key in all languages</param>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.CardDataBuilder.cardID">
+            <summary>
+            Don't set directly; use CardID instead.
+            Unique string used to store and retrieve the card data.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.CardID">
+            <summary>
+            Unique string used to store and retrieve the card data.
+            Implicitly sets NameKey and OverrideDescriptionKey if null
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.CardPoolIDs">
+            <summary>
+            The IDs of all card pools the card should be inserted into.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.Cost">
+            <summary>
+            Ember cost of the card.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.CostType">
+            <summary>
+            Determines whether the card has a normal ember cost or an X ember cost.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.Name">
+            <summary>
+            Name displayed on the card.
+            Overridden by the NameKey field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.NameKey">
+            <summary>
+            Localization key for the card's name.
+            Overrides the Name field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.Description">
+            <summary>
+            Custom description text appended to the end of the card.
+            Overridden by the OverrideDescriptionKey field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.OverrideDescriptionKey">
+            <summary>
+            Localization key for the card's description.
+            Overrides the Description field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.ClanID">
+            <summary>
+            ID of the clan the card is a part of. Leave null for clanless.
+            Base game clan IDs should be retrieved via helper class "MTClanIDs".
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.FullAssetPath">
+            <summary>
+            The full, absolute path to the asset. Concatenates BaseAssetPath and AssetPath.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.BaseAssetPath">
+            <summary>
+            Set automatically in the constructor. Base asset path, usually the plugin directory.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.AssetPath">
+            <summary>
+            Custom asset path to load from. Must be inside the BaseAssetPath.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.BundleLoadingInfo">
+            <summary>
+            Loading Info for loading a card's sprite from an asset bundle.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.CardArtPrefabVariantRef">
+            <summary>
+            Use an existing base game card's art by filling this in with the appropriate card's asset reference information.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.EffectBuilders">
+            <summary>
+            Append to this list to add new card effects. The Build() method recursively builds all nested builders.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.TraitBuilders">
+            <summary>
+            Append to this list to add new card traits. The Build() method recursively builds all nested builders.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.EffectTriggerBuilders">
+            <summary>
+            Append to this list to add new character triggers. The Build() method recursively builds all nested builders.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.TriggerBuilders">
+            <summary>
+            Append to this list to add new card triggers. The Build() method recursively builds all nested builders.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.Effects">
+            <summary>
+            List of pre-built card effects.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.Traits">
+            <summary>
+            List of pre-built card traits.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.EffectTriggers">
+            <summary>
+            List of pre-built character triggers.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.Triggers">
+            <summary>
+            List of pre-built card triggers.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.StartingUpgrades">
+            <summary>
+            These upgrades are applied to all new instances of this card by default.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.CardLoreTooltipKeys">
+            <summary>
+            Use an existing base game card's lore tooltip by adding its key to this list.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.Targetless">
+            <summary>
+            Whether or not the card has a target.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.TargetsRoom">
+            <summary>
+            Whether or not the card targets a room.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.LinkedClass">
+            <summary>
+            The class associated with the card.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.CardType">
+            <summary>
+            The type of card: Spell, Monster, Blight, Scourge, or Invalid.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.Rarity">
+            <summary>
+            The card's rarity: Common, Uncommon, Rare, Champion, Starter
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.UnlockLevel">
+            <summary>
+            Level at which the card is unlocked.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.IgnoreWhenCountingMastery">
+            <summary>
+            Whether or not this card is displayed in the logbook when counting all of the player's mastered cards.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.SpriteCache">
+            <summary>
+            A cache for the card's sprite so it doesn't have to be reloaded repeatedly.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.FallbackData">
+            <summary>
+            In the event that art assets cannot be found, the game will search this for backup assets.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardDataBuilder.BuildAndRegister">
+            <summary>
+            Builds the CardData represented by this builder's parameters recursively
+            and registers it and its components with the appropriate managers.
+            </summary>
+            <returns>The newly registered CardData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardDataBuilder.Build">
+            <summary>
+            Builds the CardData represented by this builder's parameters recursively;
+            i.e. all CardEffectBuilders in EffectBuilders will also be built.
+            </summary>
+            <returns>The newly created CardData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardDataBuilder.CreateAndSetCardArtPrefabVariantRef(System.String,System.String)">
+            <summary>
+            Creates an asset reference to an existing game file.
+            Primarily useful for reusing base game art.
+            Cards with custom art should not use this method.
+            </summary>
+            <param name="m_debugName">The asset's debug name (usually the path to it)</param>
+            <param name="m_AssetGUID">The asset's GUID</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardDataBuilder.SetClan(System.String)">
+            <summary>
+            Sets this card's clan to the clan whose ID is passed in
+            </summary>
+            <param name="clanID">ID of the clan, most easily retrieved using the helper class "MTClanIDs"</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardDataBuilder.AddToCardPool(System.String)">
+            <summary>
+            Adds this card to the cardpool whose ID is passed in
+            </summary>
+            <param name="cardPoolID">ID of the card pool, most easily retrieved using the helper class "MTCardPoolIDs"</param>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.effectStateType">
+            <summary>
+            Don't set directly; use EffectStateType instead.
+            Type of the effect class to instantiate.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.EffectStateType">
+            <summary>
+            Type of the effect class to instantiate.
+            Implicitly sets EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.EffectStateName">
+            <summary>
+            Name of the effect class to instantiate.
+            Either pass an assembly qualified type name or use EffectStateType instead.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamInt">
+            <summary>
+            Int parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.AdditionalParamInt">
+            <summary>
+            Int parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamMaxInt">
+            <summary>
+            Int parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamMinInt">
+            <summary>
+            Int parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamMultiplier">
+            <summary>
+            Float parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamBool">
+            <summary>
+            Boolean parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamStr">
+            <summary>
+            String parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamSubtype">
+            <summary>
+            Subtype parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamCharacterDataBuilder">
+            <summary>
+            Builder for CharacterData parameter; exact purpose depends on the effect type specified in EffectStateName.
+            Calling Build() will also build this parameter recursively.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamRoomData">
+            <summary>
+            RoomData parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamAdditionalCharacterData">
+            <summary>
+            CharacterData parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamCardFilter">
+            <summary>
+            CardUpgradeMaskData parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamCardPool">
+            <summary>
+            CardPool parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamCardUpgradeData">
+            <summary>
+            CardUpgradeData parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamCharacterData">
+            <summary>
+            CharacterData parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamTimingDelays">
+            <summary>
+            Vector3 parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamTrigger">
+            <summary>
+            Trigger parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.ParamStatusEffects">
+            <summary>
+            Status effect array parameter; exact purpose depends on the effect type specified in EffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.AdditionalTooltips">
+            <summary>
+            Tooltips displayed when hovering over any game entity this effect is applied to.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.Build">
+            <summary>
+            Builds the CardEffectData represented by this builder's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created CardEffectData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardEffectDataBuilder.AddStatusEffect(System.String,System.Int32)">
+            <summary>
+            Add a status effect to this effect's status effect array.
+            </summary>
+            <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
+            <param name="stackCount">Number of stacks to apply</param>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.traitStateType">
+            <summary>
+            Don't set directly; use TraitStateType instead.
+            Type of the trait class to instantiate.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.TraitStateType">
+            <summary>
+            Type of the trait class to instantiate.
+            Implicitly sets TraitStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.TraitStateName">
+            <summary>
+            Name of the trait class to instantiate.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.ParamCardData">
+            <summary>
+            CardData parameter; exact purpose depends on the trait type specified in TraitStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.ParamCardType">
+            <summary>
+            Type of card to target; exact purpose depends on the trait type specified in TraitStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.ParamTeamType">
+            <summary>
+            Team to target; exact purpose depends on the trait type specified in TraitStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.ParamFloat">
+            <summary>
+            Float parameter; exact purpose depends on the trait type specified in TraitStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.ParamInt">
+            <summary>
+            Int parameter; exact purpose depends on the trait type specified in TraitStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.ParamStr">
+            <summary>
+            String parameter; exact purpose depends on the trait type specified in TraitStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.ParamSubtype">
+            <summary>
+            Subtype parameter; exact purpose depends on the trait type specified in TraitStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.ParamStatusEffects">
+            <summary>
+            Status effect array parameter; exact purpose depends on the trait type specified in TraitStateName.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.Build">
+            <summary>
+            Builds the CardTraitData represented by this builder's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created CardTraitData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardTraitDataBuilder.AddStatusEffect(System.String,System.Int32)">
+            <summary>
+            Add a status effect to this effect's status effect array.
+            </summary>
+            <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
+            <param name="stackCount">Number of stacks to apply</param>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.CardTriggerEffectDataBuilder.trigger">
+            <summary>
+            Don't set directly; use Trigger instead.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTriggerEffectDataBuilder.Trigger">
+            <summary>
+            Implicitly sets DescriptionKey if null.
+            Any of the below CardTriggerType can be used to proc the listed effects.
+            <list type="bullet">
+            <item><description>OnCast</description></item>
+            <item><description>OnKill</description></item>
+            <item><description>OnDiscard</description></item>
+            <item><description>OnMonsterDeath</description></item>
+            <item><description>OnAnyMonsterDeathOnFloor</description></item>
+            <item><description>OnAnyHeroDeathOnFloor</description></item>
+            <item><description>OnHealed</description></item>
+            <item><description>OnPlayerDamageTaken</description></item>
+            <item><description>OnAnyUnitDeathOnFloor</description></item>
+            <item><description>OnTreasure</description></item>
+            <item><description>OnUnplayed</description></item>
+            <item><description>OnFeed</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTriggerEffectDataBuilder.Description">
+            <summary>
+            Custom description for the trigger effect.
+            Overrides DescriptionKey.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTriggerEffectDataBuilder.DescriptionKey">
+            <summary>
+            Use an existing base game trigger's description key to copy the format of its description.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTriggerEffectDataBuilder.CardTriggerEffects">
+            <summary>
+            Append to this list to add new card trigger effects. The Build() method recursively builds all nested builders.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardTriggerEffectDataBuilder.CardEffectBuilders">
+            <summary>
+            Append to this list to add new card effects. The Build() method recursively builds all nested builders.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardTriggerEffectDataBuilder.Build">
+            <summary>
+            Builds the CardTriggerEffectData represented by this builder's parameters recursively;
+            i.e. all CardEffectBuilders in cardEffects will also be built.
+            </summary>
+            <returns>The newly created CardTriggerEffectData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardTriggerEffectDataBuilder.AddCardTrigger(PersistenceMode,System.String,System.String,System.Int32)">
+            <summary>
+            Adds a new CardTrigger to the list.
+            </summary>
+            <param name="persistenceMode">SingleRun, or SingleBattle</param>
+            <param name="cardTriggerEffect"></param>
+            <param name="buffEffectType"></param>
+            <param name="paramInt"></param>
+            <returns></returns>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.upgradeTitle">
+            <summary>
+            Don't set directly; use UpgradeTitle instead.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.UpgradeTitle">
+            <summary>
+            Overrides UpgradeTitleKey
+            Implicitly sets UpgradeTitleKey, UpgradeDescriptionKey, and UpgradeNotificationKey if null
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.UpgradeDescription">
+            <summary>
+            Overrides UpgradeDescriptionKey
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.UpgradeNotification">
+            <summary>
+            Overrides UpgradeNotificationKey
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.StatusEffectUpgrades">
+            <summary>
+            To add a status effect, no need for a builder. new StatusEffectStackData with properties statusId (string) and count (int) are sufficient.
+            Get the string with -> statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.AllowedCardPools">
+            <summary>
+            If there are any cards in this pool, then only the cards in this pool will be allowed
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.DisallowedCardPools">
+            <summary>
+            No cards in this pool will be allowed
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.RequiredSubtypesOperator">
+            <summary>
+            Operator determines if we require all or at least one
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.UpgradeDisabledReason">
+            <summary>
+            This is the reason why a card is filtered away from having this upgrade applied to it
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.Build">
+            <summary>
+            Builds the RoomModifierData represented by this builders's parameters recursively;
+            </summary>
+            <returns>The newly created RoomModifierData</returns>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeTreeDataBuilder.Champion">
+            <summary>
+            Please make a custom ChampionData class to add here.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeTreeDataBuilder.UpgradeTreesInternal">
+            <summary>
+            Use this field if you're copying an existing already built tree.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeTreeDataBuilder.UpgradeTrees">
+            <summary>
+            This is a list of lists of CardUpgradeDataBuilders. Base game clans have a 3x3 list.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.ChampionCardDataBuilder.BuildAndRegister(System.Int32)">
+            <summary>
+            Builds the CardData represented by this builder's parameters recursively
+            and registers it and its components with the appropriate managers.
+            </summary>
+            <returns>The newly registered CardData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.ChampionCardDataBuilder.Build">
+            <summary>
+            Builds the CardData represented by this builder's parameters recursively;
+            i.e. all CardEffectBuilders in EffectBuilders will also be built.
+            </summary>
+            <returns>The newly created CardData</returns>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.characterID">
+            <summary>
+            Don't set directly; use CharacterID instead.
+            Unique string used to store and retrieve the character data.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.CharacterID">
+            <summary>
+            Unique string used to store and retrieve the character data.
+            Implictly sets NameKey if null.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.Name">
+            <summary>
+            Name displayed for the character.
+            Overridden by NameKey.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.NameKey">
+            <summary>
+            Localization key for the character's name.
+            Overrides Name.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.AttackDamage">
+            <summary>
+            The character's attack stat.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.Health">
+            <summary>
+            The character's health stat.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.Size">
+            <summary>
+            The amount of capacity the character uses up on the floor.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.StartingStatusEffects">
+            <summary>
+            Status effects the character starts with when spawned in.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.FullAssetPath">
+            <summary>
+            The full, absolute path to the asset. Concatenates BaseAssetPath and AssetPath.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.BaseAssetPath">
+            <summary>
+            Set automatically in the constructor. Base asset path, usually the plugin directory.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.AssetPath">
+            <summary>
+            Custom asset path to load from. Must be inside the BaseAssetPath.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.SpriteBundleLoadingInfo">
+            <summary>
+            Loading Info for loading a character's sprite
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.SkeletonAnimationBundleLoadingInfo">
+            <summary>
+            Loading Info for loading a character's Skeleton Animation
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.CharacterPrefabVariantRef">
+            <summary>
+            Use an existing base game character's art by filling this in with the appropriate character's asset reference information.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.CanAttack">
+            <summary>
+            Whether or not the character is able to attack.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.CanBeHealed">
+            <summary>
+            Whether or not the character is able to be healed.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.IsMiniboss">
+            <summary>
+            Whether or not the character is a miniboss (a non-flying boss).
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.IsOuterTrainBoss">
+            <summary>
+            Whether or not the character is a flying boss.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.CharacterLoreTooltipKeys">
+            <summary>
+            Use an existing base game character's lore tooltip by adding its key to this list.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.AttackTeleportsToDefender">
+            <summary>
+            "When attacking, this character moves next to its target before hitting it." - base game comment
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.ImpactVFX">
+            <summary>
+            "The VFX to put on the target when attacking to override CombatManager CombatReactVFXPrefab" - base game comment
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.ProjectilePrefab">
+            <summary>
+            The projectile to fire when attacking - base game comment
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.CharacterSpriteCache">
+            <summary>
+            A cache for the character's sprite so it doesn't have to be reloaded repeatedly.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.FallBackData">
+            <summary>
+            "The default character prefab to use if one isn't found.  (Which should never happen in the shpped game)" - base game comment
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.PriorityDraw">
+            <summary>
+            Sets whether or not this unit should be considered for being automatically drawn as part of the priority unit draw system for hands. Defaults to true based 
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.BuildAndRegister">
+            <summary>
+            Builds the CharacterData represented by this builder's parameters recursively
+            and registers it and its components with the appropriate managers.
+            </summary>
+            <returns>The newly registered CharacterData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.Build">
+            <summary>
+            Builds the CharacterData represented by this builder's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created CharacterData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.CreateAndSetCharacterArtPrefabVariantRef(System.String,System.String)">
+            <summary>
+            Creates an asset reference to an existing game file.
+            Primarily useful for reusing base game art.
+            Cards with custom art should not use this method.
+            </summary>
+            <param name="m_debugName">The asset's debug name (usually the path to it)</param>
+            <param name="m_AssetGUID">The asset's GUID</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.AddStartingStatusEffect(System.String,System.Int32)">
+            <summary>
+            Add a status effect to this character's starting status effect array.
+            </summary>
+            <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
+            <param name="stackCount">Number of stacks to apply</param>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.CharacterTriggerDataBuilder.trigger">
+            <summary>
+            Don't set directly; use Trigger instead.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterTriggerDataBuilder.Trigger">
+            <summary>
+            Implicitly sets DescriptionKey and AdditionalTextOnTriggerKey if null.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterTriggerDataBuilder.EffectBuilders">
+            <summary>
+            Append to this list to add new card effects. The Build() method recursively builds all nested builders.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterTriggerDataBuilder.Effects">
+            <summary>
+            List of pre-built card effects.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterTriggerDataBuilder.Description">
+            <summary>
+            Overrides DescriptionKey
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterTriggerDataBuilder.AdditionalTextOnTrigger">
+            <summary>
+            Overrides AdditionalTextOnTrigger
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterTriggerDataBuilder.DescriptionKey">
+            <summary>
+            Use an existing base game trigger's description key to copy the format of its description.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CharacterTriggerDataBuilder.Build">
+            <summary>
+            Builds the CharacterTriggerData represented by this builders's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created CardTraitData</returns>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Builders.ClassDataBuilder">
+            <summary>
+            Builder class to aid in creating custom clans.
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.ClassDataBuilder.classID">
+            <summary>
+            Don't set directly; use ClassID instead.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.ClassID">
+            <summary>
+            Unique string used to store and retrieve the clan data.
+            Implictly sets TitleLoc, DescriptionLoc, and SubclassDescriptionLoc if null.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.Name">
+            <summary>
+            Name of the clan.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.Description">
+            <summary>
+            Description of the clan.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.SubclassDescription">
+            <summary>
+            Description of the clan when selected as the allied clan.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.Champions">
+            <summary>
+            Please set storyChampionData and championCharacterArt
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.BaseAssetPath">
+            <summary>
+            Set automatically in the constructor. Base asset path, usually the plugin directory.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.IconAssetPaths">
+            <summary>
+            Must contain 4 sprite paths; in order:
+            small icon (32x32)
+            medium icon (??x??)
+            large icon (89x89)
+            silhouette icon (43x43)
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardStyle">
+            <summary>
+            Use CardStyle only for accessing the base game card frames. Otherwise use CardFrame for custom frames
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameUnitPath">
+            <summary>
+            Add a custom CardFrame as a sprite for unit cards.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.CardFrameSpellPath">
+            <summary>
+            Add a custom CardFrame as a sprite for spell cards.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.ClassDataBuilder.DraftIconPath">
+            <summary>
+            Add a custom icon for the card draft on battle victory.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.ClassDataBuilder.BuildAndRegister">
+            <summary>
+            Builds the ClassData represented by this builder's parameters recursively
+            and registers it and its components with the appropriate managers.
+            </summary>
+            <returns>The newly registered ClassData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.ClassDataBuilder.Build">
+            <summary>
+            Builds the ClassData represented by this builder's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created ClassData</returns>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.collectableRelicID">
+            <summary>
+            Don't set directly; use CardID instead.
+            Unique string used to store and retrieve the relic data.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.CollectableRelicID">
+            <summary>
+            Unique string used to store and retrieve the relic data.
+            Implicitly sets NameKey and DescriptionKey.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.RelicPoolIDs">
+            <summary>
+            The IDs of all relic pools the relic should be inserted into.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.Name">
+            <summary>
+            Name displayed for the relic.
+            Overridden by the NameKey field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.NameKey">
+            <summary>
+            Localization key for the relic's name.
+            Overrides the Name field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.Description">
+            <summary>
+            Description displayed for the relic.
+            Overridden by the DescriptionKey field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.DescriptionKey">
+            <summary>
+            Localization key for the relic's description.
+            Overrides the Description field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.IconPath">
+            <summary>
+            Custom asset path to load relic art from.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.ClanID">
+            <summary>
+            ID of the clan the card is a part of. Leave null for clanless.
+            Base game clan IDs should be retrieved via helper class "MTClanIDs".
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.BuildAndRegister">
+            <summary>
+            Builds the RelicData represented by this builder's parameters recursively
+            and registers it and its components with the appropriate managers.
+            </summary>
+            <returns>The newly registered RelicData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.Build">
+            <summary>
+            Builds the RelicData represented by this builder's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created RelicData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.SetClan(System.String)">
+            <summary>
+            Sets this card's clan to the clan whose ID is passed in
+            </summary>
+            <param name="clanID">ID of the clan, most easily retrieved using the helper class "MTClanIDs"</param>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ID">
+            <summary>
+            Internal ID for use by Unity
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Name">
+            <summary>
+            Name displayed for the relic.
+            Overridden by the NameKey field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.NameKey">
+            <summary>
+            Localization key for the relic's name.
+            Overrides the Name field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Description">
+            <summary>
+            Description displayed for the relic.
+            Overridden by the DescriptionKey field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.DescriptionKey">
+            <summary>
+            Localization key for the relic's description.
+            Overrides the Description field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.AssetPath">
+            <summary>
+            Custom asset path to load relic art from.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ClanID">
+            <summary>
+            ID of the clan the card is a part of. Leave null for clanless.
+            Base game clan IDs should be retrieved via helper class "MTClanIDs".
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Upgrade">
+            <summary>
+            Holds the upgrade to be applied to the chosen card after the enhancer is purchased.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.CardType">
+            <summary>
+            Determines which kinds of cards it upgrades.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.EnhancerPoolIDs">
+            <summary>
+            The IDs of all enhancer pools the relic should be inserted into.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.BuildAndRegister">
+            <summary>
+            Builds the EnhancerData represented by this builder's parameters
+            and registers it and its components with the appropriate managers.
+            </summary>
+            <returns>The newly registered EnhancerData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Build">
+            <summary>
+            Builds the EnhancerData represented by this builder's parameters.
+            </summary>
+            <returns>The newly created EnhancerData</returns>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.Name">
+            <summary>
+            Name of the reward data
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.Description">
+            <summary>
+            Description of the reward data
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder._RewardTitleKey">
+            <summary>
+            Name title key, overridden by Name
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder._RewardDescriptionKey">
+            <summary>
+            Description title key, overridden by Description
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.DraftOptionsCount">
+            <summary>
+            Number of cards the banner offers
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.DraftPool">
+            <summary>
+            Card pool the banner pulls from
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.Build">
+            <summary>
+            Builds the RewardData represented by this builder's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created RewardData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.IRewardDataBuilder.Build">
+            <summary>
+            Builds the RewardData represented by this builder's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created RewardData</returns>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.RewardNodeID">
+            <summary>
+            ID of the reward node.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.Name">
+            <summary>
+            Name for the node.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.Description">
+            <summary>
+            Description for the node.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.TooltipTitleKey">
+            <summary>
+            Localization key for the node's name.
+            If both this and Name are set, Name will override this.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.TooltipBodyKey">
+            <summary>
+            Localization key for the node's description.
+            If both this and Description are set, Description will override this.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.BaseAssetPath">
+            <summary>
+            Set automatically in the constructor. Base asset path, usually the plugin directory.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.EnabledSpritePath">
+            <summary>
+            Sprite used when the node is on the same path but has not been visited.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.EnabledVisitedSpritePath">
+            <summary>
+            Sprite used when the node is on the same path and has been visited.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.DisabledSpritePath">
+            <summary>
+            Sprite used when the node is on a different path.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.DisabledVisitedSpritePath">
+            <summary>
+            Sprite used when the node cannot be visited because it already has been.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.FrozenSpritePath">
+            <summary>
+            Sprite used when the node is on a path in a future zone, which is still frozen.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.GlowSpritePath">
+            <summary>
+            Sprite used for the mouseover glow effect. Currently unused.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.MapNodePoolIDs">
+            <summary>
+            The IDs of all map node pools the reward node should be inserted into.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.RequiredClass">
+            <summary>
+            This node will not be selected for your run's map unless your clan matches the one specified here
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.MapIconPrefab">
+            <summary>
+            Clickable game object representing the node
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.BuildAndRegister">
+            <summary>
+            Builds the RewardNodeData represented by this builder's parameters recursively
+            and registers it and its components with the appropriate managers.
+            </summary>
+            <returns>The newly registered RewardNodeData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.RewardNodeDataBuilder.Build">
+            <summary>
+            Builds the RewardNodeData represented by this builder's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created RewardNodeData</returns>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.relicEffectClassType">
+            <summary>
+            Don't set directly; use RelicEffectClassType instead.
+            Type of the relic effect class to instantiate.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.RelicEffectClassType">
+            <summary>
+            Type of the relic effect class to instantiate.
+            Implicitly sets RelicEffectClassName.
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.relicEffectClassName">
+            <summary>
+            Don't set directly; use RelicEffectClassName instead.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.RelicEffectClassName">
+            <summary>
+            Implicitly sets TooltipBodyKey and TooltipTitleKey if null.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.Build">
+            <summary>
+            Builds the RelicEffectData represented by this builder's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created RelicEffectData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.AddStatusEffect(System.String,System.Int32)">
+            <summary>
+            Add a status effect to this effect's status effect array.
+            </summary>
+            <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
+            <param name="stackCount">Number of stacks to apply</param>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.RoomModifierDataBuilder.roomStateModifierClassType">
+            <summary>
+            Don't set directly; use RoomStateModifierClassType instead.
+            Type of the room state modifier class to instantiate.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RoomModifierDataBuilder.RoomStateModifierClassType">
+            <summary>
+            Type of the room state modifier class to instantiate.
+            Implicitly sets RoomStateModifierClassName.
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.RoomModifierDataBuilder.roomStateModifierClassName">
+            <summary>
+            Don't set directly; use RoomStateModifierClassName instead.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RoomModifierDataBuilder.RoomStateModifierClassName">
+            <summary>
+            Implicitly sets DescriptionKey, ExtraTooltipBodyKey, and ExtraTooltipTitleKey if null.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.RoomModifierDataBuilder.Build">
+            <summary>
+            Builds the RoomModifierData represented by this builders's parameters recursively;
+            </summary>
+            <returns>The newly created RoomModifierData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.RoomModifierDataBuilder.AddStartingStatusEffect(System.String,System.Int32)">
+            <summary>
+            Add a status effect to this room's params.
+            </summary>
+            <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
+            <param name="stackCount">Number of stacks to apply</param>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.StatusEffectDataBuilder.statusEffectStateType">
+            <summary>
+            Don't set directly; use StatusEffectStateType instead.
+            Type of the status effect class to instantiate.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.StatusEffectDataBuilder.StatusEffectStateType">
+            <summary>
+            Type of the status effect class to instantiate.
+            Implicitly sets StatusEffectStateName.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.StatusEffectDataBuilder.IsStackable">
+            <summary>
+            Whether or not the status effect is stackable. Defaults to true.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.StatusEffectDataBuilder.ShowStackCount">
+            <summary>
+            Whether or not the status effect should show stacks in the card text. Defaults to true.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.StatusEffectDataBuilder.ShowNotificationsOnRemoval">
+            <summary>
+            Defaults to true.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.SubtypeDataBuilder.Build">
+            <summary>
+            Builds the SubtypeData represented by this builders's parameters;
+            </summary>
+            <returns>The newly created SubtypeData</returns>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes">
+            <summary>
+            Provides easy access to all of the base game's card effect types
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs">
+            <summary>
+            Provides easy access to all of the base game's card pool IDs
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs.MegaPool">
+            <summary>
+            Card pool used for the Cov 1 random pool and end-of-battle card rewards, among other things
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaCardPoolIDs.UnitsAllBanner">
+            <summary>
+            Use unknown
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Constants.VanillaCardTraitTypes">
+            <summary>
+            Provides easy access to all of the base game's card trait types
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Constants.VanillaClanIDs">
+            <summary>
+            Provides easy access to all of the base game's clan IDs
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs">
+            <summary>
+            Provides easy access to all of the base game's enhancer pool IDs
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePoolCostReduction">
+            <summary>
+            The first slot in the Spell Upgrade Shop, always contains a -1 Ember upgrade.
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePoolCommon">
+            <summary>
+            The second slot in the Spell Upgrade Shop. Contains Magic Power +10 and Consume, Magic Power +20. 
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.SpellUpgradePool">
+            <summary>
+            The third slot in the Spell Upgrade Shop. Contains Holdover, remove Consume, Permafrost and Doublestack. Permafrost is Stygian themed but not limited.
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.UnitUpgradePoolCommon">
+            <summary>
+            The first two slots in the Unit Upgrade Shop. Contains +10 attack, +25 Health, and +10/+10. Also contains a class specific upgrade for your main and subclass.
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaEnhancerPoolIDs.UnitUpgradePool">
+            <summary>
+            The last slots in the Unit Upgrade Shop. Contains themed rare upgrades available for all classes. Multistrike (Hellhorned), Quick (Awoken), Largestone (Umbra) and Endless (Remnant). Stygian is in rare Spell upgrades.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Constants.VanillaMapNodePoolIDs">
+            <summary>
+            Provides easy access to all of the base game's map node pool IDs
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaMapNodePoolIDs.RandomChosenMainClassUnit">
+            <summary>
+            Holds all the clans' banners, but selects only the one corresponding to the current primary clan
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaMapNodePoolIDs.RandomChosenSubClassUnit">
+            <summary>
+            Holds all the clans' banners, but selects only the one corresponding to the current allied clan
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Constants.VanillaRelicPoolIDs">
+            <summary>
+            Provides easy access to all of the base game's relic pool IDs
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaRelicPoolIDs.MegaRelicPool">
+            <summary>
+            Relic pool used for all random relic rewards
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaRelicPoolIDs.BossPool">
+            <summary>
+            Daedalus boss relic reward
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Constants.VanillaRelicPoolIDs.BossPoolLevel6">
+            <summary>
+            Fel boss relic reward
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Constants.VanillaStatusEffectIDs">
+            <summary>
+            Provides easy access to all of the base game's status effect IDs
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Enums.ExtendedEnum`2">
+            <summary>
+            An abstract class used to create classes that can safely extend onto existing enumerators
+            </summary>
+            <typeparam name="TExtendedEnum"></typeparam>
+            <typeparam name="TEnum"></typeparam>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.#ctor(System.String,System.Int32)">
+            <summary>
+            Base Constructor for creating an Extended Enumerator
+            </summary>
+            <param name="Name">Name of new Enum Value</param>
+            <param name="ID">ID of new Enum Value</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetID">
+            <summary>
+            Returns the ID of the new ExtendedEnum
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetEnum">
+            <summary>
+            Returns the Enum equivalent of the new ExtendedEnum
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetName">
+            <summary>
+            Returns the Variable name of the new ExtendedEnum
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetAllIDs">
+            <summary>
+            Returns all IDs of all ExtendedEnum classes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetAllNames">
+            <summary>
+            Returns all Names of All ExtendedEnum classes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetValueOrDefault(System.String)">
+            <summary>
+            Returns the Value given a key or default
+            </summary>
+            <param name="Key">String Key to get Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetValueOrDefault(System.Int32)">
+            <summary>
+            Returns the Value given a key or default
+            </summary>
+            <param name="Key">Int Key to get Value</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.Convert(`1)">
+            <summary>
+            Returns a Generated Variant of TEnum that can be used for API functions
+            </summary>
+            <param name="enum"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Enums.TrackedValueType">
+            <summary>
+            An Extended Enum
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Interfaces.IInitializable">
+            <summary>
+            Indicates that the class has something to initialize when the game starts up.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Interfaces.IInitializable.Initialize">
+            <summary>
+            Called as soon as the API is set up.
+            As of right now, this is immediately following AssetLoadingManager.Start().
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomAssetManager">
+            <summary>
+            Handles loading custom assets, both raw and from asset bundles.
+            Assets should be placed in the BepInEx/plugins folder.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.LoadedAssetBundles">
+            <summary>
+            Maps path to asset bundle.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomAssetManager.LoadSpriteFromPath(System.String)">
+            <summary>
+            Create a sprite from texture at provided path.
+            </summary>
+            <param name="path">Absolute path of the texture</param>
+            <returns>The sprite, or null if there is no texture at the given path</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomAssetManager.LoadAssetFromBundle``1(MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo)">
+            <summary>
+            Load an asset from an asset bundle
+            </summary>
+            <typeparam name="T">Type of the asset to load</typeparam>
+            <param name="info">Loading info for the asset</param>
+            <returns>The asset specified by the given info</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomAssetManager.LoadAssetFromBundle``1(System.String,System.String)">
+            <summary>
+            Load an asset from an asset bundle
+            </summary>
+            <typeparam name="T">Type of the asset to load</typeparam>
+            <param name="assetName">Name of the asset to load</param>
+            <param name="bundlePath">Absolute Path to the bundle containing the asset to load</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomAssetManager.LoadAssetBundleFromPath(System.String)">
+            <summary>
+            Loads an asset bundle from the path provided.
+            </summary>
+            <param name="path">Absolute path of the bundle</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomAssetManager.UnloadAssetBundle(System.String,System.Boolean)">
+            <summary>
+            Unload an asset bundle.
+            If you no longer need the assets stored in the bundle,
+            you should unload it to free up memory.
+            </summary>
+            <param name="bundleName">Name of the asset bundle to unload</param>
+            <param name="unloadAllLoadedObjects">If true, also unloads all instances of assets in the bundle</param>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo">
+            <summary>
+            Helper class optionally used to aid in loading asset bundles.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo.BundlePath">
+            <summary>
+            Local Path Relative to the Assembly where it is created.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomAssetManager.ISettings">
+            <summary>
+            An Interface used to Represent Settings
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomAssetManager.ISettings`1">
+            <summary>
+            A Generic Interface used to Represent Settings to Apply
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.GameObjectImportSettings.Func">
+            <summary>
+            A Function that is called after Settings are applied, use this to add your own Game Object Logic
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.Texture2DImportSettings.Func">
+            <summary>
+            A Function that is called after Settings are applied, use this to add your own Texture Logic
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.Texture2DImportSettings.Filter">
+            <summary>
+            The Filter that should be when scaling the texture
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.Texture2DImportSettings.WrapModeU">
+            <summary>
+            The WrapMode of the Texture on the horizontal axis
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.Texture2DImportSettings.WrapModeV">
+            <summary>
+            The WrapMode of the Texture on the Vertical axis
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.Texture2DImportSettings.Scale">
+            <summary>
+            The Scale of the Object
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomAssetManager.SpriteImportSettings">
+            <summary>
+            Import Settings for Sprites
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.SpriteImportSettings.Func">
+            <summary>
+            A Function that is called after Settings are applied, use this to add your own Sprite Logic
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.SpriteImportSettings.Rectangle">
+            <summary>
+            Rectangular section of the texture to use for the sprite relative to the textures width and height, keep values between 0 and 1
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.SpriteImportSettings.Pivot">
+            <summary>
+            Sprite's pivot point relative to its graphic rectangle
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.SpriteImportSettings.PixelPerUnit">
+            <summary>
+            The number of pixels in the sprite that correspond to one unit in world space.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.SpriteImportSettings.Extrude">
+            <summary>
+            Amount by which the sprite mesh should be expanded outwards.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.SpriteImportSettings.MeshType">
+            <summary>
+            Controls the type of mesh generated for the sprite.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.SpriteImportSettings.Border">
+            <summary>
+            The border sizes of the sprite (X=left, Y=bottom, Z=right, W=top).
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.SpriteImportSettings.GenerateFallbackPhysicsShape">
+            <summary>
+            Generates a default physics shape for the sprite.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomCardManager">
+            <summary>
+            Handles registration and storage of custom card data.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCardManager.CustomCardData">
+            <summary>
+            Maps custom card IDs to their respective CardData.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCardManager.CardBundleData">
+            <summary>
+            Maps custom card IDs to the information required to load their Assets.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCardManager.SaveManager">
+            <summary>
+            Static reference to the game's SaveManager, which is necessary to register new cards.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCardManager.RegisterCustomCard(CardData,System.Collections.Generic.List{System.String},MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo)">
+            <summary>
+            Register a custom card with the manager, allowing it to show up in game
+            both in the logbook and whenever cards are chosen from the specified pools.
+            </summary>
+            <param name="cardData">The custom card data to register</param>
+            <param name="cardPoolData">The card pools the custom card should be a part of</param>
+            <param name="info">The info used to load Art from AssetBundles</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCardManager.GetCardDataByID(System.String)">
+            <summary>
+            Get the custom card data corresponding to the given ID
+            </summary>
+            <param name="cardID">ID of the custom card to get</param>
+            <returns>The custom card data for the given ID</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCardManager.CreateCardGameObject(UnityEngine.AddressableAssets.AssetReferenceGameObject,UnityEngine.Sprite,System.String)">
+            <summary>
+            Create a GameObject for the custom card with the AssetReference and Sprite
+            </summary>
+            <param name="assetRef">Reference to inform of loading</param>
+            <param name="sprite">Sprite to create card with</param>
+            <param name="cardID">ID of the card to create the sprite for</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCardManager.CreateCardGameObject(System.String)">
+            <summary>
+            Create a GameObject for the custom card with the given ID.
+            Used for loading custom card art.
+            </summary>
+            <param name="cardID">ID of the custom card to create the GameObject for</param>
+            <returns>The GameObject for the custom card with given ID</returns>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCardPoolManager.CustomCardPoolData">
+            <summary>
+            Maps card pool IDs to the CardData of cards which can appear in them.
+            Cards which naturally appear in the pool in the base game will not appear in these lists.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCardPoolManager.AddCardToPools(CardData,System.Collections.Generic.List{System.String})">
+            <summary>
+            Add the card to the card pools with given IDs.
+            </summary>
+            <param name="cardData">CardData to be added to the pools</param>
+            <param name="cardPoolIDs">List of card pool IDs to add the card to</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCardPoolManager.GetCardsForPool(System.String)">
+            <summary>
+            Gets a list of all cards added to the given card pool by mods.
+            Cards which naturally appear in the pool will not be returned.
+            </summary>
+            <param name="cardPoolID">ID of the card pool to get cards for</param>
+            <returns>A list of cards added to the card pool with given ID by mods</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCardPoolManager.GetCardsForPoolSatisfyingConstraints(System.String,ClassData,CollectableRarity,CardPoolHelper.RarityCondition,System.Boolean)">
+            <summary>
+            Gets a list of all cards added to the given card pool by mods
+            which satisfy the constraints specified by the parameters passed in.
+            Cards which naturally appear in the pool will not be returned.
+            </summary>
+            <param name="cardPoolID">ID of the card pool to get cards for</param>
+            <param name="classData">Card must be part of this class</param>
+            <param name="paramRarity">Rarity which is compared against the rarities of the cards in the pool using rarityCondition</param>
+            <param name="rarityCondition">Rarity condition which takes into account paramRarity and the rarities of the cards in the pool</param>
+            <param name="testRarityCondition">Whether or not the rarity condition should be checked</param>
+            <returns>A list of cards added to the card pool with given ID by mods, all of which satisfy the given constraints.</returns>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomCharacterManager">
+            <summary>
+            Handles registration and storage of custom character data.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CustomCharacterData">
+            <summary>
+            Maps custom character IDs to their respective CharacterData.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CharacterSpriteBundleData">
+            <summary>
+            Maps custom character IDs to their respective Sprite Loading Information.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CharacterSkeletonAnimationBundleData">
+            <summary>
+            Maps custom character IDs to their respective Skeleton Animation Loading Information
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.FallbackData">
+            <summary>
+            FallbackData contains a default character prefab which is cloned to create custom characters.
+            Essential for custom character art. Set during game startup.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.SaveManager">
+            <summary>
+            Static reference to the game's SaveManager, which is necessary to register new characters.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.RegisterCustomCharacter(CharacterData,MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo,MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo)">
+            <summary>
+            Register a custom character with the manager, allowing it to show up in game.
+            </summary>
+            <param name="data">The custom character data to register</param>
+            <param name="SpriteInfo">The Information Used to Load an AssetBundle</param>
+            <param name="SkeletonAnimationInfo"></param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.GetCharacterDataByID(System.String)">
+            <summary>
+            Get the custom character data corresponding to the given ID
+            </summary>
+            <param name="characterID">ID of the custom character to get</param>
+            <returns>The custom character data for the given ID</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CreateCharacterGameObject(CharacterData,UnityEngine.GameObject,UnityEngine.Sprite)">
+            <summary>
+            Creates a GameObject for the custom character from characterData, a Sprite, and a GameObject containing SkeletonAnimation
+            </summary>
+            <param name="characterData"></param>
+            <param name="SkeletonData"></param>
+            <param name="sprite"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CreateCharacterGameObject(CharacterData,UnityEngine.GameObject)">
+            <summary>
+            Creates a GameObject for the custom character from characterData and a GameObject containing SkeletonAnimation
+            </summary>
+            <param name="characterData">CharacterData of the Character</param>
+            <param name="SkeletonData">GameObject that is loaded by AssetLoadingInfo and should contain a SkeletonAnimation</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CreateCharacterGameObject(CharacterData,UnityEngine.Sprite)">
+            <summary>
+            Create a GameObject for the custom character from characterData and a sprite
+            </summary>
+            <param name="characterData">Data to create the Character GameObject</param>
+            <param name="sprite">Sprite to use to create the Character GameObject</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CreateCharacterGameObject(System.String)">
+            <summary>
+            Create a GameObject for the custom character with the given ID.
+            Used for loading custom character art.
+            </summary>
+            <param name="characterID">ID of the custom character to create the GameObject for</param>
+            <returns>The GameObject for the custom character with given ID</returns>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CustomSubtypeData">
+            <summary>
+            Maps custom subtypes IDs to their respective SubtypeData.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.RegisterSubtype(System.String)">
+            <summary>
+            Registers a subtype, making it available for localization
+            </summary>
+            <param name="ID">The key used for assigning the subtype, and for its localization</param>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomClassManager">
+            <summary>
+            Handles registration and storage of custom class data.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomClassManager.CustomClassData">
+            <summary>
+            Maps custom class IDs to their respective ClassData.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomClassManager.CustomClassFrame">
+            <summary>
+            Maps custom class IDs to their respective Class Frame Sprites. The list should be in the format Unit, Spell.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomClassManager.CustomClassDraftIcons">
+            <summary>
+            Static reference to the game's SaveManager, which is necessary to register new classes.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomClassManager.SaveManager">
+            <summary>
+            Static reference to the game's SaveManager, which is necessary to register new classes.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomClassManager.RegisterCustomClass(ClassData)">
+            <summary>
+            Register a custom class with the manager, allowing it to show up in game.
+            </summary>
+            <param name="classData">The custom class data to register</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomClassManager.GetClassDataByID(System.String)">
+            <summary>
+            Get the custom class data corresponding to the given ID.
+            </summary>
+            <param name="classID">ID of the custom class to get</param>
+            <returns>The custom class data for the given ID</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomClassManager.CurrentPrimaryClan">
+            <summary>
+            Get the player's current primary clan.
+            </summary>
+            <returns>ClassData of the player's primary clan</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomClassManager.CurrentAlliedClan">
+            <summary>
+            Get the player's current allied clan.
+            </summary>
+            <returns>ClassData of the player's allied clan</returns>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomEnhancerPoolManager.CustomEnhancerPoolData">
+            <summary>
+            Enhancer pool to add the EnhancerData of Enhancers which can appear.
+            Enhancers which naturally appear in the pool in the base game will not appear in these lists.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomEnhancerPoolManager.AddEnhancerToPool(EnhancerData,System.String)">
+            <summary>
+            Add the enhancer to the pool.
+            </summary>
+            <param name="enhancerData">EnhancerData to be added to the pool</param>
+            <param name="enhancerPoolID">Name of the Enhancer pool to add to</param>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomLocalizationManager">
+            <summary>
+            Handles loading of custom localized strings.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomLocalizationManager.ImportCSV(System.String,System.Char)">
+            <summary>
+            Imports new data to the English Localization from a CSV string with separators ';'.
+            Required columns are 'Keys', 'Type', 'Plural', 'Group', 'Desc', 'Descriptions'
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomLocalizationManager.ImportSingleLocalization(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Appends a Single Localization to the Localization Manager
+            </summary>
+            <param name="key">a string that is not null or empty that will act as a key for other strings</param>
+            <param name="type">type for the string to be converted to, typically is Text</param>
+            <param name="desc">description of what key represents, typically unused</param>
+            <param name="plural">The plural of the string, currently broken</param>
+            <param name="group">the name of the group that the key is apart of</param>
+            <param name="descriptions">an extra description</param>
+            <param name="english">The English Translation</param>
+            <param name="french">The French Translation</param>
+            <param name="german">The German Translation</param>
+            <param name="russian">The Russian Translation</param>
+            <param name="portuguese">The Portuguese Translation</param>
+            <param name="chinese">The Chinese Translation</param>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomMapNodeManager.CustomRewardNodeData">
+            <summary>
+            Maps map node pool IDs to the RewardNodeData of reward nodes which can appear in them.
+            Reward nodes which naturally appear in the pool in the base game will not appear in these lists.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomMapNodeManager.SaveManager">
+            <summary>
+            Static reference to the game's SaveManager, which is necessary to register new map node data.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomMapNodeManager.RegisterCustomRewardNode(RewardNodeData,System.Collections.Generic.List{System.String})">
+            <summary>
+            Add the card to the card pools with given IDs.
+            </summary>
+            <param name="rewardNodeData">RewardNodeData to be added to the pools</param>
+            <param name="mapNodePoolIDs">List of map node pool IDs to add the reward node to</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomMapNodeManager.AddRewardNodesForPool(System.String,System.Collections.Generic.List{MapNodeData},RunState.ClassType)">
+            <summary>
+            Gets a list of all reward nodes added to the given map node pool by mods,
+            then adds them to the list passed in.
+            Reward nodes which naturally appear in the pool will not be returned.
+            </summary>
+            <param name="mapNodePoolID">ID of the map node pool to get nodes for</param>
+            <param name="mapNodes">List of map nodes to add the nodes to</param>
+            <param name="classTypeOverride">Whether or not only nodes matching the main/subclass should be added</param>
+            <returns>A list of reward nodes added to the map node pool with given ID by mods</returns>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomCollectableRelicManager">
+            <summary>
+            Handles registration and storage of custom relic data.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCollectableRelicManager.CustomRelicData">
+            <summary>
+            Maps custom relic IDs to their respective RelicData.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCollectableRelicManager.SaveManager">
+            <summary>
+            Static reference to the game's SaveManager, which is necessary to register new relics.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCollectableRelicManager.RegisterCustomRelic(CollectableRelicData,System.Collections.Generic.List{System.String})">
+            <summary>
+            Register a custom relic with the manager, allowing it to show up in game.
+            </summary>
+            <param name="relicData">The custom relic data to register</param>
+            <param name="relicPoolData">The pools to insert the custom relic data into</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCollectableRelicManager.GetRelicDataByID(System.String)">
+            <summary>
+            Get the custom relic data corresponding to the given ID
+            </summary>
+            <param name="relicID">ID of the custom relic to get</param>
+            <returns>The custom relic data for the given ID</returns>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomRelicPoolManager.CustomRelicPoolData">
+            <summary>
+            Maps relic pool IDs to the CollectableRelicData of relics which can appear in them.
+            Relics which naturally appear in the pool in the base game will not appear in these lists.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomRelicPoolManager.AddRelicToPools(CollectableRelicData,System.Collections.Generic.List{System.String})">
+            <summary>
+            Add the relic to the relic pools with given IDs.
+            </summary>
+            <param name="relicData">CollectableRelicData to be added to the pools</param>
+            <param name="relicPoolIDs">List of relic pool IDs to add the relic to</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomRelicPoolManager.GetRelicsForPool(System.String)">
+            <summary>
+            Gets a list of all relics added to the given relic pool by mods.
+            Relics which naturally appear in the pool will not be returned.
+            </summary>
+            <param name="relicPoolID">ID of the relic pool to get relics for</param>
+            <returns>A list of relics added to the relic pool with given ID by mods</returns>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Managers.CustomTriggerManager.CharToCardTriggerDict">
+            <summary>
+            Dictionaries Used for Conversion of CharacterTriggers to CardTriggers
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueTrigger(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,CharacterState,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">
+            <summary>
+            Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.
+            </summary>
+            <param name="charTrigger">CharacterTrigger to be queued</param>
+            <param name="character">Character to Queue the Trigger On</param>
+            <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+            <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+            <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+            <param name="triggerCount">Number of Times to Trigger</param>
+            <returns>Returns Whether it succeeded at Queuing a trigger internally</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueTrigger(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,CharacterState[],System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">
+            <summary>
+            Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.
+            </summary>
+            <param name="charTrigger">CharacterTrigger to be queued</param>
+            <param name="characters">Characters to Queue trigger on</param>
+            <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+            <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+            <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+            <param name="triggerCount">Number of Times to Trigger</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueTrigger``1(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">
+            <summary>
+            Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.
+            </summary>
+            <typeparam name="Manager">Type of Manager to Queue and Run Triggers to</typeparam>
+            <param name="charTrigger">CharacterTrigger to be queued</param>
+            <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+            <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+            <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+            <param name="triggerCount">Number of Times to Trigger</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueAndRunTrigger(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,CharacterState,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">
+            <summary>
+            Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.
+            </summary>
+            <param name="charTrigger">CharacterTrigger to be queued</param>
+            <param name="character">Character to Run the Trigger On</param>
+            <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+            <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+            <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+            <param name="triggerCount">Number of Times to Trigger</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueAndRunTrigger(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,CharacterState[],System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">
+            <summary>
+            Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger
+            </summary>
+            <param name="charTrigger">CharacterTrigger to be queued</param>
+            <param name="characters">Characters to Run the Trigger On</param>
+            <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+            <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+            <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+            <param name="triggerCount">Number of Times to Trigger</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueAndRunTrigger``1(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">
+            <summary>
+            Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger
+            </summary>
+            <typeparam name="Manager">Type of Manager to Queue and Run Triggers to</typeparam>
+            <param name="charTrigger">CharacterTrigger to be queued</param>
+            <param name="canAttackOrHeal">Whether the Character being triggered can Attack or be Healed</param>
+            <param name="canFireTriggers">Whether the trigger can currently be fired</param>
+            <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
+            <param name="triggerCount">Number of Times to Trigger</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.RunTriggerQueueRemote">
+            <summary>
+            Remotely Runs the Trigger Queue of the CombatManager
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.ApplyCardTriggers(MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger,CardState,System.Boolean,System.Int32,System.Boolean,CharacterState,System.Action)">
+            <summary>
+            A general function used to Apply a Card Trigger in different ways, dependant on parameters 
+            </summary>
+            <param name="cardTrigger">CardTrigger to be Applied</param>
+            <param name="playedCard">Card to apply triggers to</param>
+            <param name="fireAllMonsterTriggersInRoom">Whether Apply Card Triggers should fire on monster's Instead, requires Trigger to have an associated character trigger</param>
+            <param name="roomIndex">Room to fire triggers in, -1 defaults to selected room</param>
+            <param name="ignoreDeadInTargeting">Whether effects applied by the trigger should ignore dead in targetting</param>
+            <param name="triggeredCharacter">Character used to determine how many times Card Trigger should be applied</param>
+            <param name="cardTriggerFiredCallback">Action to take after applying trigger</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.FireCardTriggers(MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger,CardState,System.Int32,System.Boolean,CharacterState,System.Int32,System.Action)">
+            <summary>
+            A function used to fire a card trigger, causing the effects of the corresponding trigger on the playedCard to be fired.
+            </summary>
+            <param name="cardTrigger">CardTrigger to be Fired</param>
+            <param name="playedCard">Card to Fire Trigger on</param>
+            <param name="roomIndex">Room to fire trigger in, -1 is current room</param>
+            <param name="ignoreDeadInTargeting">Whether effect should ignore dead in targeting</param>
+            <param name="triggeredCharacter">Character used for applying effects</param>
+            <param name="fireCount">how many times the trigger fires</param>
+            <param name="cardTriggerFiredCallback">Action to call after function is called</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.AssociateTriggers(MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger,MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger)">
+            <summary>
+            Associates two triggers with eachother allowing MT to cast from one trigger to another
+            </summary>
+            <param name="cardTrigger">CardTrigger to be Associated</param>
+            <param name="characterTrigger">CharacterTrigger to be Associated</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.GetAssociatedCardTrigger(CharacterTriggerData.Trigger)">
+            <summary>
+            Gets the Associated Card Trigger from a Character Trigger or null
+            </summary>
+            <param name="trigger">Trigger to get Associate for</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.GetAssociatedCharacterTrigger(CardTriggerType)">
+            <summary>
+            Gets the Associated Character Trigger from a Card Trigger or null
+            </summary>
+            <param name="trigger">Trigger to get Associate for</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.GUIDManager.Test">
+            <summary>
+            Tests to See if GUID generation meets all demands required
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.GUIDManager.ResetTest">
+            <summary>
+            If the Provider is Reset and given the same input, the strings generated should be equal 
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.GUIDManager.ConcurrenceTest">
+            <summary>
+            Generating from the Same key should have the same result no matter how many times its generated
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.GUIDManager.UUIDVersion4Test">
+            <summary>
+            Makes sure that the GUID generated is UUID v4 compliant.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.GUIDManager.OutputKeyForFormatReasons">
+            <summary>
+            Goes through a couple of Random strings and outputs them to make sure format looks correct
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.PluginManager.Plugins">
+            <summary>
+            Maps BepInEx plugin names to the actual plugins.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.PluginManager.AssemblyNameToPath">
+            <summary>
+            Maps plugins' assembly names to their filepaths
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.PluginManager.GetAllPluginGUIDs">
+            <summary>
+            Get the GUIDs of all plugins recognized by BepInEx.
+            </summary>
+            <returns>GUIDs of all plugin recognized by BepInEx</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.PluginManager.GetAllPluginNames">
+            <summary>
+            Get the names of all plugins recognized by BepInEx.
+            </summary>
+            <returns>Names of all plugins recognized by BepInEx</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.PluginManager.GetPluginFromName(System.String)">
+            <summary>
+            Get the plugin with the specified name.
+            </summary>
+            <param name="name">Name of the plugin to get</param>
+            <returns>Plugin with the specified name</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.PluginManager.RegisterPlugin(BepInEx.BaseUnityPlugin)">
+            <summary>
+            Register a plugin with the plugin manager.
+            </summary>
+            <param name="plugin">Plugin to register</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.ProviderManager.TryGetProvider``1(``0@)">
+            <summary>
+            Attempts to Get an IProvider
+            </summary>
+            <typeparam name="T">Type of IProvider</typeparam>
+            <param name="provider">Provider if Succesful</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.ProviderManager.TryGetProvider``1(``0@,System.Boolean@)">
+            <summary>
+            Attempts to Get an IProvider
+            </summary>
+            <typeparam name="T">Type of IProvider</typeparam>
+            <param name="provider">Provider if Succesful</param>
+            <param name="fullyInitialized">Whether the Provider has been fullyInitialized</param>
+            <returns></returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.ProviderManager.NewProviderAvailable(IProvider)">
+            <summary>
+            Informs ProviderManager of a new Provider
+            </summary>
+            <param name="newProvider">Provider</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.ProviderManager.NewProviderFullyInstalled(IProvider)">
+            <summary>
+            Informs ProviderManager of a New fully Initialized Provider
+            </summary>
+            <param name="newProvider">Fully Initialized Provider</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.ProviderManager.ProviderRemoved(IProvider)">
+            <summary>
+            Informs ProviderManager of the Removal of a Provider
+            </summary>
+            <param name="removeProvider">Provider to Remove</param>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.API">
+            <summary>
+            The entry point for the API.
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.API.logger">
+            <summary>
+            The API's logging source.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel,System.String)">
+            <summary>
+            Logs a message into the BepInEx console.
+            </summary>
+            <param name="lvl">The severity of the message</param>
+            <param name="msg">The message to log</param>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.API.Awake">
+            <summary>
+            Called on startup. Executes all Harmony patches anywhere in the API.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.AddCustomCardToPoolPatch">
+            <summary>
+            Adds custom cards to their appropriate pools.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.AddCustomEnhancerToPoolPatch">
+            <summary>
+            Adds custom enhancers to their appropriate pools.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.AddCustomEnhancerToFilteredPoolPatch">
+            <summary>
+            Redirects the filtered searching to grab from the getter function we patched, instead of direct access to the private list.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.AddCustomRelicToPoolPatch">
+            <summary>
+            Adds custom relics to their appropriate pools.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.AddCustomRelicToPoolPatch2">
+            <summary>
+            Without this patch, custom relics, when chosen from a pool, will be replaced by an empty slot.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.AddCustomMapNodeToPoolPatch">
+            <summary>
+            Adds custom reward node data to their appropriate pools.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.AnimInfoSaveAccessPatch">
+            <summary>
+            Prevents an error from uninstantiated animInfos
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.BaseUnityPluginConstructorPatch">
+            <summary>
+            Registers plugins with the PluginManager on startup.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.ClanSetupPatches.ClanCardFramePatch">
+            <summary>
+            Identifies the necessary card frame for the class and installs it through ridiculous means.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.CustomSubtypePatch">
+            <summary>
+            This patch allows the getters for subtype data to return custom values.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.CustomSubtypeListPatch">
+            <summary>
+            This patch allows the getters for subtype data to return custom values as part of a list lookup.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.DisableMultiplayerButtonPatch">
+            <summary>
+            Removes the ability to interact with the multiplayer button.
+            It will still display on the main menu, but it cannot be clicked.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.LoadCustomCardArtPatch">
+            <summary>
+            Loads custom card art.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.LoadCustomCharacterArtPatch">
+            <summary>
+            Loads custom character art.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.SaveManagerInitializationPatch">
+            <summary>
+            Provides managers with the references they need to function.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.AssetLoadingManagerInitializationPatch">
+            <summary>
+            At this point, the API is fully set up.
+            Initialize all API mods by calling their methods.
+            </summary>
+        </member>
+    </members>
+</doc>
