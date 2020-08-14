@@ -58,6 +58,9 @@ namespace MonsterTrainModdingAPI.Builders
             }
         }
 
+        public List<RelicEffectConditionBuilder> EffectConditionBuilders { get; set; }
+        public List<CardTraitDataBuilder> TraitBuilders { get; set; }
+        public List<CharacterTriggerDataBuilder> TriggerBuilders { get; set; }
         public List<RelicEffectCondition> EffectConditions { get; set; }
         public List<CardTraitData> Traits { get; set; }
         public List<CharacterTriggerData> Triggers { get; set; }
@@ -111,6 +114,9 @@ namespace MonsterTrainModdingAPI.Builders
             this.ExcludedTraits = new List<CardTraitData>();
             this.ParamStatusEffects = new StatusEffectStackData[0];
             this.AdditionalTooltips = new AdditionalTooltipData[0];
+            this.EffectConditionBuilders = new List<RelicEffectConditionBuilder>();
+            this.TraitBuilders = new List<CardTraitDataBuilder>();
+            this.TriggerBuilders = new List<CharacterTriggerDataBuilder>();
         }
 
         /// <summary>
@@ -120,6 +126,19 @@ namespace MonsterTrainModdingAPI.Builders
         /// <returns>The newly created RelicEffectData</returns>
         public RelicEffectData Build()
         {
+            foreach (var builder in this.EffectConditionBuilders)
+            {
+                this.EffectConditions.Add(builder.Build());
+            }
+            foreach (var builder in this.TraitBuilders)
+            {
+                this.Traits.Add(builder.Build());
+            }
+            foreach (var builder in this.TriggerBuilders)
+            {
+                this.Triggers.Add(builder.Build());
+            }
+
             RelicEffectData relicEffectData = new RelicEffectData();
             AccessTools.Field(typeof(RelicEffectData), "additionalTooltips").SetValue(relicEffectData, this.AdditionalTooltips);
             AccessTools.Field(typeof(RelicEffectData), "appliedVfx").SetValue(relicEffectData, this.AppliedVfx);

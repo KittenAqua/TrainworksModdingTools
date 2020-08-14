@@ -39,9 +39,13 @@ namespace MonsterTrainModdingAPI.Managers
         public static void ImportCSV(string path, char Separator = ',')
         {
             string CSVstring = "";
+
+            var localPath = Path.GetDirectoryName(new Uri(Assembly.GetCallingAssembly().CodeBase).LocalPath);
+            API.Log(BepInEx.Logging.LogLevel.All, "File: " + Path.Combine(localPath, path));
+
             try
             {   // Open the text file using a stream reader.
-                using (StreamReader sr = new StreamReader("BepInEx/plugins/" + path))
+                using (StreamReader sr = new StreamReader(Path.Combine(localPath, path)))
                 {
                     // Read the stream to a string, and write the string to the console.
                     CSVstring = sr.ReadToEnd();
@@ -49,7 +53,7 @@ namespace MonsterTrainModdingAPI.Managers
             }
             catch (IOException e)
             {
-                API.Log(LogLevel.Error, "We couldn't read the file at " + "BepInEx/plugins/" + path);
+                API.Log(LogLevel.Error, "We couldn't read the file at " + Path.Combine(localPath, path));
                 API.Log(LogLevel.Error, e.Message);
             }
 
