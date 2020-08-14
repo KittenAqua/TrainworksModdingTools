@@ -23,7 +23,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         public static IDictionary<string, List<Sprite>> CustomClassFrame { get; } = new Dictionary<string, List<Sprite>> ();
         /// <summary>
-        /// Static reference to the game's SaveManager, which is necessary to register new classes.
+        /// Maps custom class IDs to their respective Class Draft Icon
         /// </summary>
         public static IDictionary<string, Sprite> CustomClassDraftIcons { get; } = new Dictionary<string, Sprite>();
         /// <summary>

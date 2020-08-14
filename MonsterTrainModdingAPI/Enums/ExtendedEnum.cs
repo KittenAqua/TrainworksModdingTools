@@ -17,8 +17,14 @@ namespace MonsterTrainModdingAPI.Enums
         protected static Dictionary<int, TExtendedEnum> IntToExtendedEnumMap = new Dictionary<int, TExtendedEnum>();
         protected static Dictionary<string, TExtendedEnum> NameToExtendedEnumMap = new Dictionary<string, TExtendedEnum>();
         protected static List<int> ReservedIDs = ((int[])Enum.GetValues(typeof(TEnum))).ToList();
-        protected int ID;
-        protected string Name;
+        protected int ID { get; private set; }
+        protected string name;
+        public string Name
+        {
+            get { return this.name; }
+            private set { this.name = value; }
+        }
+
         /// <summary>
         /// Base Constructor for creating an Extended Enumerator
         /// </summary>
@@ -34,7 +40,7 @@ namespace MonsterTrainModdingAPI.Enums
             }
             if (IntToExtendedEnumMap.ContainsKey(this.ID))
             {
-                MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel.Warning, $"ID#{this.ID} Conflict between {Name} and {IntToExtendedEnumMap[this.ID].GetName()} in domain, {typeof(TExtendedEnum).Name}");
+                MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel.Warning, $"ID#{this.ID} Conflict between {Name} and {IntToExtendedEnumMap[this.ID].Name} in domain, {typeof(TExtendedEnum).Name}");
             }
             if (ReservedIDs.Contains(this.ID))
             {
@@ -43,45 +49,41 @@ namespace MonsterTrainModdingAPI.Enums
             NameToExtendedEnumMap[Name] = (TExtendedEnum)this;
             IntToExtendedEnumMap[ID] = (TExtendedEnum)this;
         }
-        /// <summary>
-        /// Returns the ID of the new ExtendedEnum
-        /// </summary>
-        /// <returns></returns>
-        public int GetID() => ID;
+
         /// <summary>
         /// Returns the Enum equivalent of the new ExtendedEnum
         /// </summary>
-        /// <returns></returns>
+        /// <returns>the Enum equivalent of the new ExtendedEnum</returns>
         public virtual TEnum GetEnum() => (TEnum)Enum.ToObject(typeof(TEnum), ID);
-        /// <summary>
-        /// Returns the Variable name of the new ExtendedEnum
-        /// </summary>
-        /// <returns></returns>
-        public string GetName() => Name;
+
         /// <summary>
         /// Returns all IDs of all ExtendedEnum classes
         /// </summary>
-        /// <returns></returns>
+        /// <returns>all IDs of all ExtendedEnum classes</returns>
         public static int[] GetAllIDs() => IntToExtendedEnumMap.Keys.ToArray();
+
         /// <summary>
-        /// Returns all Names of All ExtendedEnum classes
+        /// Returns all names of all ExtendedEnum classes
         /// </summary>
-        /// <returns></returns>
+        /// <returns>all names of all ExtendedEnum classes</returns>
         public static string[] GetAllNames() => NameToExtendedEnumMap.Keys.ToArray();
+
         /// <summary>
-        /// Returns the Value given a key or default
+        /// Returns the value given a key or default
         /// </summary>
-        /// <param name="Key">String Key to get Value</param>
+        /// <param name="Key">string key to get value</param>
         /// <returns></returns>
         public static TExtendedEnum GetValueOrDefault(string Key) => NameToExtendedEnumMap.GetValueOrDefault(Key);
+
         /// <summary>
-        /// Returns the Value given a key or default
+        /// Returns the value given a key or default
         /// </summary>
-        /// <param name="Key">Int Key to get Value</param>
+        /// <param name="Key">int key to get value</param>
         /// <returns></returns>
         public static TExtendedEnum GetValueOrDefault(int Key) => IntToExtendedEnumMap.GetValueOrDefault(Key);
+
         /// <summary>
-        /// Returns a Generated Variant of TEnum that can be used for API functions
+        /// Returns a generated variant of TEnum that can be used for API functions
         /// </summary>
         /// <param name="enum"></param>
         /// <returns></returns>

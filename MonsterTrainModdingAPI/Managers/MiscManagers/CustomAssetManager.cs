@@ -12,7 +12,7 @@ namespace MonsterTrainModdingAPI.Managers
 {
     /// <summary>
     /// Handles loading custom assets, both raw and from asset bundles.
-    /// Assets should be placed in the BepInEx/plugins folder.
+    /// Assets should be placed inside the plugin's own folder.
     /// </summary>
     public class CustomAssetManager
     {

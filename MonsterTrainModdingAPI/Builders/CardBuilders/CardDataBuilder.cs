@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -252,7 +253,7 @@ namespace MonsterTrainModdingAPI.Builders
                 this.Triggers.Add(builder.Build());
             }
 
-            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(GUIDManager.GenerateDeterministicGUID(this.ClanID));
+            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
             AccessTools.Field(typeof(CardData), "id").SetValue(cardData, this.CardID);
             cardData.name = this.CardID;

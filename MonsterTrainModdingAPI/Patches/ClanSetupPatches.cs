@@ -46,7 +46,9 @@ namespace MonsterTrainModdingAPI.Patches
             }
         }
 
-        // This patch fixes display on card upgrade trees
+        /// <summary>
+        /// This patch fixes display on card upgrade trees
+        /// </summary>
         [HarmonyPatch(typeof(ChampionUpgradeRewardData), "GetUpgradeTree")]
         public class CUSCanInit
         {
@@ -65,8 +67,10 @@ namespace MonsterTrainModdingAPI.Patches
             }
         }
 
-        // This patch adds in the cusom icon for a clan. We could theoretically add these to VictoryUI's ClassIconMapping list, which seems better in theory. 
-        // In practice, we have no way to guarantee the existence of VictoryUI in the scene at the time of Class instantiation, and no way to serialize the class mapping in advance of 
+        /// <summary>
+        /// This patch adds in the custom icon for a clan. We could theoretically add these to VictoryUI's ClassIconMapping list, which seems better in theory. 
+        /// In practice, we have no way to guarantee the existence of VictoryUI in the scene at the time of Class instantiation, and no way to serialize the class mapping in advance of 
+        /// </summary>
         [HarmonyPatch(typeof(RewardItemUI), "TryOverrideDraftIcon")]
         public class CustomClanRewardDraftIcon
         {
@@ -90,7 +94,5 @@ namespace MonsterTrainModdingAPI.Patches
                 }
             }
         }
-
-
     }
 }

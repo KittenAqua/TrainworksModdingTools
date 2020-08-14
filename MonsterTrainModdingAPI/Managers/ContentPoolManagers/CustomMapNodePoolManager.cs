@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace MonsterTrainModdingAPI.Managers
 {
-    public class CustomMapNodeManager
+    public class CustomMapNodePoolManager
     {
         /// <summary>
         /// Maps map node pool IDs to the RewardNodeData of reward nodes which can appear in them.

@@ -5,7 +5,7 @@ using System.Text;
 namespace MonsterTrainModdingAPI.Interfaces
 {
     /// <summary>
-    /// Indicates that the class has something to initialize when the game starts up.
+    /// Indicates that the class has something to initialize when the game starts up
     /// </summary>
     public interface IInitializable
     {
