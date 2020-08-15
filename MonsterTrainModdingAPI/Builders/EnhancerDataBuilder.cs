@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MonsterTrainModdingAPI.Managers;
 using UnityEngine;
 using System.IO;
+using System.Reflection;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -43,7 +44,6 @@ namespace MonsterTrainModdingAPI.Builders
         /// Base game clan IDs should be retrieved via helper class "MTClanIDs".
         /// </summary>
         public string ClanID { get; set; }
-        public Sprite Icon { get; set; }
         /// <summary>
         /// Holds the upgrade to be applied to the chosen card after the enhancer is purchased.
         /// </summary>
@@ -59,12 +59,17 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public List<string> EnhancerPoolIDs { get; set; }
 
+        private string BaseAssetPath { get; set; }
+
 
         public EnhancerDataBuilder()
         {
             this.Name = "";
             this.Description = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
             this.EnhancerPoolIDs = new List<string>();
+            var assembly = Assembly.GetCallingAssembly();
+            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
+
         }
 
         /// <summary>
@@ -119,18 +124,11 @@ namespace MonsterTrainModdingAPI.Builders
             t.Field("nameKey").SetValue(NameKey);
 
             // Create the icon from the asset path
-            if (this.Icon == null && this.AssetPath != null)
+            if (this.AssetPath != null)
             {
-                string path = "BepInEx/plugins/" + this.AssetPath;
-                if (File.Exists(path))
-                {
-                    byte[] fileData = File.ReadAllBytes(path);
-                    Texture2D tex = new Texture2D(1, 1);
-                    UnityEngine.ImageConversion.LoadImage(tex, fileData);
-                    this.Icon = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-                }
+                Sprite iconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.AssetPath);
+                t.Field("icon").SetValue(iconSprite);
             }
-            t.Field("icon").SetValue(Icon);
 
             // A steak pun is a rare medium well done.
             t.Field("rarity").SetValue(Rarity);
