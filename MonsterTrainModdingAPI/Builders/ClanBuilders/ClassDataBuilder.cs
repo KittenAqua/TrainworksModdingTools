@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -153,9 +154,7 @@ namespace MonsterTrainModdingAPI.Builders
             ClassData classData = ScriptableObject.CreateInstance<ClassData>();
             classData.name = this.ClassID;
 
-            MonsterTrainModdingAPI.API.Log(LogLevel.Info, GUIDManager.GenerateDeterministicGUID(this.ClassID));
-            MonsterTrainModdingAPI.API.Log(LogLevel.Info, GUIDManager.GenerateDeterministicGUID(this.ClassID));
-            AccessTools.Field(typeof(ClassData), "id").SetValue(classData, GUIDManager.GenerateDeterministicGUID(this.ClassID));
+            AccessTools.Field(typeof(ClassData), "id").SetValue(classData, GUIDGenerator.GenerateDeterministicGUID(this.ClassID));
             AccessTools.Field(typeof(ClassData), "cardStyle").SetValue(classData, this.CardStyle);
             AccessTools.Field(typeof(ClassData), "clanSelectSfxCue").SetValue(classData, this.ClanSelectSfxCue);
             AccessTools.Field(typeof(ClassData), "classUnlockCondition").SetValue(classData, this.ClassUnlockCondition);
@@ -190,14 +189,14 @@ namespace MonsterTrainModdingAPI.Builders
             {
                 Sprite cardFrameSpellSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.CardFrameSpellPath);
                 Sprite cardFrameUnitSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.CardFrameUnitPath);
-                CustomClassManager.CustomClassFrame.Add(GUIDManager.GenerateDeterministicGUID(this.ClassID), new List<Sprite>() { cardFrameUnitSprite, cardFrameSpellSprite });
+                CustomClassManager.CustomClassFrame.Add(GUIDGenerator.GenerateDeterministicGUID(this.ClassID), new List<Sprite>() { cardFrameUnitSprite, cardFrameSpellSprite });
             }
 
             // Draft Icon
             if (this.DraftIconPath != null)
             {
                 Sprite draftIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.DraftIconPath);
-                CustomClassManager.CustomClassDraftIcons.Add(GUIDManager.GenerateDeterministicGUID(this.ClassID), draftIconSprite);
+                CustomClassManager.CustomClassDraftIcons.Add(GUIDGenerator.GenerateDeterministicGUID(this.ClassID), draftIconSprite);
             }
 
             return classData;

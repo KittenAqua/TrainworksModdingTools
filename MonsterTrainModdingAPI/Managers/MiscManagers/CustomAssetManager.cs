@@ -12,7 +12,7 @@ namespace MonsterTrainModdingAPI.Managers
 {
     /// <summary>
     /// Handles loading custom assets, both raw and from asset bundles.
-    /// Assets should be placed in the BepInEx/plugins folder.
+    /// Assets should be placed inside the plugin's own folder.
     /// </summary>
     public class CustomAssetManager
     {
@@ -56,17 +56,16 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns>The asset specified by the given info</returns>
         public static T LoadAssetFromBundle<T>(AssetBundleLoadingInfo info) where T : UnityEngine.Object
         {
-            T asset = LoadAssetFromBundle<T>(info.AssetName, info.BundlePath);
+            T asset = LoadAssetFromBundle<T>(info.AssetName, info.FullPath);
             ApplyImportSettings(info, ref asset);
             return asset;
         }
-
         /// <summary>
         /// Load an asset from an asset bundle
         /// </summary>
         /// <typeparam name="T">Type of the asset to load</typeparam>
         /// <param name="assetName">Name of the asset to load</param>
-        /// <param name="bundlePath">Path to the bundle containing the asset to load</param>
+        /// <param name="bundlePath">Absolute Path to the bundle containing the asset to load</param>
         /// <returns></returns>
         public static T LoadAssetFromBundle<T>(string assetName, string bundlePath) where T : UnityEngine.Object
         {
@@ -113,16 +112,29 @@ namespace MonsterTrainModdingAPI.Managers
         {
             public IDictionary<Type, ISettings> LoadingDictionary { get; private set; } = new Dictionary<Type, ISettings>();
             public string AssetName { get; set; }
+            /// <summary>
+            /// Local Path Relative to the Assembly where it is created.
+            /// </summary>
             public string BundlePath { get; set; }
+            private string PluginPath;
+            public string FullPath
+            {
+                get
+                {
+                    return Path.Combine(PluginPath, BundlePath);
+                }
+            }
             public AssetBundleLoadingInfo(string assetName, string bundlePath)
             {
                 this.AssetName = assetName;
                 this.BundlePath = bundlePath;
+                var assembly = Assembly.GetCallingAssembly();
+                PluginPath = PluginManager.AssemblyNameToPath[assembly.FullName];
             }
 
             public AssetBundleLoadingInfo AddImportSettings<T>(T ImportSettings) where T : ISettings
             {
-                foreach(Type inter in ImportSettings.GetType().GetInterfaces())
+                foreach (Type inter in ImportSettings.GetType().GetInterfaces())
                 {
                     if (inter.IsGenericType && (typeof(ISettings).IsAssignableFrom(inter)))
                     {

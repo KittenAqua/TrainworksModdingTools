@@ -76,11 +76,17 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="russian">The Russian Translation</param>
         /// <param name="portuguese">The Portuguese Translation</param>
         /// <param name="chinese">The Chinese Translation</param>
-        public static void ImportSingleLocalization(string key, string type, string desc, string plural, string group, string descriptions, string english, string french, string german, string russian, string portuguese, string chinese)
+        public static void ImportSingleLocalization(string key, string type, string desc, string plural, string group, string descriptions, string english, string french = null, string german = null, string russian = null, string portuguese = null, string chinese = null)
         {
             if (string.IsNullOrEmpty(key)) return;
             if (!key.HasTranslation())
             {
+                if (french == null) french = english;
+                if (german == null) german = english;
+                if (russian == null) russian = english;
+                if (portuguese == null) portuguese = english;
+                if (chinese == null) chinese = english;
+
                 var miniCSVBuilder = new System.Text.StringBuilder();
                 miniCSVBuilder.Append("Key;Type;Desc;Plural;Group;Descriptions;English [en-US];French [fr-FR];German [de-DE];Russian;Portuguese (Brazil);Chinese [zh-CN]\n");
                 miniCSVBuilder.Append(key + ";");

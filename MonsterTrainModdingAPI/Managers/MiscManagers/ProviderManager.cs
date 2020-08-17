@@ -25,6 +25,16 @@ namespace MonsterTrainModdingAPI.Managers
                 return provider;
             }
         }
+
+        public static CardStatistics CardStatistics
+        {
+            get
+            {
+                TryGetProvider<CardStatistics>(out CardStatistics provider);
+                return provider;
+            }
+        }
+
         /// <summary>
         /// Attempts to Get an IProvider
         /// </summary>
@@ -35,6 +45,7 @@ namespace MonsterTrainModdingAPI.Managers
         {
             return TryGetProvider<T>(out provider, out _);
         }
+
         /// <summary>
         /// Attempts to Get an IProvider
         /// </summary>
@@ -54,6 +65,7 @@ namespace MonsterTrainModdingAPI.Managers
             provider = (T)provider1.Item2;
             return false;
         }
+
         /// <summary>
         /// Informs ProviderManager of a new Provider
         /// </summary>
@@ -63,6 +75,7 @@ namespace MonsterTrainModdingAPI.Managers
             ProviderDictionary[newProvider.GetType()] = (false, newProvider);
             MonsterTrainModdingAPI.API.Log(BepInEx.Logging.LogLevel.Debug, newProvider.GetType().AssemblyQualifiedName + " Was Registered to ProviderManager");
         }
+
         /// <summary>
         /// Informs ProviderManager of a New fully Initialized Provider
         /// </summary>
@@ -74,6 +87,7 @@ namespace MonsterTrainModdingAPI.Managers
                 ProviderDictionary[newProvider.GetType()] = (true, newProvider);
             }
         }
+
         /// <summary>
         /// Informs ProviderManager of the Removal of a Provider
         /// </summary>
