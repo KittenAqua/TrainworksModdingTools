@@ -6,6 +6,7 @@ using MonsterTrainModdingAPI.Builders;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Managers
 {
@@ -18,10 +19,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// Maps custom card IDs to their respective CardData.
         /// </summary>
         public static IDictionary<string, CardData> CustomCardData { get; } = new Dictionary<string, CardData>();
-        /// <summary>
-        /// Maps custom card IDs to the information required to load their Assets.
-        /// </summary>
-        public static IDictionary<string, CustomAssetManager.AssetBundleLoadingInfo> CardBundleData { get; } = new Dictionary<string, CustomAssetManager.AssetBundleLoadingInfo>();
         /// <summary>
         /// Static reference to the game's SaveManager, which is necessary to register new cards.
         /// </summary>
@@ -36,10 +33,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="info">The info used to load Art from AssetBundles</param>
         public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData, CustomAssetManager.AssetBundleLoadingInfo info = null)
         {
-            if (info != null)
-            {
-                CardBundleData.Add(cardData.GetID(), info);
-            }
             CustomCardData.Add(cardData.GetID(), cardData);
             CustomCardPoolManager.AddCardToPools(cardData, cardPoolData);
             SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
@@ -52,74 +45,14 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns>The custom card data for the given ID</returns>
         public static CardData GetCardDataByID(string cardID)
         {
-            if (CustomCardData.ContainsKey(cardID))
+            var guid = GUIDGenerator.GenerateDeterministicGUID(cardID);
+            if (CustomCardData.ContainsKey(guid))
             {
-                return CustomCardData[cardID];
+                return CustomCardData[guid];
             }
             API.Log(LogLevel.All, "Couldn't find custom card: " + cardID + " - This will cause crashes.");
             
             return null;
-        }
-
-        /// <summary>
-        /// Create a GameObject for the custom card with the AssetReference and Sprite
-        /// </summary>
-        /// <param name="assetRef">Reference to inform of loading</param>
-        /// <param name="sprite">Sprite to create card with</param>
-        /// <param name="cardID">ID of the card to create the sprite for</param>
-        /// <returns></returns>
-        private static GameObject CreateCardGameObject(AssetReferenceGameObject assetRef, Sprite sprite, string cardID)
-        {
-            // Create a new card GameObject from scratch
-            // Cards are simple enough that we can get away with doing this
-            GameObject cardGameObject = new GameObject();
-            cardGameObject.name = cardID;
-            Image newImage = cardGameObject.AddComponent<Image>();
-            newImage.sprite = sprite;
-
-            // Tell the asset reference that the GameObject has already been loaded
-            // This circumvents an issue where the game attempts to load the asset but fails
-            AccessTools.Field(typeof(AssetReference), "m_LoadedAsset").SetValue(assetRef, cardGameObject);
-            return cardGameObject;
-        }
-
-        /// <summary>
-        /// Create a GameObject for the custom card with the given ID.
-        /// Used for loading custom card art.
-        /// </summary>
-        /// <param name="cardID">ID of the custom card to create the GameObject for</param>
-        /// <returns>The GameObject for the custom card with given ID</returns>
-        public static GameObject CreateCardGameObject(string cardID)
-        {
-            CardData cardData = CustomCardData[cardID];
-
-
-            // Get the path to the asset from the card's asset reference data
-            var assetRef = (AssetReferenceGameObject)AccessTools.Field(typeof(CardData), "cardArtPrefabVariantRef").GetValue(cardData);
-            Sprite sprite = null;
-            if (CardBundleData.ContainsKey(cardID))
-            {
-                //Load Texture Using AssetBundle and AssetBundle's Texture Settings
-                Texture2D tex = CustomAssetManager.LoadAssetFromBundle<Texture2D>(CardBundleData[cardID]);
-                //Load Sprite Using Texture and AssetBundle's Sprite Settings
-                sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-                CustomAssetManager.ApplyImportSettings<Sprite>(CardBundleData[cardID], ref sprite);
-            }
-            else
-            {
-                // Get the path to the asset from the card's asset reference data
-                string assetPath = (string)AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").GetValue(assetRef);
-                sprite = CustomAssetManager.LoadSpriteFromPath(assetPath);
-            }
-            //Check if Sprite was successfully loaded
-            if (sprite != null)
-            {
-                return CreateCardGameObject(assetRef, sprite, cardID);
-            }
-            else
-            {
-                return null;
-            }
         }
     }
 }

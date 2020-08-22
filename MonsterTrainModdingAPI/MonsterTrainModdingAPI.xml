@@ -4,6 +4,54 @@
         <name>MonsterTrainModdingAPI</name>
     </assembly>
     <members>
+        <member name="M:MonsterTrainModdingAPI.AssetConstructors.CardArtAssetConstructor.CreateCardGameObject(UnityEngine.AddressableAssets.AssetReference,UnityEngine.Sprite)">
+            <summary>
+            Create a GameObject for the custom card with the AssetReference and Sprite
+            </summary>
+            <param name="assetRef">Reference containing the asset information</param>
+            <param name="sprite">Sprite to create card with</param>
+            <returns>The GameObject for the card</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.AssetConstructors.CardArtAssetConstructor.CreateCardGameObject(UnityEngine.AddressableAssets.AssetReference)">
+            <summary>
+            Create a GameObject for the custom card with the given ID.
+            Used for loading custom card art.
+            </summary>
+            <param name="assetRef">Reference containing the asset information</param>
+            <returns>The GameObject for the custom card specified by the asset reference</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.AssetConstructors.CharacterAssetConstructor.CreateCharacterGameObject(UnityEngine.AddressableAssets.AssetReference,UnityEngine.Sprite)">
+            <summary>
+            Create a GameObject for the custom card with the AssetReference and Sprite
+            </summary>
+            <param name="assetRef">Reference containing the asset information</param>
+            <param name="sprite">Sprite to create card with</param>
+            <returns>The GameObject for the character</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.AssetConstructors.CharacterAssetConstructor.CreateCharacterGameObject(UnityEngine.AddressableAssets.AssetReference)">
+            <summary>
+            Create a GameObject for the custom card with the given ID.
+            Used for loading custom card art.
+            </summary>
+            <param name="assetRef">Reference containing the asset information</param>
+            <returns>The GameObject for the custom character specified by the asset reference</returns>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.AssetRefBuilder.filename">
+            <summary>
+            Don't set directly; use Filename instead.
+            This is the absolute path to the file.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.AssetRefBuilder.Filename">
+            <summary>
+            This is the absolute path to the file. Implictly sets AssetID if null.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.AssetRefBuilder.AssetGUID">
+            <summary>
+            Don't bother setting manually; the builder will set this automatically.
+            </summary>
+        </member>
         <member name="M:MonsterTrainModdingAPI.Builders.BuilderUtils.AddStatusEffect(System.String,System.Int32,StatusEffectStackData[])">
             <summary>
             Create a new status effect array and add the status effect with the specified information onto the end of it.
@@ -122,6 +170,11 @@
         <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.TriggerBuilders">
             <summary>
             Append to this list to add new card triggers. The Build() method recursively builds all nested builders.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.CardArtPrefabVariantRefBuilder">
+            <summary>
+            Set CardArtPrefabVariantRef without reflection. The Build() method recursively builds all nested builders.
             </summary>
         </member>
         <member name="P:MonsterTrainModdingAPI.Builders.CardDataBuilder.Effects">
@@ -582,6 +635,11 @@
         <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.CharacterPrefabVariantRef">
             <summary>
             Use an existing base game character's art by filling this in with the appropriate character's asset reference information.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.CharacterPrefabVariantRefBuilder">
+            <summary>
+            Set CardArtPrefabVariantRef without reflection. The Build() method recursively builds all nested builders.
             </summary>
         </member>
         <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.CanAttack">
@@ -1050,6 +1108,16 @@
             Base game clan IDs should be retrieved via helper class "MTClanIDs".
             </summary>
         </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.FullAssetPath">
+            <summary>
+            The full, absolute path to the asset. Concatenates BaseAssetPath and IconPath.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.BaseAssetPath">
+            <summary>
+            Set automatically in the constructor. Base asset path, usually the plugin directory.
+            </summary>
+        </member>
         <member name="M:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.BuildAndRegister">
             <summary>
             Builds the RelicData represented by this builder's parameters recursively
@@ -1443,11 +1511,6 @@
             Maps custom card IDs to their respective CardData.
             </summary>
         </member>
-        <member name="P:MonsterTrainModdingAPI.Managers.CustomCardManager.CardBundleData">
-            <summary>
-            Maps custom card IDs to the information required to load their Assets.
-            </summary>
-        </member>
         <member name="P:MonsterTrainModdingAPI.Managers.CustomCardManager.SaveManager">
             <summary>
             Static reference to the game's SaveManager, which is necessary to register new cards.
@@ -1469,23 +1532,6 @@
             <param name="cardID">ID of the custom card to get</param>
             <returns>The custom card data for the given ID</returns>
         </member>
-        <member name="M:MonsterTrainModdingAPI.Managers.CustomCardManager.CreateCardGameObject(UnityEngine.AddressableAssets.AssetReferenceGameObject,UnityEngine.Sprite,System.String)">
-            <summary>
-            Create a GameObject for the custom card with the AssetReference and Sprite
-            </summary>
-            <param name="assetRef">Reference to inform of loading</param>
-            <param name="sprite">Sprite to create card with</param>
-            <param name="cardID">ID of the card to create the sprite for</param>
-            <returns></returns>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Managers.CustomCardManager.CreateCardGameObject(System.String)">
-            <summary>
-            Create a GameObject for the custom card with the given ID.
-            Used for loading custom card art.
-            </summary>
-            <param name="cardID">ID of the custom card to create the GameObject for</param>
-            <returns>The GameObject for the custom card with given ID</returns>
-        </member>
         <member name="T:MonsterTrainModdingAPI.Managers.CustomCharacterManager">
             <summary>
             Handles registration and storage of custom character data.
@@ -1506,7 +1552,7 @@
             Maps custom character IDs to their respective Skeleton Animation Loading Information
             </summary>
         </member>
-        <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.FallbackData">
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.TemplateCharacter">
             <summary>
             FallbackData contains a default character prefab which is cloned to create custom characters.
             Essential for custom character art. Set during game startup.
@@ -1531,39 +1577,6 @@
             </summary>
             <param name="characterID">ID of the custom character to get</param>
             <returns>The custom character data for the given ID</returns>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CreateCharacterGameObject(CharacterData,UnityEngine.GameObject,UnityEngine.Sprite)">
-            <summary>
-            Creates a GameObject for the custom character from characterData, a Sprite, and a GameObject containing SkeletonAnimation
-            </summary>
-            <param name="characterData"></param>
-            <param name="SkeletonData"></param>
-            <param name="sprite"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CreateCharacterGameObject(CharacterData,UnityEngine.GameObject)">
-            <summary>
-            Creates a GameObject for the custom character from characterData and a GameObject containing SkeletonAnimation
-            </summary>
-            <param name="characterData">CharacterData of the Character</param>
-            <param name="SkeletonData">GameObject that is loaded by AssetLoadingInfo and should contain a SkeletonAnimation</param>
-            <returns></returns>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CreateCharacterGameObject(CharacterData,UnityEngine.Sprite)">
-            <summary>
-            Create a GameObject for the custom character from characterData and a sprite
-            </summary>
-            <param name="characterData">Data to create the Character GameObject</param>
-            <param name="sprite">Sprite to use to create the Character GameObject</param>
-            <returns></returns>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CreateCharacterGameObject(System.String)">
-            <summary>
-            Create a GameObject for the custom character with the given ID.
-            Used for loading custom character art.
-            </summary>
-            <param name="characterID">ID of the custom character to create the GameObject for</param>
-            <returns>The GameObject for the custom character with given ID</returns>
         </member>
         <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CustomSubtypeData">
             <summary>
@@ -1756,6 +1769,21 @@
             <summary>
             Handles loading custom assets, both raw and from asset bundles.
             Assets should be placed inside the plugin's own folder.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.RuntimeKeyToFilepath">
+            <summary>
+            Maps asset runtime key (from GUID) to the path it's stored in
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Managers.CustomAssetManager.RuntimeKeyToAssetType">
+            <summary>
+            Maps asset runtime key (from GUID) to the type of the asset
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetTypeToAssetConstructor">
+            <summary>
+            Maps asset types to the classes used to make them
             </summary>
         </member>
         <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.LoadedAssetBundles">
@@ -2209,6 +2237,11 @@
             In practice, we have no way to guarantee the existence of VictoryUI in the scene at the time of Class instantiation, and no way to serialize the class mapping in advance of 
             </summary>
         </member>
+        <member name="T:MonsterTrainModdingAPI.Patches.CustomAssetLoadingPatch">
+            <summary>
+            Override the asset loading procedure when loading custom assets
+            </summary>
+        </member>
         <member name="T:MonsterTrainModdingAPI.Patches.CustomSubtypePatch">
             <summary>
             This patch allows the getters for subtype data to return custom values.
@@ -2238,16 +2271,6 @@
             <summary>
             At this point, the API is fully set up.
             Initialize all API mods by calling their methods.
-            </summary>
-        </member>
-        <member name="T:MonsterTrainModdingAPI.Patches.LoadCustomCardArtPatch">
-            <summary>
-            Loads custom card art.
-            </summary>
-        </member>
-        <member name="T:MonsterTrainModdingAPI.Patches.LoadCustomCharacterArtPatch">
-            <summary>
-            Loads custom character art.
             </summary>
         </member>
         <member name="T:MonsterTrainModdingAPI.Patches.SETooltipLocalizationPatch">

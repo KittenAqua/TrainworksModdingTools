@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -95,6 +96,10 @@ namespace MonsterTrainModdingAPI.Builders
         /// Use an existing base game character's art by filling this in with the appropriate character's asset reference information.
         /// </summary>
         public AssetReferenceGameObject CharacterPrefabVariantRef { get; set; }
+        /// <summary>
+        /// Set CardArtPrefabVariantRef without reflection. The Build() method recursively builds all nested builders.
+        /// </summary>
+        public AssetRefBuilder CharacterPrefabVariantRefBuilder { get; set; }
 
         /// <summary>
         /// Whether or not the character is able to attack.
@@ -221,7 +226,8 @@ namespace MonsterTrainModdingAPI.Builders
                 this.RoomModifiers.Add(builder.Build());
             }
 
-            AccessTools.Field(typeof(CharacterData), "id").SetValue(characterData, this.CharacterID);
+            var guid = GUIDGenerator.GenerateDeterministicGUID(this.CharacterID);
+            AccessTools.Field(typeof(CharacterData), "id").SetValue(characterData, guid);
             AccessTools.Field(typeof(CharacterData), "animationController").SetValue(characterData, this.AnimationController);
             AccessTools.Field(typeof(CharacterData), "ascendsTrainAutomatically").SetValue(characterData, this.AscendsTrainAutomatically);
             AccessTools.Field(typeof(CharacterData), "attackDamage").SetValue(characterData, this.AttackDamage);
@@ -235,7 +241,16 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CharacterData), "characterLoreTooltipKeys").SetValue(characterData, this.CharacterLoreTooltipKeys);
             if (this.CharacterPrefabVariantRef == null)
             {
-                this.CreateAndSetCharacterArtPrefabVariantRef(this.AssetPath, this.FullAssetPath);
+                if (this.CharacterPrefabVariantRefBuilder == null)
+                {
+                    this.CharacterPrefabVariantRefBuilder = new AssetRefBuilder
+                    {
+                        Filename = this.FullAssetPath,
+                        DebugName = this.AssetPath,
+                        AssetType = AssetRefBuilder.AssetTypeEnum.Character
+                    };
+                }
+                this.CharacterPrefabVariantRef = this.CharacterPrefabVariantRefBuilder.BuildAndRegister();
             }
             AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef").SetValue(characterData, this.CharacterPrefabVariantRef);
             AccessTools.Field(typeof(CharacterData), "characterSoundData").SetValue(characterData, this.CharacterSoundData);
@@ -262,6 +277,7 @@ namespace MonsterTrainModdingAPI.Builders
             }
             AccessTools.Field(typeof(CharacterData), "subtypeKeys").SetValue(characterData, this.SubtypeKeys);
             AccessTools.Field(typeof(CharacterData), "triggers").SetValue(characterData, this.Triggers);
+
             return characterData;
         }
 

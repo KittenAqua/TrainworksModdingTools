@@ -7,6 +7,10 @@ using BepInEx.Configuration;
 using System.IO;
 using System.Reflection;
 using HarmonyLib;
+using ShinyShoe;
+using UnityEngine.AddressableAssets;
+using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.AssetConstructors;
 
 namespace MonsterTrainModdingAPI.Managers
 {
@@ -17,9 +21,58 @@ namespace MonsterTrainModdingAPI.Managers
     public class CustomAssetManager
     {
         /// <summary>
+        /// Maps asset runtime key (from GUID) to the path it's stored in
+        /// </summary>
+        public static IDictionary<Hash128, string> RuntimeKeyToFilepath { get; } = new Dictionary<Hash128, string>();
+        /// <summary>
+        /// Maps asset runtime key (from GUID) to the type of the asset
+        /// </summary>
+        public static IDictionary<Hash128, AssetRefBuilder.AssetTypeEnum> RuntimeKeyToAssetType = new Dictionary<Hash128, AssetRefBuilder.AssetTypeEnum>();
+        /// <summary>
+        /// Maps asset types to the classes used to make them
+        /// </summary>
+        public static IDictionary<AssetRefBuilder.AssetTypeEnum, Interfaces.IAssetConstructor> AssetTypeToAssetConstructor = new Dictionary<AssetRefBuilder.AssetTypeEnum, Interfaces.IAssetConstructor>();
+
+        /// <summary>
         /// Maps path to asset bundle.
         /// </summary>
-        private static Dictionary<string, AssetBundle> LoadedAssetBundles { get; } = new Dictionary<string, AssetBundle>();
+        public static Dictionary<string, AssetBundle> LoadedAssetBundles { get; } = new Dictionary<string, AssetBundle>();
+
+        public static void InitializeAssetConstructors()
+        {
+            AssetTypeToAssetConstructor[AssetRefBuilder.AssetTypeEnum.CardArt] = new CardArtAssetConstructor();
+            AssetTypeToAssetConstructor[AssetRefBuilder.AssetTypeEnum.Character] = new CharacterAssetConstructor();
+        }
+
+        public static void RegisterCustomAsset(string assetGUID, string filename, AssetRefBuilder.AssetTypeEnum assetType)
+        {
+            var runtimeKey = Hash128.Parse(assetGUID);
+            RuntimeKeyToFilepath[runtimeKey] = filename;
+            RuntimeKeyToAssetType[runtimeKey] = assetType;
+        }
+
+        public static GameObject LoadGameObjectFromAssetRef(AssetReference assetRef)
+        {
+            var runtimeKey = assetRef.RuntimeKey;
+            if (RuntimeKeyToFilepath.ContainsKey(runtimeKey))
+            {
+                var assetType = RuntimeKeyToAssetType[runtimeKey];
+                var assetConstructor = AssetTypeToAssetConstructor[assetType];
+                return assetConstructor.Construct(assetRef);
+            }
+            API.Log(BepInEx.Logging.LogLevel.Warning, "Runtime key is not registered with CustomAssetManager: " + runtimeKey);
+            return null;
+        }
+
+        public static Sprite LoadSpriteFromRuntimeKey(Hash128 runtimeKey)
+        {
+            if (RuntimeKeyToFilepath.ContainsKey(runtimeKey))
+            {
+                return LoadSpriteFromPath(RuntimeKeyToFilepath[runtimeKey]);
+            }
+            API.Log(BepInEx.Logging.LogLevel.Warning, "Custom asset failed to load from runtime key: " + runtimeKey);
+            return null;
+        }
 
         /// <summary>
         /// Create a sprite from texture at provided path.
@@ -37,6 +90,7 @@ namespace MonsterTrainModdingAPI.Managers
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
                 return sprite;
             }
+            API.Log(BepInEx.Logging.LogLevel.Warning, "Custom asset failed to load from path: " + path);
             return null;
         }
 
