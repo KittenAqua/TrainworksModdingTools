@@ -96,8 +96,6 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public string DraftIconPath { get; set; }
 
-        public string ClanSelectSfxCue { get; set; }
-
         public List<ClassData.StartingCardOptions> MainClassStartingCards { get; set; }
         public List<ClassData.StartingCardOptions> SubclassStartingCards { get; set; }
 
@@ -156,7 +154,6 @@ namespace MonsterTrainModdingAPI.Builders
 
             AccessTools.Field(typeof(ClassData), "id").SetValue(classData, GUIDGenerator.GenerateDeterministicGUID(this.ClassID));
             AccessTools.Field(typeof(ClassData), "cardStyle").SetValue(classData, this.CardStyle);
-            AccessTools.Field(typeof(ClassData), "clanSelectSfxCue").SetValue(classData, this.ClanSelectSfxCue);
             AccessTools.Field(typeof(ClassData), "classUnlockCondition").SetValue(classData, this.ClassUnlockCondition);
             AccessTools.Field(typeof(ClassData), "classUnlockParam").SetValue(classData, this.ClassUnlockParam);
             AccessTools.Field(typeof(ClassData), "classUnlockPreviewTexts").SetValue(classData, this.ClassUnlockPreviewTexts);

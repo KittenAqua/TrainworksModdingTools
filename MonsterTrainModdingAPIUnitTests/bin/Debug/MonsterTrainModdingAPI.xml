@@ -496,74 +496,6 @@
             <param name="paramInt"></param>
             <returns></returns>
         </member>
-        <member name="F:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.upgradeTitle">
-            <summary>
-            Don't set directly; use UpgradeTitle instead.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.UpgradeTitle">
-            <summary>
-            Overrides UpgradeTitleKey
-            Implicitly sets UpgradeTitleKey, UpgradeDescriptionKey, and UpgradeNotificationKey if null
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.UpgradeDescription">
-            <summary>
-            Overrides UpgradeDescriptionKey
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.UpgradeNotification">
-            <summary>
-            Overrides UpgradeNotificationKey
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.StatusEffectUpgrades">
-            <summary>
-            To add a status effect, no need for a builder. new StatusEffectStackData with properties statusId (string) and count (int) are sufficient.
-            Get the string with -> statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.AllowedCardPools">
-            <summary>
-            If there are any cards in this pool, then only the cards in this pool will be allowed
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.DisallowedCardPools">
-            <summary>
-            No cards in this pool will be allowed
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.RequiredSubtypesOperator">
-            <summary>
-            Operator determines if we require all or at least one
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.UpgradeDisabledReason">
-            <summary>
-            This is the reason why a card is filtered away from having this upgrade applied to it
-            </summary>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.Build">
-            <summary>
-            Builds the RoomModifierData represented by this builders's parameters recursively;
-            </summary>
-            <returns>The newly created RoomModifierData</returns>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeTreeDataBuilder.Champion">
-            <summary>
-            Please make a custom ChampionData class to add here.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeTreeDataBuilder.UpgradeTreesInternal">
-            <summary>
-            Use this field if you're copying an existing already built tree.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeTreeDataBuilder.UpgradeTrees">
-            <summary>
-            This is a list of lists of CardUpgradeDataBuilders. Base game clans have a 3x3 list.
-            </summary>
-        </member>
         <member name="M:MonsterTrainModdingAPI.Builders.ChampionCardDataBuilder.BuildAndRegister(System.Int32)">
             <summary>
             Builds the CardData represented by this builder's parameters recursively
@@ -863,146 +795,6 @@
             </summary>
             <returns>The newly created ClassData</returns>
         </member>
-        <member name="F:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.collectableRelicID">
-            <summary>
-            Don't set directly; use CardID instead.
-            Unique string used to store and retrieve the relic data.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.CollectableRelicID">
-            <summary>
-            Unique string used to store and retrieve the relic data.
-            Implicitly sets NameKey and DescriptionKey.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.RelicPoolIDs">
-            <summary>
-            The IDs of all relic pools the relic should be inserted into.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.Name">
-            <summary>
-            Name displayed for the relic.
-            Overridden by the NameKey field.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.NameKey">
-            <summary>
-            Localization key for the relic's name.
-            Overrides the Name field.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.Description">
-            <summary>
-            Description displayed for the relic.
-            Overridden by the DescriptionKey field.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.DescriptionKey">
-            <summary>
-            Localization key for the relic's description.
-            Overrides the Description field.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.IconPath">
-            <summary>
-            Custom asset path to load relic art from.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.ClanID">
-            <summary>
-            ID of the clan the card is a part of. Leave null for clanless.
-            Base game clan IDs should be retrieved via helper class "MTClanIDs".
-            </summary>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.BuildAndRegister">
-            <summary>
-            Builds the RelicData represented by this builder's parameters recursively
-            and registers it and its components with the appropriate managers.
-            </summary>
-            <returns>The newly registered RelicData</returns>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.Build">
-            <summary>
-            Builds the RelicData represented by this builder's parameters recursively;
-            all Builders represented in this class's various fields will also be built.
-            </summary>
-            <returns>The newly created RelicData</returns>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.SetClan(System.String)">
-            <summary>
-            Sets this card's clan to the clan whose ID is passed in
-            </summary>
-            <param name="clanID">ID of the clan, most easily retrieved using the helper class "MTClanIDs"</param>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ID">
-            <summary>
-            Internal ID for use by Unity
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Name">
-            <summary>
-            Name displayed for the relic.
-            Overridden by the NameKey field.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.NameKey">
-            <summary>
-            Localization key for the relic's name.
-            Overrides the Name field.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Description">
-            <summary>
-            Description displayed for the relic.
-            Overridden by the DescriptionKey field.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.DescriptionKey">
-            <summary>
-            Localization key for the relic's description.
-            Overrides the Description field.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.AssetPath">
-            <summary>
-            Custom asset path to load relic art from.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ClanID">
-            <summary>
-            ID of the clan the card is a part of. Leave null for clanless.
-            Base game clan IDs should be retrieved via helper class "MTClanIDs".
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Upgrade">
-            <summary>
-            Holds the upgrade to be applied to the chosen card after the enhancer is purchased.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.CardType">
-            <summary>
-            Determines which kinds of cards it upgrades.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.EnhancerPoolIDs">
-            <summary>
-            The IDs of all enhancer pools the relic should be inserted into.
-            </summary>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.BuildAndRegister">
-            <summary>
-            Builds the EnhancerData represented by this builder's parameters
-            and registers it and its components with the appropriate managers.
-            </summary>
-            <returns>The newly registered EnhancerData</returns>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Build">
-            <summary>
-            Builds the EnhancerData represented by this builder's parameters.
-            </summary>
-            <returns>The newly created EnhancerData</returns>
-        </member>
         <member name="P:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.Name">
             <summary>
             Name of the reward data
@@ -1138,42 +930,6 @@
             </summary>
             <returns>The newly created RewardNodeData</returns>
         </member>
-        <member name="F:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.relicEffectClassType">
-            <summary>
-            Don't set directly; use RelicEffectClassType instead.
-            Type of the relic effect class to instantiate.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.RelicEffectClassType">
-            <summary>
-            Type of the relic effect class to instantiate.
-            Implicitly sets RelicEffectClassName.
-            </summary>
-        </member>
-        <member name="F:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.relicEffectClassName">
-            <summary>
-            Don't set directly; use RelicEffectClassName instead.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.RelicEffectClassName">
-            <summary>
-            Implicitly sets TooltipBodyKey and TooltipTitleKey if null.
-            </summary>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.Build">
-            <summary>
-            Builds the RelicEffectData represented by this builder's parameters recursively;
-            all Builders represented in this class's various fields will also be built.
-            </summary>
-            <returns>The newly created RelicEffectData</returns>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.AddStatusEffect(System.String,System.Int32)">
-            <summary>
-            Add a status effect to this effect's status effect array.
-            </summary>
-            <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
-            <param name="stackCount">Number of stacks to apply</param>
-        </member>
         <member name="F:MonsterTrainModdingAPI.Builders.RoomModifierDataBuilder.roomStateModifierClassType">
             <summary>
             Don't set directly; use RoomStateModifierClassType instead.
@@ -1241,6 +997,262 @@
             Builds the SubtypeData represented by this builders's parameters;
             </summary>
             <returns>The newly created SubtypeData</returns>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.collectableRelicID">
+            <summary>
+            Don't set directly; use CardID instead.
+            Unique string used to store and retrieve the relic data.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.CollectableRelicID">
+            <summary>
+            Unique string used to store and retrieve the relic data.
+            Implicitly sets NameKey and DescriptionKey.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.RelicPoolIDs">
+            <summary>
+            The IDs of all relic pools the relic should be inserted into.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.Name">
+            <summary>
+            Name displayed for the relic.
+            Overridden by the NameKey field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.NameKey">
+            <summary>
+            Localization key for the relic's name.
+            Overrides the Name field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.Description">
+            <summary>
+            Description displayed for the relic.
+            Overridden by the DescriptionKey field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.DescriptionKey">
+            <summary>
+            Localization key for the relic's description.
+            Overrides the Description field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.IconPath">
+            <summary>
+            Custom asset path to load relic art from.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.ClanID">
+            <summary>
+            ID of the clan the card is a part of. Leave null for clanless.
+            Base game clan IDs should be retrieved via helper class "MTClanIDs".
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.BuildAndRegister">
+            <summary>
+            Builds the RelicData represented by this builder's parameters recursively
+            and registers it and its components with the appropriate managers.
+            </summary>
+            <returns>The newly registered RelicData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.Build">
+            <summary>
+            Builds the RelicData represented by this builder's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created RelicData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CollectableRelicDataBuilder.SetClan(System.String)">
+            <summary>
+            Sets this card's clan to the clan whose ID is passed in
+            </summary>
+            <param name="clanID">ID of the clan, most easily retrieved using the helper class "MTClanIDs"</param>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.relicEffectClassType">
+            <summary>
+            Don't set directly; use RelicEffectClassType instead.
+            Type of the relic effect class to instantiate.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.RelicEffectClassType">
+            <summary>
+            Type of the relic effect class to instantiate.
+            Implicitly sets RelicEffectClassName.
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.relicEffectClassName">
+            <summary>
+            Don't set directly; use RelicEffectClassName instead.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.RelicEffectClassName">
+            <summary>
+            Implicitly sets TooltipBodyKey and TooltipTitleKey if null.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.Build">
+            <summary>
+            Builds the RelicEffectData represented by this builder's parameters recursively;
+            all Builders represented in this class's various fields will also be built.
+            </summary>
+            <returns>The newly created RelicEffectData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.AddStatusEffect(System.String,System.Int32)">
+            <summary>
+            Add a status effect to this effect's status effect array.
+            </summary>
+            <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
+            <param name="stackCount">Number of stacks to apply</param>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectConditionBuilder.paramTrackTriggerCount">
+            Determines if we should use the total trigger count as the tracked value instead of using a value from CardStatistics. Use this to limit triggers to X per turn or per battle.
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectConditionBuilder.allowMultipleTriggersPerDuration">
+            Allow multiple triggers per duration that is defined as Entry Duration. This can be used to limit a relic from trigger more than X times per turn or per battle
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.RelicEffectConditionBuilder.Build">
+            <summary>
+            Builds the RelicEffectCondition represented by this builder's parameters
+            </summary>
+            <returns>The newly created RelicEffectCondition</returns>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.upgradeTitle">
+            <summary>
+            Don't set directly; use UpgradeTitle instead.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.UpgradeTitle">
+            <summary>
+            Overrides UpgradeTitleKey
+            Implicitly sets UpgradeTitleKey, UpgradeDescriptionKey, and UpgradeNotificationKey if null
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.UpgradeDescription">
+            <summary>
+            Overrides UpgradeDescriptionKey
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.UpgradeNotification">
+            <summary>
+            Overrides UpgradeNotificationKey
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.StatusEffectUpgrades">
+            <summary>
+            To add a status effect, no need for a builder. new StatusEffectStackData with properties statusId (string) and count (int) are sufficient.
+            Get the string with -> statusEffectID = MTStatusEffectIDs.GetIDForType(statusEffectType);
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.AllowedCardPools">
+            <summary>
+            If there are any cards in this pool, then only the cards in this pool will be allowed
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.DisallowedCardPools">
+            <summary>
+            No cards in this pool will be allowed
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.RequiredSubtypesOperator">
+            <summary>
+            Operator determines if we require all or at least one
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.UpgradeDisabledReason">
+            <summary>
+            This is the reason why a card is filtered away from having this upgrade applied to it
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.CardUpgradeMaskDataBuilder.Build">
+            <summary>
+            Builds the RoomModifierData represented by this builders's parameters recursively;
+            </summary>
+            <returns>The newly created RoomModifierData</returns>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeTreeDataBuilder.Champion">
+            <summary>
+            Please make a custom ChampionData class to add here.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeTreeDataBuilder.UpgradeTreesInternal">
+            <summary>
+            Use this field if you're copying an existing already built tree.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.CardUpgradeTreeDataBuilder.UpgradeTrees">
+            <summary>
+            This is a list of lists of CardUpgradeDataBuilders. Base game clans have a 3x3 list.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ID">
+            <summary>
+            Internal ID for use by Unity
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Name">
+            <summary>
+            Name displayed for the relic.
+            Overridden by the NameKey field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.NameKey">
+            <summary>
+            Localization key for the relic's name.
+            Overrides the Name field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Description">
+            <summary>
+            Description displayed for the relic.
+            Overridden by the DescriptionKey field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.DescriptionKey">
+            <summary>
+            Localization key for the relic's description.
+            Overrides the Description field.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.AssetPath">
+            <summary>
+            Custom asset path to load relic art from.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.ClanID">
+            <summary>
+            ID of the clan the card is a part of. Leave null for clanless.
+            Base game clan IDs should be retrieved via helper class "MTClanIDs".
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Upgrade">
+            <summary>
+            Holds the upgrade to be applied to the chosen card after the enhancer is purchased.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.CardType">
+            <summary>
+            Determines which kinds of cards it upgrades.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.EnhancerPoolIDs">
+            <summary>
+            The IDs of all enhancer pools the relic should be inserted into.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.BuildAndRegister">
+            <summary>
+            Builds the EnhancerData represented by this builder's parameters
+            and registers it and its components with the appropriate managers.
+            </summary>
+            <returns>The newly registered EnhancerData</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.EnhancerDataBuilder.Build">
+            <summary>
+            Builds the EnhancerData represented by this builder's parameters.
+            </summary>
+            <returns>The newly created EnhancerData</returns>
         </member>
         <member name="T:MonsterTrainModdingAPI.Constants.VanillaCardEffectTypes">
             <summary>
@@ -1356,53 +1368,41 @@
             <param name="Name">Name of new Enum Value</param>
             <param name="ID">ID of new Enum Value</param>
         </member>
-        <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetID">
-            <summary>
-            Returns the ID of the new ExtendedEnum
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetEnum">
             <summary>
             Returns the Enum equivalent of the new ExtendedEnum
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetName">
-            <summary>
-            Returns the Variable name of the new ExtendedEnum
-            </summary>
-            <returns></returns>
+            <returns>the Enum equivalent of the new ExtendedEnum</returns>
         </member>
         <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetAllIDs">
             <summary>
             Returns all IDs of all ExtendedEnum classes
             </summary>
-            <returns></returns>
+            <returns>all IDs of all ExtendedEnum classes</returns>
         </member>
         <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetAllNames">
             <summary>
-            Returns all Names of All ExtendedEnum classes
+            Returns all names of all ExtendedEnum classes
             </summary>
-            <returns></returns>
+            <returns>all names of all ExtendedEnum classes</returns>
         </member>
         <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetValueOrDefault(System.String)">
             <summary>
-            Returns the Value given a key or default
+            Returns the value given a key or default
             </summary>
-            <param name="Key">String Key to get Value</param>
+            <param name="Key">string key to get value</param>
             <returns></returns>
         </member>
         <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.GetValueOrDefault(System.Int32)">
             <summary>
-            Returns the Value given a key or default
+            Returns the value given a key or default
             </summary>
-            <param name="Key">Int Key to get Value</param>
+            <param name="Key">int key to get value</param>
             <returns></returns>
         </member>
         <member name="M:MonsterTrainModdingAPI.Enums.ExtendedEnum`2.Convert(`1)">
             <summary>
-            Returns a Generated Variant of TEnum that can be used for API functions
+            Returns a generated variant of TEnum that can be used for API functions
             </summary>
             <param name="enum"></param>
             <returns></returns>
@@ -1412,9 +1412,19 @@
             An Extended Enum
             </summary>
         </member>
+        <member name="T:MonsterTrainModdingAPI.Enums.MTTriggers.CardTrigger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:MonsterTrainModdingAPI.Interfaces.IInitializable">
             <summary>
-            Indicates that the class has something to initialize when the game starts up.
+            Indicates that the class has something to initialize when the game starts up
             </summary>
         </member>
         <member name="M:MonsterTrainModdingAPI.Interfaces.IInitializable.Initialize">
@@ -1745,7 +1755,7 @@
         <member name="T:MonsterTrainModdingAPI.Managers.CustomAssetManager">
             <summary>
             Handles loading custom assets, both raw and from asset bundles.
-            Assets should be placed in the BepInEx/plugins folder.
+            Assets should be placed inside the plugin's own folder.
             </summary>
         </member>
         <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.LoadedAssetBundles">
@@ -1918,7 +1928,12 @@
         </member>
         <member name="F:MonsterTrainModdingAPI.Managers.CustomTriggerManager.CharToCardTriggerDict">
             <summary>
-            Dictionaries Used for Conversion of CharacterTriggers to CardTriggers
+            Dictionary used for conversion of CharacterTriggers to CardTriggers
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Managers.CustomTriggerManager.CardToCharTriggerDict">
+            <summary>
+            Dictionary used for conversion of CardTriggers to CharacterTriggers
             </summary>
         </member>
         <member name="M:MonsterTrainModdingAPI.Managers.CustomTriggerManager.QueueTrigger(MonsterTrainModdingAPI.Enums.MTTriggers.CharacterTrigger,CharacterState,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">
@@ -2253,26 +2268,6 @@
         <member name="T:MonsterTrainModdingAPI.Patches.SENoticeLocalizationPatch">
             <summary>
             
-            </summary>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Utilities.GUIDGenerator.Test">
-            <summary>
-            Tests to See if GUID generation meets all demands required
-            </summary>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Utilities.GUIDGenerator.ResetTest">
-            <summary>
-            If the Provider is Reset and given the same input, the strings generated should be equal 
-            </summary>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Utilities.GUIDGenerator.ConcurrenceTest">
-            <summary>
-            Generating from the Same key should have the same result no matter how many times its generated
-            </summary>
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Utilities.GUIDGenerator.UUIDVersion4Test">
-            <summary>
-            Makes sure that the GUID generated is UUID v4 compliant.
             </summary>
         </member>
     </members>

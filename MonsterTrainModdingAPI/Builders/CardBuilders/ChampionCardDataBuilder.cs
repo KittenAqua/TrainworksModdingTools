@@ -14,7 +14,8 @@ namespace MonsterTrainModdingAPI.Builders
         public CharacterDataBuilder Champion { get; set; }
         public CardData StarterCardData { get; set; }
         public CardUpgradeTreeDataBuilder UpgradeTree { get; set; }
-        public String ChampionIcon { get; set; }
+        public String ChampionIconPath { get; set; }
+        public String ChampionSelectedCue { get; set; }
 
         public ChampionCardDataBuilder()
         {
@@ -47,20 +48,20 @@ namespace MonsterTrainModdingAPI.Builders
 
             ChampionData ClanChamp = Clan.GetChampionData(ChampionIndex);
             ClanChamp.championCardData = cardData;
-            if (this.ChampionIcon != null)
+            if (this.ChampionIconPath != null)
             {
-                Sprite championIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.ChampionIcon);
+                Sprite championIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.ChampionIconPath);
                 ClanChamp.championIcon = championIconSprite;
             }
             ClanChamp.starterCardData = StarterCardData;
             ClanChamp.upgradeTree = UpgradeTree.Build();
+            ClanChamp.championSelectedCue = ChampionSelectedCue;
 
             return cardData;
         }
 
         public new CardData BuildAndRegister()
         {
-            API.Log(LogLevel.Debug, "1q");
             return BuildAndRegister(0);
         }
 
