@@ -30,8 +30,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         /// <param name="cardData">The custom card data to register</param>
         /// <param name="cardPoolData">The card pools the custom card should be a part of</param>
-        /// <param name="info">The info used to load Art from AssetBundles</param>
-        public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData, CustomAssetManager.AssetBundleLoadingInfo info = null)
+        public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData)
         {
             CustomCardData.Add(cardData.GetID(), cardData);
             CustomCardPoolManager.AddCardToPools(cardData, cardPoolData);

@@ -18,42 +18,50 @@
         </member>
         <member name="M:MonsterTrainModdingAPI.AssetConstructors.CardArtAssetConstructor.CreateCardGameObject(UnityEngine.AddressableAssets.AssetReference)">
             <summary>
-            Create a GameObject for the custom card with the given ID.
+            Create a GameObject for the custom card with the given asset reference.
             Used for loading custom card art.
             </summary>
             <param name="assetRef">Reference containing the asset information</param>
             <returns>The GameObject for the custom card specified by the asset reference</returns>
         </member>
-        <member name="M:MonsterTrainModdingAPI.AssetConstructors.CharacterAssetConstructor.CreateCharacterGameObject(UnityEngine.AddressableAssets.AssetReference,UnityEngine.Sprite)">
-            <summary>
-            Create a GameObject for the custom card with the AssetReference and Sprite
-            </summary>
-            <param name="assetRef">Reference containing the asset information</param>
-            <param name="sprite">Sprite to create card with</param>
-            <returns>The GameObject for the character</returns>
-        </member>
         <member name="M:MonsterTrainModdingAPI.AssetConstructors.CharacterAssetConstructor.CreateCharacterGameObject(UnityEngine.AddressableAssets.AssetReference)">
             <summary>
-            Create a GameObject for the custom card with the given ID.
-            Used for loading custom card art.
+            Create a GameObject for the custom character with the given asset reference.
+            Used for loading custom character art.
             </summary>
             <param name="assetRef">Reference containing the asset information</param>
             <returns>The GameObject for the custom character specified by the asset reference</returns>
         </member>
-        <member name="F:MonsterTrainModdingAPI.Builders.AssetRefBuilder.filename">
+        <member name="M:MonsterTrainModdingAPI.AssetConstructors.CharacterAssetConstructor.CreateCharacterGameObject(UnityEngine.AddressableAssets.AssetReference,UnityEngine.Sprite)">
             <summary>
-            Don't set directly; use Filename instead.
-            This is the absolute path to the file.
+            Create a GameObject for the custom character with the AssetReference and Sprite
             </summary>
+            <param name="assetRef">Reference containing the asset information</param>
+            <param name="sprite">Sprite to create character with</param>
+            <returns>The GameObject for the character</returns>
         </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.AssetRefBuilder.Filename">
+        <member name="M:MonsterTrainModdingAPI.AssetConstructors.CharacterAssetConstructor.CreateCharacterGameObject(UnityEngine.AddressableAssets.AssetReference,UnityEngine.Sprite,UnityEngine.GameObject)">
             <summary>
-            This is the absolute path to the file. Implictly sets AssetID if null.
+            Create a GameObject for the custom character with the AssetReference and Sprite
+            </summary>
+            <param name="assetRef">Reference containing the asset information</param>
+            <param name="sprite">Sprite to create character with</param>
+            <param name="skeletonData">GameObject containing the necessary Spine animation data</param>
+            <returns>The GameObject for the character</returns>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.AssetRefBuilder.AssetLoadingInfo">
+            <summary>
+            All necessary information to load an asset
             </summary>
         </member>
         <member name="P:MonsterTrainModdingAPI.Builders.AssetRefBuilder.AssetGUID">
             <summary>
-            Don't bother setting manually; the builder will set this automatically.
+            Unique identifier for the asset. Set automatically by the builder.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.AssetRefBuilder.AssetID">
+            <summary>
+            ID used to generate the asset GUID
             </summary>
         </member>
 <<<<<<< HEAD
@@ -714,14 +722,9 @@
             Custom asset path to load from. Must be inside the BaseAssetPath.
             </summary>
         </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.SpriteBundleLoadingInfo">
+        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.BundleLoadingInfo">
             <summary>
-            Loading Info for loading a character's sprite
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.SkeletonAnimationBundleLoadingInfo">
-            <summary>
-            Loading Info for loading a character's Skeleton Animation
+            Loading Info for loading a character's art
             </summary>
         </member>
         <member name="P:MonsterTrainModdingAPI.Builders.CharacterDataBuilder.CharacterPrefabVariantRef">
@@ -2900,6 +2903,90 @@
 =======
 =======
         </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.BundleManager">
+            <summary>
+            Handles loading custom asset bundles.
+            Bundles should be placed inside the plugin's own folder.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.BundleManager.RuntimeKeyToBundleInfo">
+            <summary>
+            Maps asset runtime key (from GUID) to the asset bundle info
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.BundleManager.LoadedAssetBundles">
+            <summary>
+            Maps path to asset bundle
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.BundleManager.LoadAssetFromBundle(MonsterTrainModdingAPI.Utilities.BundleAssetLoadingInfo,System.String)">
+            <summary>
+            Load an asset from an asset bundle
+            </summary>
+            <param name="info">Loading info for the asset</param>
+            <param name="assetName">Name of the asset to load from the bundle</param>
+            <returns>The asset specified by the given info as a UnityEngine object</returns>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.BundleManager.UnloadAssetBundle(System.String,System.Boolean)">
+            <summary>
+            Unload an asset bundle.
+            If you no longer need the assets stored in the bundle,
+            you should unload it to free up memory.
+            </summary>
+            <param name="bundleName">Name of the asset bundle to unload</param>
+            <param name="unloadAllLoadedObjects">If true, also unloads all instances of assets in the bundle</param>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomAssetManager">
+            <summary>
+            Handles loading custom assets, both raw and from asset bundles.
+            Assets should be placed inside the plugin's own folder.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.CustomAssetManager.RuntimeKeyToAssetInfo">
+            <summary>
+            Maps loose asset runtime key (from GUID) to its appropriate asset info
+            </summary>
+        </member>
+        <member name="F:MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetTypeToAssetConstructor">
+            <summary>
+            Maps asset types to the classes used to make them
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomAssetManager.LoadSpriteFromPath(System.String)">
+            <summary>
+            Create a sprite from texture at provided path.
+            </summary>
+            <param name="path">Absolute path of the texture</param>
+            <returns>The sprite, or null if there is no texture at the given path</returns>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Managers.CustomLocalizationManager">
+            <summary>
+            Handles loading of custom localized strings.
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomLocalizationManager.ImportCSV(System.String,System.Char)">
+            <summary>
+            Imports new data to the English Localization from a CSV string with separators ';'.
+            Required columns are 'Keys', 'Type', 'Plural', 'Group', 'Desc', 'Descriptions'
+            </summary>
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomLocalizationManager.ImportSingleLocalization(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Appends a Single Localization to the Localization Manager
+            </summary>
+            <param name="key">a string that is not null or empty that will act as a key for other strings</param>
+            <param name="type">type for the string to be converted to, typically is Text</param>
+            <param name="desc">description of what key represents, typically unused</param>
+            <param name="plural">The plural of the string, currently broken</param>
+            <param name="group">the name of the group that the key is apart of</param>
+            <param name="descriptions">an extra description</param>
+            <param name="english">The English Translation</param>
+            <param name="french">The French Translation</param>
+            <param name="german">The German Translation</param>
+            <param name="russian">The Russian Translation</param>
+            <param name="portuguese">The Portuguese Translation</param>
+            <param name="chinese">The Chinese Translation</param>
+        </member>
         <member name="T:MonsterTrainModdingAPI.Managers.CustomCardManager">
             <summary>
             Handles registration and storage of custom card data.
@@ -2915,14 +3002,13 @@
             Static reference to the game's SaveManager, which is necessary to register new cards.
             </summary>
         </member>
-        <member name="M:MonsterTrainModdingAPI.Managers.CustomCardManager.RegisterCustomCard(CardData,System.Collections.Generic.List{System.String},MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo)">
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCardManager.RegisterCustomCard(CardData,System.Collections.Generic.List{System.String})">
             <summary>
             Register a custom card with the manager, allowing it to show up in game
             both in the logbook and whenever cards are chosen from the specified pools.
             </summary>
             <param name="cardData">The custom card data to register</param>
             <param name="cardPoolData">The card pools the custom card should be a part of</param>
-            <param name="info">The info used to load Art from AssetBundles</param>
         </member>
         <member name="M:MonsterTrainModdingAPI.Managers.CustomCardManager.GetCardDataByID(System.String)">
             <summary>
@@ -2941,19 +3027,9 @@
             Maps custom character IDs to their respective CharacterData.
             </summary>
         </member>
-        <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CharacterSpriteBundleData">
-            <summary>
-            Maps custom character IDs to their respective Sprite Loading Information.
-            </summary>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.CharacterSkeletonAnimationBundleData">
-            <summary>
-            Maps custom character IDs to their respective Skeleton Animation Loading Information
-            </summary>
-        </member>
         <member name="P:MonsterTrainModdingAPI.Managers.CustomCharacterManager.TemplateCharacter">
             <summary>
-            FallbackData contains a default character prefab which is cloned to create custom characters.
+            A default character prefab which is cloned to create custom characters.
             Essential for custom character art. Set during game startup.
             </summary>
         </member>
@@ -2962,13 +3038,11 @@
             Static reference to the game's SaveManager, which is necessary to register new characters.
             </summary>
         </member>
-        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.RegisterCustomCharacter(CharacterData,MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo,MonsterTrainModdingAPI.Managers.CustomAssetManager.AssetBundleLoadingInfo)">
+        <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.RegisterCustomCharacter(CharacterData)">
             <summary>
             Register a custom character with the manager, allowing it to show up in game.
             </summary>
             <param name="data">The custom character data to register</param>
-            <param name="SpriteInfo">The Information Used to Load an AssetBundle</param>
-            <param name="SkeletonAnimationInfo"></param>
         </member>
         <member name="M:MonsterTrainModdingAPI.Managers.CustomCharacterManager.GetCharacterDataByID(System.String)">
             <summary>
@@ -3165,6 +3239,7 @@
             <param name="relicPoolID">ID of the relic pool to get relics for</param>
             <returns>A list of relics added to the relic pool with given ID by mods</returns>
         </member>
+<<<<<<< HEAD
         <member name="T:MonsterTrainModdingAPI.Managers.CustomAssetManager">
             <summary>
             Handles loading custom assets, both raw and from asset bundles.
@@ -3444,6 +3519,8 @@
         </member>
         <member name="M:MonsterTrainModdingAPI.Managers.CustomRelicPoolManager.GetRelicsForPool(System.String)">
 =======
+=======
+>>>>>>> 91e209d... Refactor canonical asset loading to support asset bundles
         <member name="F:MonsterTrainModdingAPI.Managers.CustomTriggerManager.CharToCardTriggerDict">
 >>>>>>> ec80dfd... Make many minor changes to existing API code
             <summary>
@@ -3879,7 +3956,134 @@
             
             </summary>
         </member>
+<<<<<<< HEAD
 =======
 >>>>>>> aa7a5e1... Update MonsterTrainModdingAPI.csproj (#82)
+=======
+        <member name="P:MonsterTrainModdingAPI.Utilities.AssetLoadingInfo.FilePath">
+            <summary>
+            Path relative to your plugin
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.AssetLoadingInfo.PluginPath">
+            <summary>
+            This will get set for you. Don't set it manually.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.AssetLoadingInfo.AssetType">
+            <summary>
+            The asset type to load
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.AssetLoadingInfo.FullPath">
+            <summary>
+            Concatenates plugin path and bundle path
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Utilities.BundleAssetLoadingInfo">
+            <summary>
+            Helper class to aid in loading asset bundles.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.BundleAssetLoadingInfo.SpriteName">
+            <summary>
+            Path to the asset sprite in the bundle.
+            Even if you're making a spine character, you *must* set this for the preview sprite.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.BundleAssetLoadingInfo.ObjectName">
+            <summary>
+            Optional path to the spine skeleton data in the bundle.
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Utilities.ISettings">
+            <summary>
+            An interface used to represent settings
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Utilities.ISettings`1">
+            <summary>
+            A generic interface used to represent settings to apply
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.GameObjectImportSettings.Func">
+            <summary>
+            A Function that is called after Settings are applied.
+            Use this to add your own GameObject logic.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.Texture2DImportSettings.Func">
+            <summary>
+            A Function that is called after settings are applied.
+            Use this to add your own texture logic.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.Texture2DImportSettings.Filter">
+            <summary>
+            The Filter that should be when scaling the texture
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.Texture2DImportSettings.WrapModeU">
+            <summary>
+            The WrapMode of the Texture on the horizontal axis
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.Texture2DImportSettings.WrapModeV">
+            <summary>
+            The WrapMode of the Texture on the Vertical axis
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.Texture2DImportSettings.Scale">
+            <summary>
+            The Scale of the Object
+            </summary>
+        </member>
+        <member name="T:MonsterTrainModdingAPI.Utilities.SpriteImportSettings">
+            <summary>
+            Import Settings for Sprites
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.SpriteImportSettings.Func">
+            <summary>
+            A Function that is called after settings are applied.
+            Use this to add your own sprite logic.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.SpriteImportSettings.Rectangle">
+            <summary>
+            Rectangular section of the texture to use for the sprite relative to the textures width and height, keep values between 0 and 1
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.SpriteImportSettings.Pivot">
+            <summary>
+            Sprite's pivot point relative to its graphic rectangle
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.SpriteImportSettings.PixelPerUnit">
+            <summary>
+            The number of pixels in the sprite that correspond to one unit in world space.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.SpriteImportSettings.Extrude">
+            <summary>
+            Amount by which the sprite mesh should be expanded outwards.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.SpriteImportSettings.MeshType">
+            <summary>
+            Controls the type of mesh generated for the sprite.
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.SpriteImportSettings.Border">
+            <summary>
+            The border sizes of the sprite (X=left, Y=bottom, Z=right, W=top).
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Utilities.SpriteImportSettings.GenerateFallbackPhysicsShape">
+            <summary>
+            Generates a default physics shape for the sprite.
+            </summary>
+        </member>
+>>>>>>> 91e209d... Refactor canonical asset loading to support asset bundles
     </members>
 </doc>

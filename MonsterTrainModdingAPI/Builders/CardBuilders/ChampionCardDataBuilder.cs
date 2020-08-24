@@ -41,7 +41,7 @@ namespace MonsterTrainModdingAPI.Builders
         {
             var cardData = this.Build();
             API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
-            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs, BundleLoadingInfo);
+            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs);
 
             API.Log(LogLevel.All, ClanID);
             var Clan = cardData.GetLinkedClass();

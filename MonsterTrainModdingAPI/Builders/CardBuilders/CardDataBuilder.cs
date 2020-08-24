@@ -99,7 +99,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// <summary>
         /// Loading Info for loading a card's sprite from an asset bundle.
         /// </summary>
-        public CustomAssetManager.AssetBundleLoadingInfo BundleLoadingInfo { get; set; }
+        public BundleAssetLoadingInfo BundleLoadingInfo { get; set; }
         /// <summary>
         /// Use an existing base game card's art by filling this in with the appropriate card's asset reference information.
         /// </summary>
@@ -233,7 +233,7 @@ namespace MonsterTrainModdingAPI.Builders
         {
             var cardData = this.Build();
             API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
-            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs, BundleLoadingInfo);
+            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs);
 
             return cardData;
         }
@@ -271,12 +271,27 @@ namespace MonsterTrainModdingAPI.Builders
             {
                 if (this.CardArtPrefabVariantRefBuilder == null)
                 {
-                    this.CardArtPrefabVariantRefBuilder = new AssetRefBuilder
+                    if (this.BundleLoadingInfo != null)
                     {
-                        Filename = this.FullAssetPath,
-                        DebugName = this.AssetPath,
-                        AssetType = AssetRefBuilder.AssetTypeEnum.CardArt
-                    };
+                        this.BundleLoadingInfo.PluginPath = this.BaseAssetPath;
+                        this.CardArtPrefabVariantRefBuilder = new AssetRefBuilder
+                        {
+                            AssetLoadingInfo = this.BundleLoadingInfo
+                        };
+                    }
+                    else
+                    {
+                        var assetLoadingInfo = new AssetLoadingInfo()
+                        {
+                            FilePath = this.AssetPath,
+                            PluginPath = this.BaseAssetPath,
+                            AssetType = AssetRefBuilder.AssetTypeEnum.CardArt
+                        };
+                        this.CardArtPrefabVariantRefBuilder = new AssetRefBuilder
+                        {
+                            AssetLoadingInfo = assetLoadingInfo
+                        };
+                    }
                 }
                 this.CardArtPrefabVariantRef = this.CardArtPrefabVariantRefBuilder.BuildAndRegister();
             }

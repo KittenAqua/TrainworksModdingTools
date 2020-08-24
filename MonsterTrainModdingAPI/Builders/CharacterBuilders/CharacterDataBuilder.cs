@@ -85,13 +85,9 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public string AssetPath { get; set; }
         /// <summary>
-        /// Loading Info for loading a character's sprite
+        /// Loading Info for loading a character's art
         /// </summary>
-        public CustomAssetManager.AssetBundleLoadingInfo SpriteBundleLoadingInfo { get; set; }
-        /// <summary>
-        /// Loading Info for loading a character's Skeleton Animation
-        /// </summary>
-        public CustomAssetManager.AssetBundleLoadingInfo SkeletonAnimationBundleLoadingInfo { get; set; }
+        public BundleAssetLoadingInfo BundleLoadingInfo { get; set; }
         /// <summary>
         /// Use an existing base game character's art by filling this in with the appropriate character's asset reference information.
         /// </summary>
@@ -203,7 +199,7 @@ namespace MonsterTrainModdingAPI.Builders
         public CharacterData BuildAndRegister()
         {
             var characterData = this.Build();
-            CustomCharacterManager.RegisterCustomCharacter(characterData, SpriteBundleLoadingInfo, SkeletonAnimationBundleLoadingInfo);
+            CustomCharacterManager.RegisterCustomCharacter(characterData);
             return characterData;
         }
 
@@ -243,12 +239,27 @@ namespace MonsterTrainModdingAPI.Builders
             {
                 if (this.CharacterPrefabVariantRefBuilder == null)
                 {
-                    this.CharacterPrefabVariantRefBuilder = new AssetRefBuilder
+                    if (this.BundleLoadingInfo != null)
                     {
-                        Filename = this.FullAssetPath,
-                        DebugName = this.AssetPath,
-                        AssetType = AssetRefBuilder.AssetTypeEnum.Character
-                    };
+                        this.BundleLoadingInfo.PluginPath = this.BaseAssetPath;
+                        this.CharacterPrefabVariantRefBuilder = new AssetRefBuilder
+                        {
+                            AssetLoadingInfo = this.BundleLoadingInfo
+                        };
+                    }
+                    else
+                    {
+                        var assetLoadingInfo = new AssetLoadingInfo()
+                        {
+                            FilePath = this.AssetPath,
+                            PluginPath = this.BaseAssetPath,
+                            AssetType = AssetRefBuilder.AssetTypeEnum.Character
+                        };
+                        this.CharacterPrefabVariantRefBuilder = new AssetRefBuilder
+                        {
+                            AssetLoadingInfo = assetLoadingInfo
+                        };
+                    }
                 }
                 this.CharacterPrefabVariantRef = this.CharacterPrefabVariantRefBuilder.BuildAndRegister();
             }
