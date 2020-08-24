@@ -21,15 +21,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         public static IDictionary<string, CharacterData> CustomCharacterData { get; } = new Dictionary<string, CharacterData>();
         /// <summary>
-        /// Maps custom character IDs to their respective Sprite Loading Information.
-        /// </summary>
-        public static IDictionary<string, CustomAssetManager.AssetBundleLoadingInfo> CharacterSpriteBundleData { get; } = new Dictionary<string, CustomAssetManager.AssetBundleLoadingInfo>();
-        /// <summary>
-        /// Maps custom character IDs to their respective Skeleton Animation Loading Information
-        /// </summary>
-        public static IDictionary<string, CustomAssetManager.AssetBundleLoadingInfo> CharacterSkeletonAnimationBundleData { get; } = new Dictionary<string, CustomAssetManager.AssetBundleLoadingInfo>();
-        /// <summary>
-        /// FallbackData contains a default character prefab which is cloned to create custom characters.
+        /// A default character prefab which is cloned to create custom characters.
         /// Essential for custom character art. Set during game startup.
         /// </summary>
         public static CharacterData TemplateCharacter { get; set; }
@@ -42,18 +34,8 @@ namespace MonsterTrainModdingAPI.Managers
         /// Register a custom character with the manager, allowing it to show up in game.
         /// </summary>
         /// <param name="data">The custom character data to register</param>
-        /// <param name="SpriteInfo">The Information Used to Load an AssetBundle</param>
-        /// <param name="SkeletonAnimationInfo"></param>
-        public static bool RegisterCustomCharacter(CharacterData data, CustomAssetManager.AssetBundleLoadingInfo SpriteInfo = null, CustomAssetManager.AssetBundleLoadingInfo SkeletonAnimationInfo = null)
+        public static bool RegisterCustomCharacter(CharacterData data)
         {
-            if (SpriteInfo != null)
-            {
-                CharacterSpriteBundleData.Add(data.GetID(), SpriteInfo);
-            }
-            if (SkeletonAnimationInfo != null)
-            {
-                CharacterSkeletonAnimationBundleData.Add(data.GetID(), SkeletonAnimationInfo);
-            }
             CustomCharacterData.Add(data.GetID(), data);
             SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
             return true;

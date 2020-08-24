@@ -10,55 +10,61 @@ using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Utilities;
+using System.Text;
 
 namespace MonsterTrainModdingAPI.Builders
 {
     public class AssetRefBuilder
     {
         /// <summary>
-        /// Don't set directly; use Filename instead.
-        /// This is the absolute path to the file.
+        /// All necessary information to load an asset
         /// </summary>
-        public string filename;
+        public AssetLoadingInfo AssetLoadingInfo { get; set; }
 
         /// <summary>
-        /// This is the absolute path to the file. Implictly sets AssetID if null.
+        /// Unique identifier for the asset. Set automatically by the builder.
         /// </summary>
-        public string Filename
+        private string AssetGUID { get; set; }
+
+        /// <summary>
+        /// ID used to generate the asset GUID
+        /// </summary>
+        private string AssetID
         {
-            get { return filename; }
-            set
+            get
             {
-                this.filename = value;
-                if (this.AssetID == null)
+                if (this.AssetLoadingInfo != null)
                 {
-                    this.AssetID = value;
+                    var idStringBuilder = new StringBuilder();
+                    idStringBuilder.Append(this.AssetLoadingInfo.FullPath);
+                    if (this.AssetLoadingInfo is BundleAssetLoadingInfo)
+                    {
+                        var bundleInfo = this.AssetLoadingInfo as BundleAssetLoadingInfo;
+                        idStringBuilder.Append("/" + bundleInfo.SpriteName + " " + bundleInfo.ObjectName);
+                    }
+                    idStringBuilder.Append(this.AssetLoadingInfo.AssetType);
+                    return idStringBuilder.ToString();
                 }
+                return "none";
             }
         }
-
-        public string DebugName { get; set; }
-        public string AssetID { get; set; }
-
-        public AssetTypeEnum AssetType { get; set; }
-
-        /// <summary>
-        /// Don't bother setting manually; the builder will set this automatically.
-        /// </summary>
-        public string AssetGUID { get; set; }
 
         public AssetReferenceGameObject BuildAndRegister()
         {
             var assetRef = this.Build();
-            CustomAssetManager.RegisterCustomAsset(this.AssetGUID, this.Filename, this.AssetType);
+            CustomAssetManager.RegisterCustomAsset(this.AssetGUID, this.AssetLoadingInfo);
+            if (this.AssetLoadingInfo is BundleAssetLoadingInfo)
+            {
+                BundleManager.RegisterBundle(this.AssetGUID, this.AssetLoadingInfo as BundleAssetLoadingInfo);
+            }
             return assetRef;
         }
 
         public AssetReferenceGameObject Build()
         {
-            var assetRef = new AssetReferenceGameObject();
-            AccessTools.Field(typeof(AssetReferenceGameObject), "m_debugName").SetValue(assetRef, this.DebugName);
             this.AssetGUID = GUIDGenerator.GenerateDeterministicGUID(this.AssetID);
+            var assetRef = new AssetReferenceGameObject();
+            AccessTools.Field(typeof(AssetReferenceGameObject), "m_debugName").SetValue(assetRef, this.AssetLoadingInfo.FilePath);
             AccessTools.Field(typeof(AssetReferenceGameObject), "m_AssetGUID").SetValue(assetRef, this.AssetGUID);
             return assetRef;
         }
