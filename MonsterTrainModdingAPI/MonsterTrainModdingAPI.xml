@@ -886,6 +886,11 @@
             Card pool the banner pulls from
             </summary>
         </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.BaseAssetPath">
+            <summary>
+            Set automatically in the constructor. Base asset path, usually the plugin directory.
+            </summary>
+        </member>
         <member name="M:MonsterTrainModdingAPI.Builders.DraftRewardDataBuilder.Build">
             <summary>
             Builds the RewardData represented by this builder's parameters recursively;
@@ -1141,6 +1146,18 @@
             </summary>
             <param name="clanID">ID of the clan, most easily retrieved using the helper class "MTClanIDs"</param>
         </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectConditionBuilder.paramTrackTriggerCount">
+            Determines if we should use the total trigger count as the tracked value instead of using a value from CardStatistics. Use this to limit triggers to X per turn or per battle.
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectConditionBuilder.allowMultipleTriggersPerDuration">
+            Allow multiple triggers per duration that is defined as Entry Duration. This can be used to limit a relic from trigger more than X times per turn or per battle
+        </member>
+        <member name="M:MonsterTrainModdingAPI.Builders.RelicEffectConditionBuilder.Build">
+            <summary>
+            Builds the RelicEffectCondition represented by this builder's parameters
+            </summary>
+            <returns>The newly created RelicEffectCondition</returns>
+        </member>
         <member name="F:MonsterTrainModdingAPI.Builders.RelicEffectDataBuilder.relicEffectClassType">
             <summary>
             Don't set directly; use RelicEffectClassType instead.
@@ -1176,18 +1193,6 @@
             </summary>
             <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
             <param name="stackCount">Number of stacks to apply</param>
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectConditionBuilder.paramTrackTriggerCount">
-            Determines if we should use the total trigger count as the tracked value instead of using a value from CardStatistics. Use this to limit triggers to X per turn or per battle.
-        </member>
-        <member name="P:MonsterTrainModdingAPI.Builders.RelicEffectConditionBuilder.allowMultipleTriggersPerDuration">
-            Allow multiple triggers per duration that is defined as Entry Duration. This can be used to limit a relic from trigger more than X times per turn or per battle
-        </member>
-        <member name="M:MonsterTrainModdingAPI.Builders.RelicEffectConditionBuilder.Build">
-            <summary>
-            Builds the RelicEffectCondition represented by this builder's parameters
-            </summary>
-            <returns>The newly created RelicEffectCondition</returns>
         </member>
         <member name="F:MonsterTrainModdingAPI.Builders.CardUpgradeDataBuilder.upgradeTitle">
             <summary>

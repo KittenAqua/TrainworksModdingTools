@@ -59,17 +59,17 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public List<string> EnhancerPoolIDs { get; set; }
 
-        private string BaseAssetPath { get; set; }
+        public string BaseAssetPath { get; set; }
 
 
         public EnhancerDataBuilder()
         {
-            this.Name = "";
-            this.Description = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
-            this.EnhancerPoolIDs = new List<string>();
             var assembly = Assembly.GetCallingAssembly();
             this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
 
+            this.Name = "";
+            this.Description = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
+            this.EnhancerPoolIDs = new List<string>();
         }
 
         /// <summary>
