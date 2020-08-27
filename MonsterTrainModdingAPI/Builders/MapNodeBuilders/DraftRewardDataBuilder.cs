@@ -56,14 +56,20 @@ namespace MonsterTrainModdingAPI.Builders
         public bool ShowRewardAnimationInEvent { get; set; }
         public string _CollectSFXCueName { get; set; }
         public bool _IsServiceMerchantReward { get; set; }
-        public Sprite _RewardSprite { get; set; }
+        public string _RewardSpritePath { get; set; }
         public bool _ShowCancelOverride { get; set; }
         public bool _ShowRewardFlowInEvent { get; set; }
         public int _MerchantServiceIndex { get; set; }
+        /// <summary>
+        /// Set automatically in the constructor. Base asset path, usually the plugin directory.
+        /// </summary>
+        public string BaseAssetPath { get; set; }
 
         public DraftRewardDataBuilder()
         {
             this.Costs = new int[0];
+            var assembly = Assembly.GetCallingAssembly();
+            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
         }
 
         /// <summary>
@@ -99,7 +105,7 @@ namespace MonsterTrainModdingAPI.Builders
                 CustomLocalizationManager.ImportSingleLocalization(this._RewardDescriptionKey, "Text", "", "", "", "", this.Description, this.Description, this.Description, this.Description, this.Description, this.Description);
             }
             AccessTools.Field(typeof(RewardData), "_rewardDescriptionKey").SetValue(rewardData, this._RewardDescriptionKey);
-            AccessTools.Field(typeof(RewardData), "_rewardSprite").SetValue(rewardData, this._RewardSprite);
+            AccessTools.Field(typeof(RewardData), "_rewardSprite").SetValue(rewardData, CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this._RewardSpritePath));
             if (this.Name != null)
             {
                 this._RewardTitleKey = "DraftRewardData_" + this.DraftRewardID + "_RewardTitleKey";

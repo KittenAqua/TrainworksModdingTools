@@ -56,7 +56,7 @@ namespace MonsterTrainModdingAPI.Builders
         public string UpgradeTitleKey { get; set; }
         public string UpgradeDescriptionKey { get; set; }
         public string UpgradeNotificationKey { get; set; }
-        public Sprite UpgradeIcon { get; set; }
+        public string UpgradeIconPath { get; set; }
         public bool HideUpgradeIconOnCard { get; set; }
         public bool UseUpgradeHighlightTextTags { get; set; }
         public int BonusDamage { get; set; }
@@ -86,6 +86,9 @@ namespace MonsterTrainModdingAPI.Builders
         public List<CardUpgradeMaskData> Filters { get; set; }
         public List<CardUpgradeData> UpgradesToRemove { get; set; }
 
+        public string BaseAssetPath { get; set; }
+
+
         public CardUpgradeDataBuilder()
         {
             this.UpgradeNotificationKey = null;
@@ -106,6 +109,9 @@ namespace MonsterTrainModdingAPI.Builders
             this.RoomModifierUpgrades = new List<RoomModifierData>();
             this.Filters = new List<CardUpgradeMaskData>();
             this.UpgradesToRemove = new List<CardUpgradeData>();
+
+            var assembly = Assembly.GetCallingAssembly();
+            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
         }
 
         public CardUpgradeData Build()
@@ -152,7 +158,8 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(CardUpgradeData), "triggerUpgrades").SetValue(cardUpgradeData, this.TriggerUpgrades);
             BuilderUtils.ImportStandardLocalization(this.UpgradeDescriptionKey, this.UpgradeDescription);
             AccessTools.Field(typeof(CardUpgradeData), "upgradeDescriptionKey").SetValue(cardUpgradeData, this.UpgradeDescriptionKey);
-            AccessTools.Field(typeof(CardUpgradeData), "upgradeIcon").SetValue(cardUpgradeData, this.UpgradeIcon);
+            if (this.UpgradeIconPath != null && this.UpgradeIconPath != "")
+                AccessTools.Field(typeof(CardUpgradeData), "upgradeIcon").SetValue(cardUpgradeData, CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.UpgradeIconPath));
             BuilderUtils.ImportStandardLocalization(this.UpgradeNotificationKey, this.UpgradeNotification);
             AccessTools.Field(typeof(CardUpgradeData), "upgradeNotificationKey").SetValue(cardUpgradeData, this.UpgradeNotificationKey);
             AccessTools.Field(typeof(CardUpgradeData), "upgradesToRemove").SetValue(cardUpgradeData, this.UpgradesToRemove);
