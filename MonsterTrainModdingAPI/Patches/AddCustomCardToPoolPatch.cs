@@ -16,7 +16,6 @@ namespace MonsterTrainModdingAPI.Patches
     {
         static void Postfix(ref List<CardData> __result, ref CardPool cardPool, ClassData classData, CollectableRarity paramRarity, CardPoolHelper.RarityCondition rarityCondition, bool testRarityCondition)
         {
-            UnityEngine.Debug.Log(cardPool.name + "   " + paramRarity.ToString());
             List<CardData> customCardsToAddToPool = CustomCardPoolManager.GetCardsForPoolSatisfyingConstraints(cardPool.name, classData, paramRarity, rarityCondition, testRarityCondition);
             __result.AddRange(customCardsToAddToPool);
         }

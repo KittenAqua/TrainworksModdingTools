@@ -13,10 +13,15 @@ namespace MonsterTrainModdingAPI.Managers
     public class CustomTriggerManager
     {
         /// <summary>
-        /// Dictionaries Used for Conversion of CharacterTriggers to CardTriggers
+        /// Dictionary used for conversion of CharacterTriggers to CardTriggers
         /// </summary>
         private static Dictionary<CharacterTriggerData.Trigger, CardTriggerType> CharToCardTriggerDict = new Dictionary<CharacterTriggerData.Trigger, CardTriggerType>();
+
+        /// <summary>
+        /// Dictionary used for conversion of CardTriggers to CharacterTriggers
+        /// </summary>
         private static Dictionary<CardTriggerType, CharacterTriggerData.Trigger> CardToCharTriggerDict = new Dictionary<CardTriggerType, CharacterTriggerData.Trigger>();
+        
         /// <summary>
         /// Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.
         /// </summary>
@@ -41,6 +46,7 @@ namespace MonsterTrainModdingAPI.Managers
                     );
             }
         }
+
         /// <summary>
         /// Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.
         /// </summary>
@@ -68,6 +74,7 @@ namespace MonsterTrainModdingAPI.Managers
                 }
             }
         }
+
         /// <summary>
         /// Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.
         /// </summary>
@@ -95,6 +102,7 @@ namespace MonsterTrainModdingAPI.Managers
                 }
             }
         }
+
         /// <summary>
         /// Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.
         /// </summary>
@@ -110,6 +118,7 @@ namespace MonsterTrainModdingAPI.Managers
             QueueTrigger(charTrigger, character, canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
             RunTriggerQueueRemote();
         }
+
         /// <summary>
         /// Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger
         /// </summary>
@@ -125,6 +134,7 @@ namespace MonsterTrainModdingAPI.Managers
             QueueTrigger(charTrigger, characters, canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
             RunTriggerQueueRemote();
         }
+
         /// <summary>
         /// Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger
         /// </summary>
@@ -140,6 +150,7 @@ namespace MonsterTrainModdingAPI.Managers
             QueueTrigger<Manager>(charTrigger, canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
             RunTriggerQueueRemote();
         }
+
         /// <summary>
         /// Remotely Runs the Trigger Queue of the CombatManager
         /// </summary>
@@ -151,6 +162,7 @@ namespace MonsterTrainModdingAPI.Managers
                 combatManager.StartCoroutine(combatManager.RunTriggerQueue());
             }
         }
+
         /// <summary>
         /// A general function used to Apply a Card Trigger in different ways, dependant on parameters 
         /// </summary>
@@ -164,7 +176,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns></returns>
         public static void ApplyCardTriggers(CardTrigger cardTrigger, CardState playedCard, bool fireAllMonsterTriggersInRoom = false, int roomIndex = -1, bool ignoreDeadInTargeting = true, CharacterState triggeredCharacter = null, Action cardTriggerFiredCallback = null)
         {
-            API.Log(BepInEx.Logging.LogLevel.Info, $"Applying {cardTrigger.GetName()}");
+            API.Log(BepInEx.Logging.LogLevel.Info, $"Applying {cardTrigger.Name}");
             if (ProviderManager.TryGetProvider<CombatManager>(out CombatManager combatManager))
             {
                 combatManager.StartCoroutine(
@@ -181,6 +193,7 @@ namespace MonsterTrainModdingAPI.Managers
 
             }
         }
+
         /// <summary>
         /// A function used to fire a card trigger, causing the effects of the corresponding trigger on the playedCard to be fired.
         /// </summary>
@@ -216,6 +229,7 @@ namespace MonsterTrainModdingAPI.Managers
                     );
             }
         }
+
         /// <summary>
         /// Associates two triggers with eachother allowing MT to cast from one trigger to another
         /// </summary>
@@ -226,6 +240,7 @@ namespace MonsterTrainModdingAPI.Managers
             CharToCardTriggerDict[characterTrigger.GetEnum()] = cardTrigger.GetEnum();
             CardToCharTriggerDict[cardTrigger.GetEnum()] = characterTrigger.GetEnum();
         }
+
         /// <summary>
         /// Gets the Associated Card Trigger from a Character Trigger or null
         /// </summary>
@@ -242,6 +257,7 @@ namespace MonsterTrainModdingAPI.Managers
                 return null;
             }
         }
+
         /// <summary>
         /// Gets the Associated Character Trigger from a Card Trigger or null
         /// </summary>

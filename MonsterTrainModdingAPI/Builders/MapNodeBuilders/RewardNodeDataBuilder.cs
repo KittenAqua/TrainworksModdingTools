@@ -112,7 +112,7 @@ namespace MonsterTrainModdingAPI.Builders
         public RewardNodeData BuildAndRegister()
         {
             var rewardNodeData = this.Build();
-            CustomMapNodeManager.RegisterCustomRewardNode(rewardNodeData, this.MapNodePoolIDs);
+            CustomMapNodePoolManager.RegisterCustomRewardNode(rewardNodeData, this.MapNodePoolIDs);
             return rewardNodeData;
         }
 
@@ -133,7 +133,7 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(MapNodeData), "mapIcon").SetValue(rewardNodeData, this.MapIcon);
             if (this.MapIconPrefab == null)
             { // These are too complicated to create from scratch, so by default we copy from an existing game banner and apply our sprites to it
-                RewardNodeData copyBanner = (CustomMapNodeManager.SaveManager.GetAllGameData().FindMapNodeData("5f35b7b7-75d1-4957-9f78-7d2072237038") as RewardNodeData);
+                RewardNodeData copyBanner = (CustomMapNodePoolManager.SaveManager.GetAllGameData().FindMapNodeData("5f35b7b7-75d1-4957-9f78-7d2072237038") as RewardNodeData);
                 this.MapIconPrefab = GameObject.Instantiate(copyBanner.GetMapIconPrefab());
                 this.MapIconPrefab.transform.parent = null;
                 this.MapIconPrefab.name = this.RewardNodeID;

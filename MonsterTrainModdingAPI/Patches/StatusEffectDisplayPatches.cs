@@ -6,6 +6,9 @@ using System.Text;
 
 namespace MonsterTrainModdingAPI.Patches
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [HarmonyPatch(typeof(StatusEffectManager), "GetLocalizedCharacterTooltipTextKey")]
     public class SETooltipLocalizationPatch
     {
@@ -19,6 +22,9 @@ namespace MonsterTrainModdingAPI.Patches
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     [HarmonyPatch(typeof(StatusEffectManager), "GetLocalizedName")]
     public class SENameLocalizationPatch
     {
@@ -42,7 +48,10 @@ namespace MonsterTrainModdingAPI.Patches
             return ret;
         }
     }
-
+    
+    /// <summary>
+    /// 
+    /// </summary>
     [HarmonyPatch(typeof(StatusEffectManager), "GetLocalizedCardTooltipTextKey")]
     public class SECardTooltipLocalizationPatch
     {
@@ -56,6 +65,9 @@ namespace MonsterTrainModdingAPI.Patches
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     [HarmonyPatch(typeof(StatusEffectManager), "GetLocalizedNotificationText")]
     public class SENoticeLocalizationPatch
     {

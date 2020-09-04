@@ -6,6 +6,9 @@ using MonsterTrainModdingAPI.Managers;
 
 namespace MonsterTrainModdingAPI.Patches
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [HarmonyPatch(typeof(CardTriggerTypeMethods), "GetAssociatedCardTrigger")]
     class GetAssociatedCustomCardTriggersPatch
     {
@@ -18,6 +21,9 @@ namespace MonsterTrainModdingAPI.Patches
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     [HarmonyPatch(typeof(CardTriggerTypeMethods), "GetAssociatedCharacterTrigger")]
     class GetAssociatedCustomCharacterTriggersPatch
     {

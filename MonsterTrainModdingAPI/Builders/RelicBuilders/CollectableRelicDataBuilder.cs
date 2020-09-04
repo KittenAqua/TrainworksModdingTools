@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using MonsterTrainModdingAPI.Managers;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Builders
 {
@@ -90,6 +91,13 @@ namespace MonsterTrainModdingAPI.Builders
         public bool FromStoryEvent { get; set; }
         public bool IsBossGivenRelic { get; set; }
 
+        /// <summary>
+        /// The full, absolute path to the asset. Concatenates BaseAssetPath and IconPath.
+        /// </summary>
+        public string FullAssetPath => BaseAssetPath + "/" + IconPath;
+        /// <summary>
+        /// Set automatically in the constructor. Base asset path, usually the plugin directory.
+        /// </summary>
         public string BaseAssetPath { get; private set; }
 
         public CollectableRelicDataBuilder()
@@ -128,7 +136,11 @@ namespace MonsterTrainModdingAPI.Builders
             {
                 this.Effects.Add(builder.Build());
             }
-            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(GUIDManager.GenerateDeterministicGUID(this.ClanID));
+
+            if (this.ClanID != null)
+            {
+                this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
+            }
 
             var relicData = ScriptableObject.CreateInstance<CollectableRelicData>();
 
@@ -140,7 +152,7 @@ namespace MonsterTrainModdingAPI.Builders
             AccessTools.Field(typeof(RelicData), "effects").SetValue(relicData, this.Effects);
             if (this.IconPath != null)
             {
-                Sprite iconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.IconPath);
+                Sprite iconSprite = CustomAssetManager.LoadSpriteFromPath(this.FullAssetPath);
                 AccessTools.Field(typeof(RelicData), "icon").SetValue(relicData, iconSprite);
             }
             BuilderUtils.ImportStandardLocalization(this.NameKey, this.Name);

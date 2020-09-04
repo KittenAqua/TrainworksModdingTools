@@ -10,10 +10,12 @@ namespace MonsterTrainModdingAPI.Enums
     public class TrackedValueType : ExtendedEnum<TrackedValueType, CardStatistics.TrackedValueType>
     {
         private static int NumTrackedValues = 576;
+
         public TrackedValueType(string Name, int? ID = null) : base(Name, ID ?? GetNewCharacterGUID())
         {
 
         }
+
         public static int GetNewCharacterGUID()
         {
             NumTrackedValues++;

@@ -5,9 +5,10 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\MonsterTrainModdingAPI\plugins</OutputPath>
-    <DocumentationFile>..\..\BepInEx\plugins\MonsterTrainModdingAPI.xml</DocumentationFile>
+    <OutDir>..\..\..\..\workshop\content\1102190\MonsterTrainModdingAPI\plugins</OutDir>
+    <DocumentationFile>C:\Program Files (x86)\Steam\steamapps\common\Monster Train\MonsterTrainModdingAPI\MonsterTrainModdingAPI\MonsterTrainModdingAPI.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
+    <OutputPath>C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\MonsterTrainModdingAPI\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +17,7 @@
 
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\BepInEx\core\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\..\workshop\content\1102190\2187468759\BepInEx\core\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
@@ -24,11 +25,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>..\..\BepInEx\core\BepInEx.dll</HintPath>
+      <HintPath>..\..\..\..\workshop\content\1102190\2187468759\BepInEx\core\BepInEx.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="BepInEx.Harmony">
-      <HintPath>..\..\BepInEx\core\BepInEx.Harmony.dll</HintPath>
+      <HintPath>..\..\..\..\workshop\content\1102190\2187468759\BepInEx\core\BepInEx.Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Addressables">

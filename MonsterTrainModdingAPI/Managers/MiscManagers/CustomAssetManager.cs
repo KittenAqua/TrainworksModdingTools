@@ -7,24 +7,77 @@ using BepInEx.Configuration;
 using System.IO;
 using System.Reflection;
 using HarmonyLib;
+using ShinyShoe;
+using UnityEngine.AddressableAssets;
+using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.AssetConstructors;
 
 namespace MonsterTrainModdingAPI.Managers
 {
     /// <summary>
     /// Handles loading custom assets, both raw and from asset bundles.
-    /// Assets should be placed in the BepInEx/plugins folder.
+    /// Assets should be placed inside the plugin's own folder.
     /// </summary>
     public class CustomAssetManager
     {
         /// <summary>
+        /// Maps asset runtime key (from GUID) to the path it's stored in
+        /// </summary>
+        public static IDictionary<Hash128, string> RuntimeKeyToFilepath { get; } = new Dictionary<Hash128, string>();
+        /// <summary>
+        /// Maps asset runtime key (from GUID) to the type of the asset
+        /// </summary>
+        public static IDictionary<Hash128, AssetRefBuilder.AssetTypeEnum> RuntimeKeyToAssetType = new Dictionary<Hash128, AssetRefBuilder.AssetTypeEnum>();
+        /// <summary>
+        /// Maps asset types to the classes used to make them
+        /// </summary>
+        public static IDictionary<AssetRefBuilder.AssetTypeEnum, Interfaces.IAssetConstructor> AssetTypeToAssetConstructor = new Dictionary<AssetRefBuilder.AssetTypeEnum, Interfaces.IAssetConstructor>();
+
+        /// <summary>
         /// Maps path to asset bundle.
         /// </summary>
-        private static Dictionary<string, AssetBundle> LoadedAssetBundles { get; } = new Dictionary<string, AssetBundle>();
+        public static Dictionary<string, AssetBundle> LoadedAssetBundles { get; } = new Dictionary<string, AssetBundle>();
+
+        public static void InitializeAssetConstructors()
+        {
+            AssetTypeToAssetConstructor[AssetRefBuilder.AssetTypeEnum.CardArt] = new CardArtAssetConstructor();
+            AssetTypeToAssetConstructor[AssetRefBuilder.AssetTypeEnum.Character] = new CharacterAssetConstructor();
+        }
+
+        public static void RegisterCustomAsset(string assetGUID, string filename, AssetRefBuilder.AssetTypeEnum assetType)
+        {
+            var runtimeKey = Hash128.Parse(assetGUID);
+            RuntimeKeyToFilepath[runtimeKey] = filename;
+            RuntimeKeyToAssetType[runtimeKey] = assetType;
+        }
+
+        public static GameObject LoadGameObjectFromAssetRef(AssetReference assetRef)
+        {
+            var runtimeKey = assetRef.RuntimeKey;
+            if (RuntimeKeyToFilepath.ContainsKey(runtimeKey))
+            {
+                var assetType = RuntimeKeyToAssetType[runtimeKey];
+                var assetConstructor = AssetTypeToAssetConstructor[assetType];
+                return assetConstructor.Construct(assetRef);
+            }
+            API.Log(BepInEx.Logging.LogLevel.Warning, "Runtime key is not registered with CustomAssetManager: " + runtimeKey);
+            return null;
+        }
+
+        public static Sprite LoadSpriteFromRuntimeKey(Hash128 runtimeKey)
+        {
+            if (RuntimeKeyToFilepath.ContainsKey(runtimeKey))
+            {
+                return LoadSpriteFromPath(RuntimeKeyToFilepath[runtimeKey]);
+            }
+            API.Log(BepInEx.Logging.LogLevel.Warning, "Custom asset failed to load from runtime key: " + runtimeKey);
+            return null;
+        }
 
         /// <summary>
         /// Create a sprite from texture at provided path.
         /// </summary>
-        /// <param name="path">Path of the texture relative to the BepInEx/plugins folder</param>
+        /// <param name="path">Absolute path of the texture</param>
         /// <returns>The sprite, or null if there is no texture at the given path</returns>
         public static Sprite LoadSpriteFromPath(string path)
         {
@@ -37,6 +90,7 @@ namespace MonsterTrainModdingAPI.Managers
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
                 return sprite;
             }
+            API.Log(BepInEx.Logging.LogLevel.Warning, "Custom asset failed to load from path: " + path);
             return null;
         }
 
@@ -56,17 +110,16 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns>The asset specified by the given info</returns>
         public static T LoadAssetFromBundle<T>(AssetBundleLoadingInfo info) where T : UnityEngine.Object
         {
-            T asset = LoadAssetFromBundle<T>(info.AssetName, info.BundlePath);
+            T asset = LoadAssetFromBundle<T>(info.AssetName, info.FullPath);
             ApplyImportSettings(info, ref asset);
             return asset;
         }
-
         /// <summary>
         /// Load an asset from an asset bundle
         /// </summary>
         /// <typeparam name="T">Type of the asset to load</typeparam>
         /// <param name="assetName">Name of the asset to load</param>
-        /// <param name="bundlePath">Path to the bundle containing the asset to load</param>
+        /// <param name="bundlePath">Absolute Path to the bundle containing the asset to load</param>
         /// <returns></returns>
         public static T LoadAssetFromBundle<T>(string assetName, string bundlePath) where T : UnityEngine.Object
         {
@@ -76,7 +129,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <summary>
         /// Loads an asset bundle from the path provided.
         /// </summary>
-        /// <param name="path">Path of the bundle relative to the BepInEx/plugins folder</param>
+        /// <param name="path">Absolute path of the bundle</param>
         /// <returns></returns>
         public static AssetBundle LoadAssetBundleFromPath(string path)
         {
@@ -113,16 +166,29 @@ namespace MonsterTrainModdingAPI.Managers
         {
             public IDictionary<Type, ISettings> LoadingDictionary { get; private set; } = new Dictionary<Type, ISettings>();
             public string AssetName { get; set; }
+            /// <summary>
+            /// Local Path Relative to the Assembly where it is created.
+            /// </summary>
             public string BundlePath { get; set; }
+            private string PluginPath;
+            public string FullPath
+            {
+                get
+                {
+                    return Path.Combine(PluginPath, BundlePath);
+                }
+            }
             public AssetBundleLoadingInfo(string assetName, string bundlePath)
             {
                 this.AssetName = assetName;
                 this.BundlePath = bundlePath;
+                var assembly = Assembly.GetCallingAssembly();
+                PluginPath = PluginManager.AssemblyNameToPath[assembly.FullName];
             }
 
             public AssetBundleLoadingInfo AddImportSettings<T>(T ImportSettings) where T : ISettings
             {
-                foreach(Type inter in ImportSettings.GetType().GetInterfaces())
+                foreach (Type inter in ImportSettings.GetType().GetInterfaces())
                 {
                     if (inter.IsGenericType && (typeof(ISettings).IsAssignableFrom(inter)))
                     {
