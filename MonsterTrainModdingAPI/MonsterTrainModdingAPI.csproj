@@ -32,6 +32,10 @@
       <HintPath>..\..\MonsterTrain_Data\Managed\Unity.Addressables.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>..\..\MonsterTrain_Data\Managed\Unity.ResourceManager.dll</HintPath>
+	  <Private>False</Private>
+	</Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>..\..\MonsterTrain_Data\Managed\Unity.TextMeshPro.dll</HintPath>
       <Private>false</Private>

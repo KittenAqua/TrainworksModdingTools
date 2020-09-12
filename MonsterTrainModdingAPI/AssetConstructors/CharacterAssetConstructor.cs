@@ -7,6 +7,11 @@ using UnityEngine.UI;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Managers;
 using MonsterTrainModdingAPI.Utilities;
+using Spine.Unity;
+using Spine;
+using System.Linq;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using ShinyShoe;
 
 namespace MonsterTrainModdingAPI.AssetConstructors
 {
@@ -43,21 +48,40 @@ namespace MonsterTrainModdingAPI.AssetConstructors
         /// <returns>The GameObject for the character</returns>
         private static GameObject CreateCharacterGameObject(AssetReference assetRef, Sprite sprite)
         {
-            // Create a new character GameObject by cloning an existing, working character
-            var characterGameObject = GameObject.Instantiate(CustomCharacterManager.TemplateCharacter.GetCharacterPrefabVariant());
+            API.Log(BepInEx.Logging.LogLevel.All, "Character Template: " + CustomCharacterManager.TemplateCharacter);
 
-            characterGameObject.name = "Character_" + assetRef.RuntimeKey;
+            // Create a new character GameObject by cloning an existing, working character
+            var characterGameObject = GameObject.Instantiate(CustomCharacterManager.TemplateCharacter);
 
             // Set aside its CharacterState and CharacterUI components for later use
             var characterState = characterGameObject.GetComponentInChildren<CharacterState>();
             var characterUI = characterGameObject.GetComponentInChildren<CharacterUI>();
 
+            // Set the name, and hide the UI
+            characterUI.HideDetails();
+            characterGameObject.name = "Character_" + sprite.name;
+
             // Make its MeshRenderer active; this is what enables the sprite we're about to attach to show up
             characterGameObject.GetComponentInChildren<MeshRenderer>(true).gameObject.SetActive(true);
 
+            // Delete all the spine anims
+            var spine = characterGameObject.GetComponentInChildren<ShinyShoe.CharacterUIMeshSpine>(true);
+            foreach (Transform child in spine.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+            spine.gameObject.SetActive(false);
+
             // Set states in the CharacterState and CharacterUI to the sprite to show it ingame
-            AccessTools.Field(typeof(CharacterState), "sprite").SetValue(characterState, sprite);
+            Traverse.Create(characterState).Field<Sprite>("sprite").Value = sprite;
             characterUI.GetSpriteRenderer().sprite = sprite;
+
+            // Set up the outline Sprite - well, seems like there will be problems here
+            var outlineMesh = characterGameObject.GetComponentInChildren<CharacterUIOutlineMesh>(true);
+            //Traverse.Create(outlineMesh).Field("outlineData").Field<Texture2D>("characterTexture").Value = sprite.texture;
+            //Traverse.Create(outlineMesh).Field("outlineData").Field<Texture2D>("outlineTexture").Value = sprite.texture;
+            Traverse.Create(outlineMesh).Field<CharacterOutlineData>("outlineData").Value = null; //CharacterOutlineData.Create(sprite.texture);
+            //Traverse.Create(outlineMesh).Field("outlineData").Field<Texture2D>("outlineTexture").Value = sprite.texture;
 
             return characterGameObject;
         }
@@ -72,30 +96,78 @@ namespace MonsterTrainModdingAPI.AssetConstructors
         private static GameObject CreateCharacterGameObject(AssetReference assetRef, Sprite sprite, GameObject skeletonData)
         {
             // Create a new character GameObject by cloning an existing, working character
-            var characterGameObject = GameObject.Instantiate(CustomCharacterManager.TemplateCharacter.GetCharacterPrefabVariant());
-
-            characterGameObject.name = "Character_" + assetRef.RuntimeKey;
+            var characterGameObject = GameObject.Instantiate(CustomCharacterManager.TemplateCharacter);
 
             // Set aside its CharacterState and CharacterUI components for later use
             var characterState = characterGameObject.GetComponentInChildren<CharacterState>();
             var characterUI = characterGameObject.GetComponentInChildren<CharacterUI>();
 
-            // Hide the quad and show the spine mesh
-            var quadDefault = characterUI.transform.Find("Quad_Default");
-            quadDefault.gameObject.SetActive(false);
-            var spineMeshes = characterUI.transform.Find("SpineMeshes");
-            spineMeshes.gameObject.SetActive(true);
+            // Hide the UI
+            characterUI.HideDetails();
+            characterGameObject.name = "Character_" + skeletonData.name;
 
-            // Make its MeshRenderer active; this is what enables the sprite we're about to attach to show up
-            characterGameObject.GetComponentInChildren<MeshRenderer>(true).gameObject.SetActive(true);
-            AccessTools.Field(typeof(CharacterState), "sprite").SetValue(characterState, sprite);
+            // Hide the quad, ensure the Spine mesh is shown (it should be by default)           
+            var Quad = characterGameObject.GetComponentInChildren<ShinyShoe.CharacterUIMesh>(true).gameObject;
+            Quad.SetActive(false);
+
+            // Set the sprite for the preview
+            Traverse.Create(characterState).Field<Sprite>("sprite").Value = sprite;
             characterUI.GetSpriteRenderer().sprite = sprite;
 
-            // Add the skeleton data to the spine mesh
-            var characterSkeletonAnimation = GameObject.Instantiate(skeletonData);
-            characterSkeletonAnimation.transform.SetParent(spineMeshes.transform);
+            // Set the shader
+            skeletonData.GetComponent<SkeletonAnimation>().addNormals = true;
+            skeletonData.GetComponent<SkeletonAnimation>().skeletonDataAsset.atlasAssets[0].PrimaryMaterial.shader = Shader.Find("Shiny Shoe/Character Spine Shader");
+
+            // Activate the SpineMesh
+            var spineMeshes = characterGameObject.GetComponentInChildren<ShinyShoe.CharacterUIMeshSpine>(true);
+            spineMeshes.gameObject.SetActive(true);
+
+            /* The below code is for using the skeletonData directly, but something is wrong with the shader properties when we do
+            // Inherit the root position
+            var position = spineMeshes.transform.GetChild(0).position;
+            var localPosition = spineMeshes.transform.GetChild(0).localPosition;
+
+            skeletonData.transform.position = position;
+            skeletonData.transform.localPosition = localPosition;
+
+
+            // Copy the skeleton, parent it. We can't parent it directly for unknown Unity reasons, causes crashes.
+            GameObject.Instantiate(skeletonData, spineMeshes.transform);
+            */
+
+            // Skeleton cloning produces superior effects (but there's an error? 
+            var clonedObject = characterGameObject.GetComponentInChildren<SkeletonAnimation>().gameObject;
+            clonedObject.name = "Spine GameObject (" + characterGameObject.name + ")";
+
+            var dest = clonedObject.GetComponentInChildren<SkeletonAnimation>();
+            var source = skeletonData.GetComponentInChildren<SkeletonAnimation>();
+
+            dest.skeletonDataAsset = source.skeletonDataAsset;
+            //dest.skeleton = source.skeleton;
+            //dest.AnimationName = source.AnimationName;
+            //dest.state = source.state;
+
+            // Destroy the evidence
+            GameObject.Destroy(skeletonData.gameObject);
+
+            // Now delete the pre-existing animations
+            GameObject.Destroy(spineMeshes.transform.GetChild(1).gameObject);
+            GameObject.Destroy(spineMeshes.transform.GetChild(2).gameObject);
+
+            // Set googly eye positions
+            // Add in visual effects such as particles
 
             return characterGameObject;
+        }
+
+        [HarmonyPatch(typeof(CharacterUIMeshSpine), "Setup")]
+        class FixShaderPropertiesOnCustomSpineAnims
+        {
+            static void Postfix(CharacterUIMeshSpine __instance)
+            {
+                var matProp = Traverse.Create(__instance).Field<MaterialPropertyBlock>("_matProps").Value = new MaterialPropertyBlock();
+                __instance.MeshRenderer.SetPropertyBlock(matProp);
+            }
         }
 
         public GameObject Construct(AssetReference assetRef, BundleAssetLoadingInfo bundleInfo)
@@ -104,11 +176,10 @@ namespace MonsterTrainModdingAPI.AssetConstructors
             if (tex != null)
             {
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-                
-                GameObject gameObject;
+
                 if (bundleInfo.ObjectName != null)
                 {
-                    gameObject = BundleManager.LoadAssetFromBundle(bundleInfo, bundleInfo.ObjectName) as GameObject;
+                    GameObject gameObject = BundleManager.LoadAssetFromBundle(bundleInfo, bundleInfo.ObjectName) as GameObject;
                     if (gameObject != null)
                     {
                         var spineObj = CreateCharacterGameObject(assetRef, sprite, gameObject);
