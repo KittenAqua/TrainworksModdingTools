@@ -156,10 +156,34 @@ namespace MonsterTrainModdingAPI.AssetConstructors
 
             // Set googly eye positions
             // Add in visual effects such as particles
+            //spineMeshes.gameObject.SetActive(false);
+            dest.gameObject.SetActive(false);
 
             return characterGameObject;
         }
 
+        // This is the fix for how to hide/show character templates, because I can't figure out how vanilla accomplishes it
+        [HarmonyPatch(typeof(MonsterManager), "InstantiateCharacter")]
+        class ShowDisabledImages
+        {
+            static void Postfix(MonsterManager __instance, ref GameObject __result)
+            {
+                var c = __result.GetComponentInChildren<SkeletonAnimation>(true);
+                if (c != null)
+                    c.gameObject.SetActive(true);
+            }
+        }
+        // This is the fix for how to hide/show character templates, because I can't figure out how vanilla accomplishes it
+        //[HarmonyPatch(typeof(CharacterState), "Setup")]
+        //class ShowDisabledImages
+        //{
+        //    static void Prefix(CharacterState __instance)
+        //    {
+        //        __instance.GetCharacterUI().gameObject.SetActive(true);
+        //    }
+        //}
+
+        // This is required to reset the UV colours for Mesh based Spine animations
         [HarmonyPatch(typeof(CharacterUIMeshSpine), "Setup")]
         class FixShaderPropertiesOnCustomSpineAnims
         {
