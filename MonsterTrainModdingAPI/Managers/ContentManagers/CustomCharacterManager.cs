@@ -8,6 +8,7 @@ using HarmonyLib;
 using UnityEngine;
 using ShinyShoe;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace MonsterTrainModdingAPI.Managers
 {
@@ -24,11 +25,26 @@ namespace MonsterTrainModdingAPI.Managers
         /// A default character prefab which is cloned to create custom characters.
         /// Essential for custom character art. Set during game startup.
         /// </summary>
-        public static CharacterData TemplateCharacter { get; set; }
+        public static GameObject TemplateCharacter { get; set; }
         /// <summary>
         /// Static reference to the game's SaveManager, which is necessary to register new characters.
         /// </summary>
         public static SaveManager SaveManager { get; set; }
+
+        public static void LoadTemplateCharacter (SaveManager saveManager)
+        {
+            var characterData = saveManager.GetAllGameData().GetAllCharacterData()[0];
+            //var characterData = new CharacterData();
+            var loadOperation = characterData.characterPrefabVariantRef.LoadAsset<GameObject>();
+            loadOperation.Completed += TemplateCharacterLoadingComplete;
+        }
+
+        private static void TemplateCharacterLoadingComplete(IAsyncOperation<GameObject> asyncOperation)
+        {
+            TemplateCharacter = asyncOperation.Result;
+            API.Log(LogLevel.All, "Character Template Loaded: " + asyncOperation.Result);
+            return;
+        }
 
         /// <summary>
         /// Register a custom character with the manager, allowing it to show up in game.
