@@ -86,6 +86,7 @@ namespace MonsterTrainModdingAPI.Managers
                 Texture2D tex = new Texture2D(1, 1);
                 UnityEngine.ImageConversion.LoadImage(tex, fileData);
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
+                sprite.name = Path.GetFileNameWithoutExtension(path);
                 return sprite;
             }
             API.Log(BepInEx.Logging.LogLevel.Warning, "Custom asset failed to load from path: " + path);

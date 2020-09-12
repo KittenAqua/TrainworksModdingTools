@@ -48,6 +48,22 @@ namespace MonsterTrainModdingAPI.AssetConstructors
         /// <returns>The GameObject for the character</returns>
         private static GameObject CreateCharacterGameObject(AssetReference assetRef, Sprite sprite)
         {
+            /*
+            // This code attempts to construct a Spine Object with no animations to match the imported PNG file. This gives us better outlining, draw order, and highlighting.
+
+            GameObject skeletonData = new GameObject();
+            skeletonData.name = sprite.name;
+            var s = skeletonData.AddComponent<SkeletonAnimation>();
+
+            // All we need is a complete and valid SkeletonDataAsset... does that include the atlas primarymaterial, atlas data, skeletonjson, state, and skeleton?
+            s.skeletonDataAsset = new SkeletonDataAsset();
+            s.skeletonDataAsset.skeletonJSON = new TextAsset("{\"skeleton\":{\"spine\":\"3.6.0.7-beta\",\"width\":" + sprite.rect.width + ",\"height\":" + sprite.rect.height + ",\"fps\":24,\"hash\":\" \",\"name\":\"Armature\"},\"bones\":[{\"name\":\"root\"}],\"slots\":[{\"name\":\"Unit\",\"bone\":\"root\",\"attachment\":\"Unit\"}],\"skins\":{\"default\":{\"Unit\":{\"Unit\":{\"name\":\"Unit\",\"width\":" + sprite.rect.width + ",\"height\":" + sprite.rect.height + ",\"y\":" + sprite.rect.width + "}}}}}");
+            s.skeletonDataAsset.atlasAssets.AddToArray<AtlasAssetBase>(new SpineAtlasAsset());
+            s.skeletonDataAsset.atlasAssets[0].
+            
+            return CreateCharacterGameObject(assetRef, sprite, skeletonData);
+            */
+
             API.Log(BepInEx.Logging.LogLevel.All, "Character Template: " + CustomCharacterManager.TemplateCharacter);
 
             // Create a new character GameObject by cloning an existing, working character
@@ -122,20 +138,7 @@ namespace MonsterTrainModdingAPI.AssetConstructors
             var spineMeshes = characterGameObject.GetComponentInChildren<ShinyShoe.CharacterUIMeshSpine>(true);
             spineMeshes.gameObject.SetActive(true);
 
-            /* The below code is for using the skeletonData directly, but something is wrong with the shader properties when we do
-            // Inherit the root position
-            var position = spineMeshes.transform.GetChild(0).position;
-            var localPosition = spineMeshes.transform.GetChild(0).localPosition;
-
-            skeletonData.transform.position = position;
-            skeletonData.transform.localPosition = localPosition;
-
-
-            // Copy the skeleton, parent it. We can't parent it directly for unknown Unity reasons, causes crashes.
-            GameObject.Instantiate(skeletonData, spineMeshes.transform);
-            */
-
-            // Skeleton cloning produces superior effects (but there's an error? 
+            // Skeleton cloning produces superior effects
             var clonedObject = characterGameObject.GetComponentInChildren<SkeletonAnimation>().gameObject;
             clonedObject.name = "Spine GameObject (" + characterGameObject.name + ")";
 
@@ -143,9 +146,6 @@ namespace MonsterTrainModdingAPI.AssetConstructors
             var source = skeletonData.GetComponentInChildren<SkeletonAnimation>();
 
             dest.skeletonDataAsset = source.skeletonDataAsset;
-            //dest.skeleton = source.skeleton;
-            //dest.AnimationName = source.AnimationName;
-            //dest.state = source.state;
 
             // Destroy the evidence
             GameObject.Destroy(skeletonData.gameObject);
@@ -176,7 +176,7 @@ namespace MonsterTrainModdingAPI.AssetConstructors
             if (tex != null)
             {
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-
+                sprite.name = "CharacterSprite_" + bundleInfo.SpriteName;
                 if (bundleInfo.ObjectName != null)
                 {
                     GameObject gameObject = BundleManager.LoadAssetFromBundle(bundleInfo, bundleInfo.ObjectName) as GameObject;
