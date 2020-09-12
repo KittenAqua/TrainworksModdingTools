@@ -173,15 +173,6 @@ namespace MonsterTrainModdingAPI.AssetConstructors
                     c.gameObject.SetActive(true);
             }
         }
-        // This is the fix for how to hide/show character templates, because I can't figure out how vanilla accomplishes it
-        //[HarmonyPatch(typeof(CharacterState), "Setup")]
-        //class ShowDisabledImages
-        //{
-        //    static void Prefix(CharacterState __instance)
-        //    {
-        //        __instance.GetCharacterUI().gameObject.SetActive(true);
-        //    }
-        //}
 
         // This is required to reset the UV colours for Mesh based Spine animations
         [HarmonyPatch(typeof(CharacterUIMeshSpine), "Setup")]
