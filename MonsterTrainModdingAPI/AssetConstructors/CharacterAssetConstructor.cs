@@ -156,7 +156,9 @@ namespace MonsterTrainModdingAPI.AssetConstructors
 
             // Set googly eye positions
             // Add in visual effects such as particles
-            //spineMeshes.gameObject.SetActive(false);
+
+            // Remove our friends
+            characterUI.GetComponent<SpriteRenderer>().forceRenderingOff = true;
             dest.gameObject.SetActive(false);
 
             return characterGameObject;
@@ -168,6 +170,10 @@ namespace MonsterTrainModdingAPI.AssetConstructors
         {
             static void Postfix(MonsterManager __instance, ref GameObject __result)
             {
+                var a = __result.GetComponentInChildren<CharacterUI>(true);
+                if (a != null)
+                    a.GetSpriteRenderer().forceRenderingOff = true;
+
                 var c = __result.GetComponentInChildren<SkeletonAnimation>(true);
                 if (c != null)
                     c.gameObject.SetActive(true);
