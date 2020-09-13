@@ -1,6 +1,12 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using MonsterTrainModdingAPI.Interfaces;
+using MonsterTrainModdingAPI.Managers;
+using MonsterTrainModdingAPI.Utilities;
+using System.Reflection;
+using UnityEngine;
+using System.IO;
 
 namespace MonsterTrainModdingAPI
 {
@@ -17,7 +23,9 @@ namespace MonsterTrainModdingAPI
         /// The API's logging source.
         /// </summary>
         private static readonly ManualLogSource logger = BepInEx.Logging.Logger.CreateLogSource("API");
-        
+
+        public static AssetBundle TrainworksBundle { get; private set; }
+        public static string APIBasePath { get; private set; }
         /// <summary>
         /// Logs a message into the BepInEx console.
         /// </summary>
@@ -27,13 +35,17 @@ namespace MonsterTrainModdingAPI
         {
             logger.Log(lvl, msg);
         }
-        
         /// <summary>
         /// Called on startup. Executes all Harmony patches anywhere in the API.
         /// </summary>
         private void Awake()
         {
             DepInjector.AddClient(new MonsterTrainModdingAPI.Managers.ProviderManager());
+
+            //Load the Trainworks Bundle, which will be used by the API for templating
+            var assembly = this.GetType().Assembly;
+            APIBasePath = Path.GetDirectoryName(assembly.Location);
+            TrainworksBundle = AssetBundle.LoadFromFile(Path.Combine(APIBasePath, "trainworks"));
 
             var harmony = new Harmony("api.modding.train.monster");
             harmony.PatchAll();

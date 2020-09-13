@@ -95,7 +95,7 @@ namespace MonsterTrainModdingAPI.Builders
         /// <summary>
         /// Custom asset path to load from. Must be inside the BaseAssetPath.
         /// </summary>
-        public string AssetPath { get; set; }
+        public string AssetPath { get; set; } = "";
         /// <summary>
         /// Loading Info for loading a card's sprite from an asset bundle.
         /// </summary>
