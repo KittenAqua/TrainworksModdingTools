@@ -3855,6 +3855,7 @@
         </member>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> ec80dfd... Make many minor changes to existing API code
         <member name="T:MonsterTrainModdingAPI.Patches.ClanSetupPatches.CUSCanInit">
@@ -3862,6 +3863,8 @@
             This patch fixes display on card upgrade trees
             </summary>
         </member>
+=======
+>>>>>>> 41a3de0... Fixed critical bug with latest minor update.
         <member name="T:MonsterTrainModdingAPI.Patches.ClanSetupPatches.CustomClanRewardDraftIcon">
             <summary>
             This patch adds in the custom icon for a clan. We could theoretically add these to VictoryUI's ClassIconMapping list, which seems better in theory. 

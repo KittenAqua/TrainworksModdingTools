@@ -49,23 +49,23 @@ namespace MonsterTrainModdingAPI.Patches
         /// <summary>
         /// This patch fixes display on card upgrade trees
         /// </summary>
-        [HarmonyPatch(typeof(ChampionUpgradeRewardData), "GetUpgradeTree")]
-        public class CUSCanInit
-        {
-            static CardUpgradeTreeData Postfix(CardUpgradeTreeData ret, ref ChampionUpgradeRewardData __instance, SaveManager saveManager)
-            {
-                if (CustomClassManager.CustomClassData.ContainsKey(saveManager.GetMainClass().GetID()))
-                {
-                    var classData = CustomClassManager.GetClassDataByID(saveManager.GetMainClass().GetID());
-                    var champ = saveManager.GetDeckState().Find((CardState cs) => cs.IsChampionCard());
-                    var upgradeTree = classData.FindUpgradeTreeForChampion(champ?.GetSpawnCharacterData());
+        //[HarmonyPatch(typeof(ChampionUpgradeRewardData), "GetUpgradeTree")]
+        //public class CUSCanInit
+        //{
+        //    static CardUpgradeTreeData Postfix(CardUpgradeTreeData ret, ref ChampionUpgradeRewardData __instance, SaveManager saveManager)
+        //    {
+        //        if (CustomClassManager.CustomClassData.ContainsKey(saveManager.GetMainClass().GetID()))
+        //        {
+        //            var classData = CustomClassManager.GetClassDataByID(saveManager.GetMainClass().GetID());
+        //            var champ = saveManager.GetDeckState().Find((CardState cs) => cs.IsChampionCard());
+        //            var upgradeTree = classData.FindUpgradeTreeForChampion(champ?.GetSpawnCharacterData());
 
-                    return upgradeTree;
-                }
+        //            return upgradeTree;
+        //        }
 
-                return ret;
-            }
-        }
+        //        return ret;
+        //    }
+        //}
 
         /// <summary>
         /// This patch adds in the custom icon for a clan. We could theoretically add these to VictoryUI's ClassIconMapping list, which seems better in theory. 
