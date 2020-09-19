@@ -2116,11 +2116,6 @@
             Identifies the necessary card frame for the class and installs it through ridiculous means.
             </summary>
         </member>
-        <member name="T:MonsterTrainModdingAPI.Patches.ClanSetupPatches.CUSCanInit">
-            <summary>
-            This patch fixes display on card upgrade trees
-            </summary>
-        </member>
         <member name="T:MonsterTrainModdingAPI.Patches.ClanSetupPatches.CustomClanRewardDraftIcon">
             <summary>
             This patch adds in the custom icon for a clan. We could theoretically add these to VictoryUI's ClassIconMapping list, which seems better in theory. 
