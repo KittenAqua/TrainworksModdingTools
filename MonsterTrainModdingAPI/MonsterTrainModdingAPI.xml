@@ -1981,12 +1981,17 @@
         </member>
         <member name="P:MonsterTrainModdingAPI.Managers.PluginManager.Plugins">
             <summary>
-            Maps BepInEx plugin names to the actual plugins.
+            Maps BepInEx Plugin GUIDs to their BaseUnityPlugin instances.
             </summary>
         </member>
-        <member name="P:MonsterTrainModdingAPI.Managers.PluginManager.AssemblyNameToPath">
+        <member name="P:MonsterTrainModdingAPI.Managers.PluginManager.AssemblyNameToPluginGUID">
             <summary>
-            Maps plugins' assembly names to their filepaths
+            Maps AssemblyNames to their respective BepInEx Plugins
+            </summary>
+        </member>
+        <member name="P:MonsterTrainModdingAPI.Managers.PluginManager.PluginGUIDToPath">
+            <summary>
+            Maps BepInEx Plugin GUIDs to their Directory Paths
             </summary>
         </member>
         <member name="M:MonsterTrainModdingAPI.Managers.PluginManager.GetAllPluginGUIDs">
@@ -2012,7 +2017,7 @@
             <summary>
             Register a plugin with the plugin manager.
             </summary>
-            <param name="plugin">Plugin to register</param>
+            <param name="plugin">Plugin to Register</param>
         </member>
         <member name="M:MonsterTrainModdingAPI.Managers.ProviderManager.TryGetProvider``1(``0@)">
             <summary>

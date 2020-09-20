@@ -220,7 +220,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.CardLoreTooltipKeys = new List<string>();
 
             var assembly = Assembly.GetCallingAssembly();
-            PluginManager.AssemblyNameToPath.TryGetValue(assembly.FullName, out string basePath);
+            PluginManager.PluginGUIDToPath.TryGetValue(PluginManager.AssemblyNameToPluginGUID[assembly.FullName], out string basePath);
             this.BaseAssetPath = basePath;
         }
 

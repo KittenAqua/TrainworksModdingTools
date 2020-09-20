@@ -28,7 +28,7 @@ namespace MonsterTrainModdingAPI.Builders
             }
             );
 
-            PluginManager.AssemblyNameToPath.TryGetValue(Assembly.GetCallingAssembly().FullName, out string basePath);
+            PluginManager.PluginGUIDToPath.TryGetValue(PluginManager.AssemblyNameToPluginGUID[Assembly.GetCallingAssembly().FullName], out string basePath);
             this.BaseAssetPath = basePath;
         }
 
