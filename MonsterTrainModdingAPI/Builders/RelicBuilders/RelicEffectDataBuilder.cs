@@ -118,6 +118,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.EffectConditionBuilders = new List<RelicEffectConditionBuilder>();
             this.TraitBuilders = new List<CardTraitDataBuilder>();
             this.TriggerBuilders = new List<CharacterTriggerDataBuilder>();
+            this.ParamCardEffectBuilders = new List<CardEffectDataBuilder>();
         }
 
         /// <summary>
