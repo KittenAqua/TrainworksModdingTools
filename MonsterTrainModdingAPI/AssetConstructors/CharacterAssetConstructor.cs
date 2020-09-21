@@ -208,7 +208,7 @@ namespace MonsterTrainModdingAPI.AssetConstructors
                         return spineObj;
                     }
                 }
-                var charObj = CreateCharacterGameObject(assetRef, sprite);
+                var charObj = CreateCharacterGameObject(assetRef, sprite, API.TrainworksBundle.LoadAsset("assets/PNGTemplate.prefab") as GameObject);
                 GameObject.DontDestroyOnLoad(charObj);
                 return charObj;
             }
