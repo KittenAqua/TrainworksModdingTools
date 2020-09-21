@@ -60,7 +60,12 @@ namespace MonsterTrainModdingAPI.AssetConstructors
             s.skeletonDataAsset.skeletonJSON = new TextAsset("{\"skeleton\":{\"spine\":\"3.6.0.7-beta\",\"width\":" + sprite.rect.width + ",\"height\":" + sprite.rect.height + ",\"fps\":24,\"hash\":\" \",\"name\":\"Armature\"},\"bones\":[{\"name\":\"root\"}],\"slots\":[{\"name\":\"Unit\",\"bone\":\"root\",\"attachment\":\"Unit\"}],\"skins\":{\"default\":{\"Unit\":{\"Unit\":{\"name\":\"Unit\",\"width\":" + sprite.rect.width + ",\"height\":" + sprite.rect.height + ",\"y\":" + sprite.rect.width + "}}}}}");
             s.skeletonDataAsset.atlasAssets.AddToArray<AtlasAssetBase>(new SpineAtlasAsset());
             s.skeletonDataAsset.atlasAssets[0].
-            
+            */
+
+            /*
+            API.Log(BepInEx.Logging.LogLevel.All, "We're doing the code!");
+            var skeletonData = API.TrainworksBundle.LoadAsset("assets/PNGTemplate.prefab") as GameObject;
+
             return CreateCharacterGameObject(assetRef, sprite, skeletonData);
             */
 
@@ -208,7 +213,7 @@ namespace MonsterTrainModdingAPI.AssetConstructors
                         return spineObj;
                     }
                 }
-                var charObj = CreateCharacterGameObject(assetRef, sprite, API.TrainworksBundle.LoadAsset("assets/PNGTemplate.prefab") as GameObject);
+                var charObj = CreateCharacterGameObject(assetRef, sprite);
                 GameObject.DontDestroyOnLoad(charObj);
                 return charObj;
             }
