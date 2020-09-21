@@ -38,20 +38,10 @@ namespace MonsterTrainModdingAPI
         /// </summary>
         private void Awake()
         {
-            API.Log(BepInEx.Logging.LogLevel.All, "We're awake here in API town");
-
             DepInjector.AddClient(new MonsterTrainModdingAPI.Managers.ProviderManager());
-            API.Log(BepInEx.Logging.LogLevel.All, "Patching?");
 
             var harmony = new Harmony("api.modding.train.monster");
-            API.Log(BepInEx.Logging.LogLevel.All, "We Made a harmony");
-
-
-            //Assembly.GetExecutingAssembly().GetTypes().Do(type => harmony.CreateClassProcessor(type).Patch());
-            //var patchProcessors = Assembly.GetExecutingAssembly().GetTypes().Select(ProcessorForAnnotatedClass).Where(x => x != null).ToList();
-
             harmony.PatchAll();
-            API.Log(BepInEx.Logging.LogLevel.All, "Patch complete");
         }
     }
 }

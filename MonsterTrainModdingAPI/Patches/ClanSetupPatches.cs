@@ -47,27 +47,6 @@ namespace MonsterTrainModdingAPI.Patches
         }
 
         /// <summary>
-        /// This patch fixes display on card upgrade trees
-        /// </summary>
-        //[HarmonyPatch(typeof(ChampionUpgradeRewardData), "GetUpgradeTree")]
-        //public class CUSCanInit
-        //{
-        //    static CardUpgradeTreeData Postfix(CardUpgradeTreeData ret, ref ChampionUpgradeRewardData __instance, SaveManager saveManager)
-        //    {
-        //        if (CustomClassManager.CustomClassData.ContainsKey(saveManager.GetMainClass().GetID()))
-        //        {
-        //            var classData = CustomClassManager.GetClassDataByID(saveManager.GetMainClass().GetID());
-        //            var champ = saveManager.GetDeckState().Find((CardState cs) => cs.IsChampionCard());
-        //            var upgradeTree = classData.FindUpgradeTreeForChampion(champ?.GetSpawnCharacterData());
-
-        //            return upgradeTree;
-        //        }
-
-        //        return ret;
-        //    }
-        //}
-
-        /// <summary>
         /// This patch adds in the custom icon for a clan. We could theoretically add these to VictoryUI's ClassIconMapping list, which seems better in theory. 
         /// In practice, we have no way to guarantee the existence of VictoryUI in the scene at the time of Class instantiation, and no way to serialize the class mapping in advance of 
         /// </summary>
