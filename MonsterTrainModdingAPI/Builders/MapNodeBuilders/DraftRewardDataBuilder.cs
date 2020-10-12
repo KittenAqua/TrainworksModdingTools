@@ -69,7 +69,7 @@ namespace MonsterTrainModdingAPI.Builders
         {
             this.Costs = new int[0];
             var assembly = Assembly.GetCallingAssembly();
-            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
+            this.BaseAssetPath = PluginManager.PluginGUIDToPath[PluginManager.AssemblyNameToPluginGUID[assembly.FullName]];
         }
 
         /// <summary>

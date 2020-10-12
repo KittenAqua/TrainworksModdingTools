@@ -111,7 +111,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.UpgradesToRemove = new List<CardUpgradeData>();
 
             var assembly = Assembly.GetCallingAssembly();
-            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
+            this.BaseAssetPath = PluginManager.PluginGUIDToPath[PluginManager.AssemblyNameToPluginGUID[assembly.FullName]];
         }
 
         public CardUpgradeData Build()

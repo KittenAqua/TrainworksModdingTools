@@ -65,7 +65,7 @@ namespace MonsterTrainModdingAPI.Builders
         public EnhancerDataBuilder()
         {
             var assembly = Assembly.GetCallingAssembly();
-            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
+            this.BaseAssetPath = PluginManager.PluginGUIDToPath[PluginManager.AssemblyNameToPluginGUID[assembly.FullName]];
 
             this.Name = "";
             this.Description = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";

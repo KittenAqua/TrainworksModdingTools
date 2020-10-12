@@ -109,8 +109,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.EffectBuilders = new List<RelicEffectDataBuilder>();
 
             var assembly = Assembly.GetCallingAssembly();
-            PluginManager.AssemblyNameToPath.TryGetValue(assembly.FullName, out string basePath);
-            this.BaseAssetPath = basePath;
+            this.BaseAssetPath = PluginManager.PluginGUIDToPath[PluginManager.AssemblyNameToPluginGUID[assembly.FullName]];
         }
 
         /// <summary>

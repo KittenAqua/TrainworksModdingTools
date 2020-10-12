@@ -101,7 +101,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.RewardBuilders = new List<IRewardDataBuilder>();
 
             var assembly = Assembly.GetCallingAssembly();
-            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
+            this.BaseAssetPath = PluginManager.PluginGUIDToPath[PluginManager.AssemblyNameToPluginGUID[assembly.FullName]];
         }
 
         /// <summary>
