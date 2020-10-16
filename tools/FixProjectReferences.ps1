@@ -11,7 +11,7 @@ function RewriteDllPath {
 
 $apiProjectPath = '..\MonsterTrainModdingAPI\MonsterTrainModdingAPI.csproj'
 
-$bepInExDefaultPath = 'C:\Program Files (x86)\Steam\steamapps\common\Monster Train\BepInEx'
+$bepInExDefaultPath = 'C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\2187468759\BepInEx'
 $mtDefaultPath = 'C:\Program Files (x86)\Steam\steamapps\common\Monster Train'
 
 $bepInExPath = Read-Host "Enter path to BepInEx root folder (defaults to `"$($bepInExDefaultPath)`")"
