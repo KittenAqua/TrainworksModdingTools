@@ -17,24 +17,24 @@
 mono_crash.*
 
 # Build results
-MonsterTrainModdingAPI/[Dd]ebug/
-MonsterTrainModdingAPI/[Dd]ebugPublic/
-MonsterTrainModdingAPI/[Rr]elease/
-MonsterTrainModdingAPI/[Rr]eleases/
-MonsterTrainModdingAPI/x64/
-MonsterTrainModdingAPI/x86/
-MonsterTrainModdingAPI/[Ww][Ii][Nn]32/
-MonsterTrainModdingAPI/[Aa][Rr][Mm]/
-MonsterTrainModdingAPI/[Aa][Rr][Mm]64/
-MonsterTrainModdingAPI/bld/
-MonsterTrainModdingAPI/[Bb]in/
-MonsterTrainModdingAPI/[Oo]bj/
-MonsterTrainModdingAPI/[Ll]og/
-MonsterTrainModdingAPI/[Ll]ogs/
+TrainworksModdingTools/[Dd]ebug/
+TrainworksModdingTools/[Dd]ebugPublic/
+TrainworksModdingTools/[Rr]elease/
+TrainworksModdingTools/[Rr]eleases/
+TrainworksModdingTools/x64/
+TrainworksModdingTools/x86/
+TrainworksModdingTools/[Ww][Ii][Nn]32/
+TrainworksModdingTools/[Aa][Rr][Mm]/
+TrainworksModdingTools/[Aa][Rr][Mm]64/
+TrainworksModdingTools/bld/
+TrainworksModdingTools/[Bb]in/
+TrainworksModdingTools/[Oo]bj/
+TrainworksModdingTools/[Ll]og/
+TrainworksModdingTools/[Ll]ogs/
 
-MonsterTrainModdingAPIUnitTests/[Bb]in/
-MonsterTrainModdingAPIUnitTests/[Oo]bj/
-MonsterTrainModdingAPIUnitTests/[Ll]og/
+TrainworksModdingToolsUnitTests/[Bb]in/
+TrainworksModdingToolsUnitTests/[Oo]bj/
+TrainworksModdingToolsUnitTests/[Ll]og/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -45,8 +45,8 @@ MonsterTrainModdingAPIUnitTests/[Ll]og/
 Generated\ Files/
 
 # MSTest test Results
-MonsterTrainModdingAPI/[Tt]est[Rr]esult*/
-MonsterTrainModdingAPI/[Bb]uild[Ll]og.*
+TrainworksModdingTools/[Tt]est[Rr]esult*/
+TrainworksModdingTools/[Bb]uild[Ll]og.*
 
 # NUnit
 *.VisualState.xml
