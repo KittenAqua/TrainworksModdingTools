@@ -32,20 +32,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         public static SaveManager SaveManager { get; set; }
 
-        public static void LoadTemplateCharacter (SaveManager saveManager)
-        {
-            var characterData = saveManager.GetAllGameData().GetAllCharacterData()[0];
-            //var characterData = new CharacterData();
-            var loadOperation = characterData.characterPrefabVariantRef.LoadAsset<GameObject>();
-            loadOperation.Completed += TemplateCharacterLoadingComplete;
-        }
-
-        private static void TemplateCharacterLoadingComplete(IAsyncOperation<GameObject> asyncOperation)
-        {
-            TemplateCharacter = asyncOperation.Result;
-            API.Log(LogLevel.All, "Character Template Loaded: " + asyncOperation.Result);
-            return;
-        }
 
         /// <summary>
         /// Register a custom character with the manager, allowing it to show up in game.
@@ -94,6 +80,24 @@ namespace MonsterTrainModdingAPI.Managers
         public static void RegisterSubtype(string ID)
         {
             CustomSubtypeData.Add(ID, new SubtypeDataBuilder { _Subtype = ID }.Build());
+        }
+
+
+        public static void LoadTemplateCharacter(SaveManager saveManager)
+        {
+            var characterData = saveManager.GetAllGameData().GetAllCharacterData()[0];
+            //var characterData = new CharacterData();
+            var loadOperation = characterData.characterPrefabVariantRef.LoadAsset<GameObject>();
+            loadOperation.Completed += TemplateCharacterLoadingComplete;
+        }
+
+        private static void TemplateCharacterLoadingComplete(IAsyncOperation<GameObject> asyncOperation)
+        {
+            TemplateCharacter = asyncOperation.Result;
+            if (TemplateCharacter == null)
+            {
+                API.Log(LogLevel.Warning, "Failed to load character template");
+            }
         }
     }
 }
