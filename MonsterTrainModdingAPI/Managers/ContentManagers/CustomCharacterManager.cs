@@ -9,6 +9,7 @@ using UnityEngine;
 using ShinyShoe;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Managers
 {
@@ -58,17 +59,28 @@ namespace MonsterTrainModdingAPI.Managers
         }
 
         /// <summary>
-        /// Get the custom character data corresponding to the given ID
+        /// Get the character data corresponding to the given ID
         /// </summary>
-        /// <param name="characterID">ID of the custom character to get</param>
-        /// <returns>The custom character data for the given ID</returns>
+        /// <param name="characterID">ID of the character to get</param>
+        /// <returns>The character data for the given ID</returns>
         public static CharacterData GetCharacterDataByID(string characterID)
         {
-            if (CustomCharacterData.ContainsKey(characterID))
+            // Search for custom character matching ID
+            var guid = GUIDGenerator.GenerateDeterministicGUID(characterID);
+            if (CustomCharacterData.ContainsKey(guid))
             {
-                return CustomCharacterData[characterID];
+                return CustomCharacterData[guid];
             }
-            return null;
+
+            // No custom card found; search for vanilla character matching ID
+            var vanillaChar = SaveManager.GetAllGameData().GetAllCharacterData().Find((chara) => {
+                return chara.GetID() == characterID;
+            });
+            if (vanillaChar == null)
+            {
+                API.Log(LogLevel.All, "Couldn't find character: " + characterID + " - This will cause crashes.");
+            }
+            return vanillaChar;
         }
 
         /// <summary>

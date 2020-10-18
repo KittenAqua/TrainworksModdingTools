@@ -8,13 +8,14 @@ using HarmonyLib;
 using UnityEngine;
 using ShinyShoe;
 using UnityEngine.AddressableAssets;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Managers
 {
     /// <summary>
     /// Handles registration and storage of custom relic data.
     /// </summary>
-    class CustomCollectableRelicManager
+    public class CustomCollectableRelicManager
     {
         /// <summary>
         /// Maps custom relic IDs to their respective RelicData.
@@ -38,17 +39,26 @@ namespace MonsterTrainModdingAPI.Managers
         }
 
         /// <summary>
-        /// Get the custom relic data corresponding to the given ID
+        /// Get the relic data corresponding to the given ID
         /// </summary>
-        /// <param name="relicID">ID of the custom relic to get</param>
-        /// <returns>The custom relic data for the given ID</returns>
+        /// <param name="relicID">ID of the relic to get</param>
+        /// <returns>The relic data for the given ID</returns>
         public static CollectableRelicData GetRelicDataByID(string relicID)
         {
-            if (CustomRelicData.ContainsKey(relicID))
+            // Search for custom relic matching ID
+            var guid = GUIDGenerator.GenerateDeterministicGUID(relicID);
+            if (CustomRelicData.ContainsKey(guid))
             {
-                return CustomRelicData[relicID];
+                return CustomRelicData[guid];
             }
-            return null;
+
+            // No custom relic found; search for vanilla relic matching ID
+            var vanillaRelic = SaveManager.GetAllGameData().FindCollectableRelicData(relicID);
+            if (vanillaRelic == null)
+            {
+                API.Log(LogLevel.All, "Couldn't find relic: " + relicID + " - This will cause crashes.");
+            }
+            return vanillaRelic;
         }
     }
 }
