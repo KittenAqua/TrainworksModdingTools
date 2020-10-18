@@ -32,9 +32,16 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="relicPoolData">The pools to insert the custom relic data into</param>
         public static void RegisterCustomRelic(CollectableRelicData relicData, List<string> relicPoolData)
         {
-            CustomRelicData.Add(relicData.GetID(), relicData);
-            CustomRelicPoolManager.AddRelicToPools(relicData, relicPoolData);
-            SaveManager.GetAllGameData().GetAllCollectableRelicData().Add(relicData);
+            if (!CustomRelicData.ContainsKey(relicData.GetID()))
+            {
+                CustomRelicData.Add(relicData.GetID(), relicData);
+                CustomRelicPoolManager.AddRelicToPools(relicData, relicPoolData);
+                SaveManager.GetAllGameData().GetAllCollectableRelicData().Add(relicData);
+            }
+            else
+            {
+                API.Log(LogLevel.Warning, "Attempted to register duplicate relic data with name: " + relicData.name);
+            }
         }
 
         /// <summary>

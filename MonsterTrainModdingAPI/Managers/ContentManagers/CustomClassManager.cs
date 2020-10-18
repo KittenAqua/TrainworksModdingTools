@@ -37,9 +37,16 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="classData">The custom class data to register</param>
         public static void RegisterCustomClass(ClassData classData)
         {
-            CustomClassData.Add(classData.GetID(), classData);
-            SaveManager.GetAllGameData().GetAllClassDatas().Add(classData);
-            SaveManager.GetAllGameData().GetBalanceData().GetClassDatas().Add(classData);
+            if (!CustomClassData.ContainsKey(classData.GetID()))
+            {
+                CustomClassData.Add(classData.GetID(), classData);
+                SaveManager.GetAllGameData().GetAllClassDatas().Add(classData);
+                SaveManager.GetAllGameData().GetBalanceData().GetClassDatas().Add(classData);
+            }
+            else
+            {
+                API.Log(LogLevel.Warning, "Attempted to register duplicate class data with name: " + classData.name);
+            }
         }
 
         /// <summary>
