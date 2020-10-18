@@ -20,10 +20,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// Maps custom relic IDs to their respective RelicData.
         /// </summary>
         public static IDictionary<string, CollectableRelicData> CustomRelicData { get; } = new Dictionary<string, CollectableRelicData>();
-        /// <summary>
-        /// Static reference to the game's SaveManager, which is necessary to register new relics.
-        /// </summary>
-        public static SaveManager SaveManager { get; set; }
 
         /// <summary>
         /// Register a custom relic with the manager, allowing it to show up in game.
@@ -34,7 +30,7 @@ namespace MonsterTrainModdingAPI.Managers
         {
             CustomRelicData.Add(relicData.GetID(), relicData);
             CustomRelicPoolManager.AddRelicToPools(relicData, relicPoolData);
-            SaveManager.GetAllGameData().GetAllCollectableRelicData().Add(relicData);
+            ProviderManager.SaveManager.GetAllGameData().GetAllCollectableRelicData().Add(relicData);
         }
 
         /// <summary>

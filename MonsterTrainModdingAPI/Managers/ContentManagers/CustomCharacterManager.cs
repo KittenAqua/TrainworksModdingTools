@@ -26,10 +26,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// Essential for custom character art. Set during game startup.
         /// </summary>
         public static GameObject TemplateCharacter { get; set; }
-        /// <summary>
-        /// Static reference to the game's SaveManager, which is necessary to register new characters.
-        /// </summary>
-        public static SaveManager SaveManager { get; set; }
 
         public static void LoadTemplateCharacter (SaveManager saveManager)
         {
@@ -53,7 +49,7 @@ namespace MonsterTrainModdingAPI.Managers
         public static bool RegisterCustomCharacter(CharacterData data)
         {
             CustomCharacterData.Add(data.GetID(), data);
-            SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
+            ProviderManager.SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
             return true;
         }
 

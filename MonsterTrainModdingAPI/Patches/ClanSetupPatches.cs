@@ -60,13 +60,13 @@ namespace MonsterTrainModdingAPI.Patches
                 {
                     if (draftRewardData.ClassType == RunState.ClassType.MainClass)
                     {
-                        string mainClass = CustomClassManager.SaveManager.GetMainClass().GetID();
+                        string mainClass = ProviderManager.SaveManager.GetMainClass().GetID();
                         if (CustomClassManager.CustomClassDraftIcons.ContainsKey(mainClass))
                             CustomClassManager.CustomClassDraftIcons.TryGetValue(mainClass, out mainClassIcon);
                     }
                     else if (draftRewardData.ClassType == RunState.ClassType.SubClass)
                     {
-                        string subClass = CustomClassManager.SaveManager.GetSubClass().GetID();
+                        string subClass = ProviderManager.SaveManager.GetSubClass().GetID();
                         if (CustomClassManager.CustomClassDraftIcons.ContainsKey(subClass))
                             CustomClassManager.CustomClassDraftIcons.TryGetValue(subClass, out subClassIcon);
                     }
