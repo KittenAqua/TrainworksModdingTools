@@ -37,8 +37,8 @@ namespace MonsterTrainModdingAPI.Managers
             if (!CustomClassData.ContainsKey(classData.GetID()))
             {
                 CustomClassData.Add(classData.GetID(), classData);
-                SaveManager.GetAllGameData().GetAllClassDatas().Add(classData);
-                SaveManager.GetAllGameData().GetBalanceData().GetClassDatas().Add(classData);
+                ProviderManager.SaveManager.GetAllGameData().GetAllClassDatas().Add(classData);
+                ProviderManager.SaveManager.GetAllGameData().GetBalanceData().GetClassDatas().Add(classData);
             }
             else
             {
@@ -61,7 +61,7 @@ namespace MonsterTrainModdingAPI.Managers
             }
 
             // No custom clan found; search for vanilla clan matching ID
-            var vanillaClan = SaveManager.GetAllGameData().FindClassData(classID);
+            var vanillaClan = ProviderManager.SaveManager.GetAllGameData().FindClassData(classID);
             if (vanillaClan == null)
             {
                 API.Log(LogLevel.All, "Couldn't find clan: " + classID + " - This will cause crashes.");

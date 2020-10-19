@@ -33,7 +33,7 @@ namespace MonsterTrainModdingAPI.Managers
             {
                 CustomRelicData.Add(relicData.GetID(), relicData);
                 CustomRelicPoolManager.AddRelicToPools(relicData, relicPoolData);
-                SaveManager.GetAllGameData().GetAllCollectableRelicData().Add(relicData);
+                ProviderManager.SaveManager.GetAllGameData().GetAllCollectableRelicData().Add(relicData);
             }
             else
             {
@@ -56,7 +56,7 @@ namespace MonsterTrainModdingAPI.Managers
             }
 
             // No custom relic found; search for vanilla relic matching ID
-            var vanillaRelic = SaveManager.GetAllGameData().FindCollectableRelicData(relicID);
+            var vanillaRelic = ProviderManager.SaveManager.GetAllGameData().FindCollectableRelicData(relicID);
             if (vanillaRelic == null)
             {
                 API.Log(LogLevel.All, "Couldn't find relic: " + relicID + " - This will cause crashes.");
