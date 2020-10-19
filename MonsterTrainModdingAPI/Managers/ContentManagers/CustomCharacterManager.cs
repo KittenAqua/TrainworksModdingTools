@@ -9,6 +9,7 @@ using UnityEngine;
 using ShinyShoe;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Managers
 {
@@ -27,20 +28,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         public static GameObject TemplateCharacter { get; set; }
 
-        public static void LoadTemplateCharacter (SaveManager saveManager)
-        {
-            var characterData = saveManager.GetAllGameData().GetAllCharacterData()[0];
-            //var characterData = new CharacterData();
-            var loadOperation = characterData.characterPrefabVariantRef.LoadAsset<GameObject>();
-            loadOperation.Completed += TemplateCharacterLoadingComplete;
-        }
-
-        private static void TemplateCharacterLoadingComplete(IAsyncOperation<GameObject> asyncOperation)
-        {
-            TemplateCharacter = asyncOperation.Result;
-            API.Log(LogLevel.All, "Character Template Loaded: " + asyncOperation.Result);
-            return;
-        }
 
         /// <summary>
         /// Register a custom character with the manager, allowing it to show up in game.
@@ -48,23 +35,42 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="data">The custom character data to register</param>
         public static bool RegisterCustomCharacter(CharacterData data)
         {
-            CustomCharacterData.Add(data.GetID(), data);
-            ProviderManager.SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
-            return true;
+            if (!CustomCharacterData.ContainsKey(data.GetID()))
+            {
+                CustomCharacterData.Add(data.GetID(), data);
+                SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
+                return true;
+            }
+            else
+            {
+                API.Log(LogLevel.Warning, "Attempted to register duplicate character data with name: " + data.name);
+                return false;
+            }
         }
 
         /// <summary>
-        /// Get the custom character data corresponding to the given ID
+        /// Get the character data corresponding to the given ID
         /// </summary>
-        /// <param name="characterID">ID of the custom character to get</param>
-        /// <returns>The custom character data for the given ID</returns>
+        /// <param name="characterID">ID of the character to get</param>
+        /// <returns>The character data for the given ID</returns>
         public static CharacterData GetCharacterDataByID(string characterID)
         {
-            if (CustomCharacterData.ContainsKey(characterID))
+            // Search for custom character matching ID
+            var guid = GUIDGenerator.GenerateDeterministicGUID(characterID);
+            if (CustomCharacterData.ContainsKey(guid))
             {
-                return CustomCharacterData[characterID];
+                return CustomCharacterData[guid];
             }
-            return null;
+
+            // No custom card found; search for vanilla character matching ID
+            var vanillaChar = SaveManager.GetAllGameData().GetAllCharacterData().Find((chara) => {
+                return chara.GetID() == characterID;
+            });
+            if (vanillaChar == null)
+            {
+                API.Log(LogLevel.All, "Couldn't find character: " + characterID + " - This will cause crashes.");
+            }
+            return vanillaChar;
         }
 
         /// <summary>
@@ -78,6 +84,24 @@ namespace MonsterTrainModdingAPI.Managers
         public static void RegisterSubtype(string ID)
         {
             CustomSubtypeData.Add(ID, new SubtypeDataBuilder { _Subtype = ID }.Build());
+        }
+
+
+        public static void LoadTemplateCharacter(SaveManager saveManager)
+        {
+            var characterData = saveManager.GetAllGameData().GetAllCharacterData()[0];
+            //var characterData = new CharacterData();
+            var loadOperation = characterData.characterPrefabVariantRef.LoadAsset<GameObject>();
+            loadOperation.Completed += TemplateCharacterLoadingComplete;
+        }
+
+        private static void TemplateCharacterLoadingComplete(IAsyncOperation<GameObject> asyncOperation)
+        {
+            TemplateCharacter = asyncOperation.Result;
+            if (TemplateCharacter == null)
+            {
+                API.Log(LogLevel.Warning, "Failed to load character template");
+            }
         }
     }
 }
