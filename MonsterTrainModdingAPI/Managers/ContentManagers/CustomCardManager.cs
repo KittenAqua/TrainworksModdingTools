@@ -32,9 +32,16 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="cardPoolData">The card pools the custom card should be a part of</param>
         public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData)
         {
-            CustomCardData.Add(cardData.GetID(), cardData);
-            CustomCardPoolManager.AddCardToPools(cardData, cardPoolData);
-            SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
+            if (!CustomCardData.ContainsKey(cardData.GetID()))
+            {
+                CustomCardData.Add(cardData.GetID(), cardData);
+                CustomCardPoolManager.AddCardToPools(cardData, cardPoolData);
+                SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
+            }
+            else
+            {
+                API.Log(LogLevel.Warning, "Attempted to register duplicate card data with name: " + cardData.name);
+            }
         }
 
         /// <summary>

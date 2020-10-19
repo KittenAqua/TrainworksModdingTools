@@ -39,9 +39,17 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="data">The custom character data to register</param>
         public static bool RegisterCustomCharacter(CharacterData data)
         {
-            CustomCharacterData.Add(data.GetID(), data);
-            SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
-            return true;
+            if (!CustomCharacterData.ContainsKey(data.GetID()))
+            {
+                CustomCharacterData.Add(data.GetID(), data);
+                SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
+                return true;
+            }
+            else
+            {
+                API.Log(LogLevel.Warning, "Attempted to register duplicate character data with name: " + data.name);
+                return false;
+            }
         }
 
         /// <summary>
