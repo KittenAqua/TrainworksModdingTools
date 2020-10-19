@@ -1,6 +1,8 @@
-# Monster Train Modding API
+# Trainworks Modding Tools
 
-This will eventually provide a great deal of functionality and convenience to Monster Train modders.
+A set of tools to more easily facilitate the most common types of modded content.
+
+For detailed usage, see the tutorials on the wiki.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
