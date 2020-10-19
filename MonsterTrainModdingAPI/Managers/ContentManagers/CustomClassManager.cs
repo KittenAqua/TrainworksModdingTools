@@ -27,10 +27,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// Maps custom class IDs to their respective Class Draft Icon
         /// </summary>
         public static IDictionary<string, Sprite> CustomClassDraftIcons { get; } = new Dictionary<string, Sprite>();
-        /// <summary>
-        /// Static reference to the game's SaveManager, which is necessary to register new classes.
-        /// </summary>
-        public static SaveManager SaveManager { get; set; }
         
         /// <summary>
         /// Register a custom class with the manager, allowing it to show up in game.
@@ -79,8 +75,8 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns>ClassData of the player's primary clan</returns>
         public static ClassData CurrentPrimaryClan()
         {
-            var saveData = (SaveData)AccessTools.Property(typeof(SaveManager), "ActiveSaveData").GetValue(SaveManager);
-            ClassData mainClass = SaveManager.GetAllGameData().FindClassData(saveData.GetStartingConditions().Class);
+            var saveData = (SaveData)AccessTools.Property(typeof(SaveManager), "ActiveSaveData").GetValue(ProviderManager.SaveManager);
+            ClassData mainClass = ProviderManager.SaveManager.GetAllGameData().FindClassData(saveData.GetStartingConditions().Class);
             return mainClass;
         }
 
@@ -90,8 +86,8 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns>ClassData of the player's allied clan</returns>
         public static ClassData CurrentAlliedClan()
         {
-            var saveData = (SaveData)AccessTools.Property(typeof(SaveManager), "ActiveSaveData").GetValue(SaveManager);
-            ClassData mainClass = SaveManager.GetAllGameData().FindClassData(saveData.GetStartingConditions().Class);
+            var saveData = (SaveData)AccessTools.Property(typeof(SaveManager), "ActiveSaveData").GetValue(ProviderManager.SaveManager);
+            ClassData mainClass = ProviderManager.SaveManager.GetAllGameData().FindClassData(saveData.GetStartingConditions().Class);
             return mainClass;
         }
     }

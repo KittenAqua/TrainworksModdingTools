@@ -27,10 +27,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// Essential for custom character art. Set during game startup.
         /// </summary>
         public static GameObject TemplateCharacter { get; set; }
-        /// <summary>
-        /// Static reference to the game's SaveManager, which is necessary to register new characters.
-        /// </summary>
-        public static SaveManager SaveManager { get; set; }
 
 
         /// <summary>

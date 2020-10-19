@@ -138,7 +138,7 @@ namespace MonsterTrainModdingAPI.Builders
 
             if (this.ClanID != null)
             {
-                this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
+                this.LinkedClass = ProviderManager.SaveManager.GetAllGameData().FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
             }
 
             var relicData = ScriptableObject.CreateInstance<CollectableRelicData>();
