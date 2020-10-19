@@ -212,9 +212,10 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         /// <param name="statusEffectID">ID of the status effect, most easily retrieved using the helper class "MTStatusEffectIDs"</param>
         /// <param name="stackCount">Number of stacks to apply</param>
-        public void AddStatusEffect(string statusEffectID, int stackCount)
+        public CardEffectDataBuilder AddStatusEffect(string statusEffectID, int stackCount)
         {
             this.ParamStatusEffects = BuilderUtils.AddStatusEffect(statusEffectID, stackCount, this.ParamStatusEffects);
+            return this;
         }
     }
 }

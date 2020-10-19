@@ -3,6 +3,7 @@ using System.IO;
 using BepInEx.Logging;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Utilities;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
@@ -43,17 +44,26 @@ namespace MonsterTrainModdingAPI.Managers
         }
 
         /// <summary>
-        /// Get the custom class data corresponding to the given ID.
+        /// Get the class data corresponding to the given ID.
         /// </summary>
-        /// <param name="classID">ID of the custom class to get</param>
-        /// <returns>The custom class data for the given ID</returns>
+        /// <param name="classID">ID of the class to get</param>
+        /// <returns>The class data for the given ID</returns>
         public static ClassData GetClassDataByID(string classID)
         {
-            if (CustomClassData.ContainsKey(classID))
+            // Search for custom clan matching ID
+            var guid = GUIDGenerator.GenerateDeterministicGUID(classID);
+            if (CustomClassData.ContainsKey(guid))
             {
-                return CustomClassData[classID];
+                return CustomClassData[guid];
             }
-            return null;
+
+            // No custom clan found; search for vanilla clan matching ID
+            var vanillaClan = SaveManager.GetAllGameData().FindClassData(classID);
+            if (vanillaClan == null)
+            {
+                API.Log(LogLevel.All, "Couldn't find clan: " + classID + " - This will cause crashes.");
+            }
+            return vanillaClan;
         }
 
         /// <summary>
