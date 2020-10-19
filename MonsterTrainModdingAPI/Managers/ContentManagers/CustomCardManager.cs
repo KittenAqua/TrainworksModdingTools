@@ -32,7 +32,7 @@ namespace MonsterTrainModdingAPI.Managers
             {
                 CustomCardData.Add(cardData.GetID(), cardData);
                 CustomCardPoolManager.AddCardToPools(cardData, cardPoolData);
-                SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
+                ProviderManager.SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
             }
             else
             {
@@ -55,7 +55,7 @@ namespace MonsterTrainModdingAPI.Managers
             }
 
             // No custom card found; search for vanilla card matching ID
-            var vanillaCard = SaveManager.GetAllGameData().FindCardData(cardID);
+            var vanillaCard = ProviderManager.SaveManager.GetAllGameData().FindCardData(cardID);
             if (vanillaCard == null)
             {
                 API.Log(LogLevel.All, "Couldn't find card: " + cardID + " - This will cause crashes.");

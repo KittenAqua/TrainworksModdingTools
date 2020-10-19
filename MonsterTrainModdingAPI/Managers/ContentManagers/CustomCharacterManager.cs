@@ -38,7 +38,7 @@ namespace MonsterTrainModdingAPI.Managers
             if (!CustomCharacterData.ContainsKey(data.GetID()))
             {
                 CustomCharacterData.Add(data.GetID(), data);
-                SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
+                ProviderManager.SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
                 return true;
             }
             else
@@ -63,7 +63,7 @@ namespace MonsterTrainModdingAPI.Managers
             }
 
             // No custom card found; search for vanilla character matching ID
-            var vanillaChar = SaveManager.GetAllGameData().GetAllCharacterData().Find((chara) => {
+            var vanillaChar = ProviderManager.SaveManager.GetAllGameData().GetAllCharacterData().Find((chara) => {
                 return chara.GetID() == characterID;
             });
             if (vanillaChar == null)
