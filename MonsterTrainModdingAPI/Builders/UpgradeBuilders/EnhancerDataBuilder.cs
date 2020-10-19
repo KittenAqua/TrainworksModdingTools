@@ -113,7 +113,7 @@ namespace MonsterTrainModdingAPI.Builders
             t.Field("effects").SetValue(Effects);
 
             // Grab the LinkedClass from the ClanID
-            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
+            this.LinkedClass = ProviderManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
             t.Field("linkedClass").SetValue(LinkedClass);
 
             // Take care of the localized strings

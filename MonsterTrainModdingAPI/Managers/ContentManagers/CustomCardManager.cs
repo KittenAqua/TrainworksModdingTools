@@ -19,10 +19,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// Maps custom card IDs to their respective CardData.
         /// </summary>
         public static IDictionary<string, CardData> CustomCardData { get; } = new Dictionary<string, CardData>();
-        /// <summary>
-        /// Static reference to the game's SaveManager, which is necessary to register new cards.
-        /// </summary>
-        public static SaveManager SaveManager { get; set; }
 
         /// <summary>
         /// Register a custom card with the manager, allowing it to show up in game
