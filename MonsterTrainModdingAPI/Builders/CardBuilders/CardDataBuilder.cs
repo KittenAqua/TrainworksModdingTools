@@ -262,7 +262,12 @@ namespace MonsterTrainModdingAPI.Builders
                 this.Triggers.Add(builder.Build());
             }
 
-            this.LinkedClass = ProviderManager.SaveManager.GetAllGameData().FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
+            var allGameData = ProviderManager.SaveManager.GetAllGameData();
+            this.LinkedClass = allGameData.FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
+            if (this.LinkedClass == null)
+            { // Will fall into this case if the builder uses a vanilla clan ID
+                this.LinkedClass = allGameData.FindClassData(this.ClanID);
+            }
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
             var guid = GUIDGenerator.GenerateDeterministicGUID(this.CardID);
             AccessTools.Field(typeof(CardData), "id").SetValue(cardData, guid);

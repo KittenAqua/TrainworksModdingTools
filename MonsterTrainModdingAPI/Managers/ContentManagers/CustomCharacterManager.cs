@@ -77,6 +77,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// Maps custom subtypes IDs to their respective SubtypeData.
         /// </summary>
         public static IDictionary<string, SubtypeData> CustomSubtypeData { get; } = new Dictionary<string, SubtypeData>();
+        
         /// <summary>
         /// Registers a subtype, making it available for localization
         /// </summary>
@@ -84,6 +85,19 @@ namespace MonsterTrainModdingAPI.Managers
         public static void RegisterSubtype(string ID)
         {
             CustomSubtypeData.Add(ID, new SubtypeDataBuilder { _Subtype = ID }.Build());
+        }
+
+        /// <summary>
+        /// Registers a subtype and a localization.
+        /// Note that all languages will use the same localization.
+        /// For more fine-tuned control, use the (string) overload of this method instead.
+        /// </summary>
+        /// <param name="ID">The key used for assigning the subtype, and for its localization</param>
+        /// <param name="name">The subtype text in all languages</param>
+        public static void RegisterSubtype(string ID, string name)
+        {
+            CustomSubtypeData.Add(ID, new SubtypeDataBuilder { _Subtype = ID }.Build());
+            CustomLocalizationManager.ImportSingleLocalization(ID, "Text", "", "", "", "", name, name, name, name, name, name);
         }
 
 

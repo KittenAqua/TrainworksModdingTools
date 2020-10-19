@@ -73,5 +73,32 @@ namespace MonsterTrainModdingAPI.Managers
             }
             return validCards;
         }
+
+        /// <summary>
+        /// Gets a list of all cards added to the given card pool by mods
+        /// which satisfy the constraints specified by the mask data passed in.
+        /// Cards which naturally appear in the pool will not be returned.
+        /// </summary>
+        /// <param name="cardPoolID">ID of the card pool to get cards for</param>
+        /// <param name="paramCardFilter">Constraints to satisfy</param>
+        /// <param name="relicManager">a RelicManager</param>
+        /// <returns>A list of cards added to the card pool with given ID by mods, all of which satisfy the given constraints.</returns>
+        public static List<CardData> GetCardsForPoolSatisfyingConstraints(string cardPoolID, CardUpgradeMaskData paramCardFilter, RelicManager relicManager)
+        {
+            var allValidCards = GetCardsForPool(cardPoolID);
+            var validCards = new List<CardData>();
+            foreach (CardData cardData in allValidCards)
+            {
+                if (paramCardFilter == null)
+                {
+                    validCards.Add(cardData);
+                }
+                else if (paramCardFilter.FilterCard<CardData>(cardData, relicManager))
+                {
+                    validCards.Add(cardData);
+                }
+            }
+            return validCards;
+        }
     }
 }
