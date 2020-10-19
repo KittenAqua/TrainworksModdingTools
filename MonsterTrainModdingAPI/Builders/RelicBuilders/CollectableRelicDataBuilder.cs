@@ -109,8 +109,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.EffectBuilders = new List<RelicEffectDataBuilder>();
 
             var assembly = Assembly.GetCallingAssembly();
-            PluginManager.AssemblyNameToPath.TryGetValue(assembly.FullName, out string basePath);
-            this.BaseAssetPath = basePath;
+            this.BaseAssetPath = PluginManager.PluginGUIDToPath[PluginManager.AssemblyNameToPluginGUID[assembly.FullName]];
         }
 
         /// <summary>
@@ -139,7 +138,7 @@ namespace MonsterTrainModdingAPI.Builders
 
             if (this.ClanID != null)
             {
-                this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
+                this.LinkedClass = ProviderManager.SaveManager.GetAllGameData().FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
             }
 
             var relicData = ScriptableObject.CreateInstance<CollectableRelicData>();

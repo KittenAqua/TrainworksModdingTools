@@ -27,7 +27,7 @@ namespace MonsterTrainModdingAPI.Patches
                             ref IAddressableAssetOwner assetOwner
                            )
         {
-            if (CustomAssetManager.RuntimeKeyToFilepath.ContainsKey(assetRef.RuntimeKey))
+            if (CustomAssetManager.RuntimeKeyToAssetInfo.ContainsKey(assetRef.RuntimeKey))
             {
                 if (____assetsLoaded.TryGetValue(assetRef.RuntimeKey, out AssetLoadingManager.AssetInfo info))
                 {

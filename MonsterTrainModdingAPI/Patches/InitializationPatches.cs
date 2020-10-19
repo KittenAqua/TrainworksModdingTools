@@ -14,18 +14,9 @@ namespace MonsterTrainModdingAPI.Patches
     [HarmonyPatch(typeof(SaveManager), "Initialize")]
     class SaveManagerInitializationPatch
     {
-        public static SaveManager SaveManager;
         static void Postfix(SaveManager __instance)
         {
-            SaveManagerInitializationPatch.SaveManager = __instance;
-
-            CustomCardManager.SaveManager = __instance;
-            CustomCharacterManager.SaveManager = __instance;
-            CustomCollectableRelicManager.SaveManager = __instance;
-            CustomClassManager.SaveManager = __instance;
-            CustomMapNodePoolManager.SaveManager = __instance;
-            var chara = __instance.GetAllGameData().GetAllCharacterData()[0];
-            CustomCharacterManager.TemplateCharacter = chara;
+            CustomCharacterManager.LoadTemplateCharacter(__instance);
             CustomAssetManager.InitializeAssetConstructors();
         }
     }

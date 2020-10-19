@@ -67,6 +67,7 @@ namespace MonsterTrainModdingAPI.Builders
 
         public bool ParamBool { get; set; }
         public List<CardEffectData> ParamCardEffects { get; set; }
+        public List<CardEffectDataBuilder> ParamCardEffectBuilders { get; set; }
         public CardUpgradeMaskData ParamCardFilter { get; set; }
         public CardPool ParamCardPool { get; set; }
         public CardSetBuilder ParamCardSetBuilder { get; set; }
@@ -117,6 +118,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.EffectConditionBuilders = new List<RelicEffectConditionBuilder>();
             this.TraitBuilders = new List<CardTraitDataBuilder>();
             this.TriggerBuilders = new List<CharacterTriggerDataBuilder>();
+            this.ParamCardEffectBuilders = new List<CardEffectDataBuilder>();
         }
 
         /// <summary>
@@ -137,6 +139,10 @@ namespace MonsterTrainModdingAPI.Builders
             foreach (var builder in this.TriggerBuilders)
             {
                 this.Triggers.Add(builder.Build());
+            }
+            foreach(var builder in this.ParamCardEffectBuilders)
+            {
+                this.ParamCardEffects.Add(builder.Build());
             }
 
             RelicEffectData relicEffectData = new RelicEffectData();

@@ -19,10 +19,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// Maps custom card IDs to their respective CardData.
         /// </summary>
         public static IDictionary<string, CardData> CustomCardData { get; } = new Dictionary<string, CardData>();
-        /// <summary>
-        /// Static reference to the game's SaveManager, which is necessary to register new cards.
-        /// </summary>
-        public static SaveManager SaveManager { get; set; }
 
         /// <summary>
         /// Register a custom card with the manager, allowing it to show up in game
@@ -30,29 +26,41 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         /// <param name="cardData">The custom card data to register</param>
         /// <param name="cardPoolData">The card pools the custom card should be a part of</param>
-        /// <param name="info">The info used to load Art from AssetBundles</param>
-        public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData, CustomAssetManager.AssetBundleLoadingInfo info = null)
+        public static void RegisterCustomCard(CardData cardData, List<string> cardPoolData)
         {
-            CustomCardData.Add(cardData.GetID(), cardData);
-            CustomCardPoolManager.AddCardToPools(cardData, cardPoolData);
-            SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
+            if (!CustomCardData.ContainsKey(cardData.GetID()))
+            {
+                CustomCardData.Add(cardData.GetID(), cardData);
+                CustomCardPoolManager.AddCardToPools(cardData, cardPoolData);
+                ProviderManager.SaveManager.GetAllGameData().GetAllCardData().Add(cardData);
+            }
+            else
+            {
+                API.Log(LogLevel.Warning, "Attempted to register duplicate card data with name: " + cardData.name);
+            }
         }
 
         /// <summary>
-        /// Get the custom card data corresponding to the given ID
+        /// Get the card data corresponding to the given ID
         /// </summary>
-        /// <param name="cardID">ID of the custom card to get</param>
-        /// <returns>The custom card data for the given ID</returns>
+        /// <param name="cardID">ID of the card to get</param>
+        /// <returns>The card data for the given ID</returns>
         public static CardData GetCardDataByID(string cardID)
         {
+            // Search for custom card matching ID
             var guid = GUIDGenerator.GenerateDeterministicGUID(cardID);
             if (CustomCardData.ContainsKey(guid))
             {
                 return CustomCardData[guid];
             }
-            API.Log(LogLevel.All, "Couldn't find custom card: " + cardID + " - This will cause crashes.");
-            
-            return null;
+
+            // No custom card found; search for vanilla card matching ID
+            var vanillaCard = ProviderManager.SaveManager.GetAllGameData().FindCardData(cardID);
+            if (vanillaCard == null)
+            {
+                API.Log(LogLevel.All, "Couldn't find card: " + cardID + " - This will cause crashes.");
+            }
+            return vanillaCard;
         }
     }
 }

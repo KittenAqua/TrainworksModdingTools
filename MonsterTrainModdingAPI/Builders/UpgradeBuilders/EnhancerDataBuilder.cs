@@ -59,17 +59,17 @@ namespace MonsterTrainModdingAPI.Builders
         /// </summary>
         public List<string> EnhancerPoolIDs { get; set; }
 
-        private string BaseAssetPath { get; set; }
+        public string BaseAssetPath { get; set; }
 
 
         public EnhancerDataBuilder()
         {
+            var assembly = Assembly.GetCallingAssembly();
+            this.BaseAssetPath = PluginManager.PluginGUIDToPath[PluginManager.AssemblyNameToPluginGUID[assembly.FullName]];
+
             this.Name = "";
             this.Description = "EmptyString-0000000000000000-00000000000000000000000000000000-v2";
             this.EnhancerPoolIDs = new List<string>();
-            var assembly = Assembly.GetCallingAssembly();
-            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
-
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace MonsterTrainModdingAPI.Builders
             t.Field("effects").SetValue(Effects);
 
             // Grab the LinkedClass from the ClanID
-            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
+            this.LinkedClass = ProviderManager.SaveManager.GetAllGameData().FindClassData(this.ClanID);
             t.Field("linkedClass").SetValue(LinkedClass);
 
             // Take care of the localized strings

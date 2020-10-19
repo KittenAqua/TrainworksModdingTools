@@ -11,15 +11,17 @@ namespace MonsterTrainModdingAPI.Managers
     public static class PluginManager
     {
         /// <summary>
-        /// Maps BepInEx plugin names to the actual plugins.
+        /// Maps BepInEx Plugin GUIDs to their BaseUnityPlugin instances.
         /// </summary>
         public static Dictionary<string, BaseUnityPlugin> Plugins { get; } = new Dictionary<string, BaseUnityPlugin>();
-
         /// <summary>
-        /// Maps plugins' assembly names to their filepaths
+        /// Maps AssemblyNames to their respective BepInEx Plugins
         /// </summary>
-        public static IDictionary<string, string> AssemblyNameToPath { get; } = new Dictionary<string, string>();
-
+        public static IDictionary<string, string> AssemblyNameToPluginGUID { get; } = new Dictionary<string, string>();
+        /// <summary>
+        /// Maps BepInEx Plugin GUIDs to their Directory Paths
+        /// </summary>
+        public static IDictionary<string, string> PluginGUIDToPath { get; } = new Dictionary<string, string>();
         /// <summary>
         /// Get the GUIDs of all plugins recognized by BepInEx.
         /// </summary>
@@ -28,7 +30,6 @@ namespace MonsterTrainModdingAPI.Managers
         {
             return Plugins.Values.ToList().Select((x) => x.Info.Metadata.GUID).ToList();
         }
-
         /// <summary>
         /// Get the names of all plugins recognized by BepInEx.
         /// </summary>
@@ -37,7 +38,6 @@ namespace MonsterTrainModdingAPI.Managers
         {
             return Plugins.Keys.ToList();
         }
-
         /// <summary>
         /// Get the plugin with the specified name.
         /// </summary>
@@ -47,19 +47,19 @@ namespace MonsterTrainModdingAPI.Managers
         {
             return Plugins[name];
         }
-
         /// <summary>
         /// Register a plugin with the plugin manager.
         /// </summary>
-        /// <param name="plugin">Plugin to register</param>
+        /// <param name="plugin">Plugin to Register</param>
         public static void RegisterPlugin(BaseUnityPlugin plugin)
         {
-            Plugins.Add(plugin.Info.Metadata.Name, plugin);
-
+            Plugins.Add(plugin.Info.Metadata.GUID, plugin);
+            
             var assembly = plugin.GetType().Assembly;
             var uri = new UriBuilder(assembly.CodeBase);
             var path = Path.GetDirectoryName(Uri.UnescapeDataString(uri.Path));
-            AssemblyNameToPath[assembly.FullName] = path;
+            PluginGUIDToPath[plugin.Info.Metadata.GUID] = path;
+            AssemblyNameToPluginGUID[assembly.FullName] = plugin.Info.Metadata.GUID;
         }
     }
 }

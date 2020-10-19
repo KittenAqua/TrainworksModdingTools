@@ -8,6 +8,8 @@ using HarmonyLib;
 using UnityEngine;
 using ShinyShoe;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using MonsterTrainModdingAPI.Utilities;
 
 namespace MonsterTrainModdingAPI.Managers
 {
@@ -21,56 +23,54 @@ namespace MonsterTrainModdingAPI.Managers
         /// </summary>
         public static IDictionary<string, CharacterData> CustomCharacterData { get; } = new Dictionary<string, CharacterData>();
         /// <summary>
-        /// Maps custom character IDs to their respective Sprite Loading Information.
-        /// </summary>
-        public static IDictionary<string, CustomAssetManager.AssetBundleLoadingInfo> CharacterSpriteBundleData { get; } = new Dictionary<string, CustomAssetManager.AssetBundleLoadingInfo>();
-        /// <summary>
-        /// Maps custom character IDs to their respective Skeleton Animation Loading Information
-        /// </summary>
-        public static IDictionary<string, CustomAssetManager.AssetBundleLoadingInfo> CharacterSkeletonAnimationBundleData { get; } = new Dictionary<string, CustomAssetManager.AssetBundleLoadingInfo>();
-        /// <summary>
-        /// FallbackData contains a default character prefab which is cloned to create custom characters.
+        /// A default character prefab which is cloned to create custom characters.
         /// Essential for custom character art. Set during game startup.
         /// </summary>
-        public static CharacterData TemplateCharacter { get; set; }
-        /// <summary>
-        /// Static reference to the game's SaveManager, which is necessary to register new characters.
-        /// </summary>
-        public static SaveManager SaveManager { get; set; }
+        public static GameObject TemplateCharacter { get; set; }
+
 
         /// <summary>
         /// Register a custom character with the manager, allowing it to show up in game.
         /// </summary>
         /// <param name="data">The custom character data to register</param>
-        /// <param name="SpriteInfo">The Information Used to Load an AssetBundle</param>
-        /// <param name="SkeletonAnimationInfo"></param>
-        public static bool RegisterCustomCharacter(CharacterData data, CustomAssetManager.AssetBundleLoadingInfo SpriteInfo = null, CustomAssetManager.AssetBundleLoadingInfo SkeletonAnimationInfo = null)
+        public static bool RegisterCustomCharacter(CharacterData data)
         {
-            if (SpriteInfo != null)
+            if (!CustomCharacterData.ContainsKey(data.GetID()))
             {
-                CharacterSpriteBundleData.Add(data.GetID(), SpriteInfo);
+                CustomCharacterData.Add(data.GetID(), data);
+                ProviderManager.SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
+                return true;
             }
-            if (SkeletonAnimationInfo != null)
+            else
             {
-                CharacterSkeletonAnimationBundleData.Add(data.GetID(), SkeletonAnimationInfo);
+                API.Log(LogLevel.Warning, "Attempted to register duplicate character data with name: " + data.name);
+                return false;
             }
-            CustomCharacterData.Add(data.GetID(), data);
-            SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
-            return true;
         }
 
         /// <summary>
-        /// Get the custom character data corresponding to the given ID
+        /// Get the character data corresponding to the given ID
         /// </summary>
-        /// <param name="characterID">ID of the custom character to get</param>
-        /// <returns>The custom character data for the given ID</returns>
+        /// <param name="characterID">ID of the character to get</param>
+        /// <returns>The character data for the given ID</returns>
         public static CharacterData GetCharacterDataByID(string characterID)
         {
-            if (CustomCharacterData.ContainsKey(characterID))
+            // Search for custom character matching ID
+            var guid = GUIDGenerator.GenerateDeterministicGUID(characterID);
+            if (CustomCharacterData.ContainsKey(guid))
             {
-                return CustomCharacterData[characterID];
+                return CustomCharacterData[guid];
             }
-            return null;
+
+            // No custom card found; search for vanilla character matching ID
+            var vanillaChar = ProviderManager.SaveManager.GetAllGameData().GetAllCharacterData().Find((chara) => {
+                return chara.GetID() == characterID;
+            });
+            if (vanillaChar == null)
+            {
+                API.Log(LogLevel.All, "Couldn't find character: " + characterID + " - This will cause crashes.");
+            }
+            return vanillaChar;
         }
 
         /// <summary>
@@ -84,6 +84,24 @@ namespace MonsterTrainModdingAPI.Managers
         public static void RegisterSubtype(string ID)
         {
             CustomSubtypeData.Add(ID, new SubtypeDataBuilder { _Subtype = ID }.Build());
+        }
+
+
+        public static void LoadTemplateCharacter(SaveManager saveManager)
+        {
+            var characterData = saveManager.GetAllGameData().GetAllCharacterData()[0];
+            //var characterData = new CharacterData();
+            var loadOperation = characterData.characterPrefabVariantRef.LoadAsset<GameObject>();
+            loadOperation.Completed += TemplateCharacterLoadingComplete;
+        }
+
+        private static void TemplateCharacterLoadingComplete(IAsyncOperation<GameObject> asyncOperation)
+        {
+            TemplateCharacter = asyncOperation.Result;
+            if (TemplateCharacter == null)
+            {
+                API.Log(LogLevel.Warning, "Failed to load character template");
+            }
         }
     }
 }

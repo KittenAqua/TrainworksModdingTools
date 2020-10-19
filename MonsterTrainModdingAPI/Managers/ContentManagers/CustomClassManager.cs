@@ -3,6 +3,7 @@ using System.IO;
 using BepInEx.Logging;
 using HarmonyLib;
 using MonsterTrainModdingAPI.Builders;
+using MonsterTrainModdingAPI.Utilities;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
@@ -26,10 +27,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// Maps custom class IDs to their respective Class Draft Icon
         /// </summary>
         public static IDictionary<string, Sprite> CustomClassDraftIcons { get; } = new Dictionary<string, Sprite>();
-        /// <summary>
-        /// Static reference to the game's SaveManager, which is necessary to register new classes.
-        /// </summary>
-        public static SaveManager SaveManager { get; set; }
         
         /// <summary>
         /// Register a custom class with the manager, allowing it to show up in game.
@@ -37,23 +34,39 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="classData">The custom class data to register</param>
         public static void RegisterCustomClass(ClassData classData)
         {
-            CustomClassData.Add(classData.GetID(), classData);
-            SaveManager.GetAllGameData().GetAllClassDatas().Add(classData);
-            SaveManager.GetAllGameData().GetBalanceData().GetClassDatas().Add(classData);
+            if (!CustomClassData.ContainsKey(classData.GetID()))
+            {
+                CustomClassData.Add(classData.GetID(), classData);
+                ProviderManager.SaveManager.GetAllGameData().GetAllClassDatas().Add(classData);
+                ProviderManager.SaveManager.GetAllGameData().GetBalanceData().GetClassDatas().Add(classData);
+            }
+            else
+            {
+                API.Log(LogLevel.Warning, "Attempted to register duplicate class data with name: " + classData.name);
+            }
         }
 
         /// <summary>
-        /// Get the custom class data corresponding to the given ID.
+        /// Get the class data corresponding to the given ID.
         /// </summary>
-        /// <param name="classID">ID of the custom class to get</param>
-        /// <returns>The custom class data for the given ID</returns>
+        /// <param name="classID">ID of the class to get</param>
+        /// <returns>The class data for the given ID</returns>
         public static ClassData GetClassDataByID(string classID)
         {
-            if (CustomClassData.ContainsKey(classID))
+            // Search for custom clan matching ID
+            var guid = GUIDGenerator.GenerateDeterministicGUID(classID);
+            if (CustomClassData.ContainsKey(guid))
             {
-                return CustomClassData[classID];
+                return CustomClassData[guid];
             }
-            return null;
+
+            // No custom clan found; search for vanilla clan matching ID
+            var vanillaClan = ProviderManager.SaveManager.GetAllGameData().FindClassData(classID);
+            if (vanillaClan == null)
+            {
+                API.Log(LogLevel.All, "Couldn't find clan: " + classID + " - This will cause crashes.");
+            }
+            return vanillaClan;
         }
 
         /// <summary>
@@ -62,8 +75,8 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns>ClassData of the player's primary clan</returns>
         public static ClassData CurrentPrimaryClan()
         {
-            var saveData = (SaveData)AccessTools.Property(typeof(SaveManager), "ActiveSaveData").GetValue(SaveManager);
-            ClassData mainClass = SaveManager.GetAllGameData().FindClassData(saveData.GetStartingConditions().Class);
+            var saveData = (SaveData)AccessTools.Property(typeof(SaveManager), "ActiveSaveData").GetValue(ProviderManager.SaveManager);
+            ClassData mainClass = ProviderManager.SaveManager.GetAllGameData().FindClassData(saveData.GetStartingConditions().Class);
             return mainClass;
         }
 
@@ -73,8 +86,8 @@ namespace MonsterTrainModdingAPI.Managers
         /// <returns>ClassData of the player's allied clan</returns>
         public static ClassData CurrentAlliedClan()
         {
-            var saveData = (SaveData)AccessTools.Property(typeof(SaveManager), "ActiveSaveData").GetValue(SaveManager);
-            ClassData mainClass = SaveManager.GetAllGameData().FindClassData(saveData.GetStartingConditions().Class);
+            var saveData = (SaveData)AccessTools.Property(typeof(SaveManager), "ActiveSaveData").GetValue(ProviderManager.SaveManager);
+            ClassData mainClass = ProviderManager.SaveManager.GetAllGameData().FindClassData(saveData.GetStartingConditions().Class);
             return mainClass;
         }
     }

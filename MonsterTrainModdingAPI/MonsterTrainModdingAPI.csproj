@@ -12,10 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>..\..\..\..\workshop\content\1102190\2187468759\BepInEx\core\0Harmony.dll</HintPath>
       <Private>False</Private>
@@ -36,6 +32,10 @@
       <HintPath>..\..\MonsterTrain_Data\Managed\Unity.Addressables.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>..\..\MonsterTrain_Data\Managed\Unity.ResourceManager.dll</HintPath>
+	  <Private>False</Private>
+	</Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>..\..\MonsterTrain_Data\Managed\Unity.TextMeshPro.dll</HintPath>
       <Private>false</Private>

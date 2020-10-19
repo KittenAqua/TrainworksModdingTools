@@ -16,10 +16,6 @@ namespace MonsterTrainModdingAPI.Managers
         /// Reward nodes which naturally appear in the pool in the base game will not appear in these lists.
         /// </summary>
         public static IDictionary<string, List<RewardNodeData>> CustomRewardNodeData { get; } = new Dictionary<string, List<RewardNodeData>>();
-        /// <summary>
-        /// Static reference to the game's SaveManager, which is necessary to register new map node data.
-        /// </summary>
-        public static SaveManager SaveManager { get; set; }
 
         /// <summary>
         /// Add the card to the card pools with given IDs.
@@ -28,7 +24,7 @@ namespace MonsterTrainModdingAPI.Managers
         /// <param name="mapNodePoolIDs">List of map node pool IDs to add the reward node to</param>
         public static void RegisterCustomRewardNode(RewardNodeData rewardNodeData, List<string> mapNodePoolIDs)
         {
-            var mapNodeDatas = (List<MapNodeData>)AccessTools.Field(typeof(AllGameData), "mapNodeDatas").GetValue(SaveManager.GetAllGameData());
+            var mapNodeDatas = (List<MapNodeData>)AccessTools.Field(typeof(AllGameData), "mapNodeDatas").GetValue(ProviderManager.SaveManager.GetAllGameData());
             mapNodeDatas.Add(rewardNodeData);
             foreach (string mapNodePoolID in mapNodePoolIDs)
             {
@@ -61,11 +57,11 @@ namespace MonsterTrainModdingAPI.Managers
                     RewardNodeData rewardNodeData;
                     if ((rewardNodeData = (mapNodeData as RewardNodeData)) != null && rewardNodeData.RequiredClass != null)
                     {
-                        if (classTypeOverride == RunState.ClassType.MainClass && SaveManager.GetMainClass() != rewardNodeData.RequiredClass)
+                        if (classTypeOverride == RunState.ClassType.MainClass && ProviderManager.SaveManager.GetMainClass() != rewardNodeData.RequiredClass)
                         {
                             continue;
                         }
-                        else if (classTypeOverride == RunState.ClassType.SubClass && SaveManager.GetSubClass() != rewardNodeData.RequiredClass)
+                        else if (classTypeOverride == RunState.ClassType.SubClass && ProviderManager.SaveManager.GetSubClass() != rewardNodeData.RequiredClass)
                         {
                             continue;
                         }

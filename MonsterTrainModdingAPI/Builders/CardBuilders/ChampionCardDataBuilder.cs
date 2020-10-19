@@ -28,7 +28,7 @@ namespace MonsterTrainModdingAPI.Builders
             }
             );
 
-            PluginManager.AssemblyNameToPath.TryGetValue(Assembly.GetCallingAssembly().FullName, out string basePath);
+            PluginManager.PluginGUIDToPath.TryGetValue(PluginManager.AssemblyNameToPluginGUID[Assembly.GetCallingAssembly().FullName], out string basePath);
             this.BaseAssetPath = basePath;
         }
 
@@ -41,7 +41,7 @@ namespace MonsterTrainModdingAPI.Builders
         {
             var cardData = this.Build();
             API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
-            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs, BundleLoadingInfo);
+            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs);
 
             API.Log(LogLevel.All, ClanID);
             var Clan = cardData.GetLinkedClass();

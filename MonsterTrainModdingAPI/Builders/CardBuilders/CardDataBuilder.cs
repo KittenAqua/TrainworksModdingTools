@@ -95,11 +95,11 @@ namespace MonsterTrainModdingAPI.Builders
         /// <summary>
         /// Custom asset path to load from. Must be inside the BaseAssetPath.
         /// </summary>
-        public string AssetPath { get; set; }
+        public string AssetPath { get; set; } = "";
         /// <summary>
         /// Loading Info for loading a card's sprite from an asset bundle.
         /// </summary>
-        public CustomAssetManager.AssetBundleLoadingInfo BundleLoadingInfo { get; set; }
+        public BundleAssetLoadingInfo BundleLoadingInfo { get; set; }
         /// <summary>
         /// Use an existing base game card's art by filling this in with the appropriate card's asset reference information.
         /// </summary>
@@ -220,7 +220,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.CardLoreTooltipKeys = new List<string>();
 
             var assembly = Assembly.GetCallingAssembly();
-            PluginManager.AssemblyNameToPath.TryGetValue(assembly.FullName, out string basePath);
+            PluginManager.PluginGUIDToPath.TryGetValue(PluginManager.AssemblyNameToPluginGUID[assembly.FullName], out string basePath);
             this.BaseAssetPath = basePath;
         }
 
@@ -233,7 +233,7 @@ namespace MonsterTrainModdingAPI.Builders
         {
             var cardData = this.Build();
             API.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
-            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs, BundleLoadingInfo);
+            CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs);
 
             return cardData;
         }
@@ -262,7 +262,7 @@ namespace MonsterTrainModdingAPI.Builders
                 this.Triggers.Add(builder.Build());
             }
 
-            this.LinkedClass = CustomCardManager.SaveManager.GetAllGameData().FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
+            this.LinkedClass = ProviderManager.SaveManager.GetAllGameData().FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
             CardData cardData = ScriptableObject.CreateInstance<CardData>();
             var guid = GUIDGenerator.GenerateDeterministicGUID(this.CardID);
             AccessTools.Field(typeof(CardData), "id").SetValue(cardData, guid);
@@ -271,12 +271,27 @@ namespace MonsterTrainModdingAPI.Builders
             {
                 if (this.CardArtPrefabVariantRefBuilder == null)
                 {
-                    this.CardArtPrefabVariantRefBuilder = new AssetRefBuilder
+                    if (this.BundleLoadingInfo != null)
                     {
-                        Filename = this.FullAssetPath,
-                        DebugName = this.AssetPath,
-                        AssetType = AssetRefBuilder.AssetTypeEnum.CardArt
-                    };
+                        this.BundleLoadingInfo.PluginPath = this.BaseAssetPath;
+                        this.CardArtPrefabVariantRefBuilder = new AssetRefBuilder
+                        {
+                            AssetLoadingInfo = this.BundleLoadingInfo
+                        };
+                    }
+                    else
+                    {
+                        var assetLoadingInfo = new AssetLoadingInfo()
+                        {
+                            FilePath = this.AssetPath,
+                            PluginPath = this.BaseAssetPath,
+                            AssetType = AssetRefBuilder.AssetTypeEnum.CardArt
+                        };
+                        this.CardArtPrefabVariantRefBuilder = new AssetRefBuilder
+                        {
+                            AssetLoadingInfo = assetLoadingInfo
+                        };
+                    }
                 }
                 this.CardArtPrefabVariantRef = this.CardArtPrefabVariantRefBuilder.BuildAndRegister();
             }

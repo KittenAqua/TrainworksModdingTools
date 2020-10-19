@@ -84,8 +84,8 @@ namespace MonsterTrainModdingAPI.Builders
         public List<RewardData> Rewards { get; set; }
 
         public List<MapNodeData> IgnoreIfNodesPresent { get; set; }
-        public Sprite MapIcon { get; set; }
-        public Sprite MinimapIcon { get; set; }
+        public string MapIconPath { get; set; }
+        public string MinimapIconPath { get; set; }
         /// <summary>
         /// Clickable game object representing the node
         /// </summary>
@@ -101,7 +101,7 @@ namespace MonsterTrainModdingAPI.Builders
             this.RewardBuilders = new List<IRewardDataBuilder>();
 
             var assembly = Assembly.GetCallingAssembly();
-            this.BaseAssetPath = PluginManager.AssemblyNameToPath[assembly.FullName];
+            this.BaseAssetPath = PluginManager.PluginGUIDToPath[PluginManager.AssemblyNameToPluginGUID[assembly.FullName]];
         }
 
         /// <summary>
@@ -130,10 +130,10 @@ namespace MonsterTrainModdingAPI.Builders
             RewardNodeData rewardNodeData = ScriptableObject.CreateInstance<RewardNodeData>();
             AccessTools.Field(typeof(GameData), "id").SetValue(rewardNodeData, this.RewardNodeID);
             AccessTools.Field(typeof(MapNodeData), "ignoreIfNodesPresent").SetValue(rewardNodeData, this.IgnoreIfNodesPresent);
-            AccessTools.Field(typeof(MapNodeData), "mapIcon").SetValue(rewardNodeData, this.MapIcon);
+            AccessTools.Field(typeof(MapNodeData), "mapIcon").SetValue(rewardNodeData, CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.MapIconPath));
             if (this.MapIconPrefab == null)
             { // These are too complicated to create from scratch, so by default we copy from an existing game banner and apply our sprites to it
-                RewardNodeData copyBanner = (CustomMapNodePoolManager.SaveManager.GetAllGameData().FindMapNodeData("5f35b7b7-75d1-4957-9f78-7d2072237038") as RewardNodeData);
+                RewardNodeData copyBanner = (ProviderManager.SaveManager.GetAllGameData().FindMapNodeData("5f35b7b7-75d1-4957-9f78-7d2072237038") as RewardNodeData);
                 this.MapIconPrefab = GameObject.Instantiate(copyBanner.GetMapIconPrefab());
                 this.MapIconPrefab.transform.parent = null;
                 this.MapIconPrefab.name = this.RewardNodeID;
@@ -158,7 +158,7 @@ namespace MonsterTrainModdingAPI.Builders
                 }
             }
             AccessTools.Field(typeof(MapNodeData), "mapIconPrefab").SetValue(rewardNodeData, this.MapIconPrefab);
-            AccessTools.Field(typeof(MapNodeData), "minimapIcon").SetValue(rewardNodeData, this.MinimapIcon);
+            AccessTools.Field(typeof(MapNodeData), "minimapIcon").SetValue(rewardNodeData, CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.MinimapIconPath));
             AccessTools.Field(typeof(MapNodeData), "nodeSelectedSfxCue").SetValue(rewardNodeData, this.NodeSelectedSfxCue);
             AccessTools.Field(typeof(MapNodeData), "skipCheckIfFullHealth").SetValue(rewardNodeData, this.SkipCheckIfFullHealth);
             AccessTools.Field(typeof(MapNodeData), "skipCheckInBattleMode").SetValue(rewardNodeData, this.SkipCheckInBattleMode);
