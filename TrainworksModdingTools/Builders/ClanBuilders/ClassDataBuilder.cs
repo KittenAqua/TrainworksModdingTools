@@ -112,6 +112,9 @@ namespace Trainworks.Builders
         public string DescriptionLoc { get; set; }
         public string SubclassDescriptionLoc { get; set; }
 
+        public string[] ClassSelectScreenCharacterIDsMain { get; set; }
+        public string[] ClassSelectScreenCharacterIDsSub { get; set; }
+
 
         public ClassDataBuilder()
         {
@@ -195,6 +198,10 @@ namespace Trainworks.Builders
                 Sprite draftIconSprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.DraftIconPath);
                 CustomClassManager.CustomClassDraftIcons.Add(GUIDGenerator.GenerateDeterministicGUID(this.ClassID), draftIconSprite);
             }
+            // Class select character IDs
+            CustomClassManager.CustomClassSelectScreenCharacterIDsMain.Add(GUIDGenerator.GenerateDeterministicGUID(this.ClassID), this.ClassSelectScreenCharacterIDsMain);
+            CustomClassManager.CustomClassSelectScreenCharacterIDsSub.Add(GUIDGenerator.GenerateDeterministicGUID(this.ClassID), this.ClassSelectScreenCharacterIDsSub);
+
 
             return classData;
         }

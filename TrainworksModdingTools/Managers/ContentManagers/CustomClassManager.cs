@@ -27,7 +27,15 @@ namespace Trainworks.Managers
         /// Maps custom class IDs to their respective Class Draft Icon
         /// </summary>
         public static IDictionary<string, Sprite> CustomClassDraftIcons { get; } = new Dictionary<string, Sprite>();
-        
+        /// <summary>
+        /// Maps custom class IDs to the IDs of their main class select screen characters
+        /// </summary>
+        public static IDictionary<string, string[]> CustomClassSelectScreenCharacterIDsMain { get; } = new Dictionary<string, string[]>();
+        /// <summary>
+        /// Maps custom class IDs to the IDs of their sub class select screen characters
+        /// </summary>
+        public static IDictionary<string, string[]> CustomClassSelectScreenCharacterIDsSub { get; } = new Dictionary<string, string[]>();
+
         /// <summary>
         /// Register a custom class with the manager, allowing it to show up in game.
         /// </summary>
