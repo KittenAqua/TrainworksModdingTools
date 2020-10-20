@@ -25,11 +25,13 @@ namespace Trainworks.Builders
             {
                 EffectStateName = "CardEffectSpawnMonster",
                 TargetMode = TargetMode.DropTargetCharacter,
-            }
-            );
+            });
 
             PluginManager.PluginGUIDToPath.TryGetValue(PluginManager.AssemblyNameToPluginGUID[Assembly.GetCallingAssembly().FullName], out string basePath);
             this.BaseAssetPath = basePath;
+
+            CardType = CardType.Monster;
+            TargetsRoom = true;
         }
 
         /// <summary>
@@ -43,7 +45,6 @@ namespace Trainworks.Builders
             Trainworks.Log(LogLevel.Debug, "Adding custom card: " + cardData.GetName());
             CustomCardManager.RegisterCustomCard(cardData, this.CardPoolIDs);
 
-            Trainworks.Log(LogLevel.All, ClanID);
             var Clan = cardData.GetLinkedClass();
 
             ChampionData ClanChamp = Clan.GetChampionData(ChampionIndex);
