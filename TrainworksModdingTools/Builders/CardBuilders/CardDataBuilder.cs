@@ -220,8 +220,10 @@ namespace Trainworks.Builders
             this.CardLoreTooltipKeys = new List<string>();
 
             var assembly = Assembly.GetCallingAssembly();
-            PluginManager.PluginGUIDToPath.TryGetValue(PluginManager.AssemblyNameToPluginGUID[assembly.FullName], out string basePath);
-            this.BaseAssetPath = basePath;
+            if (PluginManager.AssemblyNameToPluginGUID.ContainsKey(assembly.FullName))
+            {
+                this.BaseAssetPath = PluginManager.PluginGUIDToPath[PluginManager.AssemblyNameToPluginGUID[assembly.FullName]];
+            }
         }
 
         /// <summary>
