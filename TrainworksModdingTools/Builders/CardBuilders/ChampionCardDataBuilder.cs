@@ -55,7 +55,10 @@ namespace Trainworks.Builders
                 ClanChamp.championIcon = championIconSprite;
             }
             ClanChamp.starterCardData = StarterCardData;
-            ClanChamp.upgradeTree = UpgradeTree.Build();
+            if (this.UpgradeTree != null)
+            {
+                ClanChamp.upgradeTree = UpgradeTree.Build();
+            }
             ClanChamp.championSelectedCue = ChampionSelectedCue;
 
             return cardData;
