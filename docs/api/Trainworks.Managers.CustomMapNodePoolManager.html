@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CustomMapNodePoolManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CustomMapNodePoolManager
+   ">
+    <meta name="generator" content="docfx 2.56.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Trainworks.Managers.CustomMapNodePoolManager">
+  
+  
+  <h1 id="Trainworks_Managers_CustomMapNodePoolManager" data-uid="Trainworks.Managers.CustomMapNodePoolManager" class="text-break">Class CustomMapNodePoolManager
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CustomMapNodePoolManager</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Trainworks.Managers.html">Trainworks.Managers</a></h6>
+  <h6><strong>Assembly</strong>: TrainworksModdingTools.dll</h6>
+  <h5 id="Trainworks_Managers_CustomMapNodePoolManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CustomMapNodePoolManager : Object</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Trainworks_Managers_CustomMapNodePoolManager__ctor_" data-uid="Trainworks.Managers.CustomMapNodePoolManager.#ctor*"></a>
+  <h4 id="Trainworks_Managers_CustomMapNodePoolManager__ctor" data-uid="Trainworks.Managers.CustomMapNodePoolManager.#ctor">CustomMapNodePoolManager()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CustomMapNodePoolManager()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Trainworks_Managers_CustomMapNodePoolManager_CustomRewardNodeData_" data-uid="Trainworks.Managers.CustomMapNodePoolManager.CustomRewardNodeData*"></a>
+  <h4 id="Trainworks_Managers_CustomMapNodePoolManager_CustomRewardNodeData" data-uid="Trainworks.Managers.CustomMapNodePoolManager.CustomRewardNodeData">CustomRewardNodeData</h4>
+  <div class="markdown level1 summary"><p>Maps map node pool IDs to the RewardNodeData of reward nodes which can appear in them.
+Reward nodes which naturally appear in the pool in the base game will not appear in these lists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IDictionary&lt;string, List&lt;RewardNodeData&gt;&gt; CustomRewardNodeData { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">RewardNodeData</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Trainworks_Managers_CustomMapNodePoolManager_AddRewardNodesForPool_" data-uid="Trainworks.Managers.CustomMapNodePoolManager.AddRewardNodesForPool*"></a>
+  <h4 id="Trainworks_Managers_CustomMapNodePoolManager_AddRewardNodesForPool_System_String_System_Collections_Generic_List_MapNodeData__RunState_ClassType_" data-uid="Trainworks.Managers.CustomMapNodePoolManager.AddRewardNodesForPool(System.String,System.Collections.Generic.List{MapNodeData},RunState.ClassType)">AddRewardNodesForPool(String, List&lt;MapNodeData&gt;, RunState.ClassType)</h4>
+  <div class="markdown level1 summary"><p>Gets a list of all reward nodes added to the given map node pool by mods,
+then adds them to the list passed in.
+Reward nodes which naturally appear in the pool will not be returned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddRewardNodesForPool(string mapNodePoolID, List&lt;MapNodeData&gt; mapNodes, RunState.ClassType classTypeOverride)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mapNodePoolID</span></td>
+        <td><p>ID of the map node pool to get nodes for</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">MapNodeData</span>&gt;</td>
+        <td><span class="parametername">mapNodes</span></td>
+        <td><p>List of map nodes to add the nodes to</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">RunState.ClassType</span></td>
+        <td><span class="parametername">classTypeOverride</span></td>
+        <td><p>Whether or not only nodes matching the main/subclass should be added</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomMapNodePoolManager_RegisterCustomRewardNode_" data-uid="Trainworks.Managers.CustomMapNodePoolManager.RegisterCustomRewardNode*"></a>
+  <h4 id="Trainworks_Managers_CustomMapNodePoolManager_RegisterCustomRewardNode_RewardNodeData_System_Collections_Generic_List_System_String__" data-uid="Trainworks.Managers.CustomMapNodePoolManager.RegisterCustomRewardNode(RewardNodeData,System.Collections.Generic.List{System.String})">RegisterCustomRewardNode(RewardNodeData, List&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Add the card to the card pools with given IDs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RegisterCustomRewardNode(RewardNodeData rewardNodeData, List&lt;string&gt; mapNodePoolIDs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RewardNodeData</span></td>
+        <td><span class="parametername">rewardNodeData</span></td>
+        <td><p>RewardNodeData to be added to the pools</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">mapNodePoolIDs</span></td>
+        <td><p>List of map node pool IDs to add the reward node to</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

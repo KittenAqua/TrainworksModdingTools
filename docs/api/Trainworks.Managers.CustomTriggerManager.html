@@ -1,0 +1,778 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CustomTriggerManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CustomTriggerManager
+   ">
+    <meta name="generator" content="docfx 2.56.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Trainworks.Managers.CustomTriggerManager">
+  
+  
+  <h1 id="Trainworks_Managers_CustomTriggerManager" data-uid="Trainworks.Managers.CustomTriggerManager" class="text-break">Class CustomTriggerManager
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CustomTriggerManager</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Trainworks.Managers.html">Trainworks.Managers</a></h6>
+  <h6><strong>Assembly</strong>: TrainworksModdingTools.dll</h6>
+  <h5 id="Trainworks_Managers_CustomTriggerManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CustomTriggerManager : Object</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager__ctor_" data-uid="Trainworks.Managers.CustomTriggerManager.#ctor*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager__ctor" data-uid="Trainworks.Managers.CustomTriggerManager.#ctor">CustomTriggerManager()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CustomTriggerManager()</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_ApplyCardTriggers_" data-uid="Trainworks.Managers.CustomTriggerManager.ApplyCardTriggers*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_ApplyCardTriggers_Trainworks_Enums_MTTriggers_CardTrigger_CardState_System_Boolean_System_Int32_System_Boolean_CharacterState_System_Action_" data-uid="Trainworks.Managers.CustomTriggerManager.ApplyCardTriggers(Trainworks.Enums.MTTriggers.CardTrigger,CardState,System.Boolean,System.Int32,System.Boolean,CharacterState,System.Action)">ApplyCardTriggers(CardTrigger, CardState, Boolean, Int32, Boolean, CharacterState, Action)</h4>
+  <div class="markdown level1 summary"><p>A general function used to Apply a Card Trigger in different ways, dependant on parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ApplyCardTriggers(CardTrigger cardTrigger, CardState playedCard, bool fireAllMonsterTriggersInRoom = false, int roomIndex = -1, bool ignoreDeadInTargeting = true, CharacterState triggeredCharacter = null, Action cardTriggerFiredCallback = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Trainworks.Enums.MTTriggers.CardTrigger.html">CardTrigger</a></td>
+        <td><span class="parametername">cardTrigger</span></td>
+        <td><p>CardTrigger to be Applied</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CardState</span></td>
+        <td><span class="parametername">playedCard</span></td>
+        <td><p>Card to apply triggers to</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">fireAllMonsterTriggersInRoom</span></td>
+        <td><p>Whether Apply Card Triggers should fire on monster's Instead, requires Trigger to have an associated character trigger</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">roomIndex</span></td>
+        <td><p>Room to fire triggers in, -1 defaults to selected room</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreDeadInTargeting</span></td>
+        <td><p>Whether effects applied by the trigger should ignore dead in targetting</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState</span></td>
+        <td><span class="parametername">triggeredCharacter</span></td>
+        <td><p>Character used to determine how many times Card Trigger should be applied</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td><span class="parametername">cardTriggerFiredCallback</span></td>
+        <td><p>Action to take after applying trigger</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_AssociateTriggers_" data-uid="Trainworks.Managers.CustomTriggerManager.AssociateTriggers*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_AssociateTriggers_Trainworks_Enums_MTTriggers_CardTrigger_Trainworks_Enums_MTTriggers_CharacterTrigger_" data-uid="Trainworks.Managers.CustomTriggerManager.AssociateTriggers(Trainworks.Enums.MTTriggers.CardTrigger,Trainworks.Enums.MTTriggers.CharacterTrigger)">AssociateTriggers(CardTrigger, CharacterTrigger)</h4>
+  <div class="markdown level1 summary"><p>Associates two triggers with eachother allowing MT to cast from one trigger to another</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AssociateTriggers(CardTrigger cardTrigger, CharacterTrigger characterTrigger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Trainworks.Enums.MTTriggers.CardTrigger.html">CardTrigger</a></td>
+        <td><span class="parametername">cardTrigger</span></td>
+        <td><p>CardTrigger to be Associated</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Trainworks.Enums.MTTriggers.CharacterTrigger.html">CharacterTrigger</a></td>
+        <td><span class="parametername">characterTrigger</span></td>
+        <td><p>CharacterTrigger to be Associated</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_FireCardTriggers_" data-uid="Trainworks.Managers.CustomTriggerManager.FireCardTriggers*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_FireCardTriggers_Trainworks_Enums_MTTriggers_CardTrigger_CardState_System_Int32_System_Boolean_CharacterState_System_Int32_System_Action_" data-uid="Trainworks.Managers.CustomTriggerManager.FireCardTriggers(Trainworks.Enums.MTTriggers.CardTrigger,CardState,System.Int32,System.Boolean,CharacterState,System.Int32,System.Action)">FireCardTriggers(CardTrigger, CardState, Int32, Boolean, CharacterState, Int32, Action)</h4>
+  <div class="markdown level1 summary"><p>A function used to fire a card trigger, causing the effects of the corresponding trigger on the playedCard to be fired.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void FireCardTriggers(CardTrigger cardTrigger, CardState playedCard, int roomIndex = -1, bool ignoreDeadInTargeting = true, CharacterState triggeredCharacter = null, int fireCount = 1, Action cardTriggerFiredCallback = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Trainworks.Enums.MTTriggers.CardTrigger.html">CardTrigger</a></td>
+        <td><span class="parametername">cardTrigger</span></td>
+        <td><p>CardTrigger to be Fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CardState</span></td>
+        <td><span class="parametername">playedCard</span></td>
+        <td><p>Card to Fire Trigger on</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">roomIndex</span></td>
+        <td><p>Room to fire trigger in, -1 is current room</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreDeadInTargeting</span></td>
+        <td><p>Whether effect should ignore dead in targeting</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState</span></td>
+        <td><span class="parametername">triggeredCharacter</span></td>
+        <td><p>Character used for applying effects</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">fireCount</span></td>
+        <td><p>how many times the trigger fires</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td><span class="parametername">cardTriggerFiredCallback</span></td>
+        <td><p>Action to call after function is called</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_GetAssociatedCardTrigger_" data-uid="Trainworks.Managers.CustomTriggerManager.GetAssociatedCardTrigger*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_GetAssociatedCardTrigger_CharacterTriggerData_Trigger_" data-uid="Trainworks.Managers.CustomTriggerManager.GetAssociatedCardTrigger(CharacterTriggerData.Trigger)">GetAssociatedCardTrigger(CharacterTriggerData.Trigger)</h4>
+  <div class="markdown level1 summary"><p>Gets the Associated Card Trigger from a Character Trigger or null</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Nullable&lt;CardTriggerType&gt; GetAssociatedCardTrigger(CharacterTriggerData.Trigger trigger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CharacterTriggerData.Trigger</span></td>
+        <td><span class="parametername">trigger</span></td>
+        <td><p>Trigger to get Associate for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">CardTriggerType</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_GetAssociatedCharacterTrigger_" data-uid="Trainworks.Managers.CustomTriggerManager.GetAssociatedCharacterTrigger*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_GetAssociatedCharacterTrigger_CardTriggerType_" data-uid="Trainworks.Managers.CustomTriggerManager.GetAssociatedCharacterTrigger(CardTriggerType)">GetAssociatedCharacterTrigger(CardTriggerType)</h4>
+  <div class="markdown level1 summary"><p>Gets the Associated Character Trigger from a Card Trigger or null</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Nullable&lt;CharacterTriggerData.Trigger&gt; GetAssociatedCharacterTrigger(CardTriggerType trigger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardTriggerType</span></td>
+        <td><span class="parametername">trigger</span></td>
+        <td><p>Trigger to get Associate for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">CharacterTriggerData.Trigger</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_QueueAndRunTrigger_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueAndRunTrigger*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_QueueAndRunTrigger_Trainworks_Enums_MTTriggers_CharacterTrigger_CharacterState_System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueAndRunTrigger(Trainworks.Enums.MTTriggers.CharacterTrigger,CharacterState,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueAndRunTrigger(CharacterTrigger, CharacterState, Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
+  <div class="markdown level1 summary"><p>Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState character, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Trainworks.Enums.MTTriggers.CharacterTrigger.html">CharacterTrigger</a></td>
+        <td><span class="parametername">charTrigger</span></td>
+        <td><p>CharacterTrigger to be queued</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState</span></td>
+        <td><span class="parametername">character</span></td>
+        <td><p>Character to Run the Trigger On</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canAttackOrHeal</span></td>
+        <td><p>Whether the Character being triggered can Attack or be Healed</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canFireTriggers</span></td>
+        <td><p>Whether the trigger can currently be fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState.FireTriggersData</span></td>
+        <td><span class="parametername">fireTriggersData</span></td>
+        <td><p>Additional Parameters for controlling how the trigger is fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">triggerCount</span></td>
+        <td><p>Number of Times to Trigger</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_QueueAndRunTrigger_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueAndRunTrigger*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_QueueAndRunTrigger_Trainworks_Enums_MTTriggers_CharacterTrigger_CharacterState___System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueAndRunTrigger(Trainworks.Enums.MTTriggers.CharacterTrigger,CharacterState[],System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueAndRunTrigger(CharacterTrigger, CharacterState[], Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
+  <div class="markdown level1 summary"><p>Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState[] characters, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Trainworks.Enums.MTTriggers.CharacterTrigger.html">CharacterTrigger</a></td>
+        <td><span class="parametername">charTrigger</span></td>
+        <td><p>CharacterTrigger to be queued</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState</span>[]</td>
+        <td><span class="parametername">characters</span></td>
+        <td><p>Characters to Run the Trigger On</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canAttackOrHeal</span></td>
+        <td><p>Whether the Character being triggered can Attack or be Healed</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canFireTriggers</span></td>
+        <td><p>Whether the trigger can currently be fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState.FireTriggersData</span></td>
+        <td><span class="parametername">fireTriggersData</span></td>
+        <td><p>Additional Parameters for controlling how the trigger is fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">triggerCount</span></td>
+        <td><p>Number of Times to Trigger</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_QueueAndRunTrigger_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueAndRunTrigger*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_QueueAndRunTrigger__1_Trainworks_Enums_MTTriggers_CharacterTrigger_System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueAndRunTrigger``1(Trainworks.Enums.MTTriggers.CharacterTrigger,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueAndRunTrigger&lt;Manager&gt;(CharacterTrigger, Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
+  <div class="markdown level1 summary"><p>Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void QueueAndRunTrigger&lt;Manager&gt;(CharacterTrigger charTrigger, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)
+    where Manager : IProvider, ICharacterManager</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Trainworks.Enums.MTTriggers.CharacterTrigger.html">CharacterTrigger</a></td>
+        <td><span class="parametername">charTrigger</span></td>
+        <td><p>CharacterTrigger to be queued</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canAttackOrHeal</span></td>
+        <td><p>Whether the Character being triggered can Attack or be Healed</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canFireTriggers</span></td>
+        <td><p>Whether the trigger can currently be fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState.FireTriggersData</span></td>
+        <td><span class="parametername">fireTriggersData</span></td>
+        <td><p>Additional Parameters for controlling how the trigger is fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">triggerCount</span></td>
+        <td><p>Number of Times to Trigger</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">Manager</span></td>
+        <td><p>Type of Manager to Queue and Run Triggers to</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_QueueTrigger_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueTrigger*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_QueueTrigger_Trainworks_Enums_MTTriggers_CharacterTrigger_CharacterState_System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueTrigger(Trainworks.Enums.MTTriggers.CharacterTrigger,CharacterState,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueTrigger(CharacterTrigger, CharacterState, Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
+  <div class="markdown level1 summary"><p>Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void QueueTrigger(CharacterTrigger charTrigger, CharacterState character, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Trainworks.Enums.MTTriggers.CharacterTrigger.html">CharacterTrigger</a></td>
+        <td><span class="parametername">charTrigger</span></td>
+        <td><p>CharacterTrigger to be queued</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState</span></td>
+        <td><span class="parametername">character</span></td>
+        <td><p>Character to Queue the Trigger On</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canAttackOrHeal</span></td>
+        <td><p>Whether the Character being triggered can Attack or be Healed</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canFireTriggers</span></td>
+        <td><p>Whether the trigger can currently be fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState.FireTriggersData</span></td>
+        <td><span class="parametername">fireTriggersData</span></td>
+        <td><p>Additional Parameters for controlling how the trigger is fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">triggerCount</span></td>
+        <td><p>Number of Times to Trigger</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_QueueTrigger_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueTrigger*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_QueueTrigger_Trainworks_Enums_MTTriggers_CharacterTrigger_CharacterState___System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueTrigger(Trainworks.Enums.MTTriggers.CharacterTrigger,CharacterState[],System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueTrigger(CharacterTrigger, CharacterState[], Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
+  <div class="markdown level1 summary"><p>Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void QueueTrigger(CharacterTrigger charTrigger, CharacterState[] characters, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Trainworks.Enums.MTTriggers.CharacterTrigger.html">CharacterTrigger</a></td>
+        <td><span class="parametername">charTrigger</span></td>
+        <td><p>CharacterTrigger to be queued</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState</span>[]</td>
+        <td><span class="parametername">characters</span></td>
+        <td><p>Characters to Queue trigger on</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canAttackOrHeal</span></td>
+        <td><p>Whether the Character being triggered can Attack or be Healed</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canFireTriggers</span></td>
+        <td><p>Whether the trigger can currently be fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState.FireTriggersData</span></td>
+        <td><span class="parametername">fireTriggersData</span></td>
+        <td><p>Additional Parameters for controlling how the trigger is fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">triggerCount</span></td>
+        <td><p>Number of Times to Trigger</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_QueueTrigger_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueTrigger*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_QueueTrigger__1_Trainworks_Enums_MTTriggers_CharacterTrigger_System_Boolean_System_Boolean_CharacterState_FireTriggersData_System_Int32_" data-uid="Trainworks.Managers.CustomTriggerManager.QueueTrigger``1(Trainworks.Enums.MTTriggers.CharacterTrigger,System.Boolean,System.Boolean,CharacterState.FireTriggersData,System.Int32)">QueueTrigger&lt;Manager&gt;(CharacterTrigger, Boolean, Boolean, CharacterState.FireTriggersData, Int32)</h4>
+  <div class="markdown level1 summary"><p>Used to queue a Character Trigger to be automatically executed during key phases of combat. If you need to ensure that your trigger is executed at other times, please use QueueAndRunTrigger with a coroutine.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void QueueTrigger&lt;Manager&gt;(CharacterTrigger charTrigger, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)
+    where Manager : ICharacterManager, IProvider</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Trainworks.Enums.MTTriggers.CharacterTrigger.html">CharacterTrigger</a></td>
+        <td><span class="parametername">charTrigger</span></td>
+        <td><p>CharacterTrigger to be queued</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canAttackOrHeal</span></td>
+        <td><p>Whether the Character being triggered can Attack or be Healed</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">canFireTriggers</span></td>
+        <td><p>Whether the trigger can currently be fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CharacterState.FireTriggersData</span></td>
+        <td><span class="parametername">fireTriggersData</span></td>
+        <td><p>Additional Parameters for controlling how the trigger is fired</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">triggerCount</span></td>
+        <td><p>Number of Times to Trigger</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">Manager</span></td>
+        <td><p>Type of Manager to Queue and Run Triggers to</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Managers_CustomTriggerManager_RunTriggerQueueRemote_" data-uid="Trainworks.Managers.CustomTriggerManager.RunTriggerQueueRemote*"></a>
+  <h4 id="Trainworks_Managers_CustomTriggerManager_RunTriggerQueueRemote" data-uid="Trainworks.Managers.CustomTriggerManager.RunTriggerQueueRemote">RunTriggerQueueRemote()</h4>
+  <div class="markdown level1 summary"><p>Remotely Runs the Trigger Queue of the CombatManager</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RunTriggerQueueRemote()</code></pre>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

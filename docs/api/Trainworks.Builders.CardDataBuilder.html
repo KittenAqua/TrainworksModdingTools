@@ -1,0 +1,1260 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CardDataBuilder
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CardDataBuilder
+   ">
+    <meta name="generator" content="docfx 2.56.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Trainworks.Builders.CardDataBuilder">
+  
+  
+  <h1 id="Trainworks_Builders_CardDataBuilder" data-uid="Trainworks.Builders.CardDataBuilder" class="text-break">Class CardDataBuilder
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CardDataBuilder</span></div>
+      <div class="level2"><a class="xref" href="Trainworks.Builders.ChampionCardDataBuilder.html">ChampionCardDataBuilder</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Trainworks.Builders.html">Trainworks.Builders</a></h6>
+  <h6><strong>Assembly</strong>: TrainworksModdingTools.dll</h6>
+  <h5 id="Trainworks_Builders_CardDataBuilder_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CardDataBuilder : Object</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder__ctor_" data-uid="Trainworks.Builders.CardDataBuilder.#ctor*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder__ctor" data-uid="Trainworks.Builders.CardDataBuilder.#ctor">CardDataBuilder()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardDataBuilder()</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="Trainworks_Builders_CardDataBuilder_cardID" data-uid="Trainworks.Builders.CardDataBuilder.cardID">cardID</h4>
+  <div class="markdown level1 summary"><p>Don't set directly; use CardID instead.
+Unique string used to store and retrieve the card data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string cardID</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_AssetPath_" data-uid="Trainworks.Builders.CardDataBuilder.AssetPath*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_AssetPath" data-uid="Trainworks.Builders.CardDataBuilder.AssetPath">AssetPath</h4>
+  <div class="markdown level1 summary"><p>Custom asset path to load from. Must be inside the BaseAssetPath.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string AssetPath { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_BaseAssetPath_" data-uid="Trainworks.Builders.CardDataBuilder.BaseAssetPath*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_BaseAssetPath" data-uid="Trainworks.Builders.CardDataBuilder.BaseAssetPath">BaseAssetPath</h4>
+  <div class="markdown level1 summary"><p>Set automatically in the constructor. Base asset path, usually the plugin directory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string BaseAssetPath { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_BundleLoadingInfo_" data-uid="Trainworks.Builders.CardDataBuilder.BundleLoadingInfo*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_BundleLoadingInfo" data-uid="Trainworks.Builders.CardDataBuilder.BundleLoadingInfo">BundleLoadingInfo</h4>
+  <div class="markdown level1 summary"><p>Loading Info for loading a card's sprite from an asset bundle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BundleAssetLoadingInfo BundleLoadingInfo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Trainworks.Utilities.BundleAssetLoadingInfo.html">BundleAssetLoadingInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_CardArtPrefabVariantRef_" data-uid="Trainworks.Builders.CardDataBuilder.CardArtPrefabVariantRef*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_CardArtPrefabVariantRef" data-uid="Trainworks.Builders.CardDataBuilder.CardArtPrefabVariantRef">CardArtPrefabVariantRef</h4>
+  <div class="markdown level1 summary"><p>Use an existing base game card's art by filling this in with the appropriate card's asset reference information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetReferenceGameObject CardArtPrefabVariantRef { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.AddressableAssets.AssetReferenceGameObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_CardArtPrefabVariantRefBuilder_" data-uid="Trainworks.Builders.CardDataBuilder.CardArtPrefabVariantRefBuilder*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_CardArtPrefabVariantRefBuilder" data-uid="Trainworks.Builders.CardDataBuilder.CardArtPrefabVariantRefBuilder">CardArtPrefabVariantRefBuilder</h4>
+  <div class="markdown level1 summary"><p>Set CardArtPrefabVariantRef without reflection. The Build() method recursively builds all nested builders.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetRefBuilder CardArtPrefabVariantRefBuilder { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Trainworks.Builders.AssetRefBuilder.html">AssetRefBuilder</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_CardID_" data-uid="Trainworks.Builders.CardDataBuilder.CardID*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_CardID" data-uid="Trainworks.Builders.CardDataBuilder.CardID">CardID</h4>
+  <div class="markdown level1 summary"><p>Unique string used to store and retrieve the card data.
+Implicitly sets NameKey and OverrideDescriptionKey if null</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string CardID { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_CardLoreTooltipKeys_" data-uid="Trainworks.Builders.CardDataBuilder.CardLoreTooltipKeys*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_CardLoreTooltipKeys" data-uid="Trainworks.Builders.CardDataBuilder.CardLoreTooltipKeys">CardLoreTooltipKeys</h4>
+  <div class="markdown level1 summary"><p>Use an existing base game card's lore tooltip by adding its key to this list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; CardLoreTooltipKeys { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_CardPoolIDs_" data-uid="Trainworks.Builders.CardDataBuilder.CardPoolIDs*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_CardPoolIDs" data-uid="Trainworks.Builders.CardDataBuilder.CardPoolIDs">CardPoolIDs</h4>
+  <div class="markdown level1 summary"><p>The IDs of all card pools the card should be inserted into.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; CardPoolIDs { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_CardType_" data-uid="Trainworks.Builders.CardDataBuilder.CardType*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_CardType" data-uid="Trainworks.Builders.CardDataBuilder.CardType">CardType</h4>
+  <div class="markdown level1 summary"><p>The type of card: Spell, Monster, Blight, Scourge, or Invalid.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardType CardType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_ClanID_" data-uid="Trainworks.Builders.CardDataBuilder.ClanID*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_ClanID" data-uid="Trainworks.Builders.CardDataBuilder.ClanID">ClanID</h4>
+  <div class="markdown level1 summary"><p>ID of the clan the card is a part of. Leave null for clanless.
+Base game clan IDs should be retrieved via helper class &quot;MTClanIDs&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ClanID { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_Cost_" data-uid="Trainworks.Builders.CardDataBuilder.Cost*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_Cost" data-uid="Trainworks.Builders.CardDataBuilder.Cost">Cost</h4>
+  <div class="markdown level1 summary"><p>Ember cost of the card.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Cost { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_CostType_" data-uid="Trainworks.Builders.CardDataBuilder.CostType*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_CostType" data-uid="Trainworks.Builders.CardDataBuilder.CostType">CostType</h4>
+  <div class="markdown level1 summary"><p>Determines whether the card has a normal ember cost or an X ember cost.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardData.CostType CostType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardData.CostType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_Description_" data-uid="Trainworks.Builders.CardDataBuilder.Description*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_Description" data-uid="Trainworks.Builders.CardDataBuilder.Description">Description</h4>
+  <div class="markdown level1 summary"><p>Custom description text appended to the end of the card.
+Overridden by the OverrideDescriptionKey field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Description { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_EffectBuilders_" data-uid="Trainworks.Builders.CardDataBuilder.EffectBuilders*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_EffectBuilders" data-uid="Trainworks.Builders.CardDataBuilder.EffectBuilders">EffectBuilders</h4>
+  <div class="markdown level1 summary"><p>Append to this list to add new card effects. The Build() method recursively builds all nested builders.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CardEffectDataBuilder&gt; EffectBuilders { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Trainworks.Builders.CardEffectDataBuilder.html">CardEffectDataBuilder</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_Effects_" data-uid="Trainworks.Builders.CardDataBuilder.Effects*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_Effects" data-uid="Trainworks.Builders.CardDataBuilder.Effects">Effects</h4>
+  <div class="markdown level1 summary"><p>List of pre-built card effects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CardEffectData&gt; Effects { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">CardEffectData</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_EffectTriggerBuilders_" data-uid="Trainworks.Builders.CardDataBuilder.EffectTriggerBuilders*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_EffectTriggerBuilders" data-uid="Trainworks.Builders.CardDataBuilder.EffectTriggerBuilders">EffectTriggerBuilders</h4>
+  <div class="markdown level1 summary"><p>Append to this list to add new character triggers. The Build() method recursively builds all nested builders.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CharacterTriggerDataBuilder&gt; EffectTriggerBuilders { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Trainworks.Builders.CharacterTriggerDataBuilder.html">CharacterTriggerDataBuilder</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_EffectTriggers_" data-uid="Trainworks.Builders.CardDataBuilder.EffectTriggers*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_EffectTriggers" data-uid="Trainworks.Builders.CardDataBuilder.EffectTriggers">EffectTriggers</h4>
+  <div class="markdown level1 summary"><p>List of pre-built character triggers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CharacterTriggerData&gt; EffectTriggers { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">CharacterTriggerData</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_FallbackData_" data-uid="Trainworks.Builders.CardDataBuilder.FallbackData*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_FallbackData" data-uid="Trainworks.Builders.CardDataBuilder.FallbackData">FallbackData</h4>
+  <div class="markdown level1 summary"><p>In the event that art assets cannot be found, the game will search this for backup assets.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FallbackData FallbackData { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">FallbackData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_FullAssetPath_" data-uid="Trainworks.Builders.CardDataBuilder.FullAssetPath*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_FullAssetPath" data-uid="Trainworks.Builders.CardDataBuilder.FullAssetPath">FullAssetPath</h4>
+  <div class="markdown level1 summary"><p>The full, absolute path to the asset. Concatenates BaseAssetPath and AssetPath.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FullAssetPath { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_IgnoreWhenCountingMastery_" data-uid="Trainworks.Builders.CardDataBuilder.IgnoreWhenCountingMastery*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_IgnoreWhenCountingMastery" data-uid="Trainworks.Builders.CardDataBuilder.IgnoreWhenCountingMastery">IgnoreWhenCountingMastery</h4>
+  <div class="markdown level1 summary"><p>Whether or not this card is displayed in the logbook when counting all of the player's mastered cards.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IgnoreWhenCountingMastery { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_LinkedClass_" data-uid="Trainworks.Builders.CardDataBuilder.LinkedClass*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_LinkedClass" data-uid="Trainworks.Builders.CardDataBuilder.LinkedClass">LinkedClass</h4>
+  <div class="markdown level1 summary"><p>The class associated with the card.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ClassData LinkedClass { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ClassData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_LinkedMasteryCard_" data-uid="Trainworks.Builders.CardDataBuilder.LinkedMasteryCard*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_LinkedMasteryCard" data-uid="Trainworks.Builders.CardDataBuilder.LinkedMasteryCard">LinkedMasteryCard</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardData LinkedMasteryCard { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardData</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_Name_" data-uid="Trainworks.Builders.CardDataBuilder.Name*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_Name" data-uid="Trainworks.Builders.CardDataBuilder.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Name displayed on the card.
+Overridden by the NameKey field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_NameKey_" data-uid="Trainworks.Builders.CardDataBuilder.NameKey*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_NameKey" data-uid="Trainworks.Builders.CardDataBuilder.NameKey">NameKey</h4>
+  <div class="markdown level1 summary"><p>Localization key for the card's name.
+Overrides the Name field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string NameKey { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_OverrideDescriptionKey_" data-uid="Trainworks.Builders.CardDataBuilder.OverrideDescriptionKey*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_OverrideDescriptionKey" data-uid="Trainworks.Builders.CardDataBuilder.OverrideDescriptionKey">OverrideDescriptionKey</h4>
+  <div class="markdown level1 summary"><p>Localization key for the card's description.
+Overrides the Description field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string OverrideDescriptionKey { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_Rarity_" data-uid="Trainworks.Builders.CardDataBuilder.Rarity*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_Rarity" data-uid="Trainworks.Builders.CardDataBuilder.Rarity">Rarity</h4>
+  <div class="markdown level1 summary"><p>The card's rarity: Common, Uncommon, Rare, Champion, Starter</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CollectableRarity Rarity { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CollectableRarity</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_SharedMasteryCards_" data-uid="Trainworks.Builders.CardDataBuilder.SharedMasteryCards*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_SharedMasteryCards" data-uid="Trainworks.Builders.CardDataBuilder.SharedMasteryCards">SharedMasteryCards</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CardData&gt; SharedMasteryCards { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">CardData</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_SpriteCache_" data-uid="Trainworks.Builders.CardDataBuilder.SpriteCache*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_SpriteCache" data-uid="Trainworks.Builders.CardDataBuilder.SpriteCache">SpriteCache</h4>
+  <div class="markdown level1 summary"><p>A cache for the card's sprite so it doesn't have to be reloaded repeatedly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Sprite SpriteCache { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Sprite</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_StartingUpgrades_" data-uid="Trainworks.Builders.CardDataBuilder.StartingUpgrades*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_StartingUpgrades" data-uid="Trainworks.Builders.CardDataBuilder.StartingUpgrades">StartingUpgrades</h4>
+  <div class="markdown level1 summary"><p>These upgrades are applied to all new instances of this card by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CardUpgradeData&gt; StartingUpgrades { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">CardUpgradeData</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_Targetless_" data-uid="Trainworks.Builders.CardDataBuilder.Targetless*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_Targetless" data-uid="Trainworks.Builders.CardDataBuilder.Targetless">Targetless</h4>
+  <div class="markdown level1 summary"><p>Whether or not the card has a target.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Targetless { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_TargetsRoom_" data-uid="Trainworks.Builders.CardDataBuilder.TargetsRoom*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_TargetsRoom" data-uid="Trainworks.Builders.CardDataBuilder.TargetsRoom">TargetsRoom</h4>
+  <div class="markdown level1 summary"><p>Whether or not the card targets a room.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TargetsRoom { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_TraitBuilders_" data-uid="Trainworks.Builders.CardDataBuilder.TraitBuilders*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_TraitBuilders" data-uid="Trainworks.Builders.CardDataBuilder.TraitBuilders">TraitBuilders</h4>
+  <div class="markdown level1 summary"><p>Append to this list to add new card traits. The Build() method recursively builds all nested builders.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CardTraitDataBuilder&gt; TraitBuilders { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Trainworks.Builders.CardTraitDataBuilder.html">CardTraitDataBuilder</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_Traits_" data-uid="Trainworks.Builders.CardDataBuilder.Traits*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_Traits" data-uid="Trainworks.Builders.CardDataBuilder.Traits">Traits</h4>
+  <div class="markdown level1 summary"><p>List of pre-built card traits.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CardTraitData&gt; Traits { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">CardTraitData</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_TriggerBuilders_" data-uid="Trainworks.Builders.CardDataBuilder.TriggerBuilders*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_TriggerBuilders" data-uid="Trainworks.Builders.CardDataBuilder.TriggerBuilders">TriggerBuilders</h4>
+  <div class="markdown level1 summary"><p>Append to this list to add new card triggers. The Build() method recursively builds all nested builders.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CardTriggerEffectDataBuilder&gt; TriggerBuilders { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Trainworks.Builders.CardTriggerEffectDataBuilder.html">CardTriggerEffectDataBuilder</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_Triggers_" data-uid="Trainworks.Builders.CardDataBuilder.Triggers*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_Triggers" data-uid="Trainworks.Builders.CardDataBuilder.Triggers">Triggers</h4>
+  <div class="markdown level1 summary"><p>List of pre-built card triggers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;CardTriggerEffectData&gt; Triggers { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">CardTriggerEffectData</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_UnlockLevel_" data-uid="Trainworks.Builders.CardDataBuilder.UnlockLevel*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_UnlockLevel" data-uid="Trainworks.Builders.CardDataBuilder.UnlockLevel">UnlockLevel</h4>
+  <div class="markdown level1 summary"><p>Level at which the card is unlocked.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int UnlockLevel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_AddToCardPool_" data-uid="Trainworks.Builders.CardDataBuilder.AddToCardPool*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_AddToCardPool_System_String_" data-uid="Trainworks.Builders.CardDataBuilder.AddToCardPool(System.String)">AddToCardPool(String)</h4>
+  <div class="markdown level1 summary"><p>Adds this card to the cardpool whose ID is passed in</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddToCardPool(string cardPoolID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">cardPoolID</span></td>
+        <td><p>ID of the card pool, most easily retrieved using the helper class &quot;MTCardPoolIDs&quot;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_Build_" data-uid="Trainworks.Builders.CardDataBuilder.Build*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_Build" data-uid="Trainworks.Builders.CardDataBuilder.Build">Build()</h4>
+  <div class="markdown level1 summary"><p>Builds the CardData represented by this builder's parameters recursively;
+i.e. all CardEffectBuilders in EffectBuilders will also be built.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardData Build()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardData</span></td>
+        <td><p>The newly created CardData</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_BuildAndRegister_" data-uid="Trainworks.Builders.CardDataBuilder.BuildAndRegister*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_BuildAndRegister" data-uid="Trainworks.Builders.CardDataBuilder.BuildAndRegister">BuildAndRegister()</h4>
+  <div class="markdown level1 summary"><p>Builds the CardData represented by this builder's parameters recursively
+and registers it and its components with the appropriate managers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CardData BuildAndRegister()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CardData</span></td>
+        <td><p>The newly registered CardData</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_CreateAndSetCardArtPrefabVariantRef_" data-uid="Trainworks.Builders.CardDataBuilder.CreateAndSetCardArtPrefabVariantRef*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_CreateAndSetCardArtPrefabVariantRef_System_String_System_String_" data-uid="Trainworks.Builders.CardDataBuilder.CreateAndSetCardArtPrefabVariantRef(System.String,System.String)">CreateAndSetCardArtPrefabVariantRef(String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates an asset reference to an existing game file.
+Primarily useful for reusing base game art.
+Cards with custom art should not use this method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CreateAndSetCardArtPrefabVariantRef(string m_debugName, string m_AssetGUID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">m_debugName</span></td>
+        <td><p>The asset's debug name (usually the path to it)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">m_AssetGUID</span></td>
+        <td><p>The asset's GUID</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Trainworks_Builders_CardDataBuilder_SetClan_" data-uid="Trainworks.Builders.CardDataBuilder.SetClan*"></a>
+  <h4 id="Trainworks_Builders_CardDataBuilder_SetClan_System_String_" data-uid="Trainworks.Builders.CardDataBuilder.SetClan(System.String)">SetClan(String)</h4>
+  <div class="markdown level1 summary"><p>Sets this card's clan to the clan whose ID is passed in</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetClan(string clanID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">clanID</span></td>
+        <td><p>ID of the clan, most easily retrieved using the helper class &quot;MTClanIDs&quot;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
