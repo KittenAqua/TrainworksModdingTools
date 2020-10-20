@@ -24,7 +24,7 @@ namespace Trainworks
     {
         public const string GUID = "tools.modding.trainworks";
         public const string NAME = "Trainworks Modding Tools";
-        public const string VERSION = "0.0.9.3";
+        public const string VERSION = "0.0.9.4";
 
         /// <summary>
         /// The framework's logging source.
