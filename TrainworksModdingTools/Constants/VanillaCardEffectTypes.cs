@@ -11,6 +11,8 @@ namespace Trainworks.Constants
     {
         public static readonly Type CardEffectAddBattleCard = typeof(CardEffectAddBattleCard);
         public static readonly Type CardEffectAddRunCard = typeof(CardEffectAddRunCard);
+        public static readonly Type CardEffectAddStatsAndStatusEffectsFromSelf = typeof(CardEffectAddStatsAndStatusEffectsFromSelf);
+        public static readonly Type CardEffectAddStatsFromSelf = typeof(CardEffectAddStatsFromSelf);
         public static readonly Type CardEffectAddStatusEffect = typeof(CardEffectAddStatusEffect);
         public static readonly Type CardEffectAddStatusEffectNextMonster = typeof(CardEffectAddStatusEffectNextMonster);
         public static readonly Type CardEffectAddTempCardUpgradeToCardsInHand = typeof(CardEffectAddTempCardUpgradeToCardsInHand);
@@ -30,6 +32,7 @@ namespace Trainworks.Constants
         public static readonly Type CardEffectCopyCardUpgradesToUnits = typeof(CardEffectCopyCardUpgradesToUnits);
         public static readonly Type CardEffectCopyUnits = typeof(CardEffectCopyUnits);
         public static readonly Type CardEffectDamage = typeof(CardEffectDamage);
+        public static readonly Type CardEffectDamageByUnitsKilled = typeof(CardEffectDamageByUnitsKilled);
         public static readonly Type CardEffectDamagePerTargetAttack = typeof(CardEffectDamagePerTargetAttack);
         public static readonly Type CardEffectDebuffMaxHealth = typeof(CardEffectDebuffMaxHealth);
         public static readonly Type CardEffectDespawnCharacter = typeof(CardEffectDespawnCharacter);
@@ -49,14 +52,14 @@ namespace Trainworks.Constants
         public static readonly Type CardEffectHealAndDamageRelative = typeof(CardEffectHealAndDamageRelative);
         public static readonly Type CardEffectHealTrain = typeof(CardEffectHealTrain);
         public static readonly Type CardEffectKill = typeof(CardEffectKill);
-        public static readonly Type CardEffectLocalizationContext = typeof(CardEffectLocalizationContext);
+        public static readonly Type CardEffectModifyCardCost = typeof(CardEffectModifyCardCost);
         public static readonly Type CardEffectMultiplyStatusEffect = typeof(CardEffectMultiplyStatusEffect);
-        public static readonly Type CardEffectParams = typeof(CardEffectParams);
         public static readonly Type CardEffectPlayUnitTrigger = typeof(CardEffectPlayUnitTrigger);
         public static readonly Type CardEffectRandomDiscard = typeof(CardEffectRandomDiscard);
         public static readonly Type CardEffectRecursion = typeof(CardEffectRecursion);
         public static readonly Type CardEffectRemoveAllStatusEffects = typeof(CardEffectRemoveAllStatusEffects);
         public static readonly Type CardEffectRemoveStatusEffect = typeof(CardEffectRemoveStatusEffect);
+        public static readonly Type CardEffectRemoveStatusEffectOnStatusThreshold = typeof(CardEffectRemoveStatusEffectOnStatusThreshold);
         public static readonly Type CardEffectReplayTrigger = typeof(CardEffectReplayTrigger);
         public static readonly Type CardEffectRewardCards = typeof(CardEffectRewardCards);
         public static readonly Type CardEffectRewardGold = typeof(CardEffectRewardGold);
@@ -64,6 +67,5 @@ namespace Trainworks.Constants
         public static readonly Type CardEffectSpawnHero = typeof(CardEffectSpawnHero);
         public static readonly Type CardEffectSpawnMonster = typeof(CardEffectSpawnMonster);
         public static readonly Type CardEffectTransferAllStatusEffects = typeof(CardEffectTransferAllStatusEffects);
-        public static readonly Type CardEffectTransform = typeof(CardEffectTransform);
     }
 }
