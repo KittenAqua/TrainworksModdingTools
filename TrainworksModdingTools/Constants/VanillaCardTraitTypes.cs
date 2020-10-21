@@ -10,6 +10,7 @@ namespace Trainworks.Constants
     public static class VanillaCardTraitTypes
     {
         public static readonly Type CardTraitDummy = typeof(CardTraitDummy);
+        public static readonly Type CardTraitCostReduceCharactersInTowerState = typeof(CardTraitCostReduceCharactersInTowerState);
         public static readonly Type CardTraitExhaustState = typeof(CardTraitExhaustState);
         public static readonly Type CardTraitFreeze = typeof(CardTraitFreeze);
         public static readonly Type CardTraitIgnoreArmor = typeof(CardTraitIgnoreArmor);
@@ -39,6 +40,7 @@ namespace Trainworks.Constants
         public static readonly Type CardTraitSelfPurge = typeof(CardTraitSelfPurge);
         public static readonly Type CardTraitShowCardTargets = typeof(CardTraitShowCardTargets);
         public static readonly Type CardTraitSpellAffinity = typeof(CardTraitSpellAffinity);
+        public static readonly Type CardTraitStrongerMagicPower = typeof(CardTraitStrongerMagicPower);
         public static readonly Type CardTraitTreasure = typeof(CardTraitTreasure);
         public static readonly Type CardTraitUnplayable = typeof(CardTraitUnplayable);
         public static readonly Type CardTraitUnpurgable = typeof(CardTraitUnpurgable);
