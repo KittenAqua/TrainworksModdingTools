@@ -78,7 +78,6 @@ namespace Trainworks.Builders
         /// silhouette icon (43x43)
         /// </summary>
         public List<string> IconAssetPaths { get; set; }
-        public string ChampionIconPath { get; set; }
         /// <summary>
         /// Use CardStyle only for accessing the base game card frames. Otherwise use CardFrame for custom frames
         /// </summary>
