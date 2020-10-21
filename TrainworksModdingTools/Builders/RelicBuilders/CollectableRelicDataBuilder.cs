@@ -136,9 +136,9 @@ namespace Trainworks.Builders
                 this.Effects.Add(builder.Build());
             }
 
-            if (this.ClanID != null)
+            if (this.LinkedClass == null)
             {
-                this.LinkedClass = ProviderManager.SaveManager.GetAllGameData().FindClassData(GUIDGenerator.GenerateDeterministicGUID(this.ClanID));
+                this.LinkedClass = CustomClassManager.GetClassDataByID(this.ClanID);
             }
 
             var relicData = ScriptableObject.CreateInstance<CollectableRelicData>();
