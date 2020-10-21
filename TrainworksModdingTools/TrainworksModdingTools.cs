@@ -33,6 +33,7 @@ namespace Trainworks
 
         public static AssetBundle TrainworksBundle { get; private set; }
         public static string APIBasePath { get; private set; }
+
         /// <summary>
         /// Logs a message into the BepInEx console.
         /// </summary>
@@ -42,6 +43,16 @@ namespace Trainworks
         {
             logger.Log(lvl, msg);
         }
+
+        /// <summary>
+        /// Logs a message into the BepInEx console with LogLevel "Debug"
+        /// </summary>
+        /// <param name="msg">The message to log</param>
+        public static void Log(string msg)
+        {
+            Log(LogLevel.Debug, msg);
+        }
+
         /// <summary>
         /// Called on startup. Executes all Harmony patches anywhere in the framework's assembly.
         /// </summary>
