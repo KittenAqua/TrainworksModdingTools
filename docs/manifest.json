@@ -5,6 +5,30 @@
   "files": [
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch.html",
+          "hash": "h3FAdoWMcMwYbHhxt8gj9A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MonsterTrainModdingAPI.Patches.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MonsterTrainModdingAPI.Patches.html",
+          "hash": "hfxl6nGPHTbCjK58aXuGlw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Trainworks.AssetConstructors.CardArtAssetConstructor.yml",
       "output": {
         ".html": {
@@ -94,6 +118,18 @@
         ".html": {
           "relative_path": "api/Trainworks.Builders.CardEffectDataBuilder.html",
           "hash": "WPF/8GrN6dnHU239DOTZXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Trainworks.Builders.CardPoolBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Trainworks.Builders.CardPoolBuilder.html",
+          "hash": "4/01CgZNXXZtX86cBIP+dA=="
         }
       },
       "is_incremental": false,
@@ -213,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Trainworks.Builders.ClassDataBuilder.html",
-          "hash": "169WzUH2V/FNPSZbJbeKMQ=="
+          "hash": "6lnnlfX9/udFi7kmkGg/Vg=="
         }
       },
       "is_incremental": false,
@@ -345,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Trainworks.Builders.html",
-          "hash": "yTIRoW08XUqwNiAIHCJWGg=="
+          "hash": "5QDXparxcrEBMA9xM+GVkg=="
         }
       },
       "is_incremental": false,
@@ -357,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Trainworks.Constants.VanillaCardEffectTypes.html",
-          "hash": "dFQ1HKwKVNDC6iimD3s/TA=="
+          "hash": "Nwkl0YTtG9wZN9MsnQGh/Q=="
         }
       },
       "is_incremental": false,
@@ -393,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Trainworks.Constants.VanillaCardTraitTypes.html",
-          "hash": "eiU0Dk0IcIJ4kGlXHP0n6w=="
+          "hash": "yVw91Osl7pga2vLmrOZE/Q=="
         }
       },
       "is_incremental": false,
@@ -657,7 +693,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Trainworks.Managers.CustomClassManager.html",
-          "hash": "aBFFAliBIQtLmCyh1CG5EQ=="
+          "hash": "0/ceQ1LYLiVgMAltL9VCFg=="
         }
       },
       "is_incremental": false,
@@ -825,7 +861,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Trainworks.Trainworks.html",
-          "hash": "7ihxR8xBh+dzUi6keFaPWA=="
+          "hash": "suVbzhJnh2t+s+ChCmDJuQ=="
         }
       },
       "is_incremental": false,
@@ -969,7 +1005,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "E2EE9CMR+mEzFZuShbs61w=="
+          "hash": "MPnNJrEULt5dQPOcVs0dFw=="
         }
       },
       "is_incremental": false,
@@ -1042,8 +1078,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 79,
-          "skipped_file_count": 0
+          "total_file_count": 82,
+          "skipped_file_count": 73
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

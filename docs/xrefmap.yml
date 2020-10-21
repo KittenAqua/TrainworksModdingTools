@@ -1,6 +1,30 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
+- uid: MonsterTrainModdingAPI.Patches
+  name: MonsterTrainModdingAPI.Patches
+  href: api/MonsterTrainModdingAPI.Patches.html
+  commentId: N:MonsterTrainModdingAPI.Patches
+  fullName: MonsterTrainModdingAPI.Patches
+  nameWithType: MonsterTrainModdingAPI.Patches
+- uid: MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch
+  name: CustomClanSelectScreenPatch
+  href: api/MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch.html
+  commentId: T:MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch
+  fullName: MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch
+  nameWithType: CustomClanSelectScreenPatch
+- uid: MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch.#ctor
+  name: CustomClanSelectScreenPatch()
+  href: api/MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch.html#MonsterTrainModdingAPI_Patches_CustomClanSelectScreenPatch__ctor
+  commentId: M:MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch.#ctor
+  fullName: MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch.CustomClanSelectScreenPatch()
+  nameWithType: CustomClanSelectScreenPatch.CustomClanSelectScreenPatch()
+- uid: MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch.#ctor*
+  name: CustomClanSelectScreenPatch
+  href: api/MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch.html#MonsterTrainModdingAPI_Patches_CustomClanSelectScreenPatch__ctor_
+  commentId: Overload:MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch.#ctor
+  fullName: MonsterTrainModdingAPI.Patches.CustomClanSelectScreenPatch.CustomClanSelectScreenPatch
+  nameWithType: CustomClanSelectScreenPatch.CustomClanSelectScreenPatch
 - uid: Trainworks
   name: Trainworks
   href: api/Trainworks.html
@@ -1294,6 +1318,84 @@ references:
   commentId: Overload:Trainworks.Builders.CardEffectDataBuilder.UseStatusEffectStackMultiplier
   fullName: Trainworks.Builders.CardEffectDataBuilder.UseStatusEffectStackMultiplier
   nameWithType: CardEffectDataBuilder.UseStatusEffectStackMultiplier
+- uid: Trainworks.Builders.CardPoolBuilder
+  name: CardPoolBuilder
+  href: api/Trainworks.Builders.CardPoolBuilder.html
+  commentId: T:Trainworks.Builders.CardPoolBuilder
+  fullName: Trainworks.Builders.CardPoolBuilder
+  nameWithType: CardPoolBuilder
+- uid: Trainworks.Builders.CardPoolBuilder.#ctor
+  name: CardPoolBuilder()
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder__ctor
+  commentId: M:Trainworks.Builders.CardPoolBuilder.#ctor
+  fullName: Trainworks.Builders.CardPoolBuilder.CardPoolBuilder()
+  nameWithType: CardPoolBuilder.CardPoolBuilder()
+- uid: Trainworks.Builders.CardPoolBuilder.#ctor*
+  name: CardPoolBuilder
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder__ctor_
+  commentId: Overload:Trainworks.Builders.CardPoolBuilder.#ctor
+  fullName: Trainworks.Builders.CardPoolBuilder.CardPoolBuilder
+  nameWithType: CardPoolBuilder.CardPoolBuilder
+- uid: Trainworks.Builders.CardPoolBuilder.Build
+  name: Build()
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder_Build
+  commentId: M:Trainworks.Builders.CardPoolBuilder.Build
+  fullName: Trainworks.Builders.CardPoolBuilder.Build()
+  nameWithType: CardPoolBuilder.Build()
+- uid: Trainworks.Builders.CardPoolBuilder.Build*
+  name: Build
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder_Build_
+  commentId: Overload:Trainworks.Builders.CardPoolBuilder.Build
+  fullName: Trainworks.Builders.CardPoolBuilder.Build
+  nameWithType: CardPoolBuilder.Build
+- uid: Trainworks.Builders.CardPoolBuilder.BuildAndRegister
+  name: BuildAndRegister()
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder_BuildAndRegister
+  commentId: M:Trainworks.Builders.CardPoolBuilder.BuildAndRegister
+  fullName: Trainworks.Builders.CardPoolBuilder.BuildAndRegister()
+  nameWithType: CardPoolBuilder.BuildAndRegister()
+- uid: Trainworks.Builders.CardPoolBuilder.BuildAndRegister*
+  name: BuildAndRegister
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder_BuildAndRegister_
+  commentId: Overload:Trainworks.Builders.CardPoolBuilder.BuildAndRegister
+  fullName: Trainworks.Builders.CardPoolBuilder.BuildAndRegister
+  nameWithType: CardPoolBuilder.BuildAndRegister
+- uid: Trainworks.Builders.CardPoolBuilder.CardIDs
+  name: CardIDs
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder_CardIDs
+  commentId: P:Trainworks.Builders.CardPoolBuilder.CardIDs
+  fullName: Trainworks.Builders.CardPoolBuilder.CardIDs
+  nameWithType: CardPoolBuilder.CardIDs
+- uid: Trainworks.Builders.CardPoolBuilder.CardIDs*
+  name: CardIDs
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder_CardIDs_
+  commentId: Overload:Trainworks.Builders.CardPoolBuilder.CardIDs
+  fullName: Trainworks.Builders.CardPoolBuilder.CardIDs
+  nameWithType: CardPoolBuilder.CardIDs
+- uid: Trainworks.Builders.CardPoolBuilder.CardPoolID
+  name: CardPoolID
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder_CardPoolID
+  commentId: P:Trainworks.Builders.CardPoolBuilder.CardPoolID
+  fullName: Trainworks.Builders.CardPoolBuilder.CardPoolID
+  nameWithType: CardPoolBuilder.CardPoolID
+- uid: Trainworks.Builders.CardPoolBuilder.CardPoolID*
+  name: CardPoolID
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder_CardPoolID_
+  commentId: Overload:Trainworks.Builders.CardPoolBuilder.CardPoolID
+  fullName: Trainworks.Builders.CardPoolBuilder.CardPoolID
+  nameWithType: CardPoolBuilder.CardPoolID
+- uid: Trainworks.Builders.CardPoolBuilder.Cards
+  name: Cards
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder_Cards
+  commentId: P:Trainworks.Builders.CardPoolBuilder.Cards
+  fullName: Trainworks.Builders.CardPoolBuilder.Cards
+  nameWithType: CardPoolBuilder.Cards
+- uid: Trainworks.Builders.CardPoolBuilder.Cards*
+  name: Cards
+  href: api/Trainworks.Builders.CardPoolBuilder.html#Trainworks_Builders_CardPoolBuilder_Cards_
+  commentId: Overload:Trainworks.Builders.CardPoolBuilder.Cards
+  fullName: Trainworks.Builders.CardPoolBuilder.Cards
+  nameWithType: CardPoolBuilder.Cards
 - uid: Trainworks.Builders.CardTraitDataBuilder
   name: CardTraitDataBuilder
   href: api/Trainworks.Builders.CardTraitDataBuilder.html
@@ -3340,18 +3442,6 @@ references:
   commentId: Overload:Trainworks.Builders.ClassDataBuilder.CardStyle
   fullName: Trainworks.Builders.ClassDataBuilder.CardStyle
   nameWithType: ClassDataBuilder.CardStyle
-- uid: Trainworks.Builders.ClassDataBuilder.ChampionIconPath
-  name: ChampionIconPath
-  href: api/Trainworks.Builders.ClassDataBuilder.html#Trainworks_Builders_ClassDataBuilder_ChampionIconPath
-  commentId: P:Trainworks.Builders.ClassDataBuilder.ChampionIconPath
-  fullName: Trainworks.Builders.ClassDataBuilder.ChampionIconPath
-  nameWithType: ClassDataBuilder.ChampionIconPath
-- uid: Trainworks.Builders.ClassDataBuilder.ChampionIconPath*
-  name: ChampionIconPath
-  href: api/Trainworks.Builders.ClassDataBuilder.html#Trainworks_Builders_ClassDataBuilder_ChampionIconPath_
-  commentId: Overload:Trainworks.Builders.ClassDataBuilder.ChampionIconPath
-  fullName: Trainworks.Builders.ClassDataBuilder.ChampionIconPath
-  nameWithType: ClassDataBuilder.ChampionIconPath
 - uid: Trainworks.Builders.ClassDataBuilder.Champions
   name: Champions
   href: api/Trainworks.Builders.ClassDataBuilder.html#Trainworks_Builders_ClassDataBuilder_Champions
@@ -3382,6 +3472,30 @@ references:
   commentId: Overload:Trainworks.Builders.ClassDataBuilder.ClassID
   fullName: Trainworks.Builders.ClassDataBuilder.ClassID
   nameWithType: ClassDataBuilder.ClassID
+- uid: Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsMain
+  name: ClassSelectScreenCharacterIDsMain
+  href: api/Trainworks.Builders.ClassDataBuilder.html#Trainworks_Builders_ClassDataBuilder_ClassSelectScreenCharacterIDsMain
+  commentId: P:Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsMain
+  fullName: Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsMain
+  nameWithType: ClassDataBuilder.ClassSelectScreenCharacterIDsMain
+- uid: Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsMain*
+  name: ClassSelectScreenCharacterIDsMain
+  href: api/Trainworks.Builders.ClassDataBuilder.html#Trainworks_Builders_ClassDataBuilder_ClassSelectScreenCharacterIDsMain_
+  commentId: Overload:Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsMain
+  fullName: Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsMain
+  nameWithType: ClassDataBuilder.ClassSelectScreenCharacterIDsMain
+- uid: Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsSub
+  name: ClassSelectScreenCharacterIDsSub
+  href: api/Trainworks.Builders.ClassDataBuilder.html#Trainworks_Builders_ClassDataBuilder_ClassSelectScreenCharacterIDsSub
+  commentId: P:Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsSub
+  fullName: Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsSub
+  nameWithType: ClassDataBuilder.ClassSelectScreenCharacterIDsSub
+- uid: Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsSub*
+  name: ClassSelectScreenCharacterIDsSub
+  href: api/Trainworks.Builders.ClassDataBuilder.html#Trainworks_Builders_ClassDataBuilder_ClassSelectScreenCharacterIDsSub_
+  commentId: Overload:Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsSub
+  fullName: Trainworks.Builders.ClassDataBuilder.ClassSelectScreenCharacterIDsSub
+  nameWithType: ClassDataBuilder.ClassSelectScreenCharacterIDsSub
 - uid: Trainworks.Builders.ClassDataBuilder.ClassUnlockCondition
   name: ClassUnlockCondition
   href: api/Trainworks.Builders.ClassDataBuilder.html#Trainworks_Builders_ClassDataBuilder_ClassUnlockCondition
@@ -6142,6 +6256,18 @@ references:
   commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectAddRunCard
   fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectAddRunCard
   nameWithType: VanillaCardEffectTypes.CardEffectAddRunCard
+- uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectAddStatsAndStatusEffectsFromSelf
+  name: CardEffectAddStatsAndStatusEffectsFromSelf
+  href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectAddStatsAndStatusEffectsFromSelf
+  commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectAddStatsAndStatusEffectsFromSelf
+  fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectAddStatsAndStatusEffectsFromSelf
+  nameWithType: VanillaCardEffectTypes.CardEffectAddStatsAndStatusEffectsFromSelf
+- uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectAddStatsFromSelf
+  name: CardEffectAddStatsFromSelf
+  href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectAddStatsFromSelf
+  commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectAddStatsFromSelf
+  fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectAddStatsFromSelf
+  nameWithType: VanillaCardEffectTypes.CardEffectAddStatsFromSelf
 - uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectAddStatusEffect
   name: CardEffectAddStatusEffect
   href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectAddStatusEffect
@@ -6256,6 +6382,12 @@ references:
   commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectDamage
   fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectDamage
   nameWithType: VanillaCardEffectTypes.CardEffectDamage
+- uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectDamageByUnitsKilled
+  name: CardEffectDamageByUnitsKilled
+  href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectDamageByUnitsKilled
+  commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectDamageByUnitsKilled
+  fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectDamageByUnitsKilled
+  nameWithType: VanillaCardEffectTypes.CardEffectDamageByUnitsKilled
 - uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectDamagePerTargetAttack
   name: CardEffectDamagePerTargetAttack
   href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectDamagePerTargetAttack
@@ -6370,24 +6502,18 @@ references:
   commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectKill
   fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectKill
   nameWithType: VanillaCardEffectTypes.CardEffectKill
-- uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectLocalizationContext
-  name: CardEffectLocalizationContext
-  href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectLocalizationContext
-  commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectLocalizationContext
-  fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectLocalizationContext
-  nameWithType: VanillaCardEffectTypes.CardEffectLocalizationContext
+- uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectModifyCardCost
+  name: CardEffectModifyCardCost
+  href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectModifyCardCost
+  commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectModifyCardCost
+  fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectModifyCardCost
+  nameWithType: VanillaCardEffectTypes.CardEffectModifyCardCost
 - uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectMultiplyStatusEffect
   name: CardEffectMultiplyStatusEffect
   href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectMultiplyStatusEffect
   commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectMultiplyStatusEffect
   fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectMultiplyStatusEffect
   nameWithType: VanillaCardEffectTypes.CardEffectMultiplyStatusEffect
-- uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectParams
-  name: CardEffectParams
-  href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectParams
-  commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectParams
-  fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectParams
-  nameWithType: VanillaCardEffectTypes.CardEffectParams
 - uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectPlayUnitTrigger
   name: CardEffectPlayUnitTrigger
   href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectPlayUnitTrigger
@@ -6418,6 +6544,12 @@ references:
   commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectRemoveStatusEffect
   fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectRemoveStatusEffect
   nameWithType: VanillaCardEffectTypes.CardEffectRemoveStatusEffect
+- uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectRemoveStatusEffectOnStatusThreshold
+  name: CardEffectRemoveStatusEffectOnStatusThreshold
+  href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectRemoveStatusEffectOnStatusThreshold
+  commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectRemoveStatusEffectOnStatusThreshold
+  fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectRemoveStatusEffectOnStatusThreshold
+  nameWithType: VanillaCardEffectTypes.CardEffectRemoveStatusEffectOnStatusThreshold
 - uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectReplayTrigger
   name: CardEffectReplayTrigger
   href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectReplayTrigger
@@ -6460,12 +6592,6 @@ references:
   commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectTransferAllStatusEffects
   fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectTransferAllStatusEffects
   nameWithType: VanillaCardEffectTypes.CardEffectTransferAllStatusEffects
-- uid: Trainworks.Constants.VanillaCardEffectTypes.CardEffectTransform
-  name: CardEffectTransform
-  href: api/Trainworks.Constants.VanillaCardEffectTypes.html#Trainworks_Constants_VanillaCardEffectTypes_CardEffectTransform
-  commentId: F:Trainworks.Constants.VanillaCardEffectTypes.CardEffectTransform
-  fullName: Trainworks.Constants.VanillaCardEffectTypes.CardEffectTransform
-  nameWithType: VanillaCardEffectTypes.CardEffectTransform
 - uid: Trainworks.Constants.VanillaCardIDs
   name: VanillaCardIDs
   href: api/Trainworks.Constants.VanillaCardIDs.html
@@ -7936,6 +8062,12 @@ references:
   commentId: T:Trainworks.Constants.VanillaCardTraitTypes
   fullName: Trainworks.Constants.VanillaCardTraitTypes
   nameWithType: VanillaCardTraitTypes
+- uid: Trainworks.Constants.VanillaCardTraitTypes.CardTraitCostReduceCharactersInTowerState
+  name: CardTraitCostReduceCharactersInTowerState
+  href: api/Trainworks.Constants.VanillaCardTraitTypes.html#Trainworks_Constants_VanillaCardTraitTypes_CardTraitCostReduceCharactersInTowerState
+  commentId: F:Trainworks.Constants.VanillaCardTraitTypes.CardTraitCostReduceCharactersInTowerState
+  fullName: Trainworks.Constants.VanillaCardTraitTypes.CardTraitCostReduceCharactersInTowerState
+  nameWithType: VanillaCardTraitTypes.CardTraitCostReduceCharactersInTowerState
 - uid: Trainworks.Constants.VanillaCardTraitTypes.CardTraitDummy
   name: CardTraitDummy
   href: api/Trainworks.Constants.VanillaCardTraitTypes.html#Trainworks_Constants_VanillaCardTraitTypes_CardTraitDummy
@@ -8116,6 +8248,12 @@ references:
   commentId: F:Trainworks.Constants.VanillaCardTraitTypes.CardTraitSpellAffinity
   fullName: Trainworks.Constants.VanillaCardTraitTypes.CardTraitSpellAffinity
   nameWithType: VanillaCardTraitTypes.CardTraitSpellAffinity
+- uid: Trainworks.Constants.VanillaCardTraitTypes.CardTraitStrongerMagicPower
+  name: CardTraitStrongerMagicPower
+  href: api/Trainworks.Constants.VanillaCardTraitTypes.html#Trainworks_Constants_VanillaCardTraitTypes_CardTraitStrongerMagicPower
+  commentId: F:Trainworks.Constants.VanillaCardTraitTypes.CardTraitStrongerMagicPower
+  fullName: Trainworks.Constants.VanillaCardTraitTypes.CardTraitStrongerMagicPower
+  nameWithType: VanillaCardTraitTypes.CardTraitStrongerMagicPower
 - uid: Trainworks.Constants.VanillaCardTraitTypes.CardTraitTreasure
   name: CardTraitTreasure
   href: api/Trainworks.Constants.VanillaCardTraitTypes.html#Trainworks_Constants_VanillaCardTraitTypes_CardTraitTreasure
@@ -11158,6 +11296,30 @@ references:
   commentId: Overload:Trainworks.Managers.CustomClassManager.CustomClassFrame
   fullName: Trainworks.Managers.CustomClassManager.CustomClassFrame
   nameWithType: CustomClassManager.CustomClassFrame
+- uid: Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsMain
+  name: CustomClassSelectScreenCharacterIDsMain
+  href: api/Trainworks.Managers.CustomClassManager.html#Trainworks_Managers_CustomClassManager_CustomClassSelectScreenCharacterIDsMain
+  commentId: P:Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsMain
+  fullName: Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsMain
+  nameWithType: CustomClassManager.CustomClassSelectScreenCharacterIDsMain
+- uid: Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsMain*
+  name: CustomClassSelectScreenCharacterIDsMain
+  href: api/Trainworks.Managers.CustomClassManager.html#Trainworks_Managers_CustomClassManager_CustomClassSelectScreenCharacterIDsMain_
+  commentId: Overload:Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsMain
+  fullName: Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsMain
+  nameWithType: CustomClassManager.CustomClassSelectScreenCharacterIDsMain
+- uid: Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsSub
+  name: CustomClassSelectScreenCharacterIDsSub
+  href: api/Trainworks.Managers.CustomClassManager.html#Trainworks_Managers_CustomClassManager_CustomClassSelectScreenCharacterIDsSub
+  commentId: P:Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsSub
+  fullName: Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsSub
+  nameWithType: CustomClassManager.CustomClassSelectScreenCharacterIDsSub
+- uid: Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsSub*
+  name: CustomClassSelectScreenCharacterIDsSub
+  href: api/Trainworks.Managers.CustomClassManager.html#Trainworks_Managers_CustomClassManager_CustomClassSelectScreenCharacterIDsSub_
+  commentId: Overload:Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsSub
+  fullName: Trainworks.Managers.CustomClassManager.CustomClassSelectScreenCharacterIDsSub
+  nameWithType: CustomClassManager.CustomClassSelectScreenCharacterIDsSub
 - uid: Trainworks.Managers.CustomClassManager.GetClassDataByID(System.String)
   name: GetClassDataByID(String)
   href: api/Trainworks.Managers.CustomClassManager.html#Trainworks_Managers_CustomClassManager_GetClassDataByID_System_String_
@@ -11845,6 +12007,12 @@ references:
   commentId: M:Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel,System.String)
   fullName: Trainworks.Trainworks.Log(BepInEx.Logging.LogLevel, System.String)
   nameWithType: Trainworks.Log(LogLevel, String)
+- uid: Trainworks.Trainworks.Log(System.String)
+  name: Log(String)
+  href: api/Trainworks.Trainworks.html#Trainworks_Trainworks_Log_System_String_
+  commentId: M:Trainworks.Trainworks.Log(System.String)
+  fullName: Trainworks.Trainworks.Log(System.String)
+  nameWithType: Trainworks.Log(String)
 - uid: Trainworks.Trainworks.Log*
   name: Log
   href: api/Trainworks.Trainworks.html#Trainworks_Trainworks_Log_
