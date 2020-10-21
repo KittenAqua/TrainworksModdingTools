@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 using BepInEx.Logging;
 using HarmonyLib;
 using Trainworks.Builders;
@@ -18,6 +19,23 @@ namespace Trainworks.Managers
         public static IDictionary<string, List<CardData>> CustomCardPoolData { get; } = new Dictionary<string, List<CardData>>();
 
         /// <summary>
+        /// Maps custom card pool IDs to their actual CardPool instances.
+        /// </summary>
+        public static IDictionary<string, CardPool> CustomCardPools { get; } = new Dictionary<string, CardPool>();
+
+        public static void RegisterCustomCardPool(CardPool cardPool)
+        {
+            if (!CustomCardPools.ContainsKey(cardPool.name))
+            {
+                CustomCardPools.Add(cardPool.name, cardPool);
+            }
+            else
+            {
+                Trainworks.Log(LogLevel.Warning, "Attempted to register duplicate card pool with name: " + cardPool.name);
+            }
+        }
+
+        /// <summary>
         /// Add the card to the card pools with given IDs.
         /// </summary>
         /// <param name="cardData">CardData to be added to the pools</param>
@@ -26,11 +44,20 @@ namespace Trainworks.Managers
         {
             foreach (string cardPoolID in cardPoolIDs)
             {
-                if (!CustomCardPoolData.ContainsKey(cardPoolID))
+                if (CustomCardPools.ContainsKey(cardPoolID))
                 {
-                    CustomCardPoolData[cardPoolID] = new List<CardData>();
+                    var pool = CustomCardPools[cardPoolID];
+                    var cardDataList = (Malee.ReorderableArray<CardData>)AccessTools.Field(typeof(CardPool), "cardDataList").GetValue(pool);
+                    cardDataList.Add(cardData);
                 }
-                CustomCardPoolData[cardPoolID].Add(cardData);
+                else
+                {
+                    if (!CustomCardPoolData.ContainsKey(cardPoolID))
+                    {
+                        CustomCardPoolData[cardPoolID] = new List<CardData>();
+                    }
+                    CustomCardPoolData[cardPoolID].Add(cardData);
+                }
             }
         }
 
@@ -99,6 +126,21 @@ namespace Trainworks.Managers
                 }
             }
             return validCards;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cardPoolID"></param>
+        /// <returns></returns>
+        public static CardPool GetCustomCardPoolByID(string cardPoolID)
+        {
+            if (CustomCardPools.ContainsKey(cardPoolID))
+            {
+                return CustomCardPools[cardPoolID];
+            }
+            Trainworks.Log(LogLevel.Warning, "Could not find card pool: " + cardPoolID);
+            return null;
         }
     }
 }
