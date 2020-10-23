@@ -61,6 +61,11 @@ namespace Trainworks.Enums
         /// </summary>
         /// <returns>all IDs of all ExtendedEnum classes</returns>
         public static int[] GetAllIDs() => IntToExtendedEnumMap.Keys.ToArray();
+        /// <summary>
+        /// Return all Enum representations of Custom Extended Enums
+        /// </summary>
+        /// <returns></returns>
+        public static TEnum[] GetAllExtendedEnums() => IntToExtendedEnumMap.Values.Select(x => x.GetEnum()).ToArray();
 
         /// <summary>
         /// Returns all names of all ExtendedEnum classes
@@ -89,20 +94,14 @@ namespace Trainworks.Enums
         /// <returns></returns>
         public static TExtendedEnum Convert(TEnum @enum)
         {
+            //Create an Instance of ExtendedEnum
+            TExtendedEnum @extendedEnum = (TExtendedEnum)Activator.CreateInstance(typeof(TExtendedEnum));
+            //Give it the proper ID and Name
             int id = System.Convert.ToInt32((Enum)@enum);
-            if (IntToExtendedEnumMap.ContainsKey(id))
-            {
-                TExtendedEnum @extendedEnum = (TExtendedEnum)Activator.CreateInstance(typeof(TExtendedEnum));
-                @extendedEnum.ID = id;
-                @extendedEnum.Name = "Generated_" + Enum.GetName(typeof(TEnum), @enum);
-                NameToExtendedEnumMap[@extendedEnum.Name] = @extendedEnum;
-                IntToExtendedEnumMap[@extendedEnum.ID] = @extendedEnum;
-                return @extendedEnum;
-            }
-            else
-            {
-                return IntToExtendedEnumMap[id];
-            }
+            @extendedEnum.ID = id;
+            @extendedEnum.Name = "Generated_" + Enum.GetName(typeof(TEnum), @enum);
+            //Do not register as Extended Enum, conversion should be temp for representation, whereas registration is for custom
+            return @extendedEnum;
         }
     }
 }
