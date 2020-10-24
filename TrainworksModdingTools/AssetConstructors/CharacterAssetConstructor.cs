@@ -17,6 +17,8 @@ namespace Trainworks.AssetConstructors
 {
     public class CharacterAssetConstructor : Interfaces.IAssetConstructor
     {
+        public Dictionary<string, GameObject> CharacterPrefabDictionary = new Dictionary<string, GameObject>();
+
         public GameObject Construct(AssetReference assetRef)
         {
             return CreateCharacterGameObject(assetRef);
@@ -198,11 +200,23 @@ namespace Trainworks.AssetConstructors
 
         public GameObject Construct(AssetReference assetRef, BundleAssetLoadingInfo bundleInfo)
         {
+            // Don't recreate
+            if (CharacterPrefabDictionary.ContainsKey(bundleInfo.SpriteName))
+            {
+                return CharacterPrefabDictionary[bundleInfo.SpriteName];
+            }
+
+            if (CharacterPrefabDictionary.ContainsKey(bundleInfo.ObjectName))
+            {
+                return CharacterPrefabDictionary[bundleInfo.ObjectName];
+            }
+
+            // Create a new one if one doesn't exist already
             var tex = BundleManager.LoadAssetFromBundle(bundleInfo, bundleInfo.SpriteName) as Texture2D;
             if (tex != null)
             {
                 Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 128f);
-                sprite.name = "CharacterSprite_" + bundleInfo.SpriteName;
+                sprite.name = "Sprite_" + bundleInfo.SpriteName.Replace("assets/", "").Replace(".png", "");
                 if (bundleInfo.ObjectName != null)
                 {
                     GameObject gameObject = BundleManager.LoadAssetFromBundle(bundleInfo, bundleInfo.ObjectName) as GameObject;
@@ -210,11 +224,13 @@ namespace Trainworks.AssetConstructors
                     {
                         var spineObj = CreateCharacterGameObject(assetRef, sprite, gameObject);
                         GameObject.DontDestroyOnLoad(spineObj);
+                        CharacterPrefabDictionary.Add(bundleInfo.ObjectName, spineObj);
                         return spineObj;
                     }
                 }
                 var charObj = CreateCharacterGameObject(assetRef, sprite);
                 GameObject.DontDestroyOnLoad(charObj);
+                CharacterPrefabDictionary.Add(bundleInfo.SpriteName, charObj);
                 return charObj;
             }
             Trainworks.Log(BepInEx.Logging.LogLevel.Warning, "Invalid sprite name when loading asset: " + bundleInfo.SpriteName);
