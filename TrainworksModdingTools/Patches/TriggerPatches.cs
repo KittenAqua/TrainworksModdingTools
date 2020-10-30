@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using HarmonyLib;
+using ShinyShoe.Logging;
 using Trainworks.Managers;
 
 namespace Trainworks.Patches
@@ -32,6 +35,21 @@ namespace Trainworks.Patches
             if (__result == null)
             {
                 __result = CustomTriggerManager.GetAssociatedCharacterTrigger(cardTrigger);
+            }
+        }
+    }
+    [HarmonyPatch(typeof(CombatManager), "VerifyTriggerQueueEmpty")]
+    class AdditionalInformationFromVerifyTriggerQueueEmptyPatch
+    {
+        static void Postfix(ref CombatManager __instance)
+        {
+            Queue<CombatManager.TriggerQueueData> triggerQueue = (Queue<CombatManager.TriggerQueueData>)AccessTools.PropertyGetter(typeof(CombatManager), "TriggerQueue").Invoke(__instance, null);
+            if (!__instance.IsRunningTriggerQueue)
+            {
+                foreach (CombatManager.TriggerQueueData data in triggerQueue.ToList())
+                {
+                    Trainworks.Log(BepInEx.Logging.LogLevel.Error, $"Trigger Not Enqued, will be cleared: {data.trigger}");
+                }
             }
         }
     }
