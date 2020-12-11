@@ -43,6 +43,10 @@ namespace Trainworks.Builders
         /// </summary>
         public string BaseAssetPath { get; set; }
         /// <summary>
+        /// Sprite displayed around the node while it's selected (mouseover or highlighted via keyboard or controller).
+        /// </summary>
+        public string SelectionOutlineSpritePath { get; set; }
+        /// <summary>
         /// Sprite used when the node is on the same path but has not been visited.
         /// </summary>
         public string EnabledSpritePath { get; set; }
@@ -131,6 +135,7 @@ namespace Trainworks.Builders
             AccessTools.Field(typeof(GameData), "id").SetValue(rewardNodeData, this.RewardNodeID);
             AccessTools.Field(typeof(MapNodeData), "ignoreIfNodesPresent").SetValue(rewardNodeData, this.IgnoreIfNodesPresent);
             AccessTools.Field(typeof(MapNodeData), "mapIcon").SetValue(rewardNodeData, CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.MapIconPath));
+
             if (this.MapIconPrefab == null)
             { // These are too complicated to create from scratch, so by default we copy from an existing game banner and apply our sprites to it
                 RewardNodeData copyBanner = (ProviderManager.SaveManager.GetAllGameData().FindMapNodeData("5f35b7b7-75d1-4957-9f78-7d2072237038") as RewardNodeData);
@@ -139,14 +144,17 @@ namespace Trainworks.Builders
                 this.MapIconPrefab.name = this.RewardNodeID;
                 GameObject.DontDestroyOnLoad(this.MapIconPrefab);
                 var images = this.MapIconPrefab.GetComponentsInChildren<Image>(true);
+
                 List<string> spritePaths = new List<string>
                 { // This is the order they're listed on the prefab
+                    this.SelectionOutlineSpritePath,
                     this.EnabledSpritePath,
                     this.EnabledVisitedSpritePath,
                     this.DisabledVisitedSpritePath,
                     this.DisabledSpritePath,
                     this.FrozenSpritePath
                 };
+
                 for (int i = 0; i < images.Length; i++)
                 { // This method of modifying the image's sprite has the unfortunate side-effect of removing the white mouse-over outline
                     var sprite = CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + spritePaths[i]);
@@ -157,6 +165,7 @@ namespace Trainworks.Builders
                     }
                 }
             }
+
             AccessTools.Field(typeof(MapNodeData), "mapIconPrefab").SetValue(rewardNodeData, this.MapIconPrefab);
             AccessTools.Field(typeof(MapNodeData), "minimapIcon").SetValue(rewardNodeData, CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.MinimapIconPath));
             AccessTools.Field(typeof(MapNodeData), "nodeSelectedSfxCue").SetValue(rewardNodeData, this.NodeSelectedSfxCue);
@@ -177,11 +186,13 @@ namespace Trainworks.Builders
                 // This should be changed in the future to add proper localization support to custom content
                 CustomLocalizationManager.ImportSingleLocalization(this.TooltipTitleKey, "Text", "", "", "", "", this.Name, this.Name, this.Name, this.Name, this.Name, this.Name);
             }
+
             AccessTools.Field(typeof(MapNodeData), "tooltipTitleKey").SetValue(rewardNodeData, this.TooltipTitleKey);
             AccessTools.Field(typeof(RewardNodeData), "grantImmediately").SetValue(rewardNodeData, this.GrantImmediately);
             AccessTools.Field(typeof(RewardNodeData), "OverrideTooltipTitleBody").SetValue(rewardNodeData, this.OverrideTooltipTitleBody);
             AccessTools.Field(typeof(RewardNodeData), "requiredClass").SetValue(rewardNodeData, this.RequiredClass);
             AccessTools.Field(typeof(RewardNodeData), "rewards").SetValue(rewardNodeData, this.Rewards);
+
             return rewardNodeData;
         }
     }
