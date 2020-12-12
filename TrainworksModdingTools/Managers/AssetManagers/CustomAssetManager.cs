@@ -89,7 +89,7 @@ namespace Trainworks.Managers
                 sprite.name = Path.GetFileNameWithoutExtension(path);
                 return sprite;
             }
-            Trainworks.Log(BepInEx.Logging.LogLevel.Warning, "Custom asset failed to load from path: " + path);
+            Trainworks.Log(BepInEx.Logging.LogLevel.Warning, "No asset found at: " + path);
             return null;
         }
     }

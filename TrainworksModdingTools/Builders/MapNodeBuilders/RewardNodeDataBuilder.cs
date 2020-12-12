@@ -43,8 +43,13 @@ namespace Trainworks.Builders
         /// </summary>
         public string BaseAssetPath { get; set; }
         /// <summary>
+        /// Sprite used when the node is selected by the controller.
+        /// </summary>
+        public string ControllerSelectedOutline { get; set; }
+        /// <summary>
         /// Sprite used when the node is on the same path but has not been visited.
         /// </summary>
+        /// ControllerSelectedOutline
         public string EnabledSpritePath { get; set; }
         /// <summary>
         /// Sprite used when the node is on the same path and has been visited.
@@ -141,6 +146,7 @@ namespace Trainworks.Builders
                 var images = this.MapIconPrefab.GetComponentsInChildren<Image>(true);
                 List<string> spritePaths = new List<string>
                 { // This is the order they're listed on the prefab
+                    this.ControllerSelectedOutline,
                     this.EnabledSpritePath,
                     this.EnabledVisitedSpritePath,
                     this.DisabledVisitedSpritePath,
