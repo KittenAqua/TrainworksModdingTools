@@ -64,10 +64,24 @@ namespace Trainworks.Builders
                 }
             }
         }
+        public string additionalTextOnTrigger;
         /// <summary>
         /// Overrides AdditionalTextOnTrigger
         /// </summary>
-        public string AdditionalTextOnTrigger { get; set; }
+        public string AdditionalTextOnTrigger {
+            get
+            {
+                return additionalTextOnTrigger;
+            }
+            set
+            {
+                additionalTextOnTrigger = value;
+                if(AdditionalTextOnTriggerKey == null)
+                {
+                    AdditionalTextOnTriggerKey = GUIDGenerator.GenerateDeterministicGUID(additionalTextOnTrigger) + "_CharacterTriggerData_AdditionalTextOnTriggerKey";
+                }
+            }
+        }
 
         /// <summary>
         /// Use an existing base game trigger's description key to copy the format of its description.
