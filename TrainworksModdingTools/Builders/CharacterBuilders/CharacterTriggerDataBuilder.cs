@@ -9,16 +9,19 @@ using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using Trainworks.Managers;
 using Trainworks.Enums;
+using Trainworks.Utilities;
 
 namespace Trainworks.Builders
 {
     public class CharacterTriggerDataBuilder
     {
+        [Obsolete("trigger is obsolete, use Trigger instead. Will be removed in future")]
         /// <summary>
         /// Don't set directly; use Trigger instead.
         /// </summary>
         public CharacterTriggerData.Trigger trigger;
 
+        
         /// <summary>
         /// Implicitly sets DescriptionKey and AdditionalTextOnTriggerKey if null.
         /// </summary>
@@ -28,10 +31,6 @@ namespace Trainworks.Builders
             set
             {
                 this.trigger = value;
-                if (this.DescriptionKey == null)
-                {
-                    this.DescriptionKey = this.trigger + "_CharacterTriggerData_DescriptionKey";
-                }
             }
         }
 
@@ -45,9 +44,26 @@ namespace Trainworks.Builders
         public List<CardEffectData> Effects { get; set; }
 
         /// <summary>
+        /// Don't set directly; use Description instead.
+        /// </summary>
+        public string description;
+        /// <summary>
         /// Overrides DescriptionKey
         /// </summary>
-        public string Description { get; set; }
+        public string Description {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+                if(DescriptionKey == null)
+                {
+                    DescriptionKey = GUIDGenerator.GenerateDeterministicGUID(description) + "_CharacterTriggerData_DescriptionKey";
+                }
+            }
+        }
         /// <summary>
         /// Overrides AdditionalTextOnTrigger
         /// </summary>
