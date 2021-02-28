@@ -14,6 +14,7 @@ namespace TrainworksModdingTools.Constants
         public static readonly Type RelicEffectChangeStartingHandSize = typeof(RelicEffectChangeStartingHandSize);
         public static readonly Type RelicEffectChangeTreasureUnitCount = typeof(RelicEffectChangeTreasureUnitCount);
         public static readonly Type RelicEffectDisableRoomPreview = typeof(RelicEffectDisableRoomPreview);
+        public static readonly Type RelicEffectDisableShards = typeof(RelicEffectDisableShards);
         public static readonly Type RelicEffectEnableGooglyEyes = typeof(RelicEffectEnableGooglyEyes);
         public static readonly Type RelicEffectGetCardCopiesOnDeck = typeof(RelicEffectGetCardCopiesOnDeck);
         public static readonly Type RelicEffectModifyTargetsRandom = typeof(RelicEffectModifyTargetsRandom);
@@ -32,6 +33,7 @@ namespace TrainworksModdingTools.Constants
         public static readonly Type RelicEffectAddRelicStartOfRun = typeof(RelicEffectAddRelicStartOfRun);
         public static readonly Type RelicEffectAddSpellUpgradeSlot = typeof(RelicEffectAddSpellUpgradeSlot);
         public static readonly Type RelicEffectAddStatusEffectMultiplier = typeof(RelicEffectAddStatusEffectMultiplier);
+        public static readonly Type RelicEffectAddStatusEffectOnCorruptionAdded = typeof(RelicEffectAddStatusEffectOnCorruptionAdded);
         public static readonly Type RelicEffectAddStatusEffectOnEnterPyreRoom = typeof(RelicEffectAddStatusEffectOnEnterPyreRoom);
         public static readonly Type RelicEffectAddStatusEffectOnEnterRoomIndex = typeof(RelicEffectAddStatusEffectOnEnterRoomIndex);
         public static readonly Type RelicEffectAddStatusEffectOnFrontRoomPositionChange = typeof(RelicEffectAddStatusEffectOnFrontRoomPositionChange);
@@ -61,6 +63,7 @@ namespace TrainworksModdingTools.Constants
         public static readonly Type RelicEffectChanceAddEffectOnDamageCardPlayed = typeof(RelicEffectChanceAddEffectOnDamageCardPlayed);
         public static readonly Type RelicEffectChanceAddEffectOnSpawn = typeof(RelicEffectChanceAddEffectOnSpawn);
         public static readonly Type RelicEffectChanceBackToFrontOnTrigger = typeof(RelicEffectChanceBackToFrontOnTrigger);
+        public static readonly Type RelicEffectChangeNumCardsToApplyRandomDraftEnhancerTo = typeof(RelicEffectChangeNumCardsToApplyRandomDraftEnhancerTo);
         public static readonly Type RelicEffectChangeSingleFloorCapacity = typeof(RelicEffectChangeSingleFloorCapacity);
         public static readonly Type RelicEffectChangeTraitCorruption = typeof(RelicEffectChangeTraitCorruption);
         public static readonly Type RelicEffectConserveEnergyEndOfTurn = typeof(RelicEffectConserveEnergyEndOfTurn);
@@ -80,6 +83,7 @@ namespace TrainworksModdingTools.Constants
         public static readonly Type RelicEffectDamagePyreStartOfRun = typeof(RelicEffectDamagePyreStartOfRun);
         public static readonly Type RelicEffectDisableTowerHealing = typeof(RelicEffectDisableTowerHealing);
         public static readonly Type RelicEffectDrawOnCardPurged = typeof(RelicEffectDrawOnCardPurged);
+        public static readonly Type RelicEffectDrawOnCorruptionAdded = typeof(RelicEffectDrawOnCorruptionAdded);
         public static readonly Type RelicEffectDrawOnTrigger = typeof(RelicEffectDrawOnTrigger);
         public static readonly Type RelicEffectDrawToMaxStartOfCombat = typeof(RelicEffectDrawToMaxStartOfCombat);
         public static readonly Type RelicEffectEatMorselOnMorselPlayed = typeof(RelicEffectEatMorselOnMorselPlayed);
