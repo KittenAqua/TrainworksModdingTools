@@ -14,7 +14,7 @@ namespace Trainworks.Patches
     /// This one is used particularly when choosing for a card reward.
     /// </summary>
     [HarmonyPatch(typeof(CardPoolHelper), "GetCardsForClass")]
-    [HarmonyPatch(new Type[] { typeof(CardPool), typeof(ClassData), typeof(CollectableRarity), typeof(CardPoolHelper.RarityCondition), typeof(bool) })]
+    [HarmonyPatch(new Type[] { typeof(CardPool), typeof(ClassData), typeof(int), typeof(CollectableRarity), typeof(SaveManager), typeof(CardPoolHelper.RarityCondition), typeof(bool) })]
     class AddCustomCardToPoolPatch
     {
         static void Postfix(ref List<CardData> __result, ref CardPool cardPool, ClassData classData, CollectableRarity paramRarity, CardPoolHelper.RarityCondition rarityCondition, bool testRarityCondition)
