@@ -31,7 +31,7 @@ namespace Trainworks.Patches
             {
                 if (____assetsLoaded.TryGetValue(assetRef.RuntimeKey, out AssetLoadingManager.AssetInfo info))
                 {
-                    info.assetCount++;
+                    info.ownerCount++;
                 }
                 else
                 {
