@@ -90,7 +90,14 @@ namespace Trainworks.Managers
         public static List<CardData> GetCardsForPoolSatisfyingConstraints(string cardPoolID, ClassData classData, CollectableRarity paramRarity, CardPoolHelper.RarityCondition rarityCondition, bool testRarityCondition)
         {
             var allValidCards = GetCardsForPool(cardPoolID);
+
             var validCards = new List<CardData>();
+
+            if (rarityCondition == null)
+            {
+                testRarityCondition = false;
+            }
+
             foreach (CardData cardData in allValidCards)
             {
                 if (cardData.GetLinkedClass() == classData && (!testRarityCondition || rarityCondition(paramRarity, cardData.GetRarity())))
@@ -98,6 +105,7 @@ namespace Trainworks.Managers
                     validCards.Add(cardData);
                 }
             }
+
             return validCards;
         }
 

@@ -9,7 +9,7 @@ function RewriteDllPath {
 	}
 }
 
-$apiProjectPath = '..\MonsterTrainModdingAPI\MonsterTrainModdingAPI.csproj'
+$apiProjectPath = '..\TrainworksModdingTools\TrainworksModdingTools.csproj'
 
 $bepInExDefaultPath = 'C:\Program Files (x86)\Steam\steamapps\workshop\content\1102190\2187468759\BepInEx'
 $mtDefaultPath = 'C:\Program Files (x86)\Steam\steamapps\common\Monster Train'
