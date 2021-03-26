@@ -39,6 +39,7 @@ namespace Trainworks.Managers
             {
                 CustomCharacterData.Add(data.GetID(), data);
                 ProviderManager.SaveManager.GetAllGameData().GetAllCharacterData().Add(data);
+
                 return true;
             }
             else
@@ -63,7 +64,8 @@ namespace Trainworks.Managers
             }
 
             // No custom card found; search for vanilla character matching ID
-            var vanillaChar = ProviderManager.SaveManager.GetAllGameData().GetAllCharacterData().Find((chara) => {
+            var vanillaChar = ProviderManager.SaveManager.GetAllGameData().GetAllCharacterData().Find((chara) =>
+            {
                 return chara.GetID() == characterID;
             });
             if (vanillaChar == null)
@@ -77,7 +79,7 @@ namespace Trainworks.Managers
         /// Maps custom subtypes IDs to their respective SubtypeData.
         /// </summary>
         public static IDictionary<string, SubtypeData> CustomSubtypeData { get; } = new Dictionary<string, SubtypeData>();
-        
+
         /// <summary>
         /// Registers a subtype, making it available for localization
         /// </summary>

@@ -106,6 +106,8 @@ namespace Trainworks.Builders
         public int ClassUnlockParam { get; set; }
         public List<string> ClassUnlockPreviewTexts { get; set; }
 
+        public List<RelicData> StarterRelics { get; set; } = new List<RelicData>();
+        public DLC RequiredDlc { get; set; } = DLC.None;
 
         public string TitleLoc { get; set; }
         public string DescriptionLoc { get; set; }
@@ -182,6 +184,8 @@ namespace Trainworks.Builders
             AccessTools.Field(typeof(ClassData), "uiColorDark").SetValue(classData, this.UiColorDark);
             //AccessTools.Field(typeof(ClassData), "UNLOCK_KEYS").SetValue(classData, this.);
 
+            AccessTools.Field(typeof(ClassData), "starterRelics").SetValue(classData, StarterRelics);
+            AccessTools.Field(typeof(ClassData), "requiredDlc").SetValue(classData, RequiredDlc);
 
             // Card Frame
             if (this.CardFrameSpellPath != null && this.CardFrameUnitPath != null)

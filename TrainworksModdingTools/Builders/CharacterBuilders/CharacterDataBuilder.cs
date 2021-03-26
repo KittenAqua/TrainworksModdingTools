@@ -167,6 +167,11 @@ namespace Trainworks.Builders
         /// </summary>
         public bool PriorityDraw { get; set; }
 
+        /// <summary>
+        /// Holds the builder for a unit's synthesis ability.
+        /// </summary>
+        public CardUpgradeDataBuilder UnitSynthesisBuilder { get; set; }
+
         public CharacterDataBuilder()
         {
             this.AttackDamage = 10;
@@ -200,7 +205,34 @@ namespace Trainworks.Builders
         {
             var characterData = this.Build();
             CustomCharacterManager.RegisterCustomCharacter(characterData);
+
+            // Build the unit's synthesis ability
+            if (UnitSynthesisBuilder == null)
+            {
+                // If none was provided, build a dummy synthesis ability
+                if (!characterData.IsChampion())
+                {
+                    BuildDummyUnitSynthesis(characterData);
+                }
+            }
+            else
+            {
+                UnitSynthesisBuilder.Build();
+            }
+
             return characterData;
+        }
+
+        private void BuildDummyUnitSynthesis(CharacterData characterData)
+        {
+            new CardUpgradeDataBuilder()
+            {
+                UpgradeTitle = $"Dummy_synth_{characterData.name}",
+                SourceSynthesisUnit = characterData,
+                UpgradeDescription = "<DUMMY>",
+                UpgradeDescriptionKey = "Default_dummy_synthesis_description",
+                BonusDamage = 1
+            }.Build();
         }
 
         /// <summary>
