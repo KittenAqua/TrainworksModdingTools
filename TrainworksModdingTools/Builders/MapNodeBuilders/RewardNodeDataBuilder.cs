@@ -166,8 +166,22 @@ namespace Trainworks.Builders
             AccessTools.Field(typeof(MapNodeData), "mapIconPrefab").SetValue(rewardNodeData, this.MapIconPrefab);
             AccessTools.Field(typeof(MapNodeData), "minimapIcon").SetValue(rewardNodeData, CustomAssetManager.LoadSpriteFromPath(this.BaseAssetPath + "/" + this.MinimapIconPath));
             AccessTools.Field(typeof(MapNodeData), "nodeSelectedSfxCue").SetValue(rewardNodeData, this.NodeSelectedSfxCue);
-            AccessTools.Field(typeof(MapNodeData), "skipCheckIfFullHealth").SetValue(rewardNodeData, this.SkipCheckIfFullHealth);
-            AccessTools.Field(typeof(MapNodeData), "skipCheckInBattleMode").SetValue(rewardNodeData, this.SkipCheckInBattleMode);
+            if (this.SkipCheckIfFullHealth && this.SkipCheckInBattleMode)
+            {
+                AccessTools.Field(typeof(MapNodeData), "skipCheckSettings").SetValue(rewardNodeData, MapNodeData.SkipCheckSettings.Always | MapNodeData.SkipCheckSettings.IfFullHealth | MapNodeData.SkipCheckSettings.InBattleMode );
+            }
+            else if (this.SkipCheckIfFullHealth)
+            {
+                AccessTools.Field(typeof(MapNodeData), "skipCheckSettings").SetValue(rewardNodeData, MapNodeData.SkipCheckSettings.Always | MapNodeData.SkipCheckSettings.IfFullHealth);
+            }
+            else if (this.SkipCheckInBattleMode)
+            {
+                AccessTools.Field(typeof(MapNodeData), "skipCheckSettings").SetValue(rewardNodeData, MapNodeData.SkipCheckSettings.Always | MapNodeData.SkipCheckSettings.InBattleMode);
+            }
+            else
+            {
+                AccessTools.Field(typeof(MapNodeData), "skipCheckSettings").SetValue(rewardNodeData, MapNodeData.SkipCheckSettings.Always);
+            }
             if (this.Description != null)
             {
                 this.TooltipBodyKey = "RewardNodeData_" + this.RewardNodeID + "_TooltipBodyKey";
