@@ -65,6 +65,9 @@ namespace Trainworks
             APIBasePath = Path.GetDirectoryName(assembly.Location);
             TrainworksBundle = AssetBundle.LoadFromFile(Path.Combine(APIBasePath, "trainworks"));
 
+            // Register in order to provide dummy synthesis data for compatibility reasons
+            PluginManager.RegisterPlugin(this);
+
             var harmony = new Harmony(GUID);
             harmony.PatchAll();
         }

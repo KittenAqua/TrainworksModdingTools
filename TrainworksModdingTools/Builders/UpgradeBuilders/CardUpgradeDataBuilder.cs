@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using Trainworks.Managers;
+using System.Linq;
 
 namespace Trainworks.Builders
 {
@@ -86,8 +87,10 @@ namespace Trainworks.Builders
         public List<CardUpgradeMaskData> Filters { get; set; }
         public List<CardUpgradeData> UpgradesToRemove { get; set; }
 
-        public string BaseAssetPath { get; set; }
+        public CharacterData SourceSynthesisUnit { get; set; }
+        public bool IsUnitSynthesisUpgrade { get => SourceSynthesisUnit != null; }
 
+        public string BaseAssetPath { get; set; }
 
         public CardUpgradeDataBuilder()
         {
@@ -168,14 +171,25 @@ namespace Trainworks.Builders
             AccessTools.Field(typeof(CardUpgradeData), "useUpgradeHighlightTextTags").SetValue(cardUpgradeData, this.UseUpgradeHighlightTextTags);
             AccessTools.Field(typeof(CardUpgradeData), "xCostReduction").SetValue(cardUpgradeData, this.XCostReduction);
 
+            AccessTools.Field(typeof(CardUpgradeData), "isUnitSynthesisUpgrade").SetValue(cardUpgradeData, IsUnitSynthesisUpgrade);
+            AccessTools.Field(typeof(CardUpgradeData), "sourceSynthesisUnit").SetValue(cardUpgradeData, SourceSynthesisUnit);
+
             cardUpgradeData.name = UpgradeTitleKey;
             Traverse.Create(cardUpgradeData).Field("id").SetValue(UpgradeTitleKey);
 
             // If CardUpgrades are not added to allGameData, there are many troubles.
             var field = Traverse.Create(ProviderManager.SaveManager.GetAllGameData()).Field("cardUpgradeDatas");
             var upgradeList = field.GetValue<List<CardUpgradeData>>();
+
+            // If upgrade already exists, update it by removing the previously added version
+            // This might happen if Build() is called twice (e.g. when defining a synthesis for a unit and calling Build())
+            var existingEntry = upgradeList
+                .Where(u => UpgradeTitleKey == (string)AccessTools.Field(typeof(CardUpgradeData), "upgradeTitleKey").GetValue(u))
+                .FirstOrDefault();
+
+            upgradeList.Remove(existingEntry);
+
             upgradeList.Add(cardUpgradeData);
-            field.SetValue(upgradeList);
 
             return cardUpgradeData;
         }
