@@ -113,12 +113,12 @@ namespace Trainworks.Managers
         /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
         /// <param name="triggerCount">Number of Times to Trigger</param>
         /// <returns></returns>
+        [Obsolete("QueueAndRunTrigger is Obsolete, and will be removed in future... use Queue Trigger Instead")]
         public static void QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState character, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)
         {
             QueueTrigger(charTrigger, character, canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
             RunTriggerQueueRemote();
         }
-
         /// <summary>
         /// Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger
         /// </summary>
@@ -129,12 +129,12 @@ namespace Trainworks.Managers
         /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
         /// <param name="triggerCount">Number of Times to Trigger</param>
         /// <returns></returns>
+        [Obsolete("QueueAndRunTrigger is Obsolete, and will be removed in future... use Queue Trigger Instead")]
         public static void QueueAndRunTrigger(CharacterTrigger charTrigger, CharacterState[] characters, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1)
         {
             QueueTrigger(charTrigger, characters, canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
             RunTriggerQueueRemote();
         }
-
         /// <summary>
         /// Used to Queue a Character Trigger then runs the trigger queue as though it was a key phase of combat.Queues and Runs a Trigger
         /// </summary>
@@ -145,6 +145,7 @@ namespace Trainworks.Managers
         /// <param name="fireTriggersData">Additional Parameters for controlling how the trigger is fired</param>
         /// <param name="triggerCount">Number of Times to Trigger</param>
         /// <returns></returns>
+        [Obsolete("QueueAndRunTrigger is Obsolete, and will be removed in future... use Queue Trigger Instead")]
         public static void QueueAndRunTrigger<Manager>(CharacterTrigger charTrigger, bool canAttackOrHeal = true, bool canFireTriggers = true, CharacterState.FireTriggersData fireTriggersData = null, int triggerCount = 1) where Manager : IProvider, ICharacterManager
         {
             QueueTrigger<Manager>(charTrigger, canAttackOrHeal, canFireTriggers, fireTriggersData, triggerCount);
@@ -162,7 +163,6 @@ namespace Trainworks.Managers
                 combatManager.StartCoroutine(combatManager.RunTriggerQueue());
             }
         }
-
         /// <summary>
         /// A general function used to Apply a Card Trigger in different ways, dependant on parameters 
         /// </summary>
