@@ -4,7 +4,7 @@ using System;
 
 namespace Trainworks.Patches
 {
-    class AccessUnitSynthesisMapping
+    public class AccessUnitSynthesisMapping
     {
         public static void FindUnitSynthesisMappingInstanceToStub()
         {
@@ -37,7 +37,7 @@ namespace Trainworks.Patches
     // Effective for creating unit synthesis connections in TLD DLC after appropriate custom CharacterData and custom CardUpgradeData has been added to AllGameData
     // *Required: Called after adding custom content to work for this purpose
     [HarmonyPatch(typeof(UnitSynthesisMapping), "CollectMappingData", new Type[] { })]
-    public class RecallingCollectMappingData
+    class RecallingCollectMappingData
     {
         [HarmonyReversePatch]
         public static void CollectMappingDataStub(object instance)
