@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using ShinyShoe;
 using Trainworks.Managers;
+using System.Runtime.CompilerServices;
 
 namespace Trainworks.Builders
 {
@@ -29,7 +30,16 @@ namespace Trainworks.Builders
             set
             {
                 this.effectStateType = value;
-                this.EffectStateName = this.effectStateType.AssemblyQualifiedName;
+                // Bad way to do this, but just wanted to indicate somewhere that this specific string is checked for when resetting UnitSynthesisMapping through its CollectMappingData method
+                // Modders can also just specifically set the EffectStateName AFTER setting the EffectStateType in their CardEffectDataBuilder, but wanted to find a way to protect them from themselves
+                if(this.effectStateType.GetType() == typeof(CardEffectSpawnMonster))
+                {
+                    this.EffectStateName = "CardEffectSpawnMonster";
+                }
+                else
+                {
+                    this.EffectStateName = this.effectStateType.AssemblyQualifiedName;
+                }
             }
         }
 
