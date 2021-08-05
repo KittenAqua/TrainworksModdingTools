@@ -30,16 +30,10 @@ namespace Trainworks.Builders
             set
             {
                 this.effectStateType = value;
-                // Bad way to do this, but just wanted to indicate somewhere that this specific string is checked for when resetting UnitSynthesisMapping through its CollectMappingData method
+                // I was unclear if the AssemblyName was critical here, so just wanted to point out a potential spot to specifically make sure CardEffectMonsterSpawn gave exactly the proper string even if modder did not specify.
+                // Quick testing showed no ill effects, but could understand if there were more working behind the scenes I missed.
                 // Modders can also just specifically set the EffectStateName AFTER setting the EffectStateType in their CardEffectDataBuilder, but wanted to find a way to protect them from themselves
-                if(this.effectStateType.GetType() == typeof(CardEffectSpawnMonster))
-                {
-                    this.EffectStateName = "CardEffectSpawnMonster";
-                }
-                else
-                {
-                    this.EffectStateName = this.effectStateType.AssemblyQualifiedName;
-                }
+                this.EffectStateName = this.effectStateType.Name;
             }
         }
 
