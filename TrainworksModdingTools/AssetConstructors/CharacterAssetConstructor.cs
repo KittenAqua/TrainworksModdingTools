@@ -144,6 +144,8 @@ namespace Trainworks.AssetConstructors
             // Activate the SpineMesh
             var spineMeshes = characterGameObject.GetComponentInChildren<ShinyShoe.CharacterUIMeshSpine>(true);
             spineMeshes.gameObject.SetActive(true);
+            //Bounds bounds;
+            //spineMeshes.Setup(sprite, true, 0f, characterGameObject.name, out bounds);
 
             // Skeleton cloning produces superior effects
             var clonedObject = characterGameObject.GetComponentInChildren<SkeletonAnimation>().gameObject;
@@ -167,6 +169,8 @@ namespace Trainworks.AssetConstructors
             // Remove our friends
             characterUI.GetComponent<SpriteRenderer>().forceRenderingOff = true;
             dest.gameObject.SetActive(false);
+
+            Trainworks.Log("Created spine component for " + characterGameObject.name);
 
             return characterGameObject;
         }
@@ -198,8 +202,71 @@ namespace Trainworks.AssetConstructors
             }
         }
 
+
+        private static Dictionary<CharacterUI.Anim, string> ANIM_NAMES = new Dictionary<CharacterUI.Anim, string>
+        {
+            {
+                CharacterUI.Anim.Idle,
+                "Idle"
+            },
+            {
+                CharacterUI.Anim.Attack,
+                "Attack"
+            },
+            {
+                CharacterUI.Anim.HitReact,
+                "HitReact"
+            },
+            {
+                CharacterUI.Anim.Idle_Relentless,
+                "Idle_Relentless"
+            },
+            {
+                CharacterUI.Anim.Attack_Spell,
+                "Spell"
+            },
+            {
+                CharacterUI.Anim.Death,
+                "Death"
+            }
+        };
+
+        [HarmonyPatch(typeof(CharacterUIMeshSpine), "CreateAnimInfo")]
+        class DebugStupidShitB
+        {
+            static void Prefix(CharacterUIMeshSpine __instance, CharacterUI.Anim animType)
+            {
+                if (!ANIM_NAMES.TryGetValue(animType, out string value))
+                {
+                    return;
+                }
+                SkeletonAnimation[] componentsInChildren = __instance.GetComponentsInChildren<SkeletonAnimation>(includeInactive: true);
+                foreach (SkeletonAnimation skeletonAnimation in componentsInChildren)
+                {
+                    Spine.Animation animation = skeletonAnimation.SkeletonDataAsset.GetSkeletonData(quiet: false).FindAnimation(value);
+                    if (animation != null)
+                    {
+                        if (skeletonAnimation.state == null)
+                        {
+                            skeletonAnimation.state = new Spine.AnimationState(skeletonAnimation.skeletonDataAsset.GetAnimationStateData());
+                        }
+                        MeshRenderer component = skeletonAnimation.GetComponent<MeshRenderer>();
+                        if (component == null)
+                        {
+                            return;
+                        }
+
+                        return;
+                    }
+                }
+                return;
+            }
+        }
+
         public GameObject Construct(AssetReference assetRef, BundleAssetLoadingInfo bundleInfo)
         {
+            Trainworks.Log("Looking in bundle for... " + bundleInfo.ObjectName);
+
             // Don't recreate
             if (CharacterPrefabDictionary.ContainsKey(bundleInfo.SpriteName))
             {
