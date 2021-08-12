@@ -93,10 +93,11 @@ namespace Trainworks.Managers
 
             var validCards = new List<CardData>();
 
-            if (rarityCondition == null)
-            {
-                testRarityCondition = false;
-            }
+            //if (rarityCondition == null)
+            //{    
+                //testRarityCondition = false;
+            //}
+            rarityCondition = (rarityCondition ?? EqualRarity);
 
             foreach (CardData cardData in allValidCards)
             {
@@ -108,6 +109,8 @@ namespace Trainworks.Managers
 
             return validCards;
         }
+
+        private static CardPoolHelper.RarityCondition EqualRarity = (CollectableRarity paramRarity, CollectableRarity cardRarity) => paramRarity == cardRarity;
 
         /// <summary>
         /// Gets a list of all cards added to the given card pool by mods
