@@ -73,6 +73,7 @@ namespace Trainworks.Builders
         public Sprite Icon { get; set; }
         public int ParamInt { get; set; }
         public string ParamSubtype { get; set; }
+        public CardUpgradeData ParamCardUpgradeData { get; set }
         public StatusEffectStackData[] ParamStatusEffects { get; set; }
 
         public RoomModifierDataBuilder()
@@ -96,6 +97,7 @@ namespace Trainworks.Builders
             AccessTools.Field(typeof(RoomModifierData), "paramInt").SetValue(roomModifierData, this.ParamInt);
             AccessTools.Field(typeof(RoomModifierData), "paramStatusEffects").SetValue(roomModifierData, this.ParamStatusEffects);
             AccessTools.Field(typeof(RoomModifierData), "paramSubtype").SetValue(roomModifierData, this.ParamSubtype);
+            AccessTools.Field(typeof(RoomModifierData), "paramCardUpgardeData" /* sic */).SetValue(roomModifierData, this.ParamCardUpgradeData);
             AccessTools.Field(typeof(RoomModifierData), "roomStateModifierClassName").SetValue(roomModifierData, this.RoomStateModifierClassName);
             return roomModifierData;
         }
