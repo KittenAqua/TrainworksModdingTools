@@ -44,5 +44,13 @@ namespace Trainworks.Constants
         public static readonly Type CardTraitTreasure = typeof(CardTraitTreasure);
         public static readonly Type CardTraitUnplayable = typeof(CardTraitUnplayable);
         public static readonly Type CardTraitUnpurgable = typeof(CardTraitUnpurgable);
+        // New as of TLD.
+        public static readonly Type CardTraitAllowUpgradeOnCardType = typeof(CardTraitAllowUpgradeOnCardType);
+        public static readonly Type CardTraitCopyOnPlay = typeof(CardTraitCopyOnPlay);
+        public static readonly Type CardTraitCorruptRestricted = typeof(CardTraitCorruptRestricted);
+        public static readonly Type CardTraitCorruptState = typeof(CardTraitCorruptState);
+        public static readonly Type CardTraitScalingUpgradeUnitHealth = typeof(CardTraitScalingUpgradeUnitHealth);
+        public static readonly Type CardTraitScalingUpgradeUnitSize = typeof(CardTraitScalingUpgradeUnitSize);
+
     }
 }

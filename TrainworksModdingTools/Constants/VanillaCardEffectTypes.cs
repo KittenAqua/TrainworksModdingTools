@@ -67,5 +67,18 @@ namespace Trainworks.Constants
         public static readonly Type CardEffectSpawnHero = typeof(CardEffectSpawnHero);
         public static readonly Type CardEffectSpawnMonster = typeof(CardEffectSpawnMonster);
         public static readonly Type CardEffectTransferAllStatusEffects = typeof(CardEffectTransferAllStatusEffects);
+        // The following are new as of TLD
+        public static readonly Type CardEffectAddPermanentCorruption = typeof(CardEffectAddPermanentCorruption);
+        public static readonly Type CardEffectAddStatusEffectPerOtherEffect = typeof(CardEffectAddStatusEffectPerOtherEffect);
+        public static readonly Type CardEffectAdjustCorruption = typeof(CardEffectAdjustCorruption);
+        public static readonly Type CardEffectAdjustRoomMaxCorruption = typeof(CardEffectAdjustRoomMaxCorruption);
+        public static readonly Type CardEffectModifyInkVariable = typeof(CardEffectModifyInkVariable);
+        public static readonly Type CardEffectMultiplyAllStatusEffects = typeof(CardEffectMultiplyAllStatusEffects);
+        public static readonly Type CardEffectMultiplyAllPositiveStatusEffects = typeof(CardEffectMultiplyAllPositiveStatusEffects);
+        public static readonly Type CardEffectMultiplyCorruption = typeof(CardEffectMultiplyCorruption);
+        public static readonly Type CardEffectNULL = typeof(CardEffectNULL);
+        public static readonly Type CardEffectRecruit = typeof(CardEffectRecruit);
+        public static readonly Type CardEffectRemoveStatusEffectPerCorrupt = typeof(CardEffectRemoveStatusEffectPerCorrupt);
+        public static readonly Type CardEffectSynergizeStatusEffects = typeof(CardEffectSynergizeStatusEffects);
     }
 }
