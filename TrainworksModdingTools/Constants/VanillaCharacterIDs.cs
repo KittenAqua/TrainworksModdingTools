@@ -825,5 +825,100 @@ namespace Trainworks.Constants
         /// Asset name: PyreHeart
         /// </summary>
         public static readonly string LastShardofthePyre = "0ff61363-ab58-4873-9a26-18db51eacd46";
+        /// Asset name: Boss_Level9_Display
+        /// </summary>
+        public static readonly string TheLastDivinity = "f048a260-b016-430b-a5ae-7b3af50ac23e";
+        /// <summary>
+        /// Asset name: Boss_Level9_Feet
+        /// </summary>
+        public static readonly string TheLastDivinityFeet = "7412425b-9e28-4f60-82ec-768e086158d5";
+        /// <summary>
+        /// Asset name: Boss_Level9_Head
+        /// </summary>
+        public static readonly string TheLastDivinityHead = "d6293a41-738c-4c2a-8459-39d49d0378c9";
+        /// <summary>
+        /// Asset name: Boss_Level9_Torso
+        /// </summary>
+        public static readonly string TheLastDivinityTorso = "25b58bde-d776-4ee4-af17-df76ec99cb94";
+        /// <summary>
+        /// Asset name: MonsterApexImp
+        /// </summary>
+        public static readonly string ApexImp = "277036be-815d-451e-9cc2-86ada7b6011e";
+        /// <summary>
+        /// Asset name: MonsterBogChrysalis
+        /// </summary>
+        public static readonly string BogChrysalis = "2fb6338c-8821-4244-8c8c-724a0cdcb3ca";
+        /// <summary>
+        /// Asset name: MonsterBogdeepCocoon
+        /// </summary>
+        public static readonly string BogdeepCocoon = "0165b3cc-f8a4-4710-aa96-e40c0f0b90b2";
+        /// <summary>
+        /// Asset name: MonsterBogFly
+        /// </summary>
+        public static readonly string BogFly = "0eecf3be-e865-4aa3-bee1-8180bfb137d6";
+        /// <summary>
+        /// Asset name: MonsterBogWurmling
+        /// </summary>
+        public static readonly string BogWurmling = "1c89fdbc-bf8b-447c-b695-9b8bbea1d294";
+        /// <summary>
+        /// Asset name: MonsterEelGorgon
+        /// </summary>
+        public static readonly string EelGorgon = "1836aa39-caa7-4750-b46a-c490d0605184";
+        /// <summary>
+        /// Asset name: MonsterFirstOfKin
+        /// </summary>
+        public static readonly string FirstofKin = "166267ac-4775-4ce7-a927-1a14a0783bfb";
+        /// <summary>
+        /// Asset name: MonsterGlareminder
+        /// </summary>
+        public static readonly string Glareminder = "21233167-7916-486c-8324-ff6d88b0b156";
+        /// <summary>
+        /// Asset name: MonsterGlugsider
+        /// </summary>
+        public static readonly string Glugsider = "22b4bf94-7588-49fe-b9b7-fa58ad4895f2";
+        /// <summary>
+        /// Asset name: MonsterHeph
+        /// </summary>
+        public static readonly string HephtheBlacksmith = "23e4ee9d-0e91-42be-b04a-2f305d5c7357";
+        /// <summary>
+        /// Asset name: MonsterKeeperOfEchoes
+        /// </summary>
+        public static readonly string KeeperofEchoes = "0a5b5e54-05a2-43a3-b1f3-c59225cb4707";
+        /// <summary>
+        /// Asset name: MonsterKinhostCarapace
+        /// </summary>
+        public static readonly string KinhostCarapace = "d601ac44-e6ce-4a09-8297-15ec8a6672bd";
+        /// <summary>
+        /// Asset name: MonsterKinhostPupa
+        /// </summary>
+        public static readonly string KinhostPupa = "e2f7a12a-b33b-4dbe-b95b-73f39cdf3a70";
+        /// <summary>
+        /// Asset name: MonsterKinhostVessel
+        /// </summary>
+        public static readonly string KinhostVessel = "0a96e9ff-e842-4472-87d7-d1f3fa0cf38c";
+        /// <summary>
+        /// Asset name: MonsterMerchant
+        /// </summary>
+        public static readonly string MerchantsNephew = "f4dcb0b2-8bc7-48cb-b502-e82d7143ef95";
+        /// <summary>
+        /// Asset name: MonsterMorselMade
+        /// </summary>
+        public static readonly string MorselMade = "fbd0d6e8-5e82-4466-af6c-9776ca8b5ba9";
+        /// <summary>
+        /// Asset name: MonsterShardsoulCarver
+        /// </summary>
+        public static readonly string ShardsoulCarver = "d9b2dce7-5c8c-419e-a5fd-6bec14742f9a";
+        /// <summary>
+        /// Asset name: MonsterSteelsinger
+        /// </summary>
+        public static readonly string Steelsinger = "c498712c-73d2-4095-bed6-6c77c95387e9";
+        /// <summary>
+        /// Asset name: MonsterWurmChampion1
+        /// </summary>
+        public static readonly string SpineChief = "43ac682e-92da-4518-b2ee-c64b0c77a1f5";
+        /// <summary>
+        /// Asset name: MonsterWurmChampion2
+        /// </summary>
+        public static readonly string Echowright = "5c18728d-27e2-4b9b-835c-a69b1689eb9c";
     }
 }
