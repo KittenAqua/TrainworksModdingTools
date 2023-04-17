@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Trainworks.Managers
 {
-    class CustomEnhancerPoolManager
+    public class CustomEnhancerPoolManager
     {
         /// <summary>
         /// Enhancer pool to add the EnhancerData of Enhancers which can appear.

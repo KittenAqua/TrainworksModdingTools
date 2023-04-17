@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Trainworks.Managers
 {
-    class CustomRelicPoolManager
+    public class CustomRelicPoolManager
     {
         /// <summary>
         /// Maps relic pool IDs to the CollectableRelicData of relics which can appear in them.

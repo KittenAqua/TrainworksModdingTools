@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Trainworks.Managers
 {
-    class CustomCardPoolManager
+    public class CustomCardPoolManager
     {
         /// <summary>
         /// Maps card pool IDs to the CardData of cards which can appear in them.
