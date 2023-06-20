@@ -154,5 +154,60 @@ namespace TrainworksModdingTools.Constants
         /// Asset name: UpgradeSmall_ShrinkRayEvent
         /// </summary>
         public static readonly string MinorRefraction = "3e025f03-d52f-494a-a61e-c8ec504d1061";
+        /// <summary>
+        /// Asset name: SpellMagicPowerHuge
+        /// </summary>
+        public static readonly string Extremestone = "84e3a785-d463-4f9e-a415-67b90fefd9aa";
+        /// <summary>
+        /// Asset name: SpellReduceCostPurge
+        /// </summary>
+        public static readonly string Purgestone = "0303d8f4-adb3-4200-b96e-cb51fe40630a";
+        /// <summary>
+        /// Asset name: SpellUpgradeCreateCopyWithPurge
+        /// </summary>
+        public static readonly string Twinstone = "5328c6bf-b1ba-4192-b775-40568d4232d3";
+        /// <summary>
+        /// Asset name: SpellUpgradeLowCost
+        /// </summary>
+        public static readonly string Valuestone = "3a1021b3-807e-462d-a3aa-45d3a5356b97";
+        /// <summary>
+        /// Asset name: SpellUpgradeReduceCost
+        /// </summary>
+        public static readonly string Emberstone = "7301ebb3-4d99-46b9-b4bd-aeabf530fd0a";
+        /// <summary>
+        /// Asset name: SpellUpgradeTraitAddCorrupt
+        /// </summary>
+        public static readonly string Corruptstone = "c172bdb3-bbb2-4332-9248-8f0eb023dcc1";
+        /// <summary>
+        /// Asset name: SpellUpgradeTraitRemoveConsume
+        /// </summary>
+        public static readonly string Eternalstone = "4cd37328-eb6e-4c4e-aa61-53492dfe8035";
+        /// <summary>
+        /// Asset name: UnitUpgradeAddEndlessRemnant
+        /// </summary>
+        public static readonly string Immortalstone = "2ce018b5-2b43-4ecf-8567-696d4fd8c119";
+        /// <summary>
+        /// Asset name: UnitUpgradeClanWurmBuffCorruptcost
+        /// </summary>
+        public static readonly string EchoStone = "9e2d80ca-4035-4610-bfa4-ccd22732dc5a";
+        /// <summary>
+        /// Asset name: EnemyRecruit_MeleeWeakness
+        /// </summary>
+        public static readonly string Sunderstone = "57dc22eb-f03e-4de3-a484-6fc41a48f07b";
+        /// <summary>
+        /// Asset name: EnemyRecruit_Sap
+        /// </summary>
+        public static readonly string Sapstone = "aad701f2-c210-4354-a985-c84576eb48cb";
+        /// <summary>
+        /// Asset name: HephRecruit_UpgradeAttack
+        /// </summary>
+        public static readonly string HephsConsolation = "fe8b3452-5a8b-4ca8-9094-81d85191e4b1";
+        /// <summary>
+        /// Asset name: SpellMerge_CardDuplicator
+        /// </summary>
+        public static readonly string SpellDuplicate = "44767239-41a0-47f1-815e-29c4e8573ca3";
+        /// Asset name: ZeroCostAnnihilate
+        /// </summary>
+        public static readonly string UnhingedPower = "4567dc52-8f10-47d8-b7b4-a7ca8af964a8";
     }
 }

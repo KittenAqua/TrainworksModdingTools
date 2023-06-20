@@ -433,5 +433,230 @@ namespace Trainworks.Constants
         /// Asset name: ScalingBlightMagicPower
         /// </summary>
         public static readonly string DantesCloak = "c1102381-a1f5-4d17-be35-8f51f820982a";
+        /// <summary>
+        /// Asset name: PactArmor DLC: Hellforged
+        /// </summary>
+        public static readonly string ShardofDivinity = "b6282e63-9c8e-477f-9797-ecd43412e47a";
+        /// <summary>
+        /// Asset name: FreeReroll DLC: Hellforged
+        /// </summary>
+        public static readonly string FreeReroll = "354a04d5-7beb-436f-bf01-760d0c57f2aa";
+        /// <summary>
+        /// Asset name: U3AttackIncreaseChamp DLC: Hellforged
+        /// </summary>
+        public static readonly string MarkofaChampion = "30ca6dec-dc12-4967-8f72-fca528a0d30c";
+        /// <summary>
+        /// Asset name: U3AttackIncreaseMonsters DLC: Hellforged
+        /// </summary>
+        public static readonly string WornGrindstone = "3197ba1d-d6e7-4bd5-a80c-d9848eebace3";
+        /// <summary>
+        /// Asset name: U3CheaperBlightScourge DLC: Hellforged
+        /// </summary>
+        public static readonly string SinnersSalve = "a19cac7c-b2e0-42bd-bc1e-d180e17a1c15";
+        /// <summary>
+        /// Asset name: U3DrawToMaxStartOfCombat DLC: Hellforged
+        /// </summary>
+        public static readonly string LostLuggage = "2058bafa-a15c-4787-9b9e-4dc7fdf09b74";
+        /// <summary>
+        /// Asset name: U3FirstWaveDazed DLC: Hellforged
+        /// </summary>
+        public static readonly string FaultyLoader = "6aa37e42-945b-4a18-a76c-c22831c207e9";
+        /// <summary>
+        /// Asset name: U3GoldBlockPyreHP DLC: Hellforged
+        /// </summary>
+        public static readonly string GoldenVault = "a4c5a50a-23c3-440d-98fa-14f90d62d0b6";
+        /// <summary>
+        /// Asset name: U3GoldPyreHealthSetTo40 DLC: Hellforged
+        /// </summary>
+        public static readonly string RationingScales = "b6e760cf-b6f7-455c-847f-05db085734f1";
+        /// <summary>
+        /// Asset name: U3HealthIncreaseChamp DLC: Hellforged
+        /// </summary>
+        public static readonly string MarkofanExile = "87b60536-b452-4956-b823-3c02f005d38b";
+        /// <summary>
+        /// Asset name: U3SappedAttack DLC: Hellforged
+        /// </summary>
+        public static readonly string ConscriptionNotice = "2b7ee5f7-cf89-40b0-ae47-c73c5c879751";
+        /// <summary>
+        /// Asset name: U3ShowDrawOrder DLC: Hellforged
+        /// </summary>
+        public static readonly string CheatersHand = "a7a660fa-9f6f-4e01-b8cc-8a19bbcde44d";
+        /// <summary>
+        /// Asset name: U3UpgradedDrafts DLC: Hellforged
+        /// </summary>
+        public static readonly string CapriciousReflection = "9e0e5d4e-6d16-43f1-8cd4-cc4c2b431afd";
+        /// <summary>
+        /// Asset name: 2ChargesOnCardConsumed DLC: Hellforged
+        /// </summary>
+        public static readonly string BogSlime = "217d553b-cddf-4a8c-a4c9-cfdb3c99389c";
+        /// <summary>
+        /// Asset name: CopyConsumedCard DLC: Hellforged
+        /// </summary>
+        public static readonly string EchoSeedling = "51368ce4-b037-49ef-801c-545405b78800";
+        /// <summary>
+        /// Asset name: CorruptionBattleStart DLC: Hellforged
+        /// </summary>
+        public static readonly string BaseCharge = "a528a1b2-0d14-4fc5-9b8f-4b1f23722422";
+        /// <summary>
+        /// Asset name: DamageOnCorruptPlay DLC: Hellforged
+        /// </summary>
+        public static readonly string SerratedMandibles = "f302d4a1-13ba-4907-a26d-f0d8eead6f2e";
+        /// <summary>
+        /// Asset name: DrawOnCorruption DLC: Hellforged
+        /// </summary>
+        public static readonly string DunEcho = "9427e610-0c7b-4430-ab1f-c84049097168";
+        /// <summary>
+        /// Asset name: EggHatchRemoval DLC: Hellforged
+        /// </summary>
+        public static readonly string HardenedHull = "8c8a2a2c-500c-4b77-90fd-0d309b94bb2c";
+        /// <summary>
+        /// Asset name: ExtractForEmberAndEchos DLC: Hellforged
+        /// </summary>
+        public static readonly string CarvingCorusca = "4d237444-5beb-43df-a545-c68a7ae86ba6";
+        /// <summary>
+        /// Asset name: IncreaseDecaySlimeStacks DLC: Hellforged
+        /// </summary>
+        public static readonly string DecayedDecoy = "55c06c99-7cee-4d7e-ad17-f893722d8071";
+        /// <summary>
+        /// Asset name: IncreaseMaxCorruption DLC: Hellforged
+        /// </summary>
+        public static readonly string MindHoard = "3a28026e-e44b-4456-b535-7134e7525240";
+        /// <summary>
+        /// Asset name: MagicPowerWhenCardConsumed DLC: Hellforged
+        /// </summary>
+        public static readonly string NoticeStone = "a4c87eb7-1c4e-4f63-af08-79f910e5a2e8";
+        /// <summary>
+        /// Asset name: StarterWurmRelic DLC: Hellforged
+        /// </summary>
+        public static readonly string Wurmtooth = "815a25e7-2fed-4cb2-a568-79af12cd7116";
+        /// <summary>
+        /// Asset name: UnremovableCorruptionTop DLC: Hellforged
+        /// </summary>
+        public static readonly string EncasedDivinity = "a66188b9-845d-475e-b6e6-7ea5335ec00b";
+        /// <summary>
+        /// Asset name: AddAttackOnKill_Divine
+        /// </summary>
+        public static readonly string DivineConsumedCrown = "c14d2134-9427-4fdc-a9fa-636d90e80ede";
+        /// <summary>
+        /// Asset name: CardDrawOnCardPlay_Divine
+        /// </summary>
+        public static readonly string DivineWingedSteel = "474d1169-4805-4385-8042-b7d9f4f18a7f";
+        /// <summary>
+        /// Asset name: DamageOnBurnoutDeath_Divine
+        /// </summary>
+        public static readonly string DivineExplodingCandle = "65eee28f-0d5b-4794-a46c-0659f9f7c77f";
+        /// <summary>
+        /// Asset name: DamageOnCardPlayed_Divine
+        /// </summary>
+        public static readonly string DivineTokenofaTraitor = "3a4f2b0b-9a4c-46f4-ac21-ee8571832070";
+        /// <summary>
+        /// Asset name: HealthIncreaseMonsters_Divine
+        /// </summary>
+        public static readonly string DivineHammeredChestplates = "9c15b2b2-ab93-4026-b607-64baba6dc258";
+        /// <summary>
+        /// Asset name: IncreaseMagicPower_Divine
+        /// </summary>
+        public static readonly string DivineTemperedTalisman = "bac5342b-cd82-42d6-9306-41ab2548e698";
+        /// <summary>
+        /// Asset name: PyreArmor_Divine
+        /// </summary>
+        public static readonly string DivinePyrewall = "2ebcb820-bfa6-4d90-b98b-92a1191a9120";
+        /// <summary>
+        /// Asset name: StewardBuff_Divine
+        /// </summary>
+        public static readonly string DivineAdvancedPrototype = "252a868c-46d0-4e86-949a-6c3f3789ce5f";
+        /// <summary>
+        /// Asset name: AttackDecreaseEnemies_Divine
+        /// </summary>
+        public static readonly string DivineWingedIndulgence = "7d7b0aa6-b60f-426f-b698-a880ee0b7cee";
+        /// <summary>
+        /// Asset name: ChanceToDaze_Divine
+        /// </summary>
+        public static readonly string DivineConcussiveCoals = "57851cf9-0273-45bf-a5ca-66ea38666ca4";
+        /// <summary>
+        /// Asset name: CheaperUnits_Divine
+        /// </summary>
+        public static readonly string DivineForeverFlame = "d82bfb2e-d029-4afa-ae9a-8e0770e8533d";
+        /// <summary>
+        /// Asset name: FrostbiteOnEnemies_Divine
+        /// </summary>
+        public static readonly string DivineRulesofContainment = "862aa81f-bc0b-4416-9635-35a8e8f2666b";
+        /// <summary>
+        /// Asset name: MagicPowerWhenCardConsumed_Divine DLC: Hellforged
+        /// </summary>
+        public static readonly string DivineNoticeStone = "5a76e53c-0ca1-424a-afbc-0ff000d362cf";
+        /// <summary>
+        /// Asset name: SpawnWithRage_Divine
+        /// </summary>
+        public static readonly string DivineScorchingRestraints = "b3c4f0af-b848-42a9-9818-3b01abf89463";
+        /// <summary>
+        /// Asset name: U3AttackIncreaseMonsters_Divine DLC: Hellforged
+        /// </summary>
+        public static readonly string DivineWornGrindstone = "2d10de14-e967-4de2-8103-f496f9c1bca8";
+        /// <summary>
+        /// Asset name: UpgradeMaxHpFrontUnit_Divine
+        /// </summary>
+        public static readonly string DivineEmblemoftheExiles = "08f44eb7-c991-4dd4-a7d9-fa84e6b8788e";
+        /// <summary>
+        /// Asset name: ChanceToCleanse_Divine
+        /// </summary>
+        public static readonly string DivineCleansingWater = "ef823703-22b8-4706-8bd2-8fa049529eb6";
+        /// <summary>
+        /// Asset name: ChanceToDamage_Divine
+        /// </summary>
+        public static readonly string DivineInfusedMallet = "936529ef-16f4-49d0-8836-330f930101c6";
+        /// <summary>
+        /// Asset name: DamageOnConsume_Divine
+        /// </summary>
+        public static readonly string DivineTraitorsQuill = "0dc37ac2-c028-493e-afad-23f2f88523ed";
+        /// <summary>
+        /// Asset name: FirstUnitGainDamageShield_Divine
+        /// </summary>
+        public static readonly string DivineChainofGems = "1195d5bb-a51f-4372-aa26-c9186d2f078b";
+        /// <summary>
+        /// Asset name: IncreaseMagicPowerOnSpellsPlayed_Divine
+        /// </summary>
+        public static readonly string DivineAForgottenName = "ef006619-4fc1-432c-98b2-ba670ba115bc";
+        /// <summary>
+        /// Asset name: SpawnWithArmor_Divine
+        /// </summary>
+        public static readonly string DivineScorchedSteel = "58a75a4a-1e95-476a-9cd3-16a593d250f2";
+        /// <summary>
+        /// Asset name: U3AttackIncreaseChamp_Divine DLC: Hellforged
+        /// </summary>
+        public static readonly string DivineMarkofaChampion = "3d8af56e-917a-4dae-97ae-a8ca774dd131";
+        /// <summary>
+        /// Asset name: U3HealthIncreaseChamp_Divine DLC: Hellforged
+        /// </summary>
+        public static readonly string DivineMarkofanExile = "b60f07fa-99e0-41f0-911d-bb490efdc2e3";
+        /// <summary>
+        /// Asset name: FinalEndingArtifact DLC: Hellforged
+        /// </summary>
+        public static readonly string BlankPages = "6bb39014-9b03-4620-b088-f618a7e680b7";
+        /// <summary>
+        /// Asset name: AcidRainRelic DLC: Hellforged
+        /// </summary>
+        public static readonly string CorruptedCloud = "3edd9947-7cd6-45d9-bb7d-1e3609acc41b";
+        /// <summary>
+        /// Asset name: AllSpellsPiercingRelic DLC: Hellforged
+        /// </summary>
+        public static readonly string CrackedHelmet = "088a9e01-d85a-4b20-805b-a7817bcf0c08";
+        /// <summary>
+        /// Asset name: AllUnitsEndlessRelic DLC: Hellforged
+        /// </summary>
+        public static readonly string ImmortalityPotion = "7d0d8fab-6457-45c1-bf17-4edeaf2c1670";
+        /// <summary>
+        /// Asset name: PermadeathRelic DLC: Hellforged
+        /// </summary>
+        public static readonly string BrokenWheel = "066368bb-085c-462c-b466-5ed911fef80a";
+        /// <summary>
+        /// Asset name: ShieldsUpRelic DLC: Hellforged
+        /// </summary>
+        public static readonly string JudgementalFittings = "db206ec6-fea3-457c-9469-cef224e662ce";
+        /// <summary>
+        /// Asset name: WandWoundsRelic DLC: Hellforged
+        /// </summary>
+        public static readonly string VialofTears = "0a34dd72-df76-43ec-bb18-20afa56f823b";
+
     }
 }
